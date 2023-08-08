@@ -14,8 +14,6 @@
 - Discord
 - Notion
 
-<br/>
-
 ### Front-end
 - HTML, CSS
 - Programming language: JavaScript
@@ -23,11 +21,8 @@
 - Library: react-router-dom, redux, axios
 - Extention: ESLint, Prettier
 
-<br/>
-
 ### Back-end
-
-<br/>
+.
 
 ## 🔧 주요 기능
 .
