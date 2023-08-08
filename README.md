@@ -22,7 +22,12 @@
 - Extention: ESLint, Prettier
 
 ### Back-end
-.
+- Java
+- Spring
+- Spring Boot
+- Spring Security
+- MySQL
+- AWS
 
 ## 🔧 주요 기능
 .
