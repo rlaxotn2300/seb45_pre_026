@@ -1,7 +1,4 @@
 # Introduction
-
-<br/>
-
 - 팀 이름 : 🧶 코드니터
 - 프로젝트 명 : SEB45 Pre-project
 - 프로젝트 설명 : 우리 팀만의 Stack overflow 만들기
