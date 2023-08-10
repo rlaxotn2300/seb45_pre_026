@@ -103,23 +103,23 @@ function Nav({ curPage, setCurPage }) {
         <div className="nav__tab-name">TEAM</div>
         <div className="nav__team">
           <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">Github ID</div>
+          <div className="nave__github-ID">Beomda</div>
         </div>
         <div className="nav__team">
           <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">Github ID</div>
+          <div className="nave__github-ID">Jess-Apr</div>
         </div>
         <div className="nav__team">
           <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">Github ID</div>
+          <div className="nave__github-ID">oksu01</div>
         </div>
         <div className="nav__team">
           <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">Github ID</div>
+          <div className="nave__github-ID">rlaxotn2300</div>
         </div>
         <div className="nav__team">
           <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">Github ID</div>
+          <div className="nave__github-ID">sahel4</div>
         </div>
       </div>
     </div>
