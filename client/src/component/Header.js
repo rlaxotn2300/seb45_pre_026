@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import '../css/header.css';
+import Logo from '../images/Logo.png';
+import QuestionsLogo from '../images/questions-logo.png';
 
 export default function Header() {
   const [loggedin, setIsLoggedin] = useState(false);
@@ -10,11 +12,19 @@ export default function Header() {
 
   return (
     <div className="header__container">
-      <div>
-        <img alt="로고" />
+      <div className="header__left">
+        <img className="header__logo" src={Logo} alt="로고" />
         <div>
-          <span></span>
-          <span></span>
+          <span>Code</span>
+          <span>Knitters</span>
+        </div>
+        <div>
+          <img
+            className="header__questions-logo"
+            src={QuestionsLogo}
+            alt="질문 로고"
+          />
+          <span>Questions</span>
         </div>
       </div>
       <div>
