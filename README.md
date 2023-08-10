@@ -1,16 +1,40 @@
 # Introduction
-안녕하세요 SEB 45기 pre-project team_026 코드니터🧶 입니다.
+- 팀 이름 : 🧶 코드니터
+- 프로젝트 명 : SEB45 Pre-project
+- 프로젝트 설명 : 우리 팀만의 Stack overflow 만들기
+- 프로젝트 기간 : 2023/08/04 ~ 2023/08/23
 
 ## 👩🏻‍💻 Team Members
-- FE: 김태수, 한재연
-- BE: 김지원, 김진아, 손승범
-
-## 💻 프로젝트 소개
-우리 팀만의 스택오버플로우를 제작합니다.  
-프로젝트 기간: 2023/08/04 ~ 2023/08/23
+- FE: 한재연(팀장), 김태수
+- BE: 김진아(부팀장), 김지원, 손승범
 
 ## ⚙️ 사용 툴
-.
+### Communication
+- Github
+- Discord
+- Notion
 
-## 🔧 주요 기능
-.
+### Front-end
+- HTML, CSS
+- Programming language: JavaScript
+- Framework: React
+- Library: react-router-dom, redux, axios
+- Extention: ESLint, Prettier
+
+### Back-end
+- Java
+- Spring
+- Spring Boot
+- Spring Security
+- MySQL
+- AWS
+
+## Commit Convention
+- `feat` : 새로운 기능 추가
+- `fix` : 버그 수정
+- `docs` : 문서 수정
+- `style` : 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
+- `refactor` : 코드 리펙토링
+- `test` : 테스트 코드, 리펙토링 테스트 코드 추가
+- `chore` : 빌드 업무 수정, 패키지 매니저 수정
+
