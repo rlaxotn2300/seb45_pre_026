@@ -1,10 +1,11 @@
 .nav__container {
     width: 175px;
-    height: 100vh;
-    margin-top: 57px;
+    height: 100%;
     border-right: 1px solid #d6d9db;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    top: 57px;
 }
 
 .nav__second-container {
