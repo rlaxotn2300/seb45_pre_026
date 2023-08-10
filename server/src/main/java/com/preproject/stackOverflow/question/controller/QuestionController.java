@@ -12,7 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
+//import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +32,7 @@ public class QuestionController {
     }
 
 
-    @Secured("ROLE_USER")
+    //@Secured("ROLE_USER")
     @PostMapping("/ask")
     public ResponseEntity postQuestion(QuestionDto.Post questionPost){
 
@@ -88,7 +88,7 @@ public class QuestionController {
 
 
 
-    @PostMapping("{question-id}")
+    @PostMapping("/")
     public ResponseEntity downVote(Question question, long questionId){
         Question findQuestion = questionService.findQuestion(questionId);
         questionService.downVote(findQuestion, questionId);
@@ -98,7 +98,7 @@ public class QuestionController {
 
 
 
-    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+   // @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @DeleteMapping("{question-id}")
     public ResponseEntity deleteQuestion(long questionId){
         //작성자만랑 관리자만 삭제 할 수 있는 기능 추가해야 함
