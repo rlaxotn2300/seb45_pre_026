@@ -1,11 +1,12 @@
 .footer__container {
     width: 100%;
-    height: 163px;
+    height: 180px;
     color: #FFFFFF;
     background-color: #242629;
-    padding-top: 30px;
+    padding-top: 24px;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .footer__logo-container {
@@ -51,9 +52,13 @@
 }
 
 .footer__profile-photo {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     margin-bottom: 10px;
     background-color: #d6d9db;
+}
+
+.footer__profile-name {
+    text-align: center;
 }
