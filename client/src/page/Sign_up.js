@@ -49,6 +49,13 @@ export default function Companies() {
       checked
     ) {
       alert('모든 입력이 유효합니다.');
+    } else if (
+      isdisplaynameValid(displayname) &&
+      isEmailValid(email) &&
+      isPasswordValid(password) &&
+      !checked
+    ) {
+      alert('당신은 로봇입니까?');
     } else {
       alert('입력이 유효하지 않습니다.');
     }
