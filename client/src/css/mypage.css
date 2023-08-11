@@ -2,3 +2,81 @@
     display: flex;
     justify-content: center;
 }
+
+.mypage__main {
+    width: 1075px;
+    margin-top: 60px;
+    padding: 95px 110px;
+    box-sizing: border-box;
+}
+
+.mypage__profile-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mypage__name-container {
+    display: flex;
+    align-items: center;
+}
+
+.mypage__profile-photo {
+    width: 168px;
+    height: 168px;
+    border-radius: 20px;
+    background-color: #D9D9D9;
+}
+
+.mypage__profile-name {
+    font-size: 40px;
+    font-weight: 600;
+    margin-left: 50px;
+}
+
+.mypage__edit-btn {
+    width: 155px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    border: 0.5px solid #53595F;
+    font-size: 12px;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.mypage__edit-btn:hover {
+    background-color: #F1F2F3;
+    cursor: pointer;
+}
+
+.mypage__menu {
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+    gap: 25px;
+}
+
+.mypage__menu-btn {
+    padding: 10px 22px;
+    color: #53595F;
+    font-size: 16px;
+    border-radius: 40px;
+}
+
+.mypage__menu-btn:hover {
+    background-color: #F1F2F3;
+}
+
+.mypage__menu-btn:active,
+.mypage__menu-focus {
+    color: #FFFFFF;
+    background-color: #f48224;
+}
+
+.mypage__menu-focus:hover {
+    background-color: #da680b;
+}
