@@ -1,0 +1,107 @@
+/* 배경 */
+.login__bg {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 입력 폼을 담고있는 박스 */
+.login__container {
+    padding: 32px 45px 36px 45px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid #F1F2F3;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+}
+
+/* 이메일 입력 폼과 패스워드 입력 폼을 담는 박스 */
+.login__input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 입력폼 제목 */
+.login__title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* 패스워드 입력폼 제목과 비밀번호 찾기 링크 버튼 담는 박스 */
+.login__title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 입력 폼 */
+.login__input {
+    width: 266px;
+    height: 43px;
+    border-radius: 10px;
+    border: 1px solid #53595F;
+    box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 7px;
+    padding: 5px 12px;
+    font-size: 16px;
+}
+
+.login__input:focus {
+    outline: none;
+    border-color: #3d96f7;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 5px #e3ecf4;
+}
+
+.login__input-red {
+    border: 1px solid #dd4f54;
+}
+
+.login__input-red:focus {
+    outline: none;
+    border-color: #dd4f54;
+    box-shadow: 0 0 0 5px #f7e1e0;
+}
+
+.login__warning {
+    font-size: 13px;
+    color: #dd4f54;
+    margin-top: 5px;
+}
+
+/* a태그 설정 */
+.login__link {
+    font-size: 14px;
+    color: #0074cc;
+    text-decoration: none;
+}
+
+.login__link:hover {
+    color: #3d96f7;
+}
+
+/* 로그인 버튼 스타일 세부 설정 */
+.login__btn-long {
+    width: 266px;
+    height: 43px;
+    font-size: 17px;
+}
+
+/* 회원가입 안내 */
+.login__account {
+    margin-top: 26px;
+    font-size: 14px;
+}
+
+.login__account-msg {
+    margin-right: 10px;
+}
+
+

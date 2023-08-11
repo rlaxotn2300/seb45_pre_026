@@ -7,10 +7,11 @@ import Questions from './page/Questions';
 import Tags from './page/Tags';
 import Users from './page/Users';
 import Companies from './page/Companies';
+import Login from './page/Login';
 
 function App() {
   return (
-    <div>
+    <div className="app__body">
       <BrowserRouter>
         <Header />
         <Routes>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/tags" element={<Tags />} />
           <Route path="/users" element={<Users />} />
           <Route path="/companies" element={<Companies />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>

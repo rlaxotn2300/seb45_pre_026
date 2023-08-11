@@ -1,7 +1,11 @@
+import { useLocation } from 'react-router-dom';
 import '../css/footer.css';
 import WhiteLogo from '../images/Logo-white.png';
 
 export default function Footer() {
+  const locationNow = useLocation();
+  if (locationNow.pathname === '/login') return null;
+
   return (
     <div className="footer__container">
       <div className="footer__left">

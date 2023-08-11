@@ -51,12 +51,14 @@ function Header({ setCurPage }) {
         {loggedin ? (
           <img className="header__mypage" src={Mypage} alt="마이페이지" />
         ) : (
-          <button
-            className="button-light header__login-btn"
-            onClick={handleLoginClick}
-          >
-            Log in
-          </button>
+          <Link to="/login" className="link">
+            <button
+              className="button-light header__login-btn"
+              onClick={handleLoginClick}
+            >
+              Log in
+            </button>
+          </Link>
         )}
         {loggedin ? (
           <button className="button-dark" onClick={handleLoginClick}>
