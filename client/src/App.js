@@ -9,6 +9,8 @@ import Companies from './page/Companies';
 import Login from './page/Login';
 import MyPage from './page/MyPage';
 
+import Signup from './page/Sign_up';
+
 function App() {
   return (
     <div className="app__body">
@@ -21,6 +23,7 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/companies" element={<Companies />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/sign_up" element={<Signup />} />
         </Routes>
         <Footer />
       </BrowserRouter>

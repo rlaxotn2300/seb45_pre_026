@@ -65,7 +65,9 @@ function Header({ setCurPage }) {
             Log out
           </button>
         ) : (
-          <button className="button-dark">Sign up</button>
+          <Link to="/sign_up">
+            <button className="button-dark">Sign up</button>
+          </Link>
         )}
       </div>
     </div>
