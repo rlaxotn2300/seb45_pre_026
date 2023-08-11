@@ -16,6 +16,7 @@
 .header_wrap{
     width:1250px;
     margin: 0 auto;
+    border:1px solid red;
 }
 
 .header__left {
