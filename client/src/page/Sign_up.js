@@ -87,18 +87,16 @@ export default function Companies() {
         </div>
         <div className="sign_form">
           <form>
-            <div>
-              <p>Display name</p>
-              {!isdisplaynameValid(displayname) && (
-                <span>닉네임은 최소 3글자 이상이어야 합니다.</span>
-              )}
-            </div>
+            <p>Display name</p>
             <input
               type="text"
               name="name"
               value={displayname}
               onChange={handledisplaynameChange}
             />
+            {!isdisplaynameValid(displayname) && (
+              <span>닉네임은 최소 3글자 이상이어야 합니다.</span>
+            )}
             <p>Email</p>
             <input type="text" name="Email" onChange={handleEmailChange} />
             {!isEmailValid(email) && (
