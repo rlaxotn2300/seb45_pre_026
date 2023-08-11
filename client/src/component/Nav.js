@@ -23,7 +23,7 @@ function Nav({ curPage, setCurPage }) {
 
   function handleMenuChange(e) {
     if (e.target.innerText === 'Tags') setCurPage('tags');
-    else if (e.target.innerText === 'Users') setCurPage('users');
+    else if (e.target.innerText === 'User') setCurPage('user');
     else if (e.target.innerText === 'Companies') setCurPage('companies');
     else setCurPage('questions');
   }
@@ -74,16 +74,16 @@ function Nav({ curPage, setCurPage }) {
             Tags
           </div>
         </Link>
-        <Link to="/users" className="link">
+        <Link to="/mypage" className="link">
           <div
             className={
-              curPage === 'users' ? 'nav__menu nav__focused' : 'nav__menu'
+              curPage === 'user' ? 'nav__menu nav__focused' : 'nav__menu'
             }
             role="presentation"
             onClick={(e) => handleMenuChange(e)}
             onKeyUp={() => 'Hello'}
           >
-            Users
+            User
           </div>
         </Link>
         <Link to="/companies" className="link">

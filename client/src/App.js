@@ -5,9 +5,9 @@ import Footer from './component/Footer';
 import Main from './page/Main';
 import Questions from './page/Questions';
 import Tags from './page/Tags';
-import Users from './page/Users';
 import Companies from './page/Companies';
 import Login from './page/Login';
+import MyPage from './page/MyPage';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/questions" element={<Questions />} />
           <Route path="/tags" element={<Tags />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/mypage" element={<MyPage />} />
           <Route path="/companies" element={<Companies />} />
           <Route path="/login" element={<Login />} />
         </Routes>
