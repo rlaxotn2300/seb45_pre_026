@@ -36,7 +36,6 @@ function Header({ setCurPage }) {
             className="header__questions"
             role="presentation"
             onClick={() => setCurPage('questions')}
-            onKeyUp={() => 'Hello'}
           >
             <img
               className="header__questions-logo"
@@ -49,7 +48,15 @@ function Header({ setCurPage }) {
       </div>
       <div className="header__right">
         {loggedin ? (
-          <img className="header__mypage" src={Mypage} alt="마이페이지" />
+          <Link to="/mypage" className="link">
+            <img
+              className="header__mypage"
+              src={Mypage}
+              alt="마이페이지"
+              role="presentation"
+              onClick={() => setCurPage('user')}
+            />
+          </Link>
         ) : (
           <Link to="/login" className="link">
             <button

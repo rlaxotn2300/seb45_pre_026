@@ -46,7 +46,6 @@ function Nav({ curPage, setCurPage }) {
             onClick={(e) => handleMenuChange(e)}
             onMouseOver={() => setIsHovering(true)}
             onMouseOut={() => setIsHovering(false)}
-            onKeyUp={() => 'Hello'}
             onFocus={() => 'Hello'}
             onBlur={() => 'Hello'}
           >
@@ -69,7 +68,6 @@ function Nav({ curPage, setCurPage }) {
             }
             role="presentation"
             onClick={(e) => handleMenuChange(e)}
-            onKeyUp={() => 'Hello'}
           >
             Tags
           </div>
@@ -81,7 +79,6 @@ function Nav({ curPage, setCurPage }) {
             }
             role="presentation"
             onClick={(e) => handleMenuChange(e)}
-            onKeyUp={() => 'Hello'}
           >
             User
           </div>
@@ -93,7 +90,6 @@ function Nav({ curPage, setCurPage }) {
             }
             role="presentation"
             onClick={(e) => handleMenuChange(e)}
-            onKeyUp={() => 'Hello'}
           >
             Companies
           </div>
