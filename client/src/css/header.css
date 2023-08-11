@@ -13,11 +13,16 @@
     z-index: 10000;
 }
 
+.header_wrap{
+    width:1250px;
+    margin: 0 auto;
+}
+
 .header__left {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 77px;
+    float: left;
 }
 
 .header__logo {
@@ -51,7 +56,7 @@
 .header__right {
     display: flex;
     align-items: center;
-    margin-right: 100px;
+    float: right;
 }
 
 .header__mypage {
