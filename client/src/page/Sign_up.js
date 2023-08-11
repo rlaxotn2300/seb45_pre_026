@@ -6,7 +6,7 @@ import robot from '../images/robot_check.png';
 import '../css/sign_up.css';
 import { useState } from 'react';
 
-export default function Companies() {
+export default function Sign_up() {
   const [displayname, setDisplayname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
