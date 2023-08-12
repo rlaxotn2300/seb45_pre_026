@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setCurPage } from '../redux/action';
 import '../css/nav.css';
 import QuestionsLogoGray from '../images/questions-logo.png';
 import QuestionsLogoBlack from '../images/questions-logo-black.png';
-import { connect } from 'react-redux';
-import { setCurPage } from '../redux/action';
 
 const mapStateToProps = (state) => {
   return {
@@ -23,7 +23,7 @@ function Nav({ curPage, setCurPage }) {
 
   function handleMenuChange(e) {
     if (e.target.innerText === 'Tags') setCurPage('tags');
-    else if (e.target.innerText === 'Users') setCurPage('users');
+    else if (e.target.innerText === 'User') setCurPage('user');
     else if (e.target.innerText === 'Companies') setCurPage('companies');
     else setCurPage('questions');
   }
@@ -46,7 +46,6 @@ function Nav({ curPage, setCurPage }) {
             onClick={(e) => handleMenuChange(e)}
             onMouseOver={() => setIsHovering(true)}
             onMouseOut={() => setIsHovering(false)}
-            onKeyUp={() => 'Hello'}
             onFocus={() => 'Hello'}
             onBlur={() => 'Hello'}
           >
@@ -69,21 +68,19 @@ function Nav({ curPage, setCurPage }) {
             }
             role="presentation"
             onClick={(e) => handleMenuChange(e)}
-            onKeyUp={() => 'Hello'}
           >
             Tags
           </div>
         </Link>
-        <Link to="/users" className="link">
+        <Link to="/mypage" className="link">
           <div
             className={
-              curPage === 'users' ? 'nav__menu nav__focused' : 'nav__menu'
+              curPage === 'user' ? 'nav__menu nav__focused' : 'nav__menu'
             }
             role="presentation"
             onClick={(e) => handleMenuChange(e)}
-            onKeyUp={() => 'Hello'}
           >
-            Users
+            User
           </div>
         </Link>
         <Link to="/companies" className="link">
@@ -93,7 +90,6 @@ function Nav({ curPage, setCurPage }) {
             }
             role="presentation"
             onClick={(e) => handleMenuChange(e)}
-            onKeyUp={() => 'Hello'}
           >
             Companies
           </div>

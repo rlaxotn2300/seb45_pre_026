@@ -1,6 +1,8 @@
 .link {
     text-decoration: none;
     color: inherit;
+    display: flex;
+    align-items: center;
 }
 
 .button-dark {
@@ -15,6 +17,11 @@
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.button-dark:hover {
+    background-color: #0074cc;
+    cursor: pointer;
+}
+
 .button-light {
     padding: 8px 12px;
     border-radius: 5px;
@@ -25,4 +32,28 @@
     color: #467399;
     background-color: #e3ecf4;
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.button-light:hover {
+    background-color: #b3d3ea;
+    cursor: pointer;
+}
+
+.login__input {
+    width: 266px;
+    height: 43px;
+    border-radius: 10px;
+    border: 1px solid #53595F;
+    box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 7px;
+    padding: 5px 12px;
+    font-size: 16px;
+}
+
+.login__input:focus {
+    outline: none;
+    border-color: #3d96f7;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 5px #e3ecf4;
 }

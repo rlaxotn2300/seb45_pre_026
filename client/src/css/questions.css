@@ -1,0 +1,18 @@
+.questions_wrap{
+    width:1250px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+.questions_list{
+    background:pink;
+    width:770px;
+    margin-top:61px;
+}
+
+aside{
+    background:gray;
+    margin-top:61px;
+    width:305px;
+    height:500px;
+}

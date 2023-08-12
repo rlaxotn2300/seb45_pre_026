@@ -1,0 +1,127 @@
+.sign_box{
+    margin:0 auto;
+    width:1250px;
+    height:760px;
+    display: flex;
+    margin-top:60px;
+}
+
+
+.characteristic{
+    width:550px;
+    height:400px;
+    margin:150px 0 0 140px;
+}
+
+.characteristic h2{
+    margin-left: 40px;
+    font-weight: 400;
+}
+
+.characteristic li{
+    list-style: none;
+    margin-bottom:20px;
+    display: flex;
+    align-items: center;
+}
+
+.characteristic img{
+    margin-right:20px;
+}
+
+
+.characteristic p{
+    font-size:15px;
+}
+
+/* ------------sign_form */
+.sign_form{
+    width: 260px;
+    height:640px;
+    border:1px solid #E3ECF4;
+    border-radius:15px;
+    margin:50px 0 0 100px;
+    padding: 0 20px;
+    box-shadow:1px 2px 5px;
+    
+    position: relative;
+}
+.sign_form p{
+    font-weight:400;
+    margin:30px 0 5px 0;
+    padding:0;
+}
+.sign_form form > input{
+    border-radius:5px;
+    border:1px solid #53595f;
+    width:246px;
+    height:30px;
+    font-size: medium;
+    padding:0 5px
+}
+.password_text{
+    font-size:11px;
+}
+
+.robot_checked{
+    width:260px;
+    height:150px;
+    background: #d6d9db;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+    bottom:70px;
+}
+.robot_checked input{
+    width:20px;
+    height:20px;
+    margin:20px 0 0 0;
+}
+.robot_checked p{
+    padding:0;
+    margin:0;
+}
+.robot_checked div{
+    width:80%;
+    height:80%;
+    background: #E3ECF4;
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.robot_checked img{
+    width:40px;
+    height:40px;
+    margin-top:15px;
+}
+
+.submit_button{
+    width:260px;
+    height:50px;
+    margin-top: 20px;
+    background:#3d96f7;
+    border-radius:10px;
+    border:#3d96f7;
+    color: white;
+    cursor:pointer;
+    position: absolute;
+    bottom:10px;
+}
+
+.submit_button:hover{
+    background:#467399
+}
+
+.sign_form span{
+    font-size:0.5px;
+    color: red;
+}
+
+.sign_form form > div > p{
+    font-size:15px;
+
+}
