@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setCurPage } from '../redux/action';
 import '../css/nav.css';
 import QuestionsLogoGray from '../images/questions-logo.png';
 import QuestionsLogoBlack from '../images/questions-logo-black.png';
-import { connect } from 'react-redux';
-import { setCurPage } from '../redux/action';
 
 const mapStateToProps = (state) => {
   return {

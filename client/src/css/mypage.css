@@ -5,9 +5,10 @@
 
 .mypage__main {
     width: 1075px;
-    margin-top: 60px;
+    margin-top: 57px;
     padding: 95px 110px;
     box-sizing: border-box;
+    border-left: 1px solid #d6d9db;
 }
 
 .mypage__profile-top {
@@ -34,6 +35,23 @@
     margin-left: 50px;
 }
 
+.mypage__nickname-edit {
+    width: 185px;
+    height: 35px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border: 1px solid #53595F;
+    margin-left: 50px;
+    font-size: 15px;
+}
+
+.mypage__nickname-edit:focus {
+    outline: none;
+    border-color: #3d96fd;
+    box-shadow: 0 0 0 5px #e3ecf4;
+}
+
 .mypage__edit-btn {
     width: 155px;
     height: 35px;
@@ -57,7 +75,9 @@
     display: flex;
     align-items: center;
     margin-top: 60px;
+    padding-bottom: 10px;
     gap: 25px;
+    border-bottom: 1px solid #d6d9db;
 }
 
 .mypage__menu-btn {
@@ -79,4 +99,19 @@
 
 .mypage__menu-focus:hover {
     background-color: #da680b;
+}
+
+.mypage__profile {
+    padding: 40px 35px;
+}
+
+.mypage__profile-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.mypage__profile-content {
+    font-size: 17px;
+    margin-bottom: 25px;
 }
