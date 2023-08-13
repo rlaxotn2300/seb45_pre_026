@@ -8,15 +8,22 @@ import com.preproject.stackOverflow.question.dto.QuestionDto;
 import com.preproject.stackOverflow.question.entity.Question;
 import com.preproject.stackOverflow.question.mapper.QuestionMapper;
 import com.preproject.stackOverflow.question.service.QuestionService;
-import org.springframework.data.domain.Page;
+
+import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+//import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponents;
+
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+
+import java.util.Arrays;
+
 import java.util.List;
 
 
@@ -33,22 +40,23 @@ public class QuestionController {
         this.mapper = mapper;
     }
 
-
     //@Secured("ROLE_USER")
-    @PostMapping("/ask") //postman ok : 태그 여러개가 안됨
+    @PostMapping("/ask") //postman ok : 태그 여러개 해결함
     public ResponseEntity postQuestion(@Valid @RequestBody QuestionDto.Post questionPost){
 
 //        로그인한 유저만 글 등록하는 로직 추가 예정
-        Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPost));
+       Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPost));
+
         QuestionDto.Response response = mapper.questionToQuestionResponseDto(question);
 
         return new ResponseEntity(new SingleResponseDto<>(response), HttpStatus.CREATED);
     }
 
 
-
     // @Secured("ROLE_USER")
-    @PatchMapping("{question-id}") //postman  ok : 태그여러개가 안됨
+
+    @PatchMapping("{question-id}") //postman  ok : 태그여러개가 해결 -> 필드에 questionId 입력해주어야 함
+
     public ResponseEntity patchQuestion(@RequestBody QuestionDto.Patch patchDto,
                                         @PathVariable("question-id")
                                         @Positive long questionId){
@@ -61,10 +69,14 @@ public class QuestionController {
 
     }
 
+
+
     //질문 1개 조회
     @GetMapping("{question-id}") //postman ok
     public ResponseEntity findQuestion(@PathVariable("question-id")
-                                       @Positive long questionId){
+
+     @Positive long questionId){
+
         Question question = questionService.findQuestion(questionId);
         QuestionDto.Response response = mapper.questionToQuestionResponseDto(question);
 
@@ -72,9 +84,10 @@ public class QuestionController {
     }
 
 
-    //모든 질문 조회
-    @GetMapping("/") //postman ok - taglist가 안됨
-    public ResponseEntity findQuestions(@Positive @RequestParam(required=false) Integer page,
+
+    //모든 질문 조회 : http://localhost:8080/question/?page=1&size=10&tag=java,spring
+    @GetMapping("/") //postman ok - taglist 도 해결
+    public ResponseEntity findQuestions(@Positive @RequestParam(required=false) int page,
                                         @Positive @RequestParam int size){
         Page<Question> pageQuestion = questionService.findQuestions(page - 1, size);
         PageInfo pageInfo = new PageInfo(page, size, pageQuestion.getTotalElements(), pageQuestion.getTotalPages());
@@ -93,43 +106,47 @@ public class QuestionController {
     }
 
 
-    /*
-    @PostMapping("/{question-id}/up") //postman ok - 근데 카운팅이 안됨
-    public ResponseEntity UPVOTE(@Valid @RequestBody Question question,
+
+
+/*  추천  //////////////////////////////////////// 사용 예정
+    @PostMapping("/{question-id}/up") //no test
+    public ResponseEntity upVote(@Valid @RequestBody User user,
                                  @PathVariable("question-id")
                                  @Positive long questionId){
-        Question findQuestion = questionService.findQuestion(questionId);
-        questionService.upVOTE(findQuestion, questionId);
+        Question findQuestion = questionService.findQuestion(questionId); // ??
+        questionService.upVote(questionId, user);
+
 
         return new ResponseEntity(HttpStatus.OK);
     }
-    */
+
+ */
 
 
 
 
 
 
-    /*
-    @PostMapping("/{question-id}/down") //postman ok - 근데 카운팅이 안됨
-    public ResponseEntity DOWNVOTE(@Valid @RequestBody Question question,
+/*  비추천  //////////////////////////////////////// 사용 예정
+    @PostMapping("/{question-id}/down") //no test
+    public ResponseEntity downVote(@Valid @RequestBody User user,
                                    @PathVariable("question-id")
                                    @Positive long questionId){
-        Question findQuestion = questionService.findQuestion(questionId);
-        questionService.downVOTE(findQuestion, questionId);
+        Question findQuestion = questionService.findQuestion(questionId); // ??
+        questionService.downVote(questionId, user);
 
         return new ResponseEntity(HttpStatus.OK);
     }
 
-     */
+ */
 
 
 
-
-    // @Secured({"ROLE_USER", "ROLE_ADMIN"})
+   // @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @DeleteMapping("{question-id}") //postman ok
     public ResponseEntity deleteQuestion(@PathVariable("question-id")
-                                         @Positive long questionId){
+                                             @Positive long questionId){
+
         //작성자만랑 관리자만 삭제 할 수 있는 기능 추가해야 함
 //        if (!question.getMember().getMemberId().equals(member.getMemberId()) && !member.getEmail().equals("admin@gmail.com")) {
 //            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
@@ -138,8 +155,6 @@ public class QuestionController {
 
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
-
-
 
 
     //태그 검색
@@ -166,16 +181,32 @@ public class QuestionController {
 //                .location(uriBuilder.build().toUri())
 //                .body(multiResponseDto);
 //    }
-    @GetMapping("/search") //postman은 ok인데... 이게 맞는건지...ㅠㅠ
+
+    //태그검색 :http://localhost:8080/question/search/?page=1&size=10&tag=tag
+    // 페이지번호는 0부터 시작해야 함.. postman ok
+    @GetMapping("/search")
     public ResponseEntity getQuestionsByTag(@RequestParam @Positive int page,
                                             @RequestParam @Positive int size,
                                             @RequestParam String tag) {
 
-        Page<Question> tagPage = questionService.findAllByTag(tag, page-1, size);
+        List<String> tags = Arrays.asList(tag.split(",")); // 태그 리스트로 변환
+
+        Page<Question> tagPage = questionService.findAllByTags(tag, page - 1, size);
+
         PageInfo pageInfo = new PageInfo(page, size, tagPage.getTotalElements(), tagPage.getTotalPages());
 
         List<Question> questions = tagPage.getContent();
         List<QuestionDto.Response> responses = mapper.questionsToQuestionResponseDtos(questions);
+
+
+        MultiResponseDto<QuestionDto.Response> multiResponseDto = new MultiResponseDto<>(responses, pageInfo);
+
+        return ResponseEntity.ok()
+                .body(multiResponseDto);
+    }
+
+
+
 
 //        UriComponentsBuilder uriBuilder =
 //                UriComponentsBuilder
@@ -190,11 +221,8 @@ public class QuestionController {
 //                .location(uriBuilder.build().toUri())
 //                .body(new MultiResponseDto<>(responses, pageInfo));
 
-        return new ResponseEntity(new MultiResponseDto(responses, pageInfo), HttpStatus.OK);
+
     }
-
-}
-
 
 
 /* 태그중복될때

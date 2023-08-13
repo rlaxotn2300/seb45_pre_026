@@ -46,19 +46,19 @@ public class Question {
 
 
     @Column(nullable = true)
-    private int VOTE;
 
+    private int vote;
 
     @Column(nullable = true)
     private String tag;
 
 
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "QUESTION_TAG_LIST", joinColumns = @JoinColumn(name = "QUESTION_ID"))
     @Column(nullable = true, name = "TAG_LIST")
-    private List<String> tagList;
 
+    private List<String> tags;
 
 
     @Column(nullable = false, updatable = false, name = "CREATED_AT")

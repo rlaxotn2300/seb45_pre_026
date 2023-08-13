@@ -7,9 +7,12 @@ import com.preproject.stackOverflow.question.entity.Question;
 import com.preproject.stackOverflow.question.repository.QuestionRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +36,9 @@ public class QuestionService {
 
         String tag = question.getTag();
         List<String> tagList = new ArrayList<>(Arrays.asList(tag.split("\\s*,\\s*")));
-        question.setTagList(tagList);
+
+        question.setTags(tagList);
+
         question.setQuestionStatus(Question.QuestionStatus.QUESTION_ASKED);
         question.setCreatedAt(question.getCreatedAt());
 
@@ -87,15 +92,19 @@ public class QuestionService {
 //    }
 
 
-    /*
-    public Question upVOTE(long questionId, User user) {
+    /*  추천 //////////////////////////////////////// 사용 예정
+    //user 추가해주어야 함
+    public Question upVote(long questionId, User user) {
         Question findQuestion = findVerifiedQuestion(questionId);
-        findVerifiedQuestionVote(questionId, member);
+        findVerifiedQuestionVote(questionId, user);
         //비추천 누른 질문에 전체 추천 수 카운트
-        findQuestion.setVOTE(findQuestion.getVOTE() + 1);
+        findQuestion.setVote(findQuestion.getVote() + 1);
         return questionRepository.save(findQuestion);
     }
-*/
+
+     */
+
+
 
 
 
@@ -106,21 +115,30 @@ public class QuestionService {
 //        return questionRepository.save(findQuestion);
 //    }
 
-/*
-    public Question downVOTE(long questionId, User user) {
+
+
+
+    /* 비추천 //////////////////////////////////////// 사용 예정
+    public Question downVote(long questionId, User user) {
         Question findQuestion = findVerifiedQuestion(questionId);
         findVerifiedQuestionVote(questionId, user);
         //비추천 누른 질문에 전체 추천 수 카운트
-        findQuestion.setVOTE(findQuestion.getVOTE() - 1);
+        findQuestion.setVote(findQuestion.getVote() - 1);
         return questionRepository.save(findQuestion);
+
     }
 
- */
+     */
+
+
 
 
     public Page<Question> findQuestions(int page, int size){
         return questionRepository.findAll(PageRequest.of(page, size)); //날짜순으로 변경해야 함
     }
+
+
+
 
 
 
@@ -137,9 +155,16 @@ public class QuestionService {
 
 
     //태그 검색
-    public Page<Question> findAllByTag(String tag, int page, int size){
-        return questionRepository.findByTagContainingOrderByTagDesc(
-                PageRequest.of(page, size, Sort.by("tag").descending()), tag); //질문에 대한 투표순으로 정렬
+
+//    public Page<Question> findAllByTag(String tag, int page, int size) {
+//        Pageable pageable = PageRequest.of(page, size);
+//        return questionRepository.findAllByTagIn(tag, pageable);
+//    }
+
+    public Page<Question> findAllByTags(String tag, int page, int size){
+        Pageable pageable = PageRequest.of(page, size);
+        return  questionRepository.findByTagContaining(tag, pageable);
+
     }
 
 
@@ -162,12 +187,7 @@ public class QuestionService {
     }
 
 
-
-
-
-
 }
-
 
 
 
