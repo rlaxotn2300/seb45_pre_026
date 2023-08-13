@@ -8,5 +8,5 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 public class MultiAnsResponseDto <T> {
-   private List<T> data;
+   private List<T> vote;
 }

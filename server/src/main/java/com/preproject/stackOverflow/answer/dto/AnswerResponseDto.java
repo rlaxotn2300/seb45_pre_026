@@ -19,20 +19,20 @@ public class AnswerResponseDto {
     private Answer.AnswerStatus answerStatus;
     private long questionId;
     private String content;
-    private int vote;
+    private long voteCount;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
     public AnswerResponseDto(long answerId,
 //                             MemberDto.Response memberInformation,
-                             Answer.AnswerStatus answerStatus, long questionId, String content, int vote,
+                             Answer.AnswerStatus answerStatus, long questionId, String content, long voteCount,
                              LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.answerId = answerId;
 //        this.memberInformation = memberInformation;
         this.answerStatus = answerStatus;
         this.questionId = questionId;
         this.content = content;
-        this.vote = vote;
+        this.voteCount = voteCount;
         this.createdAt = createdAt;
         this.modifiedAt = modifiedAt;
     }

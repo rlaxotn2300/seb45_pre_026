@@ -42,10 +42,10 @@ public class QuestionController {
 
     //@Secured("ROLE_USER")
     @PostMapping("/ask") //postman ok : 태그 여러개 해결함
-    public ResponseEntity postQuestion(@Valid @RequestBody QuestionDto.Post questionPost){
+    public ResponseEntity postQuestion(@Valid @RequestBody QuestionDto.Post questionPost) {
 
 //        로그인한 유저만 글 등록하는 로직 추가 예정
-       Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPost));
+        Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPost));
 
         QuestionDto.Response response = mapper.questionToQuestionResponseDto(question);
 
@@ -59,7 +59,7 @@ public class QuestionController {
 
     public ResponseEntity patchQuestion(@RequestBody QuestionDto.Patch patchDto,
                                         @PathVariable("question-id")
-                                        @Positive long questionId){
+                                        @Positive long questionId) {
 
         //작성자만 수정할 수 있는 로직 추가 예정
         Question response = questionService.patchQuestion(mapper.questionPatchDtoToQuestion(patchDto), questionId);
@@ -70,12 +70,10 @@ public class QuestionController {
     }
 
 
-
     //질문 1개 조회
     @GetMapping("{question-id}") //postman ok
     public ResponseEntity findQuestion(@PathVariable("question-id")
-
-     @Positive long questionId){
+                                       @Positive long questionId) {
 
         Question question = questionService.findQuestion(questionId);
         QuestionDto.Response response = mapper.questionToQuestionResponseDto(question);
@@ -84,11 +82,10 @@ public class QuestionController {
     }
 
 
-
     //모든 질문 조회 : http://localhost:8080/question/?page=1&size=10&tag=java,spring
     @GetMapping("/") //postman ok - taglist 도 해결
-    public ResponseEntity findQuestions(@Positive @RequestParam(required=false) int page,
-                                        @Positive @RequestParam int size){
+    public ResponseEntity findQuestions(@Positive @RequestParam(required = false) int page,
+                                        @Positive @RequestParam int size) {
         Page<Question> pageQuestion = questionService.findQuestions(page - 1, size);
         PageInfo pageInfo = new PageInfo(page, size, pageQuestion.getTotalElements(), pageQuestion.getTotalPages());
         List<Question> questions = pageQuestion.getContent();
@@ -141,11 +138,10 @@ public class QuestionController {
  */
 
 
-
-   // @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    // @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @DeleteMapping("{question-id}") //postman ok
     public ResponseEntity deleteQuestion(@PathVariable("question-id")
-                                             @Positive long questionId){
+                                         @Positive long questionId) {
 
         //작성자만랑 관리자만 삭제 할 수 있는 기능 추가해야 함
 //        if (!question.getMember().getMemberId().equals(member.getMemberId()) && !member.getEmail().equals("admin@gmail.com")) {
@@ -206,8 +202,6 @@ public class QuestionController {
     }
 
 
-
-
 //        UriComponentsBuilder uriBuilder =
 //                UriComponentsBuilder
 //                .fromPath("/api/search/") // 기본 경로 설정
@@ -222,7 +216,7 @@ public class QuestionController {
 //                .body(new MultiResponseDto<>(responses, pageInfo));
 
 
-    }
+}
 
 
 /* 태그중복될때

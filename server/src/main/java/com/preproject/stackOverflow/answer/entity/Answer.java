@@ -35,8 +35,10 @@ public class Answer {
     @Column(nullable = false)
     private String content;
 
-    @Column(columnDefinition = "integer default 0", nullable = false)
-    private long voteCount;
+    @Column(
+//            columnDefinition = "integer default 0",
+            nullable = true)
+    private long vote;
 
     @CreatedDate
     @Column(nullable = false, updatable = false,name = "CREATED_AT")
@@ -88,7 +90,7 @@ public class Answer {
     public Answer(Long answerId,
 //                  Member member,
                   AnswerStatus answerStatus, Question question,
-                  String content, int vote, LocalDateTime createdAt,
+                  String content, long vote, LocalDateTime createdAt,
                   LocalDateTime modifiedAt) {
         this.answerId =  answerId;
 //        this.member =  member;
@@ -98,8 +100,9 @@ public class Answer {
         this.modifiedAt = modifiedAt;
     }
 
-    public void setVoteCount(long voteCount) {
-        this.voteCount = voteCount;
+    public void setVote(long vote) {
+
+        this.vote = vote;
     }
 
 }
