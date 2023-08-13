@@ -10,7 +10,10 @@ public enum ExceptionCode {
     QUESTION_NOT_FOUND(404, "Question not found"),
     TAG_NOT_FOUND(404, "Tag not found"),
     ONLY_AUTHOR(403, "Access denied."),
-    UNAUTHORIZED(401,  "Unauthorized");
+    UNAUTHORIZED(401,  "Unauthorized"),
+
+    ALREADY_UP_VOTED(409, "already upVoted"),
+    ALREADY_DOWN_VOTED(409, "already downVoted");
 
     @Getter
     private int status;
