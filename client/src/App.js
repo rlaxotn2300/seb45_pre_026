@@ -8,7 +8,6 @@ import Tags from './page/Tags';
 import Companies from './page/Companies';
 import Login from './page/Login';
 import MyPage from './page/MyPage';
-
 import Signup from './page/Sign_up';
 
 function App() {
