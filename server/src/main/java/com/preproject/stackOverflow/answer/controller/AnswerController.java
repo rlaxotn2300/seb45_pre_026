@@ -84,9 +84,11 @@ public class AnswerController {
 
         answerService.upVoteAnswer(answerId, memberId);
 
-        AnswerVoteDto answerVoteDto = new AnswerVoteDto(answerService.getVoteCount(answerId));
+        AnswerVoteDto answerVoteDto = new AnswerVoteDto(answerService.getVote(answerId));
 
         return new ResponseEntity<>(answerVoteDto, HttpStatus.OK);
+
+
 
     }
 
@@ -101,7 +103,8 @@ public class AnswerController {
 
         long memberId = request.get("memberId");
         answerService.downVoteAnswer(answerId, memberId);
-        AnswerVoteDto answerVoteDto = new AnswerVoteDto(answerService.getVoteCount(answerId));
+
+        AnswerVoteDto answerVoteDto = new AnswerVoteDto(answerService.getVote(answerId));
 
         return new ResponseEntity<>(answerVoteDto, HttpStatus.OK);
     }

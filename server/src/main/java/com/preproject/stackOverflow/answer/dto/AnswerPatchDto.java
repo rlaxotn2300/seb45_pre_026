@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AnswerPatchDto {
+public class  AnswerPatchDto {
     private long answerId;
     private String content;
 

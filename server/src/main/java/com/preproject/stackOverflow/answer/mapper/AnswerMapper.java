@@ -13,9 +13,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface AnswerMapper {
 
-//    AnswerVoteDto answerToAnswerVoteDto(Answer answer);
-
-
     Answer answerPatchDtoToAnswer(AnswerPatchDto answerPatchDto);
 
     List<AnswerResponseDto> answersToAnswerResponseDtos(List<Answer> answers);
