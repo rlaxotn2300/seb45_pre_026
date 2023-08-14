@@ -10,6 +10,7 @@ import Login from './page/Login';
 import MyPage from './page/MyPage';
 import Signup from './page/Sign_up';
 import QuestionRegister from './page/QuestionRegister';
+import QuestionDetail from './page/QuestionDetail';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/sign_up" element={<Signup />} />
           <Route path="/question_register" element={<QuestionRegister />} />
+          <Route path="/question/:id" element={<QuestionDetail />} />
         </Routes>
         <Footer />
       </BrowserRouter>

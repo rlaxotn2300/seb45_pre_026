@@ -30,7 +30,13 @@ export default function Questions({ curPage, setCurPage }) {
               <button>Ask Question</button>
             </Link>
           </div>
-          <Question dummyData={data} />
+          {data.map((el) => (
+            <li key={el.questionId}>
+              <Link to={`/question/${el.questionId}`} className="link">
+                <Question dummyData={data} />
+              </Link>
+            </li>
+          ))}
         </div>
         <aside className="aside">
           <h2>Official document</h2>
