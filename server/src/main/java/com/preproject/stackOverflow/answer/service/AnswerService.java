@@ -123,7 +123,11 @@ public class AnswerService {
     }
 
 
+<<<<<<< HEAD
     public long getVote(long answerId) {
+=======
+    public long getVoteCount(long answerId) {
+>>>>>>> ef11e0ab241496f00d2907dc53bf60b5dd1553b4
         long voteCount = findAnswer(answerId).getVote();
         return voteCount;
     }

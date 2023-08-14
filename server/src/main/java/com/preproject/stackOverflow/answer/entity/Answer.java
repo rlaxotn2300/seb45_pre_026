@@ -35,7 +35,13 @@ public class Answer {
     @Column(nullable = false)
     private String content;
 
+<<<<<<< HEAD
     @Column(columnDefinition = "integer default 0", nullable = false)
+=======
+    @Column(
+//            columnDefinition = "integer default 0",
+            nullable = true)
+>>>>>>> ef11e0ab241496f00d2907dc53bf60b5dd1553b4
     private long vote;
 
     @CreatedDate
@@ -99,6 +105,10 @@ public class Answer {
     }
 
     public void setVote(long vote) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> ef11e0ab241496f00d2907dc53bf60b5dd1553b4
         this.vote = vote;
     }
 

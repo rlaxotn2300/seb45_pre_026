@@ -31,9 +31,8 @@ public class AnswerController {
     }
 
     @PostMapping("{question-id}")  // 답변 등록 -> OK
-    public ResponseEntity postAnswer(@Valid @RequestBody AnswerPostDto answerPostDto,
-                                     @PathVariable("question-id")
-                                     @Positive long questionId) {
+    public ResponseEntity postAnswer(@PathVariable("question-id") @Positive long questionId,
+                                     @Valid @RequestBody AnswerPostDto answerPostDto) {
         // 사용자 인증 상태 확인 로직 필요
 
         Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(questionId, answerPostDto));
