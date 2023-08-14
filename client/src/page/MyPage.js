@@ -6,6 +6,8 @@ import Nav from '../component/Nav';
 import Question from '../component/Question';
 import editLogo from '../images/edit.png';
 import editPassword from '../images/editPassword.png';
+import cross from '../images/cross.png';
+import check from '../images/check.png';
 
 const mapStateToProps = (state) => {
   return {
@@ -23,15 +25,21 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-function MyPage({ email, nickname }) {
+function MyPage({ email, nickname, setNickname }) {
   const [curMenu, setCurMenu] = useState('profile');
   const [nicknameEdit, setNicknameEdit] = useState(false);
+  const [newNickname, setNewNickname] = useState(nickname);
   // const [passwordEdit, setPasswordEdit] = useState(false);
 
   function handleMenuClick(e) {
     if (e.target.innerText === 'Profile') setCurMenu('profile');
     else if (e.target.innerText === 'My Questions') setCurMenu('questions');
     else if (e.target.innerText === 'Delete Account') setCurMenu('delete');
+  }
+
+  function handleNicknameChange() {
+    setNickname(newNickname);
+    setNicknameEdit(false);
   }
 
   return (
@@ -42,17 +50,47 @@ function MyPage({ email, nickname }) {
           <div className="mypage__name-container">
             <div className="mypage__profile-photo"></div>
             {nicknameEdit ? (
-              <input type="text" className="mypage__nickname-edit" />
+              <input
+                type="text"
+                className="mypage__nickname-edit"
+                value={newNickname}
+                onChange={(e) => setNewNickname(e.target.value)}
+              />
             ) : (
               <div className="mypage__profile-name">{nickname}</div>
             )}
           </div>
-          <button
-            className="mypage__edit-btn"
-            onClick={() => setNicknameEdit(!nicknameEdit)}
-          >
-            <img src={editLogo} alt="닉네임 수정"></img>Change Nickname
-          </button>
+          {nicknameEdit ? (
+            <div className="mypage__btn-container">
+              <button className="mypage__edit" onClick={handleNicknameChange}>
+                <img
+                  src={check}
+                  alt="닉네임 수정"
+                  className="mypage__edit-img"
+                />
+                <span>Edit</span>
+              </button>
+              <button
+                className="mypage__edit"
+                onClick={() => setNicknameEdit(false)}
+              >
+                {' '}
+                <img
+                  src={cross}
+                  alt="닉네임 수정 취소"
+                  className="mypage__edit-img"
+                />
+                <span>Cancel</span>
+              </button>
+            </div>
+          ) : (
+            <button
+              className="mypage__edit-btn"
+              onClick={() => setNicknameEdit(!nicknameEdit)}
+            >
+              <img src={editLogo} alt="닉네임 수정"></img>Change Nickname
+            </button>
+          )}
         </div>
         <div className="mypage__menu">
           <div
@@ -112,7 +150,12 @@ function MyPage({ email, nickname }) {
             <Question />
           </div>
         ) : (
-          <div>Delete Account</div>
+          <div className="mypage__delete">
+            <div className="mypage__delete-warning">
+              Do you really want to delete your account?
+            </div>
+            <button className="mypage__delete-btn">Delete Account</button>
+          </div>
         )}
       </div>
     </div>

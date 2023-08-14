@@ -39,7 +39,7 @@
     cursor: pointer;
 }
 
-.login__input {
+.input {
     width: 266px;
     height: 43px;
     border-radius: 10px;
@@ -51,7 +51,7 @@
     font-size: 16px;
 }
 
-.login__input:focus {
+.input:focus {
     outline: none;
     border-color: #3d96f7;
     box-sizing: border-box;
