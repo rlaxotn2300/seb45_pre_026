@@ -23,6 +23,8 @@ public class AnswerResponseDto {
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
+
+
     public AnswerResponseDto(long answerId,
 //                             MemberDto.Response memberInformation,
                              Answer.AnswerStatus answerStatus, long questionId, String content, int vote,

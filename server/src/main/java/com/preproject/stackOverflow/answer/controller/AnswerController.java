@@ -86,7 +86,7 @@ public class AnswerController {
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(
-                        answerService.getVoteCount(answerId)),HttpStatus.OK);
+                        answerService.getVote(answerId)),HttpStatus.OK);
 
     }
 
@@ -100,7 +100,7 @@ public class AnswerController {
         answerService.downVoteAnswer(answerId, memberId);
         return new ResponseEntity<>(
                 new SingleResponseDto<>(
-                        answerService.getVoteCount(answerId)), HttpStatus.OK);
+                        answerService.getVote(answerId)), HttpStatus.OK);
 
     }
 

@@ -1,5 +1,6 @@
 package com.preproject.stackOverflow.answer.service;
 
+
 import com.preproject.stackOverflow.answer.entity.Answer;
 import com.preproject.stackOverflow.answer.repository.AnswerRepository;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
@@ -76,7 +77,7 @@ public class AnswerService {
 
         Answer answer = findAnswer(answerId);
         VoteStatus voteStatus = getMemberVoteStatus(answer, memberId);
-        long voteCount = answer.getVoteCount();
+        long voteCount = answer.getVote();
 
         if (voteStatus == VoteStatus.NONE) { //투표가 처음이면 +1카운트
             answer.upVotedMemberId.add(memberId);
@@ -87,7 +88,7 @@ public class AnswerService {
             answer.downVotedMemberId.remove(memberId);
             voteCount++;
         }
-        answer.setVoteCount(voteCount);
+        answer.setVote(voteCount);
 
     }
 
@@ -97,7 +98,7 @@ public class AnswerService {
 
         Answer answer = findAnswer(answerId);
         VoteStatus voteStatus = getMemberVoteStatus(answer, memberId);
-        long voteCount = answer.getVoteCount();
+        long voteCount = answer.getVote();
 
         if (voteStatus == VoteStatus.NONE) {
             answer.downVotedMemberId.add(memberId);
@@ -108,7 +109,7 @@ public class AnswerService {
         } else if (voteStatus == VoteStatus.ALREADY_DOWN_VOTED) {
             throw new BusinessLogicException(ExceptionCode.ALREADY_DOWN_VOTED);
         }
-        answer.setVoteCount(voteCount);
+        answer.setVote(voteCount);
     }
 
     public VoteStatus getMemberVoteStatus(Answer answer, long memberId) {
@@ -122,8 +123,8 @@ public class AnswerService {
     }
 
 
-    public long getVoteCount(long answerId) {
-        long voteCount = findAnswer(answerId).getVoteCount();
+    public long getVote(long answerId) {
+        long voteCount = findAnswer(answerId).getVote();
         return voteCount;
     }
 
@@ -135,7 +136,8 @@ public class AnswerService {
         @Getter
         private int status;
 
-        @Getter private String message;
+        @Getter
+        private String message;
 
         VoteStatus(int status, String message) {
             this.status = status;
@@ -151,5 +153,4 @@ public class AnswerService {
 
         return findAnswer;
     }
-
 }
