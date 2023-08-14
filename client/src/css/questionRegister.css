@@ -3,14 +3,20 @@
     justify-content: center;
     align-items: center;
     margin-top: 3.5625rem;
-    padding: 75px 0;
+    padding: 55px 0;
     box-sizing: border-box;
+    gap: 20px;
+}
+
+.register__main-wrap {
+    display: flex;
+    gap: 30px;
 }
 
 .register__main {
     display: flex;
     flex-direction: column;
-    width: 945px;
+    width: 850px;
     gap: 1.875rem;
 }
 
@@ -54,7 +60,7 @@
 }
 
 .register__btn-container {
-    margin-top: 0.625rem;
+    margin-top: 2.5rem;
     display: flex;
     gap: 0.9375rem;
 }
@@ -79,6 +85,9 @@
 
 .register__side {
     width: 305px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.875rem;
 }
 
 .register__side-wrap {
@@ -99,6 +108,9 @@
 .register__side-content-wrap {
     display: flex;
     justify-content: flex-start;
+    gap: 16px;
+    padding: 20px 15px;
+    box-sizing: border-box;
 }
 
 .register__side-img {
@@ -108,5 +120,4 @@
 
 .register__side-content {
     font-size: 12px;
-    white-space: pre-line;
 }
