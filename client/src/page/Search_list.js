@@ -1,12 +1,15 @@
 import Nav from '../component/Nav';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../css/questions.css';
-import '../css/component.css';
 import Aside from '../component/Aside';
 import Question from '../component/Question';
 import data from '../dummydata';
 
-export default function Questions({ curPage, setCurPage }) {
+export default function Search({ curPage, setCurPage }) {
+  const location = useLocation();
+
+  const keyWord = location.state.searchWord;
+
   return (
     <div>
       <div className="questions_wrap">
@@ -18,13 +21,11 @@ export default function Questions({ curPage, setCurPage }) {
               <button>Ask Question</button>
             </Link>
           </div>
-          {data.map((data) => (
-            <li key={data.questionId} className="list">
-              <Link to={`/question/${data.questionId}`} className="link">
-                <Question data={data} />
-              </Link>
-            </li>
-          ))}
+          <Question
+            dummyData={data.filter((data) => {
+              return data.title.toLowerCase().includes(keyWord.toLowerCase());
+            })}
+          />
         </div>
         <Aside />
       </div>

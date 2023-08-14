@@ -1,6 +1,6 @@
 export const questionData = [
   {
-    questionId: 0,
+    questionId: 1,
     title: 'How can I remove a specific item from an array in JavaScript?',
     content: `How do I remove a specific value from an array? Something like: 
     array.remove(value);
@@ -8,185 +8,116 @@ export const questionData = [
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: 'Javascript',
-    answer: [
-      {
-        answerId: 1,
-        content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
-        user: 'smart',
-        date: '2023/08/12',
-        vote: 0,
-        tag: 'Javascript',
-      },
-      {
-        answerId: 1,
-        content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
-        user: 'smart',
-        date: '2023/08/12',
-        vote: 0,
-        tag: 'Javascript',
-      },
-      {
-        answerId: 1,
-        content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
-        user: 'smart',
-        date: '2023/08/12',
-        vote: 0,
-        tag: 'Javascript',
-      },
-    ],
-  },
-  {
-    questionId: 1,
-    title: 'How can I remove a specific item from an array in JavaScript?',
-    content: `How do I remove a specific value from an array? Something like:
-    array.remove(value);
-    Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
-    user: 'nickname',
-    date: '2023/08/12',
-    vote: 0,
-    tag: 'Javascript',
-    answer: [],
+    tag: '타입스크립트',
+    answer: [1, 2],
   },
   {
     questionId: 2,
-    title: 'How can I remove a specific item from an array in JavaScript?',
+    title: 'How can I remove a specific item from an array in HTML?',
     content: `How do I remove a specific value from an array? Something like: 
     array.remove(value);
     Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: 'Javascript',
-    answer: [
-      {
-        answerId: 1,
-        content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
-        user: 'smart',
-        date: '2023/08/12',
-        vote: 0,
-        tag: 'Javascript',
-      },
-    ],
+    tag: '타입스크립트',
+    answer: [1, 2],
   },
   {
     questionId: 3,
-    title: 'How can I remove a specific item from an array in JavaScript?',
+    title: 'How can I remove a specific item from an array in Spring?',
     content: `How do I remove a specific value from an array? Something like: 
     array.remove(value);
     Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: 'Javascript',
-    answer: [],
+    tag: '타입스크립트',
+    answer: [1, 2],
   },
   {
     questionId: 4,
-    title: 'How can I remove a specific item from an array in JavaScript?',
+    title: 'How can I remove a specific item from an array in Java?',
     content: `How do I remove a specific value from an array? Something like: 
     array.remove(value);
     Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: 'Javascript',
-    answer: [
-      {
-        answerId: 1,
-        content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
-        user: 'smart',
-        date: '2023/08/12',
-        vote: 0,
-        tag: 'Javascript',
-      },
-    ],
+    tag: '타입스크립트',
+    answer: [1, 2],
   },
   {
     questionId: 5,
-    title: 'How can I remove a specific item from an array in JavaScript?',
+    title: 'How can I remove a specific item from an array in Mysql?',
     content: `How do I remove a specific value from an array? Something like: 
     array.remove(value);
     Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: 'Javascript',
-    answer: [
-      {
-        answerId: 1,
-        content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
-        user: 'smart',
-        date: '2023/08/12',
-        vote: 0,
-        tag: 'Javascript',
-      },
-    ],
+    tag: '타입스크립트',
+    answer: [1, 2],
   },
   {
     questionId: 6,
-    title: 'How can I remove a specific item from an array in JavaScript?',
+    title: 'How can I remove a specific item from an array in React?',
     content: `How do I remove a specific value from an array? Something like: 
     array.remove(value);
     Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: 'Javascript',
-    answer: [],
+    tag: '타입스크립트',
+    answer: [1, 2],
   },
   {
     questionId: 7,
-    title: 'How can I remove a specific item from an array in JavaScript?',
+    title: 'How can I remove a specific item from an array in ESLint?',
     content: `How do I remove a specific value from an array? Something like: 
     array.remove(value);
     Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: 'Javascript',
-    answer: [],
+    tag: '타입스크립트',
+    answer: [1, 2],
   },
   {
     questionId: 8,
-    title: 'How can I remove a specific item from an array in JavaScript?',
+    title: 'How can I remove a specific item from an array in Axios?',
     content: `How do I remove a specific value from an array? Something like: 
     array.remove(value);
     Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
-    user: 'hello',
+    user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: 'Javascript',
-    answer: [],
+    tag: '타입스크립트',
+    answer: [1, 2],
   },
   {
     questionId: 9,
-    title: 'How can I remove a specific item from an array in JavaScript?',
+    title: 'How can I remove a specific item from an array in AWS?',
     content: `How do I remove a specific value from an array? Something like: 
     array.remove(value);
     Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
     user: 'hello',
     date: '2023/08/12',
     vote: 0,
-    tag: 'Javascript',
-    answer: [
-      {
-        answerId: 1,
-        content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
-        user: 'smart',
-        date: '2023/08/12',
-        vote: 0,
-        tag: 'Javascript',
-      },
-      {
-        answerId: 1,
-        content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
-        user: 'smart',
-        date: '2023/08/12',
-        vote: 0,
-        tag: 'Javascript',
-      },
-    ],
+    tag: '타입스크립트',
+    answer: [1, 2],
+  },
+  {
+    questionId: 10,
+    title: 'How can I remove a specific item from an array in SpringBoot?',
+    content: `How do I remove a specific value from an array? Something like: 
+    array.remove(value);
+    Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
+    user: 'hello',
+    date: '2023/08/12',
+    vote: 0,
+    tag: '타입스크립트',
+    answer: [1, 2],
   },
 ];
 

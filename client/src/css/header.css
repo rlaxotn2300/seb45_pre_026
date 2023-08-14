@@ -68,3 +68,31 @@
 .header__login-btn {
     margin-right: 13px
 }
+
+
+
+/* 검색창 */
+
+.search_box{
+    margin:20px;
+}
+.search_box input{
+    width:650px;
+    height:27px;
+    border-radius:5px;
+    border:1px solid #d6d9db;
+}
+
+.search_box button{
+    margin-left:20px;
+    width:80px;
+    height:32px;
+    background:#3d96f7;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+.search{
+    background-image:'';
+}

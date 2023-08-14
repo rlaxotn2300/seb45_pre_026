@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/header.css';
 import '../css/component.css';
 import Logo from '../images/Logo.png';
@@ -16,6 +16,14 @@ const mapDispatchToProps = (dispatch) => {
 
 function Header({ setCurPage }) {
   const [loggedin, setIsLoggedin] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState(''); // 검색창
+  const navigate = useNavigate();
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      navigate(`/search`, { state: { searchWord: searchKeyword } });
+    }
+  };
 
   function handleLoginClick() {
     setIsLoggedin(!loggedin);
@@ -47,6 +55,25 @@ function Header({ setCurPage }) {
             </div>
           </Link>
         </div>
+        {/* 검색창 */}
+        <span className="search_box">
+          <input
+            className="search"
+            type="text"
+            placeholder="  Search..."
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+            onKeyUp={handleKeyPress}
+          />
+          <button
+            onClick={() => {
+              navigate('/search');
+            }}
+          >
+            Search
+          </button>
+        </span>
+        {/* 검색창 */}
         <div className="header__right">
           {loggedin ? (
             <Link to="/mypage" className="link">
