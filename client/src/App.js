@@ -10,11 +10,8 @@ import Login from './page/Login';
 import MyPage from './page/MyPage';
 import Signup from './page/Sign_up';
 import QuestionRegister from './page/QuestionRegister';
-<<<<<<< HEAD
 import QuestionDetail from './page/QuestionDetail';
-=======
 import SearchList from './page/Search_list';
->>>>>>> 3c884d4 (feat:검색기능 구현중 fe01)
 
 function App() {
   return (
@@ -30,11 +27,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/sign_up" element={<Signup />} />
           <Route path="/question_register" element={<QuestionRegister />} />
-<<<<<<< HEAD
           <Route path="/question/:id" element={<QuestionDetail />} />
-=======
           <Route path="/search" element={<SearchList />} />
->>>>>>> 3c884d4 (feat:검색기능 구현중 fe01)
         </Routes>
         <Footer />
       </BrowserRouter>

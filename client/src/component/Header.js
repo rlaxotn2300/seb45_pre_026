@@ -20,7 +20,13 @@ function Header({ setCurPage }) {
   const navigate = useNavigate();
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && searchKeyword !== '') {
+      navigate(`/search`, { state: { searchWord: searchKeyword } });
+    }
+  };
+
+  const handleSearchButton = () => {
+    if (searchKeyword !== '') {
       navigate(`/search`, { state: { searchWord: searchKeyword } });
     }
   };
@@ -60,18 +66,12 @@ function Header({ setCurPage }) {
           <input
             className="search"
             type="text"
-            placeholder="  Search..."
+            placeholder="Search..."
             value={searchKeyword}
             onChange={(e) => setSearchKeyword(e.target.value)}
             onKeyUp={handleKeyPress}
           />
-          <button
-            onClick={() => {
-              navigate('/search');
-            }}
-          >
-            Search
-          </button>
+          <button onClick={handleSearchButton}>Search</button>
         </span>
         {/* 검색창 */}
         <div className="header__right">
