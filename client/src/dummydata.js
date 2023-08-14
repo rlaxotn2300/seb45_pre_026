@@ -120,3 +120,5 @@ export const questionData = [
     answer: [1, 2],
   },
 ];
+
+export default questionData;

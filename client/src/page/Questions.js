@@ -15,6 +15,7 @@ import springBoot from '../images/springboot.png';
 import springSecurity from '../images/springsecurity.png';
 import mysql from '../images/mysql.png';
 import aws from '../images/aws.png';
+import data from '../dummydata';
 
 export default function Questions({ curPage, setCurPage }) {
   return (
@@ -22,7 +23,7 @@ export default function Questions({ curPage, setCurPage }) {
       <div className="questions_wrap">
         <Nav curPage={curPage} setCurPage={setCurPage} />
         <div className="questions_list">
-          <Question />
+          <Question dummyData={data} />
         </div>
         <aside className="aside">
           <h2>Official document</h2>
