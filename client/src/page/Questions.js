@@ -1,4 +1,5 @@
 import Nav from '../component/Nav';
+import { Link } from 'react-router-dom';
 import '../css/questions.css';
 import Question from '../component/Question';
 import html from '../images/html.png';
@@ -23,6 +24,12 @@ export default function Questions({ curPage, setCurPage }) {
       <div className="questions_wrap">
         <Nav curPage={curPage} setCurPage={setCurPage} />
         <div className="questions_list">
+          <div className="list_header">
+            <h2>Top Questions</h2>
+            <Link to="/question_register">
+              <button>Ask Question</button>
+            </Link>
+          </div>
           <Question dummyData={data} />
         </div>
         <aside className="aside">
