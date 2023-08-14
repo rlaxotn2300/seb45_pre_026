@@ -1,0 +1,35 @@
+
+Q
+java:S3740-"/Provide the parametrized type for this generic.(ùÚĞÍùÿÿÿÿ8ÊÎıñ1
+L
+java:S37404"/Provide the parametrized type for this generic.(ù­†Ë8ËÎıñ1
+Q
+java:S3740<"/Provide the parametrized type for this generic.(³äĞ’ÿÿÿÿÿ8ËÎıñ1
+L
+java:S3740D"/Provide the parametrized type for this generic.(°Óÿâ8ËÎıñ1
+Q
+java:S3740K"/Provide the parametrized type for this generic.(©‚²àøÿÿÿÿ8ËÎıñ1
+L
+java:S3740Q"/Provide the parametrized type for this generic.(ÆÑ™À8ËÎıñ1
+Q
+java:S3740W"/Provide the parametrized type for this generic.(…Ø¼†ùÿÿÿÿ8ËÎıñ1
+M
+java:S3740"/Provide the parametrized type for this generic.(¶û„Ö8ËÎıñ1
+M
+java:S3740˜"/Provide the parametrized type for this generic.(…“æƒ8ËÎıñ1
+M
+java:S3740¸"/Provide the parametrized type for this generic.(ŸûÓ8ËÎıñ1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÅÓúæşÿÿÿÿ8ÍÎıñ1
+]	java:S125"<This block of commented-out lines of code should be removed.(ÊñÊüÿÿÿÿ8ßÎıñ1
+]	java:S125p"<This block of commented-out lines of code should be removed.(ÚŸ—æúÿÿÿÿ8èÎıñ1
+^	java:S125ƒ"<This block of commented-out lines of code should be removed.(ÚŸ—æúÿÿÿÿ8èÎıñ1
+Y	java:S125“"<This block of commented-out lines of code should be removed.(¬»İ8éÎıñ1
+[
+java:S1854¼"8Remove this useless assignment to local variable "tags".(‘ŒıÂûÿÿÿÿ8éÎıñ1
+^	java:S125¡"<This block of commented-out lines of code should be removed.(®½ëÊıÿÿÿÿ8êÎıñ1
+L
+java:S1481¼")Remove this unused "tags" local variable.(‘ŒıÂûÿÿÿÿ8ëÎıñ1
+^	java:S125Ò"<This block of commented-out lines of code should be removed.(¨Ë²Åüÿÿÿÿ8ìÎıñ1
+^	java:S125ß"<This block of commented-out lines of code should be removed.(Ğæ’öøÿÿÿÿ8ìÎıñ1
+d
+java:S1128"GRemove this unused import 'org.springframework.web.util.UriComponents'.(Ó‡¬¯8˜ñõ1

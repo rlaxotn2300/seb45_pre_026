@@ -1,0 +1,21 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(³è›Þ8¢Ÿôñž1
+]	java:S125#"<This block of commented-out lines of code should be removed.(·§êüÿÿÿÿ8°Ÿôñž1
+S
+java:S11721"1Remove this unused method parameter "questionId".(ç–ÛÐýÿÿÿÿ8²Ÿôñž1
+X	java:S1254"<This block of commented-out lines of code should be removed.(Ôî¶È8³Ÿôñž1
+e
+java:S16128"CReplace this lambda with method reference 'findQuestion::setTitle'.(È·Þòûÿÿÿÿ8³Ÿôñž1
+b
+java:S1612:"EReplace this lambda with method reference 'findQuestion::setContent'.(¥®Ñü8³Ÿôñž1
+c
+java:S1612<"AReplace this lambda with method reference 'findQuestion::setTag'.(›Ü¤Ãýÿÿÿÿ8´Ÿôñž1
+]	java:S125>"<This block of commented-out lines of code should be removed.(á¿°‚ÿÿÿÿÿ8´Ÿôñž1
+W	java:S125S"<This block of commented-out lines of code should be removed.(–âÄ8µŸôñž1
+X	java:S125X"<This block of commented-out lines of code should be removed.(»”äö8µŸôñž1
+]	java:S125a"<This block of commented-out lines of code should be removed.(ââ¨¡ýÿÿÿÿ8µŸôñž1
+X	java:S125o"<This block of commented-out lines of code should be removed.(Åóðá8µŸôñž1
+X	java:S125z"<This block of commented-out lines of code should be removed.(²ïÎý8µŸôñž1
+^	java:S125Ÿ"<This block of commented-out lines of code should be removed.(ÖÆäÉýÿÿÿÿ8¶Ÿôñž1
+^	java:S125«"<This block of commented-out lines of code should be removed.(€›°óÿÿÿÿÿ8·Ÿôñž1
+^	java:S125Ä"<This block of commented-out lines of code should be removed.(žûÆ“ýÿÿÿÿ8·Ÿôñž1

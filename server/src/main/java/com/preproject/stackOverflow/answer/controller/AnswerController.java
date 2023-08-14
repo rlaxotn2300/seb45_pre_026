@@ -2,6 +2,7 @@ package com.preproject.stackOverflow.answer.controller;
 
 import com.preproject.stackOverflow.answer.dto.AnswerPatchDto;
 import com.preproject.stackOverflow.answer.dto.AnswerPostDto;
+import com.preproject.stackOverflow.answer.dto.AnswerVoteDto;
 import com.preproject.stackOverflow.answer.entity.Answer;
 import com.preproject.stackOverflow.answer.mapper.AnswerMapper;
 import com.preproject.stackOverflow.answer.service.AnswerService;
@@ -83,11 +84,15 @@ public class AnswerController {
 
         answerService.upVoteAnswer(answerId, memberId);
 
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(
-                        answerService.getVoteCount(answerId)),HttpStatus.OK);
+        AnswerVoteDto answerVoteDto = new AnswerVoteDto(answerService.getVoteCount(answerId));
+
+        return new ResponseEntity<>(answerVoteDto, HttpStatus.OK);
 
     }
+
+
+
+
 
     @PostMapping("/{question-id}/answer/{answer-id}/downvote")
     public ResponseEntity downVoteAnswer(@PathVariable("question-id") @Positive long questionId,
@@ -95,15 +100,10 @@ public class AnswerController {
                                          @Valid @RequestBody Map<String, Long> request) {
 
         long memberId = request.get("memberId");
-
         answerService.downVoteAnswer(answerId, memberId);
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(
-                        answerService.getVoteCount(answerId)), HttpStatus.OK);
+        AnswerVoteDto answerVoteDto = new AnswerVoteDto(answerService.getVoteCount(answerId));
 
+        return new ResponseEntity<>(answerVoteDto, HttpStatus.OK);
     }
-
-
-
 
 }

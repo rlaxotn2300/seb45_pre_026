@@ -1,0 +1,6 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ïæî«8ÌØÞšž1
+X	java:S125#"<This block of commented-out lines of code should be removed.(‚ÆùÎ8Ñœ‰ñž1
+]	java:S1250"<This block of commented-out lines of code should be removed.(¬¦êüÿÿÿÿ8íìƒÄž1
+t
+java:S1128"RRemove this unused import 'com.preproject.stackOverflow.answer.dto.AnswerVoteDto'.(·òòžýÿÿÿÿ8µ¾‘ŽŸ1
