@@ -8,7 +8,7 @@ import editLogo from '../images/edit.png';
 import editPassword from '../images/editPassword.png';
 import cross from '../images/cross.png';
 import check from '../images/check.png';
-import { questionData } from '../dummydata';
+import data from '../dummydata';
 
 const mapStateToProps = (state) => {
   return {
@@ -32,7 +32,7 @@ function MyPage({ email, nickname, setNickname }) {
   const [newNickname, setNewNickname] = useState(nickname);
   // const [passwordEdit, setPasswordEdit] = useState(false);
 
-  let dummyData = questionData.filter((el) => el.user === 'nickname');
+  let filteredData = data.filter((el) => el.user === 'nickname');
 
   function handleMenuClick(e) {
     if (e.target.innerText === 'Profile') setCurMenu('profile');
@@ -150,7 +150,11 @@ function MyPage({ email, nickname, setNickname }) {
           </div>
         ) : curMenu === 'questions' ? (
           <div className="mypage__questions">
-            <Question dummyData={dummyData} />
+            {filteredData.map((data) => (
+              <li key={data.questionId} className="list">
+                <Question data={data} />
+              </li>
+            ))}
           </div>
         ) : (
           <div className="mypage__delete">

@@ -13,6 +13,7 @@ export const questionData = [
       {
         answerId: 1,
         content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
+        user: 'smart',
         date: '2023/08/12',
         vote: 0,
         tag: 'Javascript',
@@ -20,6 +21,7 @@ export const questionData = [
       {
         answerId: 1,
         content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
+        user: 'smart',
         date: '2023/08/12',
         vote: 0,
         tag: 'Javascript',
@@ -27,6 +29,7 @@ export const questionData = [
       {
         answerId: 1,
         content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
+        user: 'smart',
         date: '2023/08/12',
         vote: 0,
         tag: 'Javascript',
@@ -59,6 +62,7 @@ export const questionData = [
       {
         answerId: 1,
         content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
+        user: 'smart',
         date: '2023/08/12',
         vote: 0,
         tag: 'Javascript',
@@ -91,6 +95,7 @@ export const questionData = [
       {
         answerId: 1,
         content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
+        user: 'smart',
         date: '2023/08/12',
         vote: 0,
         tag: 'Javascript',
@@ -111,6 +116,7 @@ export const questionData = [
       {
         answerId: 1,
         content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
+        user: 'smart',
         date: '2023/08/12',
         vote: 0,
         tag: 'Javascript',
@@ -167,6 +173,7 @@ export const questionData = [
       {
         answerId: 1,
         content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
+        user: 'smart',
         date: '2023/08/12',
         vote: 0,
         tag: 'Javascript',
@@ -174,6 +181,7 @@ export const questionData = [
       {
         answerId: 1,
         content: `Find the index of the array element you want to remove using indexOf, and then remove that index with splice.`,
+        user: 'smart',
         date: '2023/08/12',
         vote: 0,
         tag: 'Javascript',

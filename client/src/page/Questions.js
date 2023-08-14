@@ -1,6 +1,7 @@
 import Nav from '../component/Nav';
 import { Link } from 'react-router-dom';
 import '../css/questions.css';
+import '../css/component.css';
 import Question from '../component/Question';
 import html from '../images/html.png';
 import css from '../images/css.png';
@@ -30,10 +31,10 @@ export default function Questions({ curPage, setCurPage }) {
               <button>Ask Question</button>
             </Link>
           </div>
-          {data.map((el) => (
-            <li key={el.questionId}>
-              <Link to={`/question/${el.questionId}`} className="link">
-                <Question dummyData={data} />
+          {data.map((data) => (
+            <li key={data.questionId} className="list">
+              <Link to={`/question/${data.questionId}`} className="link">
+                <Question data={data} />
               </Link>
             </li>
           ))}
