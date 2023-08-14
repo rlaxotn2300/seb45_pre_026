@@ -1,0 +1,78 @@
+.register__bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3.5625rem;
+    padding: 75px 0;
+    box-sizing: border-box;
+}
+
+.register__main {
+    display: flex;
+    flex-direction: column;
+    width: 945px;
+    gap: 10px;
+}
+
+.register__title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 3.75rem;
+}
+
+.register__title-container {
+    padding: 1.875rem;
+    border: 1px solid #d6d9db;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.register__input-title {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.register__input-desc {
+    font-size: 14px;
+    color: #53595f;
+}
+
+.register__title-input {
+    width: 100%;
+    padding: 0.5rem 0.625rem;
+    font-size: 12px;
+    border-radius: 7px;
+    border-color: #bdc0c2;
+}
+
+.register__body-input {
+    height: 15.9375rem;
+    resize: vertical;
+}
+
+.register__post-btn {
+    padding: 0.625rem 0.75rem;
+}
+
+.register__cancel-btn {
+    color: #dd4f54;
+    font-size: 13px;
+    border: none;
+    border-radius: 0.3125rem;
+    background-color: #FFFFFF;
+    padding: 0.625rem 0.75rem;
+    box-sizing: border-box;
+}
+
+.register__cancel-btn:hover {
+    background-color: #f7e1e0;
+}
+
+
+
+.register__side {
+    width: 305px;
+}
