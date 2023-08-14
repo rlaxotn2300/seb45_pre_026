@@ -5,14 +5,34 @@
     flex-direction: row;
 }
 .questions_list{
-    background:pink;
     width:770px;
     margin-top:61px;
 }
 
 aside{
-    background:gray;
     margin-top:61px;
     width:305px;
     height:500px;
+    text-align: center;
+}
+
+/* ------aside */
+aside ul{
+    float:left
+}
+
+aside li{
+    list-style: none;
+    margin-bottom:10px;
+}
+
+aside img{
+    width:30px;
+    height: 30px;
+    margin-right:20px;
+}
+
+aside a{
+    display: flex;
+    align-items: center;
 }
