@@ -1,9 +1,6 @@
 import '../css/question.css';
-import { questionData } from '../dummydata';
 
-function Question() {
-  const dummyData = questionData;
-
+function Question({ dummyData }) {
   return (
     <div>
       {dummyData.map((data) => (

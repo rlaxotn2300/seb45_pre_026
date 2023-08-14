@@ -1,4 +1,5 @@
 import '../css/questionRegister.css';
+import pencil from '../images/pencil.png';
 
 export default function QuestionRegister() {
   return (
@@ -36,7 +37,20 @@ export default function QuestionRegister() {
           <button className="register__cancel-btn">Discard draft</button>
         </div>
       </div>
-      <div className="register__side"></div>
+      <div className="register__side">
+        <div className="register__side-wrap">
+          <div className="register__side-title">Writing a good title</div>
+          <div className="register__side-content-wrap">
+            <img src={pencil} alt="연필 그림" className="register__side-img" />
+            <div className="register__side-content">
+              Now that you&apos;re ready to post your question, read through it
+              from start to finish. Does it make sense? \n\n Add any details you
+              missed and read through it again. Now is a good time to make sure
+              that your title still describes the problem!
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

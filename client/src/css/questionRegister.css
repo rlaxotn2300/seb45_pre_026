@@ -11,13 +11,13 @@
     display: flex;
     flex-direction: column;
     width: 945px;
-    gap: 10px;
+    gap: 1.875rem;
 }
 
 .register__title {
     font-size: 28px;
     font-weight: 600;
-    margin-bottom: 3.75rem;
+    margin-bottom: 40px;
 }
 
 .register__title-container {
@@ -53,6 +53,12 @@
     resize: vertical;
 }
 
+.register__btn-container {
+    margin-top: 0.625rem;
+    display: flex;
+    gap: 0.9375rem;
+}
+
 .register__post-btn {
     padding: 0.625rem 0.75rem;
 }
@@ -71,8 +77,36 @@
     background-color: #f7e1e0;
 }
 
-
-
 .register__side {
     width: 305px;
+}
+
+.register__side-wrap {
+    border: 1px solid #d6d9db;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px 1px #d6d9db;
+}
+
+.register__side-title {
+    font-size: 15px;
+    font-weight: 500;
+    background-color: #F1F2F3;
+    border-bottom: 1px solid #d6d9db;
+    padding: 1rem 0.75rem;
+    box-sizing: border-box;
+}
+
+.register__side-content-wrap {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.register__side-img {
+    width: 45px;
+    height: 45px;
+}
+
+.register__side-content {
+    font-size: 12px;
+    white-space: pre-line;
 }
