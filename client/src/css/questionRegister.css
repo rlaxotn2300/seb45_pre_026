@@ -1,3 +1,4 @@
+/* 배경 */
 .register__bg {
     display: flex;
     justify-content: center;
@@ -8,22 +9,25 @@
     gap: 20px;
 }
 
+/* flex 설정을 주어서 중간으로 보내기 위해 wrap으로 감쌈 */
 .register__main-wrap {
     display: flex;
     gap: 30px;
 }
 
+/* 페이지 제목 */
+.register__title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+/* 제목 아래 입력창, 가이드 파트 */
 .register__main {
     display: flex;
     flex-direction: column;
     width: 850px;
     gap: 1.875rem;
-}
-
-.register__title {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 40px;
 }
 
 .register__title-container {
@@ -59,30 +63,7 @@
     resize: vertical;
 }
 
-.register__btn-container {
-    margin-top: 2.5rem;
-    display: flex;
-    gap: 0.9375rem;
-}
-
-.register__post-btn {
-    padding: 0.625rem 0.75rem;
-}
-
-.register__cancel-btn {
-    color: #dd4f54;
-    font-size: 13px;
-    border: none;
-    border-radius: 0.3125rem;
-    background-color: #FFFFFF;
-    padding: 0.625rem 0.75rem;
-    box-sizing: border-box;
-}
-
-.register__cancel-btn:hover {
-    background-color: #f7e1e0;
-}
-
+/* 가이드 파트 */
 .register__side {
     width: 305px;
     display: flex;
@@ -120,4 +101,29 @@
 
 .register__side-content {
     font-size: 12px;
+}
+
+/* post, discard 버튼 */
+.register__btn-container {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 0.9375rem;
+}
+
+.register__post-btn {
+    padding: 0.625rem 0.75rem;
+}
+
+.register__cancel-btn {
+    color: #dd4f54;
+    font-size: 13px;
+    border: none;
+    border-radius: 0.3125rem;
+    background-color: #FFFFFF;
+    padding: 0.625rem 0.75rem;
+    box-sizing: border-box;
+}
+
+.register__cancel-btn:hover {
+    background-color: #f7e1e0;
 }
