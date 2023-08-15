@@ -1,5 +1,6 @@
 package com.preproject.stackOverflow.answer.service;
 
+
 import com.preproject.stackOverflow.answer.entity.Answer;
 import com.preproject.stackOverflow.answer.repository.AnswerRepository;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
@@ -49,6 +50,7 @@ public class AnswerService {
     }
 
     public Answer findAnswer(long answerId) {
+
         return findVerifiedAnswer(answerId);
     }
 
@@ -121,8 +123,8 @@ public class AnswerService {
         }
     }
 
+    public long getVote(long answerId) {
 
-    public long getVoteCount(long answerId) {
         long voteCount = findAnswer(answerId).getVote();
         return voteCount;
     }
@@ -135,7 +137,8 @@ public class AnswerService {
         @Getter
         private int status;
 
-        @Getter private String message;
+        @Getter
+        private String message;
 
         VoteStatus(int status, String message) {
             this.status = status;
@@ -151,5 +154,4 @@ public class AnswerService {
 
         return findAnswer;
     }
-
 }

@@ -35,9 +35,8 @@ public class Answer {
     @Column(nullable = false)
     private String content;
 
-    @Column(
-//            columnDefinition = "integer default 0",
-            nullable = true)
+    @Column(columnDefinition = "integer default 0", nullable = false)
+
     private long vote;
 
     @CreatedDate
@@ -101,7 +100,6 @@ public class Answer {
     }
 
     public void setVote(long vote) {
-
         this.vote = vote;
     }
 
