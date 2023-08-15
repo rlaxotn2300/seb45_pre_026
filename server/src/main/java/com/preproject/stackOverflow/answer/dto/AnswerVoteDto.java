@@ -8,7 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AnswerVoteDto {
-     private long voteCount;
+
+    private long voteCount;
 
     public AnswerVoteDto(long voteCount) {
         this.voteCount = voteCount;
@@ -23,4 +24,3 @@ public class AnswerVoteDto {
 
     }
 }
-

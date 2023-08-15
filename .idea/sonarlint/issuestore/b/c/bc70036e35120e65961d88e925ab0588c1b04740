@@ -1,14 +1,14 @@
 
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(èôáşÿÿÿÿ8¨¦şñ1
 W
-java:S1118":Add a private constructor to hide the implicit public one.(°À¦ë8¬¦şñ1
-z	java:S116"YRename this field "QUESTION_ASKED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÊÃÂøÿÿÿÿ8¬¦şñ1
-X	java:S125"<This block of commented-out lines of code should be removed.(ú‘Ï•8®¦şñ1
+java:S1118":Add a private constructor to hide the implicit public one.(°À¦ë8Î´èÁŸ1
+z	java:S116"YRename this field "QUESTION_ASKED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÊÃÂøÿÿÿÿ8Î´èÁŸ1
+X	java:S125"<This block of commented-out lines of code should be removed.(ú‘Ï•8±¦şñ1
 x	java:S1160"\Rename this field "QUESTION_MODIFIED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸àã¹8°¦şñ1
-X	java:S125("<This block of commented-out lines of code should be removed.(ú‘Ï•8±¦şñ1
-X	java:S1259"<This block of commented-out lines of code should be removed.(ú‘Ï•8²¦şñ1
+X	java:S125("<This block of commented-out lines of code should be removed.(ú‘Ï•8²¦şñ1
+X	java:S1259"<This block of commented-out lines of code should be removed.(ú‘Ï•8×´èÁŸ1
 c
 java:S1128
-"ARemove this unused import 'javax.validation.constraints.NotNull'.(áç¥ãüÿÿÿÿ8²¦şñ1
+"ARemove this unused import 'javax.validation.constraints.NotNull'.(áç¥ãüÿÿÿÿ8Ø´èÁŸ1
 [
-java:S1128">Remove this unused import 'javax.validation.constraints.Null'.(ã¥˜8²¦şñ1
+java:S1128">Remove this unused import 'javax.validation.constraints.Null'.(ã¥˜8Ù´èÁŸ1

@@ -1,7 +1,6 @@
 package com.preproject.stackOverflow.answer.mapper;
 
-import com.preproject.stackOverflow.answer.dto.AnswerPatchDto;
-import com.preproject.stackOverflow.answer.dto.AnswerResponseDto;
+import com.preproject.stackOverflow.answer.dto.AnswerDto;
 import com.preproject.stackOverflow.answer.entity.Answer;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,14 +9,14 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-14T23:59:46+0900",
+    date = "2023-08-15T20:36:05+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.19 (Azul Systems, Inc.)"
 )
 @Component
 public class AnswerMapperImpl implements AnswerMapper {
 
     @Override
-    public Answer answerPatchDtoToAnswer(AnswerPatchDto answerPatchDto) {
+    public Answer answerPatchDtoToAnswer(AnswerDto answerPatchDto) {
         if ( answerPatchDto == null ) {
             return null;
         }
@@ -25,18 +24,21 @@ public class AnswerMapperImpl implements AnswerMapper {
         Answer answer = new Answer();
 
         answer.setAnswerId( answerPatchDto.getAnswerId() );
+        answer.setAnswerStatus( answerPatchDto.getAnswerStatus() );
         answer.setContent( answerPatchDto.getContent() );
+        answer.setCreatedAt( answerPatchDto.getCreatedAt() );
+        answer.setModifiedAt( answerPatchDto.getModifiedAt() );
 
         return answer;
     }
 
     @Override
-    public List<AnswerResponseDto> answersToAnswerResponseDtos(List<Answer> answers) {
+    public List<AnswerDto> answersToAnswerResponseDtos(List<Answer> answers) {
         if ( answers == null ) {
             return null;
         }
 
-        List<AnswerResponseDto> list = new ArrayList<AnswerResponseDto>( answers.size() );
+        List<AnswerDto> list = new ArrayList<AnswerDto>( answers.size() );
         for ( Answer answer : answers ) {
             list.add( answerToAnswerResponseDto( answer ) );
         }
