@@ -8,6 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5a15c94-eb9b-4a74-8a94-6c1d3ff42123" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -15,31 +18,22 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/dto/MultiResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/dto/MultiResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/StackOverflowApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/StackOverflowApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/exception/ExceptionCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/exception/ExceptionCode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/controller/QuestionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/controller/QuestionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/dto/QuestionDto$Patch.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/dto/QuestionDto$Patch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/dto/QuestionDto$Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/dto/QuestionDto$Post.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/dto/QuestionDto$Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/dto/QuestionDto$Response.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/dto/QuestionDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/dto/QuestionDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/entity/Question$QuestionStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/entity/Question$QuestionStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/entity/Question.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/entity/Question.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/mapper/QuestionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/mapper/QuestionMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/mapper/QuestionMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/mapper/QuestionMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/repository/QuestionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/repository/QuestionRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/service/QuestionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/preproject/stackOverflow/question/service/QuestionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/preproject/stackOverflow/question/mapper/QuestionMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/preproject/stackOverflow/question/mapper/QuestionMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/QuestionController.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/QuestionRepository.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/QuestionService.class.uniqueId2" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/dto/MultiResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/dto/MultiResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/StackOverflowApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/StackOverflowApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/exception/ExceptionCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/exception/ExceptionCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/dto/QuestionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/dto/QuestionDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/entity/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/entity/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/mapper/QuestionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/mapper/QuestionMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/repository/QuestionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/repository/QuestionRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +45,32 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="stackOverflow" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -111,6 +126,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/beom/seb45_pre_026/server&quot;,
@@ -119,9 +136,10 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;4bcb3e17f34765c4e3e65a205609885d&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -129,12 +147,120 @@
     &quot;DatabaseDriversLRU&quot;: [
       &quot;mysql&quot;
     ],
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
+    ],
     &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
       &quot;MySQL&quot;
     ]
   }
 }</component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.preproject.stackOverflow.question.controller" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.StackOverflowApplication">
+    <configuration name="QuestionControllerTest.PostQuestionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.preproject.stackOverflow.question.controller.QuestionControllerTest.PostQuestionTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="QuestionControllerTest.testPostQuestion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.preproject.stackOverflow.question.controller.QuestionControllerTest.testPostQuestion&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="QuestionControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="stackOverflow.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.preproject.stackOverflow.question.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.preproject.stackOverflow.question.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.preproject.stackOverflow.question.controller.QuestionControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionControllerTest.PostQuestionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="stackOverflow.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.preproject.stackOverflow.question.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.preproject.stackOverflow.question.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.preproject.stackOverflow.question.controller.QuestionControllerTest" />
+      <option name="METHOD_NAME" value="PostQuestionTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionControllerTest.postQuestionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="stackOverflow.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.preproject.stackOverflow.question.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.preproject.stackOverflow.question.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.preproject.stackOverflow.question.controller.QuestionControllerTest" />
+      <option name="METHOD_NAME" value="postQuestionTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StackOverflowApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="stackOverflow.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.preproject.stackOverflow.StackOverflowApplication" />
@@ -142,6 +268,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.QuestionControllerTest.postQuestionTest" />
+        <item itemvalue="JUnit.QuestionControllerTest" />
+        <item itemvalue="JUnit.QuestionControllerTest.PostQuestionTest" />
+        <item itemvalue="Gradle.QuestionControllerTest.PostQuestionTest" />
+        <item itemvalue="Gradle.QuestionControllerTest.testPostQuestion" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -167,7 +302,17 @@
       <workItem from="1691684169952" duration="3824000" />
       <workItem from="1691726678646" duration="23321000" />
       <workItem from="1691758241147" duration="17377000" />
-      <workItem from="1691800084060" duration="22018000" />
+      <workItem from="1691800084060" duration="56171000" />
+      <workItem from="1691899574107" duration="545000" />
+      <workItem from="1691900283958" duration="97000" />
+      <workItem from="1691900407279" duration="840000" />
+      <workItem from="1691901274443" duration="7007000" />
+      <workItem from="1691908696233" duration="63000" />
+      <workItem from="1691908783491" duration="41000" />
+      <workItem from="1691908850413" duration="5918000" />
+      <workItem from="1691923438182" duration="8111000" />
+      <workItem from="1691932279618" duration="14782000" />
+      <workItem from="1691975390592" duration="3660000" />
     </task>
     <servers />
   </component>

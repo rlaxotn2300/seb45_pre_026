@@ -1,0 +1,17 @@
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#
+#    url: jdbc:mysql://localhost:3306/stackoverflow
+#    username: root
+#    password: 7642
+#
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        globally_quoted_identifiers: true
+#        format_sql: true
+#

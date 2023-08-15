@@ -39,9 +39,7 @@
     cursor: pointer;
 }
 
-.login__input {
-    width: 266px;
-    height: 43px;
+.input {
     border-radius: 10px;
     border: 1px solid #53595F;
     box-sizing: border-box;
@@ -51,9 +49,13 @@
     font-size: 16px;
 }
 
-.login__input:focus {
+.input:focus {
     outline: none;
     border-color: #3d96f7;
     box-sizing: border-box;
     box-shadow: 0 0 0 5px #e3ecf4;
+}
+
+.list {
+    list-style: none;
 }
