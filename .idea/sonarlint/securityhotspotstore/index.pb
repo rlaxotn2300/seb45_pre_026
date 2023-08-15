@@ -13,9 +13,15 @@ Userver/src/main/java/com/preproject/stackOverflow/question/mapper/QuestionMappe
 Oserver/src/main/java/com/preproject/stackOverflow/StackOverflowApplication.java,d\4\d4618a5054a5a32c9a4e0eb33007ed04a343cece
 C
 server/build.gradle,1\b\1bc5f90086d9eccd69193dce66d0a816d540dcdb
-
-Oserver/src/main/java/com/preproject/stackOverflow/question/dto/QuestionDto.java,b\c\bc70036e35120e65961d88e925ab0588c1b04740
 ‡
 Wserver/src/main/java/com/preproject/stackOverflow/exception/BusinessLogicException.java,e\8\e8c0953cd8017db311fecb95eda8a27d1e7835b5
 ~
 Nserver/src/main/java/com/preproject/stackOverflow/exception/ExceptionCode.java,1\b\1bc3fe6b6feca2e3e7e77204cbbefbe1ca20082b
+~
+Nserver/src/main/java/com/preproject/stackOverflow/dto/MultiAnsResponseDto.java,6\0\60f997780f54c8a8a77e3bc8a7756174d6938f2c
+{
+Kserver/src/main/java/com/preproject/stackOverflow/dto/MultiResponseDto.java,3\7\3793bb8f6ebac87ce71e895715e5b0d83d7b52ca
+s
+Cserver/src/main/java/com/preproject/stackOverflow/dto/PageInfo.java,c\6\c63c2b00a7df647c0e43f383f29ceccc0cc26e24
+|
+Lserver/src/main/java/com/preproject/stackOverflow/dto/SingleResponseDto.java,a\2\a255b71cfb308ce164fab9a6c30d24e35daa24d7

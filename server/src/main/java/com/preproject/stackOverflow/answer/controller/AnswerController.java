@@ -1,7 +1,6 @@
 package com.preproject.stackOverflow.answer.controller;
 
-import com.preproject.stackOverflow.answer.dto.AnswerPatchDto;
-import com.preproject.stackOverflow.answer.dto.AnswerPostDto;
+import com.preproject.stackOverflow.answer.dto.AnswerDto;
 import com.preproject.stackOverflow.answer.dto.AnswerVoteDto;
 import com.preproject.stackOverflow.answer.entity.Answer;
 import com.preproject.stackOverflow.answer.mapper.AnswerMapper;
@@ -33,10 +32,10 @@ public class AnswerController {
 
     @PostMapping("{question-id}")  // 답변 등록 -> OK
     public ResponseEntity postAnswer(@PathVariable("question-id") @Positive long questionId,
-                                     @Valid @RequestBody AnswerPostDto answerPostDto) {
+                                     @Valid @RequestBody AnswerDto answerDto) {
         // 사용자 인증 상태 확인 로직 필요
 
-        Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(questionId, answerPostDto));
+        Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(questionId, answerDto));
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)),
@@ -47,12 +46,12 @@ public class AnswerController {
     @PatchMapping("{question-id}/answer/{answer-id}") // 답변 수정 -> OK
     public ResponseEntity patchAnswer(@PathVariable("question-id") @Positive long questionId,
                                       @PathVariable("answer-id") @Positive long answerId,
-                                      @Valid @RequestBody AnswerPatchDto answerPatchDto) {
+                                      @Valid @RequestBody AnswerDto answerDto) {
 
         // 사용자 인증 상태 확인 로직 필요
 
-        answerPatchDto.setAnswerId(answerId);
-        Answer answer = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto));
+        answerDto.setAnswerId(answerId);
+        Answer answer = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerDto));
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)), HttpStatus.OK);

@@ -1,14 +1,0 @@
-
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(θταώÿÿÿÿ8¨¦ώρ1
-W
-java:S1118":Add a private constructor to hide the implicit public one.(°ΐ¦λ8¬¦ώρ1
-z	java:S116"YRename this field "QUESTION_ASKED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(υΚΓΒψÿÿÿÿ8¬¦ώρ1
-X	java:S125"<This block of commented-out lines of code should be removed.(ϊ‘Ο•8®¦ώρ1
-x	java:S1160"\Rename this field "QUESTION_MODIFIED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΈΰγΉ8°¦ώρ1
-X	java:S125("<This block of commented-out lines of code should be removed.(ϊ‘Ο•8±¦ώρ1
-X	java:S1259"<This block of commented-out lines of code should be removed.(ϊ‘Ο•8²¦ώρ1
-c
-java:S1128
-"ARemove this unused import 'javax.validation.constraints.NotNull'.(αη¥γόÿÿÿÿ8²¦ώρ1
-[
-java:S1128">Remove this unused import 'javax.validation.constraints.Null'.(γ¥8²¦ώρ1
