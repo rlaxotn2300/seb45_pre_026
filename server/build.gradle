@@ -46,9 +46,14 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 	testImplementation 'org.springframework.security:spring-security-test'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test' // Spring Boot Test 관련 의존성
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1' // JUnit 5 의존성
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1' // JUnit 5 엔진
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.0'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.0'
+	testImplementation 'org.mockito:mockito-core:4.1.0'
+	testImplementation 'org.hamcrest:hamcrest:2.2'
+	testImplementation 'org.assertj:assertj-core:3.21.0'
 }
 
 tasks.named('test') {

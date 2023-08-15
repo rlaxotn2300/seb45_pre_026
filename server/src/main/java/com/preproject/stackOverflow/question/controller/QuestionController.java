@@ -43,6 +43,9 @@ public class QuestionController {
     @PostMapping("/ask")
     public ResponseEntity postQuestion(@Valid @RequestBody QuestionDto.Post questionPost) {
 
+        //member 의 username 받기
+        //String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
+
 //        로그인한 유저만 글 등록하는 로직 추가 예정
         Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPost));
         QuestionDto.Response response = mapper.questionToQuestionResponseDto(question);

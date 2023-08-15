@@ -2,7 +2,6 @@ package com.preproject.stackOverflow.answer.mapper;
 
 import com.preproject.stackOverflow.answer.dto.AnswerPatchDto;
 import com.preproject.stackOverflow.answer.dto.AnswerResponseDto;
-import com.preproject.stackOverflow.answer.dto.AnswerVoteDto;
 import com.preproject.stackOverflow.answer.entity.Answer;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,36 +10,11 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-14T10:12:49+0900",
+    date = "2023-08-14T23:59:46+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.19 (Azul Systems, Inc.)"
 )
 @Component
 public class AnswerMapperImpl implements AnswerMapper {
-
-    @Override
-    public Answer answerVoteDtoToanswer(AnswerVoteDto answervoteDto) {
-        if ( answervoteDto == null ) {
-            return null;
-        }
-
-        Answer answer = new Answer();
-
-        answer.setVote( answervoteDto.getVote() );
-        answer.setContent( answervoteDto.getContent() );
-
-        return answer;
-    }
-
-    @Override
-    public AnswerVoteDto answerToanswerVoteDto(Answer answer) {
-        if ( answer == null ) {
-            return null;
-        }
-
-        AnswerVoteDto answerVoteDto = new AnswerVoteDto();
-
-        return answerVoteDto;
-    }
 
     @Override
     public Answer answerPatchDtoToAnswer(AnswerPatchDto answerPatchDto) {

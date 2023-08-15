@@ -69,8 +69,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -313,6 +313,11 @@
       <workItem from="1691923438182" duration="8111000" />
       <workItem from="1691932279618" duration="14782000" />
       <workItem from="1691975390592" duration="3660000" />
+      <workItem from="1691980852736" duration="852000" />
+      <workItem from="1692015736944" duration="330000" />
+      <workItem from="1692016401718" duration="1524000" />
+      <workItem from="1692017969733" duration="3683000" />
+      <workItem from="1692087125784" duration="7954000" />
     </task>
     <servers />
   </component>
@@ -349,6 +354,11 @@
           <properties class="org.springframework.data.mapping.PropertyReferenceException" package="org.springframework.data.mapping" />
           <option name="timeStamp" value="6" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

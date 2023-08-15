@@ -13,6 +13,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface AnswerMapper {
 
+
     Answer answerPatchDtoToAnswer(AnswerPatchDto answerPatchDto);
 
     List<AnswerResponseDto> answersToAnswerResponseDtos(List<Answer> answers);
@@ -29,18 +30,14 @@ public interface AnswerMapper {
     }
 
     default AnswerResponseDto answerToAnswerResponseDto(Answer answer) {
-//        Member member = member.getMember();
-
-        return AnswerResponseDto.builder()
-                .answerId(answer.getAnswerId())
-//                .memberInformation(memberToMemberResponseDto(member))
-                .answerStatus(answer.getAnswerStatus())
-                .questionId(answer.getQuestion().getQuestionId())
-                .content(answer.getContent())
-                .createdAt(answer.getCreatedAt())
-                .modifiedAt(answer.getModifiedAt())
-                .build();
+        return new AnswerResponseDto(
+                answer.getAnswerId(),
+                answer.getAnswerStatus(),
+                answer.getQuestion().getQuestionId(),
+                answer.getContent(),
+                answer.getVote(),
+                answer.getCreatedAt(),
+                answer.getModifiedAt()
+        );
     }
-
-//    MemberDto.Response memberToMemberResponseDto(Member member);
 }

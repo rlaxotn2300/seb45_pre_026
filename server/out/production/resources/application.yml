@@ -6,12 +6,12 @@
 #    username: root
 #    password: 7642
 #
-#  jpa:
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: create
-#    properties:
-#      hibernate:
-#        globally_quoted_identifiers: true
-#        format_sql: true
-#
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        format_sql: true
+

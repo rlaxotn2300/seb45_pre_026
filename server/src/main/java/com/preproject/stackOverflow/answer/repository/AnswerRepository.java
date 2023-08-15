@@ -14,3 +14,4 @@ public interface AnswerRepository extends JpaRepository<Answer, Long> {
     List<Answer> findAll(@Param("questionId") long questionId);
 
 }
+
