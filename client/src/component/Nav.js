@@ -97,26 +97,36 @@ function Nav({ curPage, setCurPage }) {
       </div>
       <div>
         <div className="nav__tab-name">TEAM</div>
-        <div className="nav__team">
-          <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">Beomda</div>
-        </div>
-        <div className="nav__team">
-          <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">Jess-Apr</div>
-        </div>
-        <div className="nav__team">
-          <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">oksu01</div>
-        </div>
-        <div className="nav__team">
-          <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">rlaxotn2300</div>
-        </div>
-        <div className="nav__team">
-          <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">sahel4</div>
-        </div>
+        <a href="https://github.com/Beomda" target="blank">
+          <div className="nav__team">
+            <div className="nav__profile-photo"></div>
+            <div className="nave__github-ID">Beomda</div>
+          </div>
+        </a>
+        <a href="https://github.com/Jess-Apr" target="blank">
+          <div className="nav__team">
+            <div className="nav__profile-photo"></div>
+            <div className="nave__github-ID">Jess-Apr</div>
+          </div>
+        </a>
+        <a href="https://github.com/oksu01" target="blank">
+          <div className="nav__team">
+            <div className="nav__profile-photo"></div>
+            <div className="nave__github-ID">oksu01</div>
+          </div>
+        </a>
+        <a href="https://github.com/rlaxotn2300" target="blank">
+          <div className="nav__team">
+            <div className="nav__profile-photo"></div>
+            <div className="nave__github-ID">rlaxotn2300</div>
+          </div>
+        </a>
+        <a href="https://github.com/sahel4" target="blank">
+          <div className="nav__team">
+            <div className="nav__profile-photo"></div>
+            <div className="nave__github-ID">sahel4</div>
+          </div>
+        </a>
       </div>
     </div>
   );

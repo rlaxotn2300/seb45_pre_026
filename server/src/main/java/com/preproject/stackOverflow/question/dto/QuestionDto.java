@@ -1,9 +1,11 @@
 package com.preproject.stackOverflow.question.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.preproject.stackOverflow.question.entity.Question;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
@@ -16,6 +18,7 @@ import java.util.List;
 public class QuestionDto {
 
 
+    @NoArgsConstructor
     @AllArgsConstructor
     @Getter
     @Setter
@@ -35,6 +38,7 @@ public class QuestionDto {
     @Getter
     @Setter
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Patch {
 
        // private long memberId;

@@ -1,0 +1,16 @@
+
+„
+java:S1488€"aImmediately return this expression instead of assigning it to the temporary variable "voteCount".(§·»ÿþÿÿÿÿ8ñ“ùÂŸ1
+€
+java:S1488˜"bImmediately return this expression instead of assigning it to the temporary variable "findAnswer".(‡‚÷Ò8ò“ùÂŸ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÝŽô­8ó“ùÂŸ1
+X	java:S125"<This block of commented-out lines of code should be removed.(Û—•£8‡”ùÂŸ1
+X	java:S125"<This block of commented-out lines of code should be removed.(ñä¦ê8‡”ùÂŸ1
+X	java:S125)"<This block of commented-out lines of code should be removed.(ýóŒù8‰”ùÂŸ1
+e
+java:S1612-"CReplace this lambda with method reference 'findAnswer::setContent'.(—¨žñüÿÿÿÿ8‰”ùÂŸ1
+]	java:S125E"<This block of commented-out lines of code should be removed.(¸çíñûÿÿÿÿ8Œ”ùÂŸ1
+]	java:S125M"<This block of commented-out lines of code should be removed.(ú»Çùüÿÿÿÿ8Œ”ùÂŸ1
+]	java:S125b"<This block of commented-out lines of code should be removed.(ú»Çùüÿÿÿÿ8Ž”ùÂŸ1
+t
+java:S1128"RRemove this unused import 'com.preproject.stackOverflow.question.entity.Question'.(žÛï¢øÿÿÿÿ8‘”ùÂŸ1
