@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Answer from '../component/Answer';
 import Nav from '../component/Nav';
 import Aside from '../component/Aside';
@@ -8,6 +8,17 @@ import edit from '../images/edit.png';
 
 export default function QuestionDetail() {
   let { id } = useParams();
+  const navigate = useNavigate();
+
+  function handleDeleteClick() {
+    if (
+      window.confirm(
+        'Do you really want to delete this question? This cannot be undone.',
+      )
+    ) {
+      navigate('/questions');
+    }
+  }
 
   return (
     <div className="detail__bg">
@@ -17,7 +28,9 @@ export default function QuestionDetail() {
           <div className="detail__title-container">
             <div className="detail__title">{questionData[id].title}</div>
             <div className="detail__btn-container">
-              <button className="detail__btn">Delete</button>
+              <button className="detail__btn" onClick={handleDeleteClick}>
+                Delete
+              </button>
               <button className="detail__btn">
                 <img alt="질문 수정" src={edit} />
                 <span>Edit</span>
@@ -31,9 +44,16 @@ export default function QuestionDetail() {
             <div
               dangerouslySetInnerHTML={{ __html: questionData[id].content }}
             ></div>
-            <div>
-              <div></div>
-              <div>{questionData[id].user}</div>
+            <div className="detail__profile-wrap">
+              <div className="detail__profile-container">
+                <div className="detail__profile-photo"></div>
+                <div className="detail__profile-name">
+                  <span className="detail__profile-name-gray">asked</span>
+                  <span className="detail__profile-name-blue">
+                    {questionData[id].user}
+                  </span>
+                </div>
+              </div>
             </div>
             <Answer questionData={questionData} />
           </div>
