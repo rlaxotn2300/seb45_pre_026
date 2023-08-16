@@ -12,6 +12,7 @@ import Signup from './page/Sign_up';
 import QuestionRegister from './page/QuestionRegister';
 import QuestionDetail from './page/QuestionDetail';
 import SearchList from './page/Search_list';
+import QuestionEdit from './page/QuestionEdit';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/question_register" element={<QuestionRegister />} />
           <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/search" element={<SearchList />} />
+          <Route path="/question_register/:id" element={<QuestionEdit />} />
         </Routes>
         <Footer />
       </BrowserRouter>

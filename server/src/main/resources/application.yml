@@ -14,4 +14,19 @@
 #      hibernate:
 #        globally_quoted_identifiers: true
 #        format_sql: true
+<<<<<<< HEAD
 
+=======
+#
+jwt:
+  key: ${JWT_SECRET_KEY}
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-minutes: 420
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 1093533041933-6g4ifvse2jvudptjhg5d2tpbefiqr9l4.apps.googleusercontent.com
+            clientSecret: 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
+>>>>>>> 194aa42ef1a38e6aa446d36aa298547570e575fa

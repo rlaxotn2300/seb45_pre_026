@@ -1,12 +1,21 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../css/questionRegister.css';
 import pencil from '../images/pencil.png';
+import { questionData } from '../dummydata';
 
-export default function QuestionRegister() {
-  const [title, setTitle] = useState('');
+export default function QuestionEdit() {
+  let { id } = useParams();
+
+  let bodyWithNoPTag = questionData[id].content
+    .replace(/ {4}/g, '')
+    .replace(/<p>/g, '')
+    .replace(/<\/p>/g, '');
+
+  const [title, setTitle] = useState(questionData[id].title);
   const [isTitleEmpty, setIsTitleEmpty] = useState(false);
-  const [body, setBody] = useState('');
+  const [body, setBody] = useState(bodyWithNoPTag);
+  const [bodyData, setBodyData] = useState('');
   const [isBodyEmpty, setIsBodyEmpty] = useState(false);
   const navigate = useNavigate();
 
@@ -17,12 +26,7 @@ export default function QuestionRegister() {
   }
 
   function handleBodyChange(e) {
-    if (e.target.value === '') setBody('');
-    else {
-      let bodyContent =
-        '<p>' + e.target.value.replace(/\n/g, '</p>\n<p>') + '</p>';
-      setBody(bodyContent);
-    }
+    setBody(e.target.value);
 
     if (body !== '') setIsBodyEmpty(false);
   }
@@ -31,8 +35,15 @@ export default function QuestionRegister() {
     setIsTitleEmpty(false);
     setIsBodyEmpty(false);
 
+    let bodyContent = '<p>' + body.replace(/\n/g, '</p>\n<p>') + '</p>';
+    setBodyData(bodyContent);
+    console.log(bodyData);
+
     if (title === '') setIsTitleEmpty(true);
     if (body === '') setIsBodyEmpty(true);
+    if (!isTitleEmpty && !isBodyEmpty) {
+      navigate(`/question/${questionData[id].questionId}`);
+    }
   }
 
   function handleDiscardClick() {
@@ -41,13 +52,13 @@ export default function QuestionRegister() {
         'Are you sure you want to discard this question? This cannot be undone.',
       )
     ) {
-      navigate('/questions');
+      navigate(`/question/${questionData[id].questionId}`);
     }
   }
   return (
     <div className="register__bg">
       <div className="register__wrap">
-        <div className="register__title">Ask a public question</div>
+        <div className="register__title">Edit question</div>
         <div className="register__main-wrap">
           <div className="register__main">
             <div className="register__input-container">
@@ -66,6 +77,7 @@ export default function QuestionRegister() {
                       : 'input input-gray register__title-input'
                   }
                   onChange={(e) => handleTitleChange(e)}
+                  value={title}
                 ></input>
                 {isTitleEmpty ? (
                   <div className="register__warning">
@@ -88,6 +100,7 @@ export default function QuestionRegister() {
                       : 'input input-gray register__title-input register__body-input'
                   }
                   onChange={(e) => handleBodyChange(e)}
+                  value={body}
                 ></textarea>
                 {isBodyEmpty ? (
                   <div className="register__warning">Body cannot be empty.</div>
@@ -137,7 +150,7 @@ export default function QuestionRegister() {
             className="button-dark register__post-btn"
             onClick={handleQuestionSubmit}
           >
-            Post your question
+            Edit your question
           </button>
           <button className="register__cancel-btn" onClick={handleDiscardClick}>
             Discard draft

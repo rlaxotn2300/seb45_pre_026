@@ -8,9 +8,9 @@ import data from '../dummydata';
 
 export default function Questions({ curPage, setCurPage }) {
   return (
-    <div>
+    <div className="questions_bg">
+      <Nav curPage={curPage} setCurPage={setCurPage} />
       <div className="questions_wrap">
-        <Nav curPage={curPage} setCurPage={setCurPage} />
         <div className="questions_list">
           <div className="list_header">
             <h2>Top Questions</h2>

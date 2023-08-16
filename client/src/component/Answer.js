@@ -1,9 +1,24 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../css/answer.css';
 import '../css/component.css';
 
 export default function Answer({ questionData }) {
+  const [answer, setAnswer] = useState('');
+  const [isAnswerEmpty, setIsAnswerEmpty] = useState(false);
   let { id } = useParams();
+
+  function handleAnswerChange(e) {
+    if (e.target.value !== '') setIsAnswerEmpty(false);
+    setAnswer(e.target.value);
+  }
+
+  function handleAnswerSubmit() {
+    setIsAnswerEmpty(false);
+
+    if (answer === '') setIsAnswerEmpty(true);
+    console.log(answer);
+  }
 
   return (
     <div className="answer__bg">
@@ -29,8 +44,23 @@ export default function Answer({ questionData }) {
         : null}
       <div className="answer__input-container">
         <div className="answer__input-title">Your Answer</div>
-        <textarea className="input answer__input"></textarea>
-        <button className="button-dark answer__post-btn">
+        <div className="answer__input-wrap">
+          <textarea
+            className={
+              isAnswerEmpty
+                ? 'input input-red answer__input'
+                : 'input answer__input answer__input-gray'
+            }
+            onChange={handleAnswerChange}
+          ></textarea>
+          {isAnswerEmpty ? (
+            <div className="answer__warning">Body is missing</div>
+          ) : null}
+        </div>
+        <button
+          className="button-dark answer__post-btn"
+          onClick={handleAnswerSubmit}
+        >
           Post Your Answer
         </button>
       </div>
