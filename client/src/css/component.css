@@ -56,6 +56,16 @@
     box-shadow: 0 0 0 5px #e3ecf4;
 }
 
+.input-red {
+    border: 1px solid #dd4f54;
+}
+
+.input-red:focus {
+    outline: none;
+    border-color: #dd4f54;
+    box-shadow: 0 0 0 5px #f7e1e0;
+}
+
 .list {
     list-style: none;
 }
