@@ -1,12 +1,15 @@
 package com.preproject.stackOverflow.question.entity;
 
 
+import com.preproject.stackOverflow.answer.entity.Answer;
+import com.preproject.stackOverflow.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -37,11 +40,11 @@ public class Question {
 //    public void setMember(Member member){
 //        this.member = member;
 //    }
-//
-//
-//
-//    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-//    private List<Answer> answerList = new ArrayList<>();
+
+
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    private List<Answer> answerList = new ArrayList<>();
 
 
 
@@ -57,7 +60,6 @@ public class Question {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "QUESTION_TAG_LIST", joinColumns = @JoinColumn(name = "QUESTION_ID"))
     @Column(nullable = true, name = "TAG_LIST")
-
     private List<String> tags;
 
 

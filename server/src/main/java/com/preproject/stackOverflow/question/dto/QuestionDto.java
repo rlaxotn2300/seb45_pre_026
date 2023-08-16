@@ -28,10 +28,10 @@ public class QuestionDto {
         private String title;
         @NotBlank(message = "내용을 입력하세요.")
         private String content;
-        private String tag;
+       // private String tag;
         private List<String> tagList;
         private LocalDateTime createdAt;
-        private Question.QuestionStatus QUESTION_ASKED;
+       // private Question.QuestionStatus QUESTION_ASKED;
 
     }
 
@@ -47,7 +47,7 @@ public class QuestionDto {
         private String title;
         @NotBlank(message = "내용을 입력하세요.")
         private String content;
-        private String tag;
+        //private String tag;
         private List<String> tagList;
         private Question.QuestionStatus  QUESTION_MODIFIED;
 
@@ -62,12 +62,12 @@ public class QuestionDto {
         private long questionId;
         private String title;
         private String content;
-        private String tag;
+       // private String tag;
         private List<String> tags;
-        private int vote;
+        private long vote;
         private LocalDateTime createdAt;
-        private LocalDateTime modifiedAt;
-        private Question.QuestionStatus questionStatus;
+        //private LocalDateTime modifiedAt;
+        //private Question.QuestionStatus questionStatus;
 
     }
 }

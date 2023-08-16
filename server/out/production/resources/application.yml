@@ -15,3 +15,16 @@
 #        globally_quoted_identifiers: true
 #        format_sql: true
 
+#
+jwt:
+  key: ${JWT_SECRET_KEY}
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-minutes: 420
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId:
+            clientSecret:
+

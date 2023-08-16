@@ -24,7 +24,7 @@ public interface QuestionMapper {
             Question question = new Question();
             question.setTitle(questionPost.getTitle());
             question.setContent(questionPost.getContent());
-            question.setTag(questionPost.getTag());
+            //question.setTag(questionPost.getTag());
             List<String> list = questionPost.getTagList();
             if (list != null) {
 
@@ -48,7 +48,7 @@ public interface QuestionMapper {
             question.setQuestionId(questionPatch.getQuestionId());
             question.setTitle(questionPatch.getTitle());
             question.setContent(questionPatch.getContent());
-            question.setTag(questionPatch.getTag());
+            //question.setTag(questionPatch.getTag());
             List<String> list = questionPatch.getTagList();
             if (list != null) {
                 question.setTags(new ArrayList<>(list));;
@@ -74,30 +74,30 @@ public interface QuestionMapper {
     }
 
 
-    default QuestionDto.Response questionToResponseDto(Question question) {
-        QuestionDto.Response response =
-                new QuestionDto.Response(question.getQuestionId(),
-                        question.getTitle(),
-                        question.getContent(),
-                        question.getTag(),
-
-                        question.getTags(),
-                        question.getVote(),
-                        question.getCreatedAt(),
-                        question.getModifiedAt(),
-                        question.getQuestionStatus());
-
-        response.setTitle(question.getTitle());
-        response.setContent(question.getContent());
-        response.setContent(question.getContent());
-        response.setTag(question.getTag());
-
-        response.setTags(question.getTags());
-        response.setVote(question.getVote());
-        response.setCreatedAt(question.getCreatedAt());
-        response.setModifiedAt(question.getModifiedAt());
-        response.setQuestionStatus(response.getQuestionStatus());
-
-        return response;
-    }
+//    default QuestionDto.Response questionToResponseDto(Question question) {
+//        QuestionDto.Response response =
+//                new QuestionDto.Response(question.getQuestionId(),
+//                        question.getTitle(),
+//                        question.getContent(),
+//                        question.getTag(),
+//
+//                        question.getTags(),
+//                        question.getVote(),
+//                        question.getCreatedAt(),
+//                        question.getModifiedAt(),
+//                        question.getQuestionStatus());
+//
+//        response.setTitle(question.getTitle());
+//        response.setContent(question.getContent());
+//        response.setContent(question.getContent());
+//        response.setTag(question.getTag());
+//
+//        response.setTags(question.getTags());
+//        response.setVote(question.getVote());
+//        response.setCreatedAt(question.getCreatedAt());
+//        response.setModifiedAt(question.getModifiedAt());
+//        response.setQuestionStatus(response.getQuestionStatus());
+//
+//        return response;
+//    }
 }

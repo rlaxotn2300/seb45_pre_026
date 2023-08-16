@@ -6,6 +6,7 @@ import com.preproject.stackOverflow.dto.PageInfo;
 import com.preproject.stackOverflow.dto.SingleResponseDto;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
 import com.preproject.stackOverflow.exception.ExceptionCode;
+import com.preproject.stackOverflow.member.entity.Member;
 import com.preproject.stackOverflow.question.dto.QuestionDto;
 import com.preproject.stackOverflow.question.entity.Question;
 import com.preproject.stackOverflow.question.mapper.QuestionMapper;
@@ -40,7 +41,7 @@ public class QuestionController {
 
     //질문 등록
     //@Secured("ROLE_USER")
-    @PostMapping("/ask")
+    @PostMapping("/questions")
     public ResponseEntity postQuestion(@Valid @RequestBody QuestionDto.Post questionPost) {
 
         //member 의 username 받기
@@ -50,9 +51,9 @@ public class QuestionController {
         Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPost));
         QuestionDto.Response response = mapper.questionToQuestionResponseDto(question);
 
-        return new ResponseEntity(new SingleResponseDto<>(response), HttpStatus.CREATED);
+        return new ResponseEntity(//new SingleResponseDto<>(response),
+                HttpStatus.CREATED);
     }
-
 
 
     //질문 수정
@@ -71,7 +72,6 @@ public class QuestionController {
     }
 
 
-
     //질문 1개 조회
     @GetMapping("{question-id}")
     public ResponseEntity findQuestion(@PathVariable("question-id")
@@ -81,7 +81,6 @@ public class QuestionController {
 
         return new ResponseEntity(new SingleResponseDto<>(response), HttpStatus.OK);
     }
-
 
 
     //전체 질문 조회 : http://localhost:8080/question/?page=1&size=10&tag=java,spring
@@ -109,7 +108,7 @@ public class QuestionController {
     @PostMapping("/{question-id}/up")
     public ResponseEntity upVote(@PathVariable("question-id")
                                  @Positive long questionId) {
-        //Question findQuestion = questionService.findQuestion(questionId);
+       // Question findQuestion = questionService.findQuestion(questionId);
         Question vote = questionService.upVote(questionId);
         QuestionDto.Response response = mapper.questionToQuestionResponseDto(vote);
 
@@ -117,12 +116,11 @@ public class QuestionController {
     }
 
 
-
     //질문비추천
     @PostMapping("/{question-id}/down")
     public ResponseEntity downVote(@PathVariable("question-id")
                                    @Positive long questionId) {
-        //Question findQuestion = questionService.findQuestion(questionId);
+        Question findQuestion = questionService.findQuestion(questionId);
         Question vote = questionService.downVote(questionId);
         QuestionDto.Response response = mapper.questionToQuestionResponseDto(vote);
 
@@ -130,49 +128,49 @@ public class QuestionController {
     }
 
 
-
     //질문 삭제
     // @Secured({"ROLE_USER", "ROLE_ADMIN"})
-    @DeleteMapping("{question-id}") //postman ok
+    @DeleteMapping("{question-id}")
     public ResponseEntity deleteQuestion(@PathVariable("question-id")
-                                         @Positive long questionId) {
-        //작성자만랑 관리자만 삭제 할 수 있는 기능 추가해야 함
-//        if (!question.getMember().getMemberId().equals(member.getMemberId()) && !member.getEmail().equals("admin@gmail.com")) {
+                                         @Positive long questionId,
+                                         Question question, Member member) {
+
+//        if (question.getMember().getMemberId() == member.getMemberId() && !member.getEmail().equals("admin@gmail.com")) { //작성자만 삭제 할 수 있음
 //            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+//        }
+            questionService.deleteQuestion(questionId);
 
-        questionService.deleteQuestion(questionId);
-
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted");
-    }
-
-
-
-
-    //태그검색 :http://localhost:8080/question/search/?page=1&size=10&tag=tag
-    // 페이지번호는 0부터 시작해야 함..
-    @GetMapping("/search")
-    public ResponseEntity getQuestionsByTag(@RequestParam @Positive int page,
-                                            @RequestParam @Positive int size,
-                                            @RequestParam String tag) {
-
-        List<String> tags = Arrays.asList(tag.split(",")); // 태그 리스트로 변환
-
-        Page<Question> tagPage = questionService.findAllByTags(tag, page - 1, size);
-
-        if (tagPage.isEmpty()) {
-            throw new BusinessLogicException(ExceptionCode.TAG_NOT_FOUND); // 예외 발생
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted");
         }
 
-        PageInfo pageInfo = new PageInfo(page, size, tagPage.getTotalElements(), tagPage.getTotalPages());
 
-        List<Question> questions = tagPage.getContent();
-        List<QuestionDto.Response> responses = mapper.questionsToQuestionResponseDtos(questions);
 
-        MultiResponseDto<QuestionDto.Response> multiResponseDto = new MultiResponseDto<>(responses, pageInfo);
+        //태그검색 :http://localhost:8080/question/search/?page=1&size=10&tag=tag
+        // 페이지번호는 0부터 시작해야 함..
+        @GetMapping("/search")
+        public ResponseEntity getQuestionsByTag ( @RequestParam @Positive int page,
+        @RequestParam @Positive int size,
+        @RequestParam String tag){
 
-        return ResponseEntity.ok().body(multiResponseDto);
+            //List<String> tags = Arrays.asList(tag.split(",")); // 태그 리스트로 변환
+
+            Page<Question> tagPage = questionService.findAllByTags(tag, page - 1, size);
+
+            if (tagPage.isEmpty()) {
+                throw new BusinessLogicException(ExceptionCode.TAG_NOT_FOUND); // 예외 발생
+            }
+
+            PageInfo pageInfo = new PageInfo(page, size, tagPage.getTotalElements(), tagPage.getTotalPages());
+
+            List<Question> questions = tagPage.getContent();
+            List<QuestionDto.Response> responses = mapper.questionsToQuestionResponseDtos(questions);
+
+            MultiResponseDto<QuestionDto.Response> multiResponseDto = new MultiResponseDto<>(responses, pageInfo);
+
+            return ResponseEntity.ok().body(multiResponseDto);
+        }
     }
-}
+
 
 
 

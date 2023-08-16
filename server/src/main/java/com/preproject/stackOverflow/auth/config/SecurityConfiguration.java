@@ -9,7 +9,6 @@ import com.preproject.stackOverflow.auth.handler.MemberAuthenticationSuccessHand
 import com.preproject.stackOverflow.auth.jwt.JwtTokenizer;
 import com.preproject.stackOverflow.auth.utils.CustomAuthorityUtils;
 import com.preproject.stackOverflow.member.repository.MemberRepository;
-import com.preproject.stackOverflow.member.service.MemberService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

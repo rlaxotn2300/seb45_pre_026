@@ -34,7 +34,6 @@ public class QuestionService {
     public Question createQuestion(Question question) {
 //        로그인한 유저만 작성할 수 있게 차후 수정 필요
 //        question.setUser(userService.getLoginUser());
-
         String tag = question.getTag();
         List<String> tagList = new ArrayList<>(Arrays.asList(tag.split("\\s*,\\s*")));
         question.setTags(tagList);
@@ -50,8 +49,8 @@ public class QuestionService {
     public Question patchQuestion(Question question, long questionId) {
         Question findQuestion = findVerifiedQuestion(question.getQuestionId());
 //        로그인 유저와 질문 작성 유저와 비교해서 같다면 수정, 아니라면 접근 금지 예외 발생
-//        if(findQuestion.getMember().getMemberId() != memberService.getLoginMember().getMemberId()) {
-//            throw new BusinessLogicException(ExceptionCode.ACCESS_FORBIDDEN);
+        //if(findQuestion.getMember().getMemberId() != memberService.getLoginMember().getMemberId()) {
+            //throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
 
         Optional.ofNullable(question.getTitle())
                 .ifPresent(title -> findQuestion.setTitle(title));

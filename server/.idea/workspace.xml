@@ -165,7 +165,7 @@
       <recent name="com.preproject.stackOverflow.question.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.StackOverflowApplication">
+  <component name="RunManager" selected="JUnit.QuestionControllerTest.postQuestionTest">
     <configuration name="QuestionControllerTest.PostQuestionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -354,11 +354,6 @@
           <properties class="org.springframework.data.mapping.PropertyReferenceException" package="org.springframework.data.mapping" />
           <option name="timeStamp" value="6" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

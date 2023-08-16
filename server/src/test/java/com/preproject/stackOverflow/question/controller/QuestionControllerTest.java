@@ -63,27 +63,26 @@ class QuestionControllerTest {
         QuestionDto.Post request = new QuestionDto.Post();
         request.setTitle("title");
         request.setContent("content");
-//        request.setCreatedAt(LocalDateTime.now());
-        request.setQUESTION_ASKED(Question.QuestionStatus.QUESTION_ASKED);
+        request.setCreatedAt(LocalDateTime.now());
+        //request.setQUESTION_ASKED(Question.QuestionStatus.QUESTION_ASKED);
         request.setTagList(List.of("tag1", "tag2"));
 
         QuestionDto.Response response = new QuestionDto.Response(
                 1L,
                 request.getTitle(),
                 request.getContent(),
-                request.getTag(),
+                //request.getTag(),
                 request.getTagList(),
                 0,
-                request.getCreatedAt(),
-                request.getCreatedAt(),
-                request.getQUESTION_ASKED()
+                request.getCreatedAt()
+                //request.getQUESTION_ASKED()
         );
 
         Question question = new Question();
         question.setQuestionId(1L);
         question.setTitle(request.getTitle());
         question.setContent(request.getContent());
-        question.setQuestionStatus(request.getQUESTION_ASKED());
+        //question.setQuestionStatus(request.getQUESTION_ASKED());
         question.setTags(request.getTagList());
 
         given(questionService.createQuestion(any(Question.class))).willReturn(question);
@@ -96,6 +95,7 @@ class QuestionControllerTest {
         );
 
         resultActions.andExpect(jsonPath("$.data.title").value(response.getTitle()));
+
 
 
     }
