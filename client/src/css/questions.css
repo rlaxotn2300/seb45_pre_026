@@ -59,6 +59,7 @@ aside{
     width:305px;
     height:500px;
     text-align: center;
+    color: #53595f;
 }
 aside ul{
     float:left
@@ -78,4 +79,8 @@ aside img{
 aside a{
     display: flex;
     align-items: center;
+}
+
+.aside__focus:hover {
+    color: #000000;
 }
