@@ -9,6 +9,11 @@ import com.preproject.stackOverflow.dto.MultiAnsResponseDto;
 import com.preproject.stackOverflow.dto.SingleResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,43 +35,49 @@ public class AnswerController {
         this.mapper = mapper;
     }
 
-    @PostMapping("{question-id}")  // 답변 등록 -> OK
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("{question-id}")
     public ResponseEntity postAnswer(@PathVariable("question-id") @Positive long questionId,
                                      @Valid @RequestBody AnswerDto answerDto) {
-        // 사용자 인증 상태 확인 로직 필요
+        // 사용자 인증 상태 확인
 
-        Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(questionId, answerDto));
 
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)),
-                HttpStatus.CREATED);
+            Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(questionId, answerDto));
+
+            return new ResponseEntity<>(
+                    new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)),
+                    HttpStatus.CREATED);
 
     }
 
-    @PatchMapping("{question-id}/answer/{answer-id}") // 답변 수정 -> OK
+    @PreAuthorize("isAuthenticated()")
+    @PatchMapping("{question-id}/answer/{answer-id}")
     public ResponseEntity patchAnswer(@PathVariable("question-id") @Positive long questionId,
                                       @PathVariable("answer-id") @Positive long answerId,
                                       @Valid @RequestBody AnswerDto answerDto) {
-
-        // 사용자 인증 상태 확인 로직 필요
 
         answerDto.setAnswerId(answerId);
         Answer answer = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerDto));
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)), HttpStatus.OK);
+
     }
 
-    @GetMapping("{question-id}/answer") // 답변 조회
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("{question-id}/answer")
     public ResponseEntity getAnswers(@PathVariable("question-id") @Positive long questionId) {
-        List<Answer> answers = answerService.findAnswers(questionId);
+
+            List<Answer> answers = answerService.findAnswers(questionId);
 
         return new ResponseEntity<>(
                 new MultiAnsResponseDto<>(mapper.answersToAnswerResponseDtos(answers)),
                 HttpStatus.OK);
+
     }
 
 
+    @PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{question-id}/answer/{answer-id}")
     public ResponseEntity deleteAnswer(@PathVariable("answer-id") @Positive long answerId) {
         answerService.deleteAnswer(answerId);
@@ -75,6 +86,7 @@ public class AnswerController {
     }
 
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/{question-id}/answer/{answer-id}/upvote")
     public ResponseEntity upVoteAnswer(@PathVariable("question-id") @Positive long questionId,
                                        @PathVariable("answer-id") @Positive long answerId,
@@ -91,10 +103,7 @@ public class AnswerController {
 
     }
 
-
-
-
-
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/{question-id}/answer/{answer-id}/downvote")
     public ResponseEntity downVoteAnswer(@PathVariable("question-id") @Positive long questionId,
                                          @PathVariable("answer-id") @Positive long answerId,

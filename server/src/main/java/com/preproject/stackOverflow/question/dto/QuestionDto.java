@@ -64,7 +64,7 @@ public class QuestionDto {
         private String content;
         private String tag;
         private List<String> tags;
-        private int vote;
+        private long vote;
         private LocalDateTime createdAt;
         private LocalDateTime modifiedAt;
         private Question.QuestionStatus questionStatus;

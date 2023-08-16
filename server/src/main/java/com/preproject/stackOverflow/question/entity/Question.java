@@ -44,7 +44,6 @@ public class Question {
 //    private List<Answer> answerList = new ArrayList<>();
 
 
-
     @Column(nullable = true)
 
     private long vote;

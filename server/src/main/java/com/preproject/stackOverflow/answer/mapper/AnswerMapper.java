@@ -3,6 +3,8 @@ package com.preproject.stackOverflow.answer.mapper;
 import com.preproject.stackOverflow.answer.dto.AnswerDto;
 
 import com.preproject.stackOverflow.answer.entity.Answer;
+import com.preproject.stackOverflow.member.dto.MemberDto;
+import com.preproject.stackOverflow.member.entity.Member;
 import com.preproject.stackOverflow.question.entity.Question;
 import org.mapstruct.Mapper;
 
@@ -36,5 +38,5 @@ public interface AnswerMapper {
                 answer.getCreatedAt(),
                 answer.getModifiedAt());
     }
+    MemberDTO.Response memberToMemberResponseDto(Member member);
 }
-//    MemberDto.Response memberToMemberResponseDto(Member member);
