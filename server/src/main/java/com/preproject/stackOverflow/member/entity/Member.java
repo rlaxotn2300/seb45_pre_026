@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,6 +17,9 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long memberId;
+
+    @Column(length = 50, nullable = false, unique = true)
+    private String email;
 
     @Column(length = 20, nullable = false)
     private String password;
@@ -28,9 +33,7 @@ public class Member {
     @Column(length = 13, nullable = false)
     private String phonenumber;
 
-    @Column(length = 50, nullable = false)
-    private String email;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
 
 }
-
-

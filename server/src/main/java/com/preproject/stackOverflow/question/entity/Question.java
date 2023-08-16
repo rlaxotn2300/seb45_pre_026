@@ -47,7 +47,7 @@ public class Question {
 
     @Column(nullable = true)
 
-    private int vote;
+    private long vote;
 
     @Column(nullable = true)
     private String tag;

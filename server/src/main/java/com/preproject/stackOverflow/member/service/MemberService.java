@@ -1,5 +1,6 @@
 package com.preproject.stackOverflow.member.service;
 
+import com.preproject.stackOverflow.auth.utils.CustomAuthorityUtils;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
 import com.preproject.stackOverflow.exception.ExceptionCode;
 import com.preproject.stackOverflow.member.entity.Member;
@@ -9,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,11 +20,13 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final MemberMapper memberMapper;
+    private final CustomAuthorityUtils authorityUtils;
 
-    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, MemberMapper memberMapper) {
+    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, MemberMapper memberMapper, CustomAuthorityUtils authorityUtils) {
         this.memberRepository = memberRepository;
         this.passwordEncoder = passwordEncoder;
         this.memberMapper = memberMapper;
+        this.authorityUtils = authorityUtils;
     }
 
 
@@ -31,6 +35,9 @@ public class MemberService {
 
         String encryptedPassword = passwordEncoder.encode(member.getPassword());
         member.setPassword(encryptedPassword);
+
+        List<String> roles = authorityUtils.createRoles(member.getEmail());
+        member.setRoles(roles);
 
         return memberRepository.save(member);
     }
