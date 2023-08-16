@@ -55,7 +55,16 @@
     padding: 0.5rem 0.625rem;
     font-size: 12px;
     border-radius: 7px;
+}
+
+.input-gray {
     border-color: #bdc0c2;
+}
+
+.register__warning {
+    color: #dd4f54;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
 .register__body-input {

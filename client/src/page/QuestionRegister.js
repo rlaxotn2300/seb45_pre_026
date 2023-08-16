@@ -1,9 +1,40 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/questionRegister.css';
 import pencil from '../images/pencil.png';
 
 export default function QuestionRegister() {
+  const [title, setTitle] = useState('');
+  const [isTitleEmpty, setIsTitleEmpty] = useState(false);
+  const [body, setBody] = useState('');
+  const [isBodyEmpty, setIsBodyEmpty] = useState(false);
   const navigate = useNavigate();
+
+  function handleTitleChange(e) {
+    setTitle(e.target.value);
+
+    if (title !== '') setIsTitleEmpty(false);
+  }
+
+  function handleBodyChange(e) {
+    if (e.target.value === '') setBody('');
+    else {
+      let bodyContent =
+        '<p>' + e.target.value.replace(/\n/g, '</p>\n<p>') + '</p>';
+      setBody(bodyContent);
+    }
+
+    if (body !== '') setIsBodyEmpty(false);
+  }
+
+  function handleQuestionSubmit() {
+    setIsTitleEmpty(false);
+    setIsBodyEmpty(false);
+
+    if (title === '') setIsTitleEmpty(true);
+    if (body === '') setIsBodyEmpty(true);
+    console.log({ title, body });
+  }
 
   function handleDiscardClick() {
     if (
@@ -30,8 +61,18 @@ export default function QuestionRegister() {
                 <input
                   type="text"
                   placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
-                  className="input register__title-input"
+                  className={
+                    isTitleEmpty
+                      ? 'input input-red register__title-input'
+                      : 'input input-gray register__title-input'
+                  }
+                  onChange={(e) => handleTitleChange(e)}
                 ></input>
+                {isTitleEmpty ? (
+                  <div className="register__warning">
+                    Title cannot be empty.
+                  </div>
+                ) : null}
               </div>
             </div>
             <div className="register__input-container">
@@ -41,7 +82,17 @@ export default function QuestionRegister() {
                   The body of your question contains your problem details and
                   results.
                 </div>
-                <textarea className="input register__title-input register__body-input"></textarea>
+                <textarea
+                  className={
+                    isBodyEmpty
+                      ? 'input input-red register__title-input register__body-input'
+                      : 'input input-gray register__title-input register__body-input'
+                  }
+                  onChange={(e) => handleBodyChange(e)}
+                ></textarea>
+                {isBodyEmpty ? (
+                  <div className="register__warning">Body cannot be empty.</div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -83,7 +134,10 @@ export default function QuestionRegister() {
           </div>
         </div>
         <div className="register__btn-container">
-          <button className="button-dark register__post-btn">
+          <button
+            className="button-dark register__post-btn"
+            onClick={handleQuestionSubmit}
+          >
             Post your question
           </button>
           <button className="register__cancel-btn" onClick={handleDiscardClick}>

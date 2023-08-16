@@ -45,7 +45,6 @@ export default function Answer({ questionData }) {
       <div className="answer__input-container">
         <div className="answer__input-title">Your Answer</div>
         <div className="answer__input-wrap">
-          {' '}
           <textarea
             className={
               isAnswerEmpty

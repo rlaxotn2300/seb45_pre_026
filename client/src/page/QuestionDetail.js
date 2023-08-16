@@ -24,7 +24,7 @@ export default function QuestionDetail() {
               </button>
             </div>
           </div>
-          <div>Asked {questionData[id].date}</div>
+          <div className="detail__date">Asked {questionData[id].date}</div>
         </div>
         <div className="detail__content-wrap">
           <div className="detail__content-container">
