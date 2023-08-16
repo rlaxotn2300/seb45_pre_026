@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Answer from '../component/Answer';
 import Nav from '../component/Nav';
 import Aside from '../component/Aside';
@@ -31,10 +31,15 @@ export default function QuestionDetail() {
               <button className="detail__btn" onClick={handleDeleteClick}>
                 Delete
               </button>
-              <button className="detail__btn">
-                <img alt="질문 수정" src={edit} />
-                <span>Edit</span>
-              </button>
+              <Link
+                to={`/question_register/${questionData[id].questionId}`}
+                className="link"
+              >
+                <button className="detail__btn">
+                  <img alt="질문 수정" src={edit} />
+                  <span>Edit</span>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="detail__date">Asked {questionData[id].date}</div>
