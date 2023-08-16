@@ -2,13 +2,14 @@ package com.preproject.stackOverflow.auth.config;
 
 import com.preproject.stackOverflow.auth.filter.JwtAuthenticationFilter;
 import com.preproject.stackOverflow.auth.filter.JwtVerificationFilter;
-import com.preproject.stackOverflow.auth.handler.MemberAccessDeniedHandler;
-import com.preproject.stackOverflow.auth.handler.MemberAuthenticationEntryPoint;
-import com.preproject.stackOverflow.auth.handler.MemberAuthenticationFailureHandler;
-import com.preproject.stackOverflow.auth.handler.MemberAuthenticationSuccessHandler;
+import com.preproject.stackOverflow.auth.handler.*;
 import com.preproject.stackOverflow.auth.jwt.JwtTokenizer;
 import com.preproject.stackOverflow.auth.utils.CustomAuthorityUtils;
 import com.preproject.stackOverflow.member.repository.MemberRepository;
+
+import com.preproject.stackOverflow.member.service.MemberService;
+import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,8 +17,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
+import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -29,14 +35,23 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 public class SecurityConfiguration {
+
+    @Value("${spring.security.oauth2.client.registration.google.clientId}")
+    private String clientId;
+
+    @Value("${spring.security.oauth2.client.registration.google.clientSecret}")
+    private String clientSecret;
+
+    private final MemberService memberService;
     private final MemberRepository memberRepository;
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
 
-    public SecurityConfiguration(MemberRepository memberRepository, JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils) {
+    public SecurityConfiguration(MemberRepository memberRepository, JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils, MemberService memberService) {
         this.memberRepository = memberRepository;
         this.jwtTokenizer = jwtTokenizer;
         this.authorityUtils = authorityUtils;
+        this.memberService = memberService;
     }
 
     @Bean
@@ -63,7 +78,9 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.DELETE, "/member/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
-                .oauth2Login(withDefaults());
+                .oauth2Login(oauth2 -> oauth2
+                        .successHandler(new OAuth2MemberSuccessHandler(jwtTokenizer, authorityUtils, memberService))
+                );
         return http.build();
     }
 
@@ -78,7 +95,7 @@ public class SecurityConfiguration {
         configuration.setAllowedOrigins(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);         // 주의 사항: 콘텐츠 표시 오류로 인해 '/**'를 '\/**'로 표기했으니 실제 코드 구현 시에는 '\(역슬래시)'를 빼 주세요.
+        source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 
@@ -96,8 +113,25 @@ public class SecurityConfiguration {
 
             builder
                     .addFilter(jwtAuthenticationFilter)
-                    .addFilterAfter(jwtVerificationFilter, JwtAuthenticationFilter.class);
+                    .addFilterAfter(jwtVerificationFilter, JwtAuthenticationFilter.class)
+                    .addFilterAfter(jwtVerificationFilter, OAuth2LoginAuthenticationFilter.class);;
         }
+    }
+
+    @Bean
+    public ClientRegistrationRepository clientRegistrationRepository() {
+        var clientRegistration = clientRegistration();
+
+        return new InMemoryClientRegistrationRepository(clientRegistration);
+    }
+
+    private ClientRegistration clientRegistration() {
+        return CommonOAuth2Provider
+                .GOOGLE
+                .getBuilder("google")
+                .clientId(clientId)
+                .clientSecret(clientSecret)
+                .build();
     }
 
 }
