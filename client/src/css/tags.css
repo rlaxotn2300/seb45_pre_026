@@ -6,7 +6,8 @@
     align-items: flex-start;
 }
 .tags_wrap{
-    margin:61px 0 0 1px;
+    margin:0 auto;
+    margin-top:61px;
     width: 1075px;
     border-left: 1px solid #d6d9db;
 }

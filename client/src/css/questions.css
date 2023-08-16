@@ -9,12 +9,19 @@
     display: flex;
     margin-top:61px;
 }
-
+.search_wrap{
+    width:1250px;
+    display: flex;
+    margin:auto;
+}
 
 /* 질문리스트 */
 .questions_list{
     width:770px;
     border-left:1px solid #d6d9db;
+}
+.search_list{
+    margin: 61px 0 0 1px;
 }
 
 .list_header{
@@ -39,6 +46,11 @@
 .questions_list button:hover{
     background: #0074cc;
     cursor: pointer;
+}
+
+.none_Search{
+    text-align: center;
+    font-size:2em;
 }
 
 

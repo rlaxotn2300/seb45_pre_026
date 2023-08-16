@@ -19,22 +19,26 @@ export default function Search({ curPage, setCurPage }) {
 
   return (
     <div>
-      <div className="questions_wrap">
+      <div className="search_wrap">
         <Nav curPage={curPage} setCurPage={setCurPage} />
-        <div className="questions_list">
+        <div className="questions_list search_list">
           <div className="list_header">
             <h2>Search Top Questions</h2>
             <Link to="/question_register">
               <button>Ask Question</button>
             </Link>
           </div>
-          {search_data.map((data) => (
-            <li key={data.questionId} className="list">
-              <Link to={`/question/${data.questionId}`} className="link">
-                <Question data={data} />
-              </Link>
-            </li>
-          ))}
+          {!search_data ? (
+            search_data.map((data) => (
+              <li key={data.questionId} className="list">
+                <Link to={`/question/${data.questionId}`} className="link">
+                  <Question data={data} />
+                </Link>
+              </li>
+            ))
+          ) : (
+            <p className="none_Search">No Search found!</p>
+          )}
         </div>
         <Aside />
       </div>
