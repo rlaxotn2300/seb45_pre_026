@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../css/answer.css';
 import '../css/component.css';
+import Vote from './Vote';
 
 export default function Answer({ questionData }) {
   const [answer, setAnswer] = useState('');
@@ -34,7 +35,10 @@ export default function Answer({ questionData }) {
       {questionData[id].answer
         ? questionData[id].answer.map((el) => (
             <div key={el.answerId} className="list answer__content-container">
-              <div className="answer__content">{el.content}</div>
+              <div className="answer__content-wrap">
+                <Vote />
+                <div className="answer__content">{el.content}</div>
+              </div>
               <div className="answer__bottom">
                 <div>{el.date}</div>
                 <div>Answered by {el.user}</div>

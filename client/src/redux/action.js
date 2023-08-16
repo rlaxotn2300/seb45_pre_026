@@ -17,3 +17,8 @@ export const setPassword = (password) => ({
   type: 'SET_PASSWORD',
   payload: password,
 });
+
+export const setQuestionData = (questionData) => ({
+  type: 'SET_QUESTIONDATA',
+  payload: questionData,
+});
