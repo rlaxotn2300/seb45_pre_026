@@ -1,13 +1,12 @@
 .answer__bg {
     width: 48.125rem;
-    padding: 1.25rem;
+    padding-top: 1.25rem;
     box-sizing: border-box;
 }
 
 .answer__title {
     font-size: 19px;
     font-size: 500;
-    margin: 0 1.25rem;
 }
 
 .answer__content-container {

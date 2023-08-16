@@ -1,21 +1,26 @@
-.questions_wrap{
-    width:1250px;
-    margin: auto;
+.questions_bg {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.questions_wrap{
+    width: 1075px;
+    display: flex;
+    margin-top:61px;
 }
 
 
 /* 질문리스트 */
 .questions_list{
     width:770px;
-    margin-top:61px;
     border-left:1px solid #d6d9db;
 }
 
 .list_header{
     border-bottom: 1px solid #d6d9db;
 }
+
 .questions_list h2{
     margin:30px 0 0 30px;
 }
@@ -39,7 +44,6 @@
 
 /* ------aside */
 aside{
-    margin-top:61px;
     width:305px;
     height:500px;
     text-align: center;

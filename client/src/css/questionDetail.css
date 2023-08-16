@@ -1,3 +1,37 @@
 .detail__bg {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.detail__main {
+    width: 67.1875rem;
+    border-left: 1px solid #d6d9db;
+    padding: 30px 20px;
     margin-top: 3.5625rem;
+}
+
+.detail__top {
+    gap: 0;
+}
+
+.detail__title-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail__title {
+    font-size: 25px;
+}
+
+.detail__top {
+    border-bottom: 1px solid #d6d9db;
+}
+
+.detail__content-wrap {
+    display: flex;
+}
+
+.detail__content-container {
+    width: 48.125rem;
 }
