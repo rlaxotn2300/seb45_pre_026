@@ -28,7 +28,9 @@ export default function QuestionDetail() {
         </div>
         <div className="detail__content-wrap">
           <div className="detail__content-container">
-            <div>{questionData[id].content}</div>
+            <div
+              dangerouslySetInnerHTML={{ __html: questionData[id].content }}
+            ></div>
             <div>
               <div></div>
               <div>{questionData[id].user}</div>

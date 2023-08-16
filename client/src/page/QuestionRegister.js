@@ -33,7 +33,6 @@ export default function QuestionRegister() {
 
     if (title === '') setIsTitleEmpty(true);
     if (body === '') setIsBodyEmpty(true);
-    console.log({ title, body });
   }
 
   function handleDiscardClick() {

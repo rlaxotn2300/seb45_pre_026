@@ -2,9 +2,9 @@ export const questionData = [
   {
     questionId: 0,
     title: 'How can I remove a specific item from an array in JavaScript?',
-    content: `How do I remove a specific value from an array? Something like: 
-    array.remove(value);
-    Constraints: I have to use core JavaScript. Frameworks are not allowed.`,
+    content: `<p>How do I remove a specific value from an array? Something like: </p>
+    <p>array.remove(value);</p>
+    <p>Constraints: I have to use core JavaScript. Frameworks are not allowed.</p>`,
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,

@@ -1,6 +1,10 @@
 import '../css/question.css';
 
 function Question({ data }) {
+  let contentWithNoSpace = data.content
+    .replace(/<p>/g, '')
+    .replace(/<\/p>/g, '');
+
   return (
     <div>
       <div className="question__container" key={data.questionId}>
@@ -19,7 +23,7 @@ function Question({ data }) {
         <div className="question__main">
           <div className="question__content-container">
             <div className="question__title">{data.title}</div>
-            <div className="question__content">{data.content}</div>
+            <div className="question__content">{contentWithNoSpace}</div>
           </div>
           <div className="question__bottom">
             <div>{data.date}</div>
