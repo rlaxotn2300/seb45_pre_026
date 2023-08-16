@@ -85,3 +85,7 @@
     background-color: #999999;
     margin-right: 10px;
 }
+
+.nav__github-ID:hover {
+    color: #000000;
+}
