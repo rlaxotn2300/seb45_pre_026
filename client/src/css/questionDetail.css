@@ -66,6 +66,13 @@
 .detail__content-container {
     width: 48.125rem;
 }
+
+.detail__content-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
 .detail__content-container > div {
     margin-left: 20px;
 }
@@ -75,7 +82,7 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 1.875rem;
-    padding-bottom: 1.25rem;
+    padding-bottom: 1.875rem;
     border-bottom: 1px solid #d6d9db;
 }
 
@@ -86,6 +93,7 @@
     background-color: #e3ecf4;
     display: flex;
     align-items: center;
+    margin-right: 0.625rem;
     padding: 0 15px;
     box-sizing: border-box;
     gap: 10px;

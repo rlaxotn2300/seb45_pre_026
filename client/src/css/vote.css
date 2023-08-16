@@ -1,0 +1,32 @@
+.vote__bg {
+    width: 2.8125rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4375rem;
+    margin-top: 5px;
+}
+
+.vote__btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid #d6d9db;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vote__btn:hover {
+    background-color: #fde3ce;
+}
+
+.vote__arrow {
+    width: 1.25rem;
+    height: 0.625rem;
+}
+
+.vote__number {
+    font-size: 20px;
+    font-weight: 600;
+}

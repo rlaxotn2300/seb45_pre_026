@@ -5,6 +5,7 @@ import Aside from '../component/Aside';
 import { questionData } from '../dummydata';
 import '../css/questionDetail.css';
 import edit from '../images/edit.png';
+import Vote from '../component/Vote';
 
 export default function QuestionDetail() {
   let { id } = useParams();
@@ -46,9 +47,12 @@ export default function QuestionDetail() {
         </div>
         <div className="detail__content-wrap">
           <div className="detail__content-container">
-            <div
-              dangerouslySetInnerHTML={{ __html: questionData[id].content }}
-            ></div>
+            <div className="detail__content-main">
+              <Vote />
+              <div
+                dangerouslySetInnerHTML={{ __html: questionData[id].content }}
+              ></div>
+            </div>
             <div className="detail__profile-wrap">
               <div className="detail__profile-container">
                 <div className="detail__profile-photo"></div>
