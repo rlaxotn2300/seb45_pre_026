@@ -1,16 +1,17 @@
 package com.preproject.stackOverflow.member.service;
 
-import com.preproject.stackOverflow.auth.utils.CustomAuthorityUtils;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
 import com.preproject.stackOverflow.exception.ExceptionCode;
 import com.preproject.stackOverflow.member.entity.Member;
 import com.preproject.stackOverflow.member.mapper.MemberMapper;
 import com.preproject.stackOverflow.member.repository.MemberRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Transactional
@@ -26,7 +27,6 @@ public class MemberService {
         this.passwordEncoder = passwordEncoder;
         this.memberMapper = memberMapper;
     }
-
 
     public Member createMember(Member member) {
         verifyExistsEmail(member.getEmail());
@@ -53,11 +53,15 @@ public class MemberService {
         return findVerifiedMember(memberId);
     }
 
+    public Page<Member> findMembers(int page, int size) {
+        return memberRepository.findAll(PageRequest.of(page, size,
+                Sort.by("memberId").descending()));
+    }
+
     public void deleteMember(long memberId) {
         Member findMember = findVerifiedMember(memberId);
         memberRepository.delete(findMember);
     }
-
 
     @Transactional(readOnly = true)
     public Member findVerifiedMember(long memberId) {
@@ -65,7 +69,6 @@ public class MemberService {
 
         return optionalMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
     }
-
 
     private void verifyExistsEmail(String email) {
         Optional<Member> member = memberRepository.findByEmail(email);

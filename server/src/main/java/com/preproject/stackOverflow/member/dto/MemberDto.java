@@ -53,57 +53,6 @@ public class MemberDto {
         private LocalDateTime modifiedTime;
     }
 
-//    @Getter
-//    @Builder
-//    public static class ResponseMyPage {
-//        private long memberId;
-//        private String name;
-//        private String email;
-//        private LocalDateTime createdTime;
-//        private LocalDateTime modifiedTime;
-//        private List<QuestionDto.QuestionMemberResponseForList> questions;
-//        private List<AnswerDto.AnswerMemberResponseForList> answers;
-//    }
-
-//    @AllArgsConstructor
-//    @NoArgsConstructor
-//    @Getter
-//    @Setter
-//    public static class GetResponse {
-//        private long memberId;
-//        private String email;
-//        private String name;
-//        private List<MyPageQuestion> questions;
-//        private List<MyPageAnswer> answers;
-//    }
-//
-//    @AllArgsConstructor
-//    @NoArgsConstructor
-//    @Getter
-//    @Setter
-//    public static class MyPageQuestion {
-//        private long questionId;
-//        private String title;
-//        private String content;
-//        private long vote;
-//        private List<String> tags;
-//        private LocalDateTime created_at;
-//        private LocalDateTime modified_at;
-//    }
-//
-//    @AllArgsConstructor
-//    @NoArgsConstructor
-//    @Getter
-//    @Setter
-//    public static class MyPageAnswer {
-//        private long answerId;
-//        private long questionId;
-//        private String content;
-//        private long vote;
-//        private LocalDateTime created_at;
-//        private LocalDateTime modified_at;
-//    }
-
 }
 
 

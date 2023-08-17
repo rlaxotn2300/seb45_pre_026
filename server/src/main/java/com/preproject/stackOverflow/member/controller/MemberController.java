@@ -1,10 +1,13 @@
 package com.preproject.stackOverflow.member.controller;
 
+import com.preproject.stackOverflow.dto.MultiResponseDto;
+import com.preproject.stackOverflow.dto.PageInfo;
 import com.preproject.stackOverflow.member.dto.MemberDto;
 import com.preproject.stackOverflow.member.entity.Member;
 import com.preproject.stackOverflow.member.mapper.MemberMapper;
 import com.preproject.stackOverflow.member.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -14,6 +17,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/member")
@@ -56,10 +61,20 @@ public class MemberController {
         return new ResponseEntity(memberResponse, HttpStatus.OK);
     }
 
+    @GetMapping
+    public ResponseEntity getMembers(@Positive @RequestParam int page,
+                                     @Positive @RequestParam int size) {
+        Page<Member> pageMembers = memberService.findMembers(page - 1, size);
+        List<Member> members = pageMembers.getContent();
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(mapper.membersToMemberResponses(members),
+                        (PageInfo) pageMembers),
+                HttpStatus.OK);
+    }
     @DeleteMapping("/delete")
     public ResponseEntity deleteMember(@PathVariable("member-id") long memberId) {
         memberService.deleteMember(memberId);
 
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
