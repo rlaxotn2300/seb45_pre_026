@@ -1,4 +1,6 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Answer from '../component/Answer';
 import Nav from '../component/Nav';
 import Aside from '../component/Aside';
@@ -10,6 +12,18 @@ import Vote from '../component/Vote';
 export default function QuestionDetail() {
   let { id } = useParams();
   const navigate = useNavigate();
+  const [data, setData] = useState('');
+
+  function getData() {
+    axios
+      .get(`http://localhost:5000/questionData?questionId=${id}`)
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      });
+  }
+
+  useEffect(() => getData(), []);
 
   function handleDeleteClick() {
     if (
@@ -27,7 +41,7 @@ export default function QuestionDetail() {
       <div className="detail__main">
         <div className="detail__top">
           <div className="detail__title-container">
-            <div className="detail__title">{questionData[id].title}</div>
+            <div className="detail__title">{data[0].title}</div>
             <div className="detail__btn-container">
               <button className="detail__btn" onClick={handleDeleteClick}>
                 Delete
