@@ -75,10 +75,10 @@
     background-color: #d6d9db;
 }
 .tag_box span{
-    margin-left: 10px;
+    margin-right: 10px;
     background: #b3d3ea;
-    padding:5px 10px;
-    font-size:0.9em;
+    padding: 5px 10px;
+    font-size: 0.9em;
     border-radius:5px;
 }
 
