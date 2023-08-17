@@ -1,6 +1,7 @@
 package com.preproject.stackOverflow.question.entity;
 
 
+import com.preproject.stackOverflow.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,10 +30,10 @@ public class Question {
     private String content;
 
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    @Column
-//    private Member member;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @Column
+    private Member member;
 //
 //    public void setMember(Member member){
 //        this.member = member;

@@ -1,16 +1,16 @@
 package com.preproject.stackOverflow.member.mapper;
 
-import com.preproject.stackOverflow.member.dto.MemberDTO.Patch;
-import com.preproject.stackOverflow.member.dto.MemberDTO.Post;
-import com.preproject.stackOverflow.member.dto.MemberDTO.Response;
+import com.preproject.stackOverflow.member.dto.MemberDto.Patch;
+import com.preproject.stackOverflow.member.dto.MemberDto.Post;
+import com.preproject.stackOverflow.member.dto.MemberDto.Response;
 import com.preproject.stackOverflow.member.entity.Member;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-16T20:34:46+0900",
-    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.19 (Azul Systems, Inc.)"
+    date = "2023-08-17T12:36:44+0900",
+    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.20 (Azul Systems, Inc.)"
 )
 @Component
 public class MemberMapperImpl implements MemberMapper {

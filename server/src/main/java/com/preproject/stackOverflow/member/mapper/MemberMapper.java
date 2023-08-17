@@ -1,18 +1,18 @@
 package com.preproject.stackOverflow.member.mapper;
 
 
-import com.preproject.stackOverflow.member.dto.MemberDTO;
+import com.preproject.stackOverflow.member.dto.MemberDto;
 import com.preproject.stackOverflow.member.entity.Member;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface MemberMapper {
-    Member memberPostToMember(MemberDTO.Post memberPostDto);
-    Member memberPatchToMember(MemberDTO.Patch memberPatchDto);
-    MemberDTO.Response memberToMemberResponseDTO(Member member);
+    Member memberPostToMember(MemberDto.Post memberPostDto);
+    Member memberPatchToMember(MemberDto.Patch memberPatchDto);
+    MemberDto.Response memberToMemberResponseDTO(Member member);
 
-    default MemberDTO.ResponseMyPage memberToMyPage(Member member){
-        return MemberDTO.ResponseMyPage.builder()
+    default MemberDto.ResponseMyPage memberToMyPage(Member member){
+        return MemberDto.ResponseMyPage.builder()
                 .memberId(member.getMemberId())
                 .name(member.getName())
                 .email(member.getEmail())

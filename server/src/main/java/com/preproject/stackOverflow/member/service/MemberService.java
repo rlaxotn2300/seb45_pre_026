@@ -13,20 +13,18 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Service
 @Transactional
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final MemberMapper memberMapper;
-    private final CustomAuthorityUtils authorityUtils;
 
-    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, MemberMapper memberMapper, CustomAuthorityUtils authorityUtils) {
+    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, MemberMapper memberMapper) {
         this.memberRepository = memberRepository;
         this.passwordEncoder = passwordEncoder;
         this.memberMapper = memberMapper;
-        this.authorityUtils = authorityUtils;
     }
 
 
@@ -35,9 +33,6 @@ public class MemberService {
 
         String encryptedPassword = passwordEncoder.encode(member.getPassword());
         member.setPassword(encryptedPassword);
-
-        List<String> roles = authorityUtils.createRoles(member.getEmail());
-        member.setRoles(roles);
 
         return memberRepository.save(member);
     }
@@ -53,16 +48,16 @@ public class MemberService {
 
         return memberRepository.save(findMember);
     }
+    @Transactional(readOnly = true)
+    public Member findMember(long memberId) {
+        return findVerifiedMember(memberId);
+    }
 
     public void deleteMember(long memberId) {
         Member findMember = findVerifiedMember(memberId);
         memberRepository.delete(findMember);
     }
 
-    @Transactional(readOnly = true)
-    public Member findMember(long memberId) {
-        return findVerifiedMember(memberId);
-    }
 
     @Transactional(readOnly = true)
     public Member findVerifiedMember(long memberId) {
@@ -71,23 +66,6 @@ public class MemberService {
         return optionalMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
     }
 
-//    private Member findVerifiedMember(String email) {
-//        Optional<Member> optionalMember = memberRepository.findByEmail(email);
-//        return optionalMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
-//    }
-
-    public boolean isVerifyExistsEmail(String email) {
-        Optional<Member> optionalMember = memberRepository.findByEmail(email);
-        if (optionalMember.isEmpty()) {
-            Member member = new Member();
-            member.setEmail(email);
-            member.setName("USER_" + System.currentTimeMillis());
-            member.setPassword(email + System.currentTimeMillis());
-            createMember(member);
-            return false;
-        }
-        return true;
-    }
 
     private void verifyExistsEmail(String email) {
         Optional<Member> member = memberRepository.findByEmail(email);

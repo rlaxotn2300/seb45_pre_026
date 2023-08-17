@@ -38,5 +38,5 @@ public interface AnswerMapper {
                 answer.getCreatedAt(),
                 answer.getModifiedAt());
     }
-    MemberDTO.Response memberToMemberResponseDto(Member member);
+    MemberDto.Response memberToMemberResponseDto(Member member);
 }
