@@ -11,6 +11,10 @@ export default function Search({ curPage, setCurPage }) {
   const keyWord = location.state.searchWord;
 
   const search_data = data.filter((el) => {
+    if (keyWord.includes('[')) {
+      const tagWord = keyWord.replace(/\[/g, '').replace(/\]/g, '');
+      return el.tag.includes(tagWord.toLowerCase());
+    }
     return (
       el.title.toLowerCase().includes(keyWord.toLowerCase()) ||
       el.content.toLowerCase().includes(keyWord.toLowerCase())
@@ -28,7 +32,7 @@ export default function Search({ curPage, setCurPage }) {
               <button>Ask Question</button>
             </Link>
           </div>
-          {!search_data ? (
+          {search_data.length >= 1 ? (
             search_data.map((data) => (
               <li key={data.questionId} className="list">
                 <Link to={`/question/${data.questionId}`} className="link">

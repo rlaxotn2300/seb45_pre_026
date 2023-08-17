@@ -8,7 +8,7 @@ export const questionData = [
     user: 'nickname',
     date: '2023/08/12',
     vote: 8,
-    tag: '타입스크립트',
+    tag: ['javascript', 'java'],
     answer: [
       {
         answerId: 0,
@@ -35,7 +35,7 @@ export const questionData = [
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: '타입스크립트',
+    tag: ['prettier', 'eslint'],
     answer: [
       {
         answerId: 0,
@@ -56,17 +56,17 @@ export const questionData = [
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: '타입스크립트',
+    tag: ['string', 'string boot'],
     answer: [],
   },
   {
     questionId: 3,
-    title: 'Removing elements from JavaScript arrays',
+    title: 'Removing elements from react arrays',
     content: `In JavaScript, how can I remove element from myArray and then recalculate indexes or is this not possible?`,
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: '타입스크립트',
+    tag: ['redux', 'axios'],
     answer: [
       {
         answerId: 0,
@@ -100,7 +100,7 @@ export const questionData = [
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: '타입스크립트',
+    tag: ['aws', 'mysql'],
     answer: [
       {
         answerId: 0,
@@ -118,7 +118,7 @@ export const questionData = [
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: '타입스크립트',
+    tag: ['html', 'css'],
     answer: [],
   },
   {
@@ -130,7 +130,7 @@ export const questionData = [
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: '타입스크립트',
+    tag: ['spring security'],
     answer: [],
   },
   {
@@ -142,7 +142,7 @@ export const questionData = [
     user: 'nickname',
     date: '2023/08/12',
     vote: 0,
-    tag: '타입스크립트',
+    tag: ['react'],
     answer: [
       {
         answerId: 0,
@@ -162,7 +162,7 @@ export const questionData = [
     user: 'hello',
     date: '2023/08/12',
     vote: 0,
-    tag: '타입스크립트',
+    tag: ['javascript'],
     answer: [],
   },
   {
@@ -174,7 +174,7 @@ export const questionData = [
     user: 'hello',
     date: '2023/08/12',
     vote: 0,
-    tag: '타입스크립트',
+    tag: ['spring'],
     answer: [
       {
         answerId: 0,
