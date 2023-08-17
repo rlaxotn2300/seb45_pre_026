@@ -7,7 +7,6 @@ import Aside from '../component/Aside';
 import '../css/questionDetail.css';
 import edit from '../images/edit.png';
 import Vote from '../component/Vote';
-// import questionData from '../dummydata';
 
 export default function QuestionDetail() {
   let { id } = useParams();
