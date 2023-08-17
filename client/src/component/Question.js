@@ -27,6 +27,11 @@ function Question({ data }) {
           </div>
           <div className="question__bottom">
             <div>{data.date}</div>
+            <div className="tag_box">
+              {data.tag.map((el) => (
+                <span key={el}>{el}</span>
+              ))}
+            </div>
             <div className="question__author">
               <div className="question__author-photo"></div>
               <div>{data.user}</div>
