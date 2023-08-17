@@ -10,17 +10,20 @@ export default function QuestionRegister() {
   const [isBodyEmpty, setIsBodyEmpty] = useState(false);
   const navigate = useNavigate();
   const [tagsList, setTagsList] = useState([]);
+
   const handleAddTag = (tag) => {
     if (!tagsList.includes(tag)) {
       return setTagsList([...tagsList, tag]);
     }
   };
+
   const handleMinusTag = (tag) =>
     setTagsList(
       tagsList.filter((el) => {
         return el !== tag;
       }),
     );
+
   const tags = [
     'html',
     'css',
