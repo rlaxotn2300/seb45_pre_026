@@ -57,7 +57,7 @@
       "user": "happy dog",
       "date": "2023/08/12",
       "vote": 1,
-      "tag": "[javascript],[react]",
+      "tag": "[javascript, react]",
       "answer": []
     },
     {
@@ -137,7 +137,7 @@
       "user": "nickname",
       "date": "2023/08/12",
       "vote": 11,
-      "tag": "[javascript], [axios]",
+      "tag": "[javascript, axios]",
       "answer": [
         {
           "answerId": 0,
