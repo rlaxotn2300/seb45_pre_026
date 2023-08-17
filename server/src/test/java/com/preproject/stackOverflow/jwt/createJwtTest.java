@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 class CreateJwtTest {
 
-    @Value("${custom.jwt.secretKey}")
+    @Value("${jwt.key.secret}")
     private String secretKeyPlain;
 
     @Test
