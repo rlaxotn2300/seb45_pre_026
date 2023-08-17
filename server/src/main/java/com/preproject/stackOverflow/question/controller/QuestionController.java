@@ -52,13 +52,14 @@ public class QuestionController {
     @Secured("ROLE_USER")
     //@PostMapping("/questions")
     @PostMapping
-    public ResponseEntity<Void> postQuestion(@Valid @RequestBody QuestionDto.Post questionPost) {
+    public ResponseEntity<Void> postQuestion(@Valid @RequestBody QuestionDto.Post questionPost,
+                                             @Positive long memberId) {
 
         //member 의 username 받기(일단은 받앗음..)
         String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
         questionPost.setMember(memberName);
 
-        Long questionId = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPost));
+        Long questionId = questionService.createQuestion((mapper.questionPostDtoToQuestion(questionPost)), memberId) ;
 
         URI uri = URI.create("/questions/" + questionId);
 
@@ -163,8 +164,8 @@ public class QuestionController {
     // 페이지번호는 0부터 시작해야 함..
     @GetMapping("/search")
     public ResponseEntity getQuestionsByTag ( @RequestParam @Positive int page,
-    @RequestParam @Positive int size,
-    @RequestParam String tag){
+                                                @RequestParam @Positive int size,
+                                                @RequestParam String tag){
 
         //List<String> tags = Arrays.asList(tag.split(",")); // 태그 리스트로 변환
 

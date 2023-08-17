@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,26 +44,37 @@ public class QuestionService {
 
 
     //질문등록
-    public Long createQuestion(Question question) {
-//        로그인한 유저만 작성할 수 있게 차후 수정 필요
-//        question.setUser(userService.getLoginUser());
-        String tag = question.getTag();
-        List<String> tagList = new ArrayList<>(Arrays.asList(tag.split("\\s*,\\s*")));
-        question.setTags(tagList);
-        question.setQuestionStatus(Question.QuestionStatus.QUESTION_ASKED);
-        question.setCreatedAt(question.getCreatedAt());
+    public Long createQuestion(Question question, long memberId) {
+        Question findQuestion = findVerifiedQuestion(question.getQuestionId());
+        Member questionAuthor = findQuestion.getMember();
+        Member loggedInMember = memberService.findVerifiedMember(memberId);
 
-        return questionRepository.save(question).getQuestionId();
-    }
+        if (questionAuthor.getMemberId() != loggedInMember.getMemberId()) {
+            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+        }
+
+            String tag = question.getTag();
+            List<String> tagList = new ArrayList<>(Arrays.asList(tag.split("\\s*,\\s*")));
+            question.setTags(tagList);
+            question.setQuestionStatus(Question.QuestionStatus.QUESTION_ASKED);
+            question.setCreatedAt(question.getCreatedAt());
+
+            return questionRepository.save(question).getQuestionId();
+        }
+
 
 
 
     //질문수정
-    public Question patchQuestion(Question question, long questionId) {
+
+    public Question patchQuestion(Question question, long memberId) {
         Question findQuestion = findVerifiedQuestion(question.getQuestionId());
-//        로그인 유저와 질문 작성 유저와 비교해서 같다면 수정, 아니라면 접근 금지 예외 발생
-        //if(findQuestion.getMember().getMemberId() != memberService.getLoginMember().getMemberId()) {
-            //throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+        Member questionAuthor = findQuestion.getMember();
+        Member loggedInMember = memberService.findVerifiedMember(memberId);
+
+        if (questionAuthor.getMemberId() != loggedInMember.getMemberId()) {
+            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+        }
 
         Optional.ofNullable(question.getTitle())
                 .ifPresent(title -> findQuestion.setTitle(title));

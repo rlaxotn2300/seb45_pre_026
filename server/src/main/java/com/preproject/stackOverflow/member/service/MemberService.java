@@ -71,10 +71,10 @@ public class MemberService {
         return optionalMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
     }
 
-//    private Member findVerifiedMember(String email) {
-//        Optional<Member> optionalMember = memberRepository.findByEmail(email);
-//        return optionalMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
-//    }
+    private Member findVerifiedMember(String email) {
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        return optionalMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+    }
 
     public boolean isVerifyExistsEmail(String email) {
         Optional<Member> optionalMember = memberRepository.findByEmail(email);
