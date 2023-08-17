@@ -105,6 +105,26 @@ export default function QuestionRegister() {
                 ) : null}
               </div>
             </div>
+            <div className="register__input-container">
+              <div className="register__title-container">
+                <div className="register__input-title">Body</div>
+                <div className="register__input-desc">
+                  The body of your question contains your problem details and
+                  results.
+                </div>
+                <textarea
+                  className={
+                    isBodyEmpty
+                      ? 'input input-red register__title-input register__body-input'
+                      : 'input input-gray register__title-input register__body-input'
+                  }
+                  onChange={(e) => handleBodyChange(e)}
+                ></textarea>
+                {isBodyEmpty ? (
+                  <div className="register__warning">Body cannot be empty.</div>
+                ) : null}
+              </div>
+            </div>
             {/* 태그 추가 */}
             <div className="tag_form">
               <div>
@@ -137,26 +157,6 @@ export default function QuestionRegister() {
               </div>
             </div>
             {/* 태그 추가 */}
-            <div className="register__input-container">
-              <div className="register__title-container">
-                <div className="register__input-title">Body</div>
-                <div className="register__input-desc">
-                  The body of your question contains your problem details and
-                  results.
-                </div>
-                <textarea
-                  className={
-                    isBodyEmpty
-                      ? 'input input-red register__title-input register__body-input'
-                      : 'input input-gray register__title-input register__body-input'
-                  }
-                  onChange={(e) => handleBodyChange(e)}
-                ></textarea>
-                {isBodyEmpty ? (
-                  <div className="register__warning">Body cannot be empty.</div>
-                ) : null}
-              </div>
-            </div>
           </div>
           <div className="register__side">
             <div className="register__side-wrap">
