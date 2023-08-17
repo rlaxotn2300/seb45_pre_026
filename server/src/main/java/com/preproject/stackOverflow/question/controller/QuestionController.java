@@ -117,10 +117,8 @@ public class QuestionController {
 
 
     //질문추천
-    @PostMapping("/{question-id}/up")
-    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id")
-                                            @Positive long questionId,
-                                           @Positive long memberId,
+    @PostMapping("/{question-id}/upvote")
+    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id") @Positive long questionId, @Positive long memberId,
                                            QuestionDto.Vote vote) {
 
         questionService.upVote(questionId, memberId);
@@ -131,7 +129,7 @@ public class QuestionController {
 
 
     //질문비추천
-    @PostMapping("/{question-id}/up")
+    @PostMapping("/{question-id}/downvote")
     public ResponseEntity<SingleResponseDto> downVote(@PathVariable("question-id")
                                  @Positive long questionId,
                                  @Positive long memberId,
