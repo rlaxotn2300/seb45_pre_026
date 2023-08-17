@@ -235,7 +235,7 @@
       </method>
     </configuration>
     <configuration name="StackOverflowApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="stackOverflow.main" />
+      <module name="com.preproject.stackOverflow.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.preproject.stackOverflow.StackOverflowApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -294,7 +294,8 @@
       <workItem from="1692206271565" duration="4308000" />
       <workItem from="1692231381427" duration="21022000" />
       <workItem from="1692261240488" duration="367000" />
-      <workItem from="1692262041334" duration="3541000" />
+      <workItem from="1692262041334" duration="5174000" />
+      <workItem from="1692287119070" duration="56000" />
     </task>
     <servers />
   </component>
