@@ -1,8 +1,9 @@
 package com.preproject.stackOverflow.question.mapper;
 
+import com.preproject.stackOverflow.answer.entity.Answer;
 import com.preproject.stackOverflow.question.dto.QuestionDto.Response;
+import com.preproject.stackOverflow.question.dto.QuestionDto.Vote;
 import com.preproject.stackOverflow.question.entity.Question;
-import com.preproject.stackOverflow.question.entity.Question.QuestionStatus;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-17T14:42:19+0900",
+    date = "2023-08-17T17:51:27+0900",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.20 (Azul Systems, Inc.)"
 )
 @Component
@@ -26,28 +27,38 @@ public class QuestionMapperImpl implements QuestionMapper {
         long questionId = 0L;
         String title = null;
         String content = null;
-        String tag = null;
         List<String> tags = null;
         long vote = 0L;
         LocalDateTime createdAt = null;
-        LocalDateTime modifiedAt = null;
-        QuestionStatus questionStatus = null;
 
         questionId = response.getQuestionId();
         title = response.getTitle();
         content = response.getContent();
-        tag = response.getTag();
         List<String> list = response.getTags();
         if ( list != null ) {
             tags = new ArrayList<String>( list );
         }
         vote = response.getVote();
         createdAt = response.getCreatedAt();
-        modifiedAt = response.getModifiedAt();
-        questionStatus = response.getQuestionStatus();
 
-        Response response1 = new Response( questionId, title, content, tag, tags, vote, createdAt, modifiedAt, questionStatus );
+        Answer answer = null;
+
+        Response response1 = new Response( answer, questionId, title, content, tags, vote, createdAt );
 
         return response1;
+    }
+
+    @Override
+    public Question questionVoteToQuestion(Vote questionVote) {
+        if ( questionVote == null ) {
+            return null;
+        }
+
+        Question question = new Question();
+
+        question.setQuestionId( questionVote.getQuestionId() );
+        question.setVote( questionVote.getVote() );
+
+        return question;
     }
 }

@@ -19,20 +19,15 @@ import java.util.Optional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    private final PasswordEncoder passwordEncoder;
     private final MemberMapper memberMapper;
 
-    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, MemberMapper memberMapper) {
+    public MemberService(MemberRepository memberRepository, MemberMapper memberMapper) {
         this.memberRepository = memberRepository;
-        this.passwordEncoder = passwordEncoder;
         this.memberMapper = memberMapper;
     }
 
     public Member createMember(Member member) {
         verifyExistsEmail(member.getEmail());
-
-        String encryptedPassword = passwordEncoder.encode(member.getPassword());
-        member.setPassword(encryptedPassword);
 
         return memberRepository.save(member);
     }
