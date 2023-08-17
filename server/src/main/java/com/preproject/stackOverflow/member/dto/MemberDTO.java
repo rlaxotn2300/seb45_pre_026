@@ -61,7 +61,7 @@ public class MemberDTO {
         private LocalDateTime createdTime;
         private LocalDateTime modifiedTime;
         private List<QuestionDto.QuestionMemberResponseForList> questions;
-        private List<AnswerDto.AnswerMemberResponseForList> answers;
+        //private List<AnswerDto.AnswerMemberResponseForList> answers;
     }
 
     @AllArgsConstructor

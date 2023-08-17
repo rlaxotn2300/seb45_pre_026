@@ -32,14 +32,13 @@ public class Question {
     private String content;
 
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    @Column
-//    private Member member;
-//
-//    public void setMember(Member member){
-//        this.member = member;
-//    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    public void setMember(Member member){
+        this.member = member;
+    }
 
 
 
@@ -56,6 +55,15 @@ public class Question {
     private String tag;
 
 
+    @ElementCollection
+    public List<Long> upVotedMemberId = new ArrayList<>();
+
+    @ElementCollection
+    public List<Long> downVotedMemberId = new ArrayList<>();
+
+
+
+
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "QUESTION_TAG_LIST", joinColumns = @JoinColumn(name = "QUESTION_ID"))
@@ -69,7 +77,6 @@ public class Question {
 
     @Column(nullable = false, name = "LAST_MODIFIED_AT")
     private LocalDateTime modifiedAt = LocalDateTime.now();
-
 
 
 

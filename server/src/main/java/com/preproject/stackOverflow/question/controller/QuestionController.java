@@ -7,6 +7,7 @@ import com.preproject.stackOverflow.dto.SingleResponseDto;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
 import com.preproject.stackOverflow.exception.ExceptionCode;
 import com.preproject.stackOverflow.member.entity.Member;
+import com.preproject.stackOverflow.member.service.MemberService;
 import com.preproject.stackOverflow.question.dto.QuestionDto;
 import com.preproject.stackOverflow.question.entity.Question;
 import com.preproject.stackOverflow.question.mapper.QuestionMapper;
@@ -15,55 +16,70 @@ import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 
 @Validated
 @RestController
-@RequestMapping("/question")
+//@RequestMapping("/question")
+@RequestMapping("/questions")
 public class QuestionController {
     private final QuestionService questionService;
     private final QuestionMapper mapper;
+    private final MemberService memberService;
 
 
-    public QuestionController(QuestionService questionService, QuestionMapper mapper) {
+    public QuestionController(QuestionService questionService, QuestionMapper mapper, MemberService memberService) {
         this.questionService = questionService;
         this.mapper = mapper;
+        this.memberService = memberService;
     }
 
 
     //질문 등록
-    //@Secured("ROLE_USER")
-    @PostMapping("/questions")
-    public ResponseEntity postQuestion(@Valid @RequestBody QuestionDto.Post questionPost) {
+    @Secured("ROLE_USER")
+    //@PostMapping("/questions")
+    @PostMapping
+    public ResponseEntity<Void> postQuestion(@Valid @RequestBody QuestionDto.Post questionPost) {
 
-        //member 의 username 받기
-        //String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
+        //member 의 username 받기(일단은 받앗음..)
+        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
+        questionPost.setMember(memberName);
 
-//        로그인한 유저만 글 등록하는 로직 추가 예정
-        Question question = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPost));
-        QuestionDto.Response response = mapper.questionToQuestionResponseDto(question);
+        Long questionId = questionService.createQuestion(mapper.questionPostDtoToQuestion(questionPost));
 
-        return new ResponseEntity(//new SingleResponseDto<>(response),
-                HttpStatus.CREATED);
+        URI uri = URI.create("/questions/" + questionId);
+
+        return ResponseEntity.created(uri).build();
     }
 
 
     //질문 수정
-    // @Secured("ROLE_USER")
-    @PatchMapping("{question-id}")
-    public ResponseEntity patchQuestion(@RequestBody QuestionDto.Patch patchDto,
+    @Secured("ROLE_USER")
+    @PatchMapping("/{question-id}")
+    public ResponseEntity<Question> patchQuestion(@RequestBody QuestionDto.Patch patchDto,
                                         @PathVariable("question-id")
-                                        @Positive long questionId) {
+                                        @Positive long questionId,
+                                                  @Positive long memberId) {
 
-        //작성자만 수정할 수 있는 로직 추가 예정
+        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        if (!memberService.findMember(memberId).equals(memberName)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+
         Question response = questionService.patchQuestion(mapper.questionPatchDtoToQuestion(patchDto), questionId);
         QuestionDto.Response question = mapper.questionToQuestionResponseDto(response);
 
@@ -73,9 +89,10 @@ public class QuestionController {
 
 
     //질문 1개 조회
-    @GetMapping("{question-id}")
-    public ResponseEntity findQuestion(@PathVariable("question-id")
+    @GetMapping("/{question-id}")
+    public ResponseEntity<Question> findQuestion(@PathVariable("question-id")
                                        @Positive long questionId) {
+
         Question question = questionService.findQuestion(questionId);
         QuestionDto.Response response = mapper.questionToQuestionResponseDto(question);
 
@@ -85,91 +102,88 @@ public class QuestionController {
 
     //전체 질문 조회 : http://localhost:8080/question/?page=1&size=10&tag=java,spring
     @GetMapping("/")
-    public ResponseEntity findQuestions(@Positive @RequestParam(required = false) int page,
-                                        @Positive @RequestParam int size) {
+    public ResponseEntity<Question> findQuestions(@Positive @RequestParam int page,
+                                                  @Positive @RequestParam int size) {
+
         Page<Question> pageQuestion = questionService.findQuestions(page - 1, size);
         PageInfo pageInfo = new PageInfo(page, size, pageQuestion.getTotalElements(), pageQuestion.getTotalPages());
+
         List<Question> questions = pageQuestion.getContent();
         List<QuestionDto.Response> responses = mapper.questionsToQuestionResponseDtos(questions);
 
-
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder
-                .fromPath("/api/questions/")
-                .queryParam("page", page)
-                .queryParam("size", size);
-
-        return ResponseEntity.ok()
-                .location(uriBuilder.build().toUri())
-                .body(new MultiResponseDto<>(responses, pageInfo));
+        return new ResponseEntity(responses, HttpStatus.OK);
     }
 
 
     //질문추천
     @PostMapping("/{question-id}/up")
-    public ResponseEntity upVote(@PathVariable("question-id")
-                                 @Positive long questionId) {
-       // Question findQuestion = questionService.findQuestion(questionId);
-        Question vote = questionService.upVote(questionId);
-        QuestionDto.Response response = mapper.questionToQuestionResponseDto(vote);
+    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id")
+                                            @Positive long questionId,
+                                           @Positive long memberId,
+                                           QuestionDto.Vote vote) {
 
-        return new ResponseEntity(response, HttpStatus.OK);
+        questionService.upVote(questionId, memberId);
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.questionVoteToQuestion(vote)), HttpStatus.OK
+        );
     }
 
 
     //질문비추천
-    @PostMapping("/{question-id}/down")
-    public ResponseEntity downVote(@PathVariable("question-id")
-                                   @Positive long questionId) {
-        Question findQuestion = questionService.findQuestion(questionId);
-        Question vote = questionService.downVote(questionId);
-        QuestionDto.Response response = mapper.questionToQuestionResponseDto(vote);
+    @PostMapping("/{question-id}/up")
+    public ResponseEntity<SingleResponseDto> downVote(@PathVariable("question-id")
+                                 @Positive long questionId,
+                                 @Positive long memberId,
+                                 QuestionDto.Vote vote) {
 
-        return new ResponseEntity(response, HttpStatus.OK);
+        questionService.downVote(questionId, memberId);
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.questionVoteToQuestion(vote)), HttpStatus.OK
+        );
     }
 
 
     //질문 삭제
-    // @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @DeleteMapping("{question-id}")
     public ResponseEntity deleteQuestion(@PathVariable("question-id")
-                                         @Positive long questionId,
-                                         Question question, Member member) {
+                                              @Positive long questionId
+                                              ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
 
-//        if (question.getMember().getMemberId() == member.getMemberId() && !member.getEmail().equals("admin@gmail.com")) { //작성자만 삭제 할 수 있음
-//            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
-//        }
-            questionService.deleteQuestion(questionId);
+        questionService.deleteQuestion(email, questionId);
 
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted");
-        }
-
-
-
-        //태그검색 :http://localhost:8080/question/search/?page=1&size=10&tag=tag
-        // 페이지번호는 0부터 시작해야 함..
-        @GetMapping("/search")
-        public ResponseEntity getQuestionsByTag ( @RequestParam @Positive int page,
-        @RequestParam @Positive int size,
-        @RequestParam String tag){
-
-            //List<String> tags = Arrays.asList(tag.split(",")); // 태그 리스트로 변환
-
-            Page<Question> tagPage = questionService.findAllByTags(tag, page - 1, size);
-
-            if (tagPage.isEmpty()) {
-                throw new BusinessLogicException(ExceptionCode.TAG_NOT_FOUND); // 예외 발생
-            }
-
-            PageInfo pageInfo = new PageInfo(page, size, tagPage.getTotalElements(), tagPage.getTotalPages());
-
-            List<Question> questions = tagPage.getContent();
-            List<QuestionDto.Response> responses = mapper.questionsToQuestionResponseDtos(questions);
-
-            MultiResponseDto<QuestionDto.Response> multiResponseDto = new MultiResponseDto<>(responses, pageInfo);
-
-            return ResponseEntity.ok().body(multiResponseDto);
-        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted");
     }
+
+
+
+    //태그검색 :http://localhost:8080/question/search/?page=1&size=10&tag=tag
+    // 페이지번호는 0부터 시작해야 함..
+    @GetMapping("/search")
+    public ResponseEntity getQuestionsByTag ( @RequestParam @Positive int page,
+    @RequestParam @Positive int size,
+    @RequestParam String tag){
+
+        //List<String> tags = Arrays.asList(tag.split(",")); // 태그 리스트로 변환
+
+        Page<Question> tagPage = questionService.findAllByTags(tag, page - 1, size);
+
+        if (tagPage.isEmpty()) {
+            throw new BusinessLogicException(ExceptionCode.TAG_NOT_FOUND); // 예외 발생
+        }
+
+        PageInfo pageInfo = new PageInfo(page, size, tagPage.getTotalElements(), tagPage.getTotalPages());
+
+        List<Question> questions = tagPage.getContent();
+        List<QuestionDto.Response> responses = mapper.questionsToQuestionResponseDtos(questions);
+
+        MultiResponseDto<QuestionDto.Response> multiResponseDto = new MultiResponseDto<>(responses, pageInfo);
+
+        return ResponseEntity.ok().body(multiResponseDto);
+    }
+}
 
 
 
@@ -252,4 +266,15 @@ public Question createQuestion(Question question, String memberEmail){
                 .body(multiResponseDto);
 
 
+
+
+
+             UriComponentsBuilder uriBuilder = UriComponentsBuilder
+                .fromPath("/api/questions/")
+                .queryParam("page", page)
+                .queryParam("size", size);
+
+        return ResponseEntity.ok()
+                .location(uriBuilder.build().toUri())
+                .body(new MultiResponseDto<>(responses, pageInfo));
      */

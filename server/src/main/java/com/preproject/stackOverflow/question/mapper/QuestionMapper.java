@@ -1,6 +1,7 @@
 package com.preproject.stackOverflow.question.mapper;
 
 
+import com.preproject.stackOverflow.answer.entity.Answer;
 import com.preproject.stackOverflow.question.dto.QuestionDto;
 import com.preproject.stackOverflow.question.entity.Question;
 import org.mapstruct.Mapper;
@@ -39,6 +40,8 @@ public interface QuestionMapper {
     QuestionDto.Response questionToQuestionResponseDto(Question response);
 
 
+
+
     @Mapping(target = "tags", source = "tag")
     default Question questionPatchDtoToQuestion(QuestionDto.Patch questionPatch) {
         if (questionPatch == null) {
@@ -72,6 +75,11 @@ public interface QuestionMapper {
                 .map(this::questionToQuestionResponseDto)
                 .collect(Collectors.toList());
     }
+
+
+    Question questionVoteToQuestion(QuestionDto.Vote questionVote);
+
+
 
 
 //    default QuestionDto.Response questionToResponseDto(Question question) {

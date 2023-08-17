@@ -2,12 +2,14 @@ package com.preproject.stackOverflow.question.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.preproject.stackOverflow.answer.entity.Answer;
 import com.preproject.stackOverflow.question.entity.Question;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -23,7 +25,7 @@ public class QuestionDto {
     @Getter
     @Setter
     public static class Post {
-        //private long memberId;
+        private String member;
         @NotBlank(message = "제목은 공백이 아니어야 합니다.")
         private String title;
         @NotBlank(message = "내용을 입력하세요.")
@@ -59,6 +61,7 @@ public class QuestionDto {
     @AllArgsConstructor
     public static class Response {
         //private long memberId;
+        private Answer answer;
         private long questionId;
         private String title;
         private String content;
@@ -70,4 +73,30 @@ public class QuestionDto {
         //private Question.QuestionStatus questionStatus;
 
     }
+
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    public static class Vote{
+        private long questionId;
+        private long vote;
+
+    }
+
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    public static  class QuestionMemberResponseForList{
+        private long questionId;
+        private String title;
+        private String content;
+        private List<String> tags;
+        private long vote;
+        private Question.QuestionStatus questionStatus;
+    }
+
+
+
 }

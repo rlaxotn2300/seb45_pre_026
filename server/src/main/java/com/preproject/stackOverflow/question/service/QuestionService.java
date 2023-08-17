@@ -1,10 +1,16 @@
 package com.preproject.stackOverflow.question.service;
 
 
+import com.preproject.stackOverflow.answer.entity.Answer;
+import com.preproject.stackOverflow.answer.service.AnswerService;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
 import com.preproject.stackOverflow.exception.ExceptionCode;
+import com.preproject.stackOverflow.member.entity.Member;
+import com.preproject.stackOverflow.member.repository.MemberRepository;
+import com.preproject.stackOverflow.member.service.MemberService;
 import com.preproject.stackOverflow.question.entity.Question;
 import com.preproject.stackOverflow.question.repository.QuestionRepository;
+import lombok.Getter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,14 +30,20 @@ import java.util.Optional;
 public class QuestionService {
 
     private QuestionRepository questionRepository;
+    private MemberRepository memberRepository;
+    private MemberService memberService;
 
-    public QuestionService(QuestionRepository questionRepository) {
+    public QuestionService(QuestionRepository questionRepository,
+                           MemberRepository memberRepository,
+                           MemberService memberService) {
         this.questionRepository = questionRepository;
+        this.memberRepository = memberRepository;
+        this.memberService = memberService;
     }
 
 
     //질문등록
-    public Question createQuestion(Question question) {
+    public Long createQuestion(Question question) {
 //        로그인한 유저만 작성할 수 있게 차후 수정 필요
 //        question.setUser(userService.getLoginUser());
         String tag = question.getTag();
@@ -40,7 +52,7 @@ public class QuestionService {
         question.setQuestionStatus(Question.QuestionStatus.QUESTION_ASKED);
         question.setCreatedAt(question.getCreatedAt());
 
-        return questionRepository.save(question);
+        return questionRepository.save(question).getQuestionId();
     }
 
 
@@ -58,6 +70,7 @@ public class QuestionService {
                 .ifPresent(content -> findQuestion.setContent(content));
         Optional.ofNullable(question.getTag())
                 .ifPresent(tag -> findQuestion.setTag(tag));
+
 
         String tag = question.getTag();
         List<String> tagList = new ArrayList<>(Arrays.asList(tag.split(", ")));
@@ -90,31 +103,68 @@ public class QuestionService {
 
 
 
-    //질문추천
-    public Question upVote(long questionId) {
-        Question findQuestion = findVerifiedQuestion(questionId);
-        verifiedVote(questionId); //중복투표방지
-        findQuestion.setVote(findQuestion.getVote() + 1);
-        return questionRepository.save(findQuestion);
+    // 추천
+    public void upVote(long questionId, long memberId) {
+
+        memberService.findMember(memberId);
+        Question question = findVerifiedQuestion(questionId);
+        QuestionService.VoteStatus voteStatus = getMemberVoteStatus(question, memberId);
+        long voteCount = question.getVote();
+
+        if (voteStatus == QuestionService.VoteStatus.NONE) { //투표가 처음이면 +1카운트
+            question.upVotedMemberId.add(memberId);
+            voteCount++;
+        } else if (voteStatus.equals(QuestionService.VoteStatus.ALREADY_UP_VOTED)){
+            throw new BusinessLogicException(ExceptionCode.ALREADY_UP_VOTED);
+        } else if (voteStatus.equals(QuestionService.VoteStatus.ALREADY_DOWN_VOTED)){
+            question.downVotedMemberId.remove(memberId);
+            voteCount++;
+        }
+        question.setVote(voteCount);
+
     }
 
 
     //질문 비추천
-    public Question downVote(long questionId) {
-        Question findQuestion = findVerifiedQuestion(questionId);
-        verifiedVote(questionId);  //중복투표방지
-        findQuestion.setVote(findQuestion.getVote() - 1);
-        return questionRepository.save(findQuestion);
+    public void downVote(long questionId, long memberId) {
+
+        memberService.findMember(memberId);
+        Question question = findVerifiedQuestion(questionId);
+        QuestionService.VoteStatus voteStatus = getMemberVoteStatus(question, memberId);
+        long voteCount = question.getVote();
+
+        if (voteStatus == QuestionService.VoteStatus.NONE) { //투표가 처음이면 +1카운트
+            question.downVotedMemberId.add(memberId);
+            voteCount--;
+        } else if (voteStatus.equals(QuestionService.VoteStatus.ALREADY_UP_VOTED)){
+            throw new BusinessLogicException(ExceptionCode.ALREADY_UP_VOTED);
+
+        } else if (voteStatus.equals(QuestionService.VoteStatus.ALREADY_DOWN_VOTED)){
+            question.downVotedMemberId.remove(memberId);
+            voteCount--;
+        }
+        question.setVote(voteCount);
+
     }
 
 
 
     //질문 삭제(태그도 함께 삭제됨)
-    public void deleteQuestion(long questionId) {
-        Optional<Question> findQuestion = questionRepository.findById(questionId);
-        if (findQuestion.isPresent()) {
-            questionRepository.deleteById(questionId);
+    public void deleteQuestion(String email, long questionId) {
+
+        Member member = memberRepository.findByEmail(email).orElseThrow(
+                () -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND)
+        );
+
+        Question findQuestion = questionRepository.findById(questionId).orElseThrow(
+                () -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND)
+        );
+
+        if(findQuestion.getMember().getMemberId() != member.getMemberId()){
+            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
         }
+
+        questionRepository.deleteById(questionId);
     }
 
 
@@ -135,16 +185,41 @@ public class QuestionService {
 
 
     //투표여부검증
-    public Question verifiedVote(long questionId) {
-        Question question = findVerifiedQuestion(questionId);
-
-        if (question.getVote() == 1) {
-            throw new BusinessLogicException(ExceptionCode.ALREADY_UP_VOTED);
-        } else if (question.getVote() == -1) {
-            throw new BusinessLogicException(ExceptionCode.ALREADY_DOWN_VOTED);
+    public QuestionService.VoteStatus getMemberVoteStatus(Question question, long memberId) {
+        if (question.getUpVotedMemberId().contains(memberId)) {
+            return QuestionService.VoteStatus.ALREADY_UP_VOTED;
+        } else if (question.getDownVotedMemberId().contains(memberId)) {
+            return QuestionService.VoteStatus.ALREADY_DOWN_VOTED;
+        } else {
+            return VoteStatus.NONE;
         }
+    }
 
-        return question;
+
+
+    public long getVote(long questionId) {
+
+        long voteCount = findQuestion(questionId).getVote();
+        return voteCount;
+    }
+
+
+    public enum VoteStatus {
+        ALREADY_UP_VOTED(1, "already upVoted"),
+        NONE(2, "none"),
+        ALREADY_DOWN_VOTED(3, "already downVoted");
+
+        @Getter
+        private int status;
+
+        @Getter
+        private String message;
+
+
+        VoteStatus(int status, String message) {
+            this.status = status;
+            this.message = message;
+        }
     }
 }
 
