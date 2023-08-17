@@ -28,13 +28,14 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Arrays;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-public class SecurityConfiguration {
+public class SecurityConfiguration implements WebMvcConfigurer {
 
     @Value("${spring.security.oauth2.client.registration.google.clientId}")
     private String clientId;
@@ -42,10 +43,10 @@ public class SecurityConfiguration {
     @Value("${spring.security.oauth2.client.registration.google.clientSecret}")
     private String clientSecret;
 
-    private final MemberService memberService;
     private final MemberRepository memberRepository;
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
+    private final MemberService memberService;
 
     public SecurityConfiguration(MemberRepository memberRepository, JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils, MemberService memberService) {
         this.memberRepository = memberRepository;
@@ -72,10 +73,10 @@ public class SecurityConfiguration {
                 .apply(new CustomFilterConfigurer())
                 .and()
                 .authorizeHttpRequests(authorize -> authorize                        //수정
-                        .antMatchers(HttpMethod.POST, "/member").permitAll()
-                        .antMatchers(HttpMethod.PATCH, "/member/**").hasRole("USER")
-                        .antMatchers(HttpMethod.GET, "/member").hasRole("ADMIN")
-                        .antMatchers(HttpMethod.DELETE, "/member/**").hasRole("USER")
+                        .antMatchers(HttpMethod.POST, "/member/**").permitAll()
+                        //.antMatchers(HttpMethod.PATCH, "/member/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/question/**").permitAll()
+                        //.antMatchers(HttpMethod.DELETE, "/member/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2
@@ -94,6 +95,7 @@ public class SecurityConfiguration {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
@@ -114,7 +116,7 @@ public class SecurityConfiguration {
             builder
                     .addFilter(jwtAuthenticationFilter)
                     .addFilterAfter(jwtVerificationFilter, JwtAuthenticationFilter.class)
-                    .addFilterAfter(jwtVerificationFilter, OAuth2LoginAuthenticationFilter.class);;
+                    .addFilterAfter(jwtVerificationFilter, OAuth2LoginAuthenticationFilter.class);
         }
     }
 

@@ -18,7 +18,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, nickname: action.payload };
     case 'SET_PASSWORD':
       return { ...state, password: action.payload };
-    case 'SET_questionData':
+    case 'SET_QUESTIONDATA':
       return { ...state, questionData: action.payload };
     default:
       return state;

@@ -1,7 +1,9 @@
 package com.preproject.stackOverflow.question.entity;
 
 
+
 import com.preproject.stackOverflow.answer.entity.Answer;
+
 import com.preproject.stackOverflow.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +35,7 @@ public class Question {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
+
     @JoinColumn(name = "memberId")
     private Member member;
 
@@ -46,9 +49,7 @@ public class Question {
     private List<Answer> answerList = new ArrayList<>();
 
 
-
     @Column(nullable = true)
-
     private long vote;
 
     @Column(nullable = true)

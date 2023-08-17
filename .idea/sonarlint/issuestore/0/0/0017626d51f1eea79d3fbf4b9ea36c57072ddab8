@@ -1,0 +1,5 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Û×õÏúÿÿÿÿ
+Q	java:S125J"<This block of commented-out lines of code should be removed.(Ï³Àï
+M
+java:S1068"0Remove this unused "memberMapper" private field.(œÛ¼ê8·åíŸ1

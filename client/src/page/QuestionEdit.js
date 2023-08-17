@@ -18,6 +18,37 @@ export default function QuestionEdit() {
   const [bodyData, setBodyData] = useState('');
   const [isBodyEmpty, setIsBodyEmpty] = useState(false);
   const navigate = useNavigate();
+  const [tagsList, setTagsList] = useState(questionData[id].tag);
+
+  const handleAddTag = (tag) => {
+    if (!tagsList.includes(tag)) {
+      return setTagsList([...tagsList, tag]);
+    }
+  };
+
+  const handleMinusTag = (tag) =>
+    setTagsList(
+      tagsList.filter((el) => {
+        return el !== tag;
+      }),
+    );
+
+  const tags = [
+    'html',
+    'css',
+    'javascript',
+    'react',
+    'redux',
+    'axios',
+    'eslint',
+    'prettier',
+    'java',
+    'spring',
+    'spring boot',
+    'spring security',
+    'mysql',
+    'aws',
+  ];
 
   function handleTitleChange(e) {
     setTitle(e.target.value);
@@ -107,6 +138,38 @@ export default function QuestionEdit() {
                 ) : null}
               </div>
             </div>
+            {/* 태그 추가 */}
+            <div className="tag_form">
+              <div>
+                <div className="tag-title">List of tags you added</div>
+                <div className="register__tag-title">
+                  {tagsList.map((el, index) => (
+                    <button
+                      key={index}
+                      className="tag"
+                      onClick={() => handleMinusTag(el)}
+                    >
+                      {el}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="tag-title second">Tag List</div>
+                <div className="register__tag-title">
+                  {tags.map((el, index) => (
+                    <button
+                      key={index}
+                      className="tag"
+                      onClick={() => handleAddTag(el)}
+                    >
+                      {el}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            {/* 태그 추가 */}
           </div>
           <div className="register__side">
             <div className="register__side-wrap">

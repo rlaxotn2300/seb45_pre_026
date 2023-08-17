@@ -2,6 +2,8 @@ package com.preproject.stackOverflow.answer.mapper;
 
 import com.preproject.stackOverflow.answer.dto.AnswerDto;
 import com.preproject.stackOverflow.answer.entity.Answer;
+import com.preproject.stackOverflow.member.dto.MemberDto.Response;
+import com.preproject.stackOverflow.member.entity.Member;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -9,12 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2023-08-15T17:36:03+0900",
-=======
-    date = "2023-08-15T16:53:30+0900",
->>>>>>> 23981053ca339da053ccac2f15ef2055d9702f1f
-    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.19 (Azul Systems, Inc.)"
+    date = "2023-08-17T14:42:19+0900",
+    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.20 (Azul Systems, Inc.)"
 )
 @Component
 public class AnswerMapperImpl implements AnswerMapper {
@@ -48,5 +46,20 @@ public class AnswerMapperImpl implements AnswerMapper {
         }
 
         return list;
+    }
+
+    @Override
+    public Response memberToMemberResponseDto(Member member) {
+        if ( member == null ) {
+            return null;
+        }
+
+        Response response = new Response();
+
+        response.setMemberId( member.getMemberId() );
+        response.setEmail( member.getEmail() );
+        response.setName( member.getName() );
+
+        return response;
     }
 }

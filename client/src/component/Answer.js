@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import '../css/answer.css';
 import '../css/component.css';
+import Vote from './Vote';
 
 export default function Answer({ questionData }) {
   const [answer, setAnswer] = useState('');
   const [isAnswerEmpty, setIsAnswerEmpty] = useState(false);
-  let { id } = useParams();
 
   function handleAnswerChange(e) {
     if (e.target.value !== '') setIsAnswerEmpty(false);
@@ -17,24 +16,27 @@ export default function Answer({ questionData }) {
     setIsAnswerEmpty(false);
 
     if (answer === '') setIsAnswerEmpty(true);
-    console.log(answer);
+    console.log(questionData.answer.length);
   }
 
   return (
     <div className="answer__bg">
-      {questionData[id].answer.length > 1 ? (
+      {questionData.answer?.length > 1 ? (
         <div className="answer__title">
-          {questionData[id].answer.length} Answers
+          {questionData.answer?.length} Answers
         </div>
-      ) : questionData[id].answer.length === 1 ? (
+      ) : questionData.answer?.length === 1 ? (
         <div className="answer__title">
-          {questionData[id].answer.length} Answer
+          {questionData.answer?.length} Answer
         </div>
       ) : null}
-      {questionData[id].answer
-        ? questionData[id].answer.map((el) => (
+      {questionData.answer
+        ? questionData.answer.map((el) => (
             <div key={el.answerId} className="list answer__content-container">
-              <div className="answer__content">{el.content}</div>
+              <div className="answer__content-wrap">
+                <Vote voteNumber={el.vote} />
+                <div className="answer__content">{el.content}</div>
+              </div>
               <div className="answer__bottom">
                 <div>{el.date}</div>
                 <div>Answered by {el.user}</div>

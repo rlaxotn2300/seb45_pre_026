@@ -3,6 +3,7 @@ package com.preproject.stackOverflow.auth.filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.preproject.stackOverflow.auth.jwt.JwtTokenizer;
 import com.preproject.stackOverflow.member.entity.Member;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,15 +20,11 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 import java.util.HashMap;
-
+@RequiredArgsConstructor
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenizer jwtTokenizer;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, JwtTokenizer jwtTokenizer) {
-        this.authenticationManager = authenticationManager;
-        this.jwtTokenizer = jwtTokenizer;
-    }
 
     @SneakyThrows
     @Override

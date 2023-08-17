@@ -25,7 +25,6 @@ function Nav({ curPage, setCurPage }) {
   function handleMenuChange(e) {
     if (e.target.innerText === 'Tags') setCurPage('tags');
     else if (e.target.innerText === 'User') setCurPage('user');
-    else if (e.target.innerText === 'Companies') setCurPage('companies');
     else setCurPage('questions');
   }
 
@@ -82,17 +81,6 @@ function Nav({ curPage, setCurPage }) {
             onClick={(e) => handleMenuChange(e)}
           >
             User
-          </div>
-        </Link>
-        <Link to="/companies" className="link">
-          <div
-            className={
-              curPage === 'companies' ? 'nav__menu nav__focused' : 'nav__menu'
-            }
-            role="presentation"
-            onClick={(e) => handleMenuChange(e)}
-          >
-            Companies
           </div>
         </Link>
       </div>

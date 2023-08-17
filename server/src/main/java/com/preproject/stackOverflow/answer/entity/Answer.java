@@ -1,6 +1,7 @@
 package com.preproject.stackOverflow.answer.entity;
 
 
+import com.preproject.stackOverflow.member.entity.Member;
 import com.preproject.stackOverflow.question.entity.Question;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +25,9 @@ public class Answer {
     @Column(nullable = false, name = "status")
     private AnswerStatus answerStatus = AnswerStatus.ANSWER_NORMAL;
 
-//    @ManyToOne
-//    @JoinColumn(name = "member_id")
-//    private Member member;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")

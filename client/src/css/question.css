@@ -74,3 +74,20 @@
     border-radius: 5px;
     background-color: #d6d9db;
 }
+.tag_box span{
+    margin-right: 10px;
+    background: #b3d3ea;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    border-radius:5px;
+}
+
+/* 태그 추가 */
+
+.tag_form{
+    border:1px solid #d6d9db;
+}
+
+.tag_form button{
+    margin-right:5px;
+}
