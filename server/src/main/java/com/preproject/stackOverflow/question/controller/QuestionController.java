@@ -33,8 +33,8 @@ import java.util.Map;
 
 @Validated
 @RestController
-//@RequestMapping("/question")
-@RequestMapping("/questions")
+@RequestMapping("/question")
+//@RequestMapping("/questions")
 public class QuestionController {
     private final QuestionService questionService;
     private final QuestionMapper mapper;
@@ -50,8 +50,8 @@ public class QuestionController {
 
     //질문 등록
     @Secured("ROLE_USER")
-    //@PostMapping("/questions")
-    @PostMapping
+    @PostMapping("/questions")
+    //@PostMapping
     public ResponseEntity<Void> postQuestion(@Valid @RequestBody QuestionDto.Post questionPost,
                                              @Positive long memberId) {
 
