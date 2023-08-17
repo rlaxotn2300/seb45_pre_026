@@ -33,8 +33,8 @@ import java.util.Map;
 
 @Validated
 @RestController
-//@RequestMapping("/question")
-@RequestMapping("/questions")
+@RequestMapping("/question")
+//@RequestMapping("/questions")
 public class QuestionController {
     private final QuestionService questionService;
     private final QuestionMapper mapper;
@@ -50,8 +50,8 @@ public class QuestionController {
 
     //질문 등록
     @Secured("ROLE_USER")
-    //@PostMapping("/questions")
-    @PostMapping
+    @PostMapping("/questions")
+    //@PostMapping
     public ResponseEntity<Void> postQuestion(@Valid @RequestBody QuestionDto.Post questionPost,
                                              @Positive long memberId) {
 
@@ -117,10 +117,8 @@ public class QuestionController {
 
 
     //질문추천
-    @PostMapping("/{question-id}/up")
-    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id")
-                                            @Positive long questionId,
-                                           @Positive long memberId,
+    @PostMapping("/{question-id}/upvote")
+    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id") @Positive long questionId, @Positive long memberId,
                                            QuestionDto.Vote vote) {
 
         questionService.upVote(questionId, memberId);
@@ -131,7 +129,7 @@ public class QuestionController {
 
 
     //질문비추천
-    @PostMapping("/{question-id}/up")
+    @PostMapping("/{question-id}/downvote")
     public ResponseEntity<SingleResponseDto> downVote(@PathVariable("question-id")
                                  @Positive long questionId,
                                  @Positive long memberId,
