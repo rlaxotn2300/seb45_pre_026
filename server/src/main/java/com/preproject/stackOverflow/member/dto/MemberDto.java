@@ -49,19 +49,21 @@ public class MemberDto {
         private long memberId;
         private String email;
         private String name;
-    }
-
-    @Getter
-    @Builder
-    public static class ResponseMyPage {
-        private long memberId;
-        private String name;
-        private String email;
         private LocalDateTime createdTime;
         private LocalDateTime modifiedTime;
+    }
+
+//    @Getter
+//    @Builder
+//    public static class ResponseMyPage {
+//        private long memberId;
+//        private String name;
+//        private String email;
+//        private LocalDateTime createdTime;
+//        private LocalDateTime modifiedTime;
 //        private List<QuestionDto.QuestionMemberResponseForList> questions;
 //        private List<AnswerDto.AnswerMemberResponseForList> answers;
-    }
+//    }
 
 //    @AllArgsConstructor
 //    @NoArgsConstructor

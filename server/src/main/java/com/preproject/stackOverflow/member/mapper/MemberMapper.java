@@ -11,19 +11,6 @@ public interface MemberMapper {
     Member memberPatchToMember(MemberDto.Patch memberPatchDto);
     MemberDto.Response memberToMemberResponseDTO(Member member);
 
-    default MemberDto.ResponseMyPage memberToMyPage(Member member){
-        return MemberDto.ResponseMyPage.builder()
-                .memberId(member.getMemberId())
-                .name(member.getName())
-                .email(member.getEmail())
-//                .authorities(member.getRoles())
-//                .answers(getAnswerToMember(member.getAnswers()))
-//                .questions(getQuestionToMember(member.getQuestions()))
-//                .createdTime(member.getCreatedAt())
-//                .modifiedTime(member.getUpdatedAt())
-                .build();
-    }
-
 }
 
 
