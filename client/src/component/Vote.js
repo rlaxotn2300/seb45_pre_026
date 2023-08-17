@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../css/vote.css';
 import DownArrow from '../images/downArrow.png';
 import UpArrow from '../images/upArrow.png';
 
 export default function Vote({ voteNumber }) {
-  const [vote, setVote] = useState(voteNumber);
+  const [vote, setVote] = useState();
+
+  useEffect(() => {
+    setVote(voteNumber);
+  }, voteNumber);
 
   function handleVoteUp() {
     setVote(vote + 1);
