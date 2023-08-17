@@ -36,7 +36,7 @@ export default function Answer({ questionData }) {
         ? questionData[id].answer.map((el) => (
             <div key={el.answerId} className="list answer__content-container">
               <div className="answer__content-wrap">
-                <Vote />
+                <Vote voteNumber={el.vote} />
                 <div className="answer__content">{el.content}</div>
               </div>
               <div className="answer__bottom">

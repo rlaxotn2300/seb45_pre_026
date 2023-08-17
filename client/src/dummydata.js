@@ -7,7 +7,7 @@ export const questionData = [
     <p>Constraints: I have to use core JavaScript. Frameworks are not allowed.</p>`,
     user: 'nickname',
     date: '2023/08/12',
-    vote: 0,
+    vote: 8,
     tag: '타입스크립트',
     answer: [
       {

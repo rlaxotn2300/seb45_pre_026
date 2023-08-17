@@ -48,7 +48,7 @@ export default function QuestionDetail() {
         <div className="detail__content-wrap">
           <div className="detail__content-container">
             <div className="detail__content-main">
-              <Vote />
+              <Vote voteNumber={questionData[id].vote} />
               <div
                 dangerouslySetInnerHTML={{ __html: questionData[id].content }}
               ></div>
