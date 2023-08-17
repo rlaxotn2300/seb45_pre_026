@@ -9,8 +9,6 @@ s
 Cserver/src/main/java/com/preproject/stackOverflow/dto/PageInfo.java,c\6\c63c2b00a7df647c0e43f383f29ceccc0cc26e24
 ë
 aserver/src/test/java/com/preproject/stackOverflow/question/controller/QuestionControllerTest.java,4\8\48f6cd0068a71fe41e2f3771873730442f5528cb
-ç
-]server/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java,7\2\72c5aae6a410c17a99038525259b48839318733c
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 á
@@ -31,10 +29,6 @@ Oserver/src/main/java/com/preproject/stackOverflow/StackOverflowApplication.java
 Mserver/src/main/java/com/preproject/stackOverflow/response/ErrorResponse.java,0\4\044dafcdb772e318dbd2237e0ece9f5029cc73a8
 Ü
 Vserver/src/main/java/com/preproject/stackOverflow/auth/utils/CustomAuthorityUtils.java,e\9\e9a5c3b7bf3a891b9599b53b38548128dc462866
-{
-Kserver/src/main/java/com/preproject/stackOverflow/answer/dto/AnswerDto.java,6\f\6fbc37ca47bb9fdb264624c274846de46098c9c7
-â
-Yserver/src/main/java/com/preproject/stackOverflow/answer/repository/AnswerRepository.java,6\8\6864ef06a6a964e41c37ef37a4c99cd6577e9dfc
 É
 Sserver/src/main/java/com/preproject/stackOverflow/member/service/MemberService.java,0\0\0017626d51f1eea79d3fbf4b9ea36c57072ddab8
 
