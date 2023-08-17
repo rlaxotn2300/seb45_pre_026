@@ -21,6 +21,7 @@
 .detail__title-container {
     margin: 30px;
     display: flex;
+    justify-content: space-between;
 }
 
 .detail__title {
