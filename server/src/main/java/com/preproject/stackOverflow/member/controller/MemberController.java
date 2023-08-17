@@ -6,6 +6,7 @@ import com.preproject.stackOverflow.member.dto.MemberDto;
 import com.preproject.stackOverflow.member.entity.Member;
 import com.preproject.stackOverflow.member.mapper.MemberMapper;
 import com.preproject.stackOverflow.member.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -19,18 +20,14 @@ import javax.validation.constraints.Positive;
 import java.net.URI;
 import java.util.List;
 
-@Slf4j
+@RequiredArgsConstructor
 @RestController
-@RequestMapping("/member")
+@RequestMapping(value = "/member")
 @Validated
+@Slf4j
 public class MemberController {
     private final MemberService memberService;
     private final MemberMapper mapper;
-
-    public MemberController(MemberService memberService, MemberMapper mapper) {
-        this.memberService = memberService;
-        this.mapper = mapper;
-    }
 
     @PostMapping("/join")
     public ResponseEntity postMember(@Valid @RequestBody MemberDto.Post requestBody) {

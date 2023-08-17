@@ -48,12 +48,12 @@ public class Member {
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
     private List<Answer> answers = new ArrayList<>();
 
-    public void addQuestion(Question question) {
-        this.questions.add(question);
-    }
-    public void addAnswer(Answer answer) {
-        this.answers.add(answer);
-    }
+//    public void addQuestion(Question question) {
+//        this.questions.add(question);
+//    }
+//    public void addAnswer(Answer answer) {
+//        this.answers.add(answer);
+//    }
 
     public Member(String email, String name, String password) {
         this.email = email;

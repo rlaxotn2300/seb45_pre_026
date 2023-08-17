@@ -23,8 +23,8 @@ spring:
             clientId: 1093533041933-6g4ifvse2jvudptjhg5d2tpbefiqr9l4.apps.googleusercontent.com
             clientSecret: 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
             scope:
-              - email
-              - profile
+            - email
+            - profile
 logging:
   level:
     org:
@@ -43,4 +43,3 @@ jwt:
     secret: kevin1234123412341234123412341234
   access-token-expiration-minutes: 30
   refresh-token-expiration-minutes: 420
-
