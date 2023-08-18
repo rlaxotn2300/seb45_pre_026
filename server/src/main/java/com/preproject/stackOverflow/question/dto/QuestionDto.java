@@ -26,11 +26,12 @@ public class QuestionDto {
     @Setter
     public static class Post {
         private String member;
+        private Long memberId;
         @NotBlank(message = "제목은 공백이 아니어야 합니다.")
         private String title;
         @NotBlank(message = "내용을 입력하세요.")
         private String content;
-       // private String tag;
+        private String tag;
         private List<String> tagList;
         private LocalDateTime createdAt;
        // private Question.QuestionStatus QUESTION_ASKED;
@@ -59,13 +60,14 @@ public class QuestionDto {
     @Getter
     @Setter
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Response {
-        //private long memberId;
-        private Answer answer;
+        private long memberId;
+        //private Answer answer;
         private long questionId;
         private String title;
         private String content;
-       // private String tag;
+        //private String tag;
         private List<String> tags;
         private long vote;
         private LocalDateTime createdAt;
@@ -78,6 +80,7 @@ public class QuestionDto {
     @Getter
     @Setter
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Vote{
         private long questionId;
         private long vote;

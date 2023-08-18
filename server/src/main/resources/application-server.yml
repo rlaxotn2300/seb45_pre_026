@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://database-seb26.cf1yjajysgdl.ap-northeast-2.rds.amazonaws.com:13306/seb26?useSSL=false&characterEncoding=UTF-8
+    url: jdbc:mysql://database-seb26.cf1yjajysgdl.ap-northeast-2.rds.amazonaws.com:13306/seb26?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&serverTimezone=Asia/Seoul&useSSL=true
     username: seb26
     password: "!!CodeStates45!!"
 

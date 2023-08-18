@@ -44,14 +44,15 @@ public class QuestionService {
 
 
     //질문등록
-    public Long createQuestion(Question question, long memberId) {
-        Question findQuestion = findVerifiedQuestion(question.getQuestionId());
-        Member questionAuthor = findQuestion.getMember();
+    public Long createQuestion(Question question, Long memberId) {
+        //Question findQuestion = findVerifiedQuestion(question.getQuestionId());
+        //Member questionAuthor = findQuestion.getMember();
         Member loggedInMember = memberService.findVerifiedMember(memberId);
+        question.setMember(loggedInMember);
 
-        if (questionAuthor.getMemberId() != loggedInMember.getMemberId()) {
-            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
-        }
+//        if (questionAuthor.getMemberId() != loggedInMember.getMemberId()) {
+//            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+//        }
 
             String tag = question.getTag();
             List<String> tagList = new ArrayList<>(Arrays.asList(tag.split("\\s*,\\s*")));

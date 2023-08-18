@@ -25,7 +25,7 @@ public interface QuestionMapper {
             Question question = new Question();
             question.setTitle(questionPost.getTitle());
             question.setContent(questionPost.getContent());
-            //question.setTag(questionPost.getTag());
+            question.setTag(questionPost.getTag());
             List<String> list = questionPost.getTagList();
             if (list != null) {
 

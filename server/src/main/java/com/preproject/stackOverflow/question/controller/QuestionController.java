@@ -29,6 +29,7 @@ import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 @Validated
@@ -53,11 +54,12 @@ public class QuestionController {
     @PostMapping("/questions")
     //@PostMapping
     public ResponseEntity<Void> postQuestion(@Valid @RequestBody QuestionDto.Post questionPost,
-                                             @Positive long memberId) {
+                                             @RequestParam(required = false) Long memberId) {
 
         //member 의 username 받기(일단은 받앗음..)
-        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
+        String memberName = SecurityContextHolder.getContext().getAuthentication().getName(); //email
         questionPost.setMember(memberName);
+        questionPost.setMemberId(memberId);
 
         Long questionId = questionService.createQuestion((mapper.questionPostDtoToQuestion(questionPost)), memberId) ;
 
@@ -117,9 +119,9 @@ public class QuestionController {
 
 
     //질문추천
-    @PostMapping("/{question-id}/upvote")
-    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id") @Positive long questionId, @Positive long memberId,
-                                           QuestionDto.Vote vote) {
+    @PostMapping("/upvote/{question-id}/{member-id}")
+    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id")  @Positive long questionId, @PathVariable("member-id") @Positive long memberId,
+                                           @RequestBody QuestionDto.Vote vote) {
 
         questionService.upVote(questionId, memberId);
         return new ResponseEntity<>(
