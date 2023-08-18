@@ -32,6 +32,7 @@ function App() {
   useEffect(() => {
     getData();
   }, []);
+
   return (
     <div className="app__body">
       <BrowserRouter>
