@@ -41,7 +41,7 @@ public class MemberController {
         return ResponseEntity.created(location).build();
     }
 
-    @PatchMapping("/update")
+    @PatchMapping("/update/{member-id}")
     public ResponseEntity patchMember(@PathVariable("member-id") @Positive long memberId,
                                       @Valid @RequestBody MemberDto.Patch requestBody) {
         requestBody.setMemberId(memberId);
@@ -50,7 +50,7 @@ public class MemberController {
         return new ResponseEntity(mapper.memberToMemberResponseDTO(updatedMember), HttpStatus.OK);
     }
 
-    @GetMapping("/detail")
+    @GetMapping("/detail/{member-id}")
     public ResponseEntity getMember(@PathVariable("member-id") @Positive long memberId) {
         Member findMember = memberService.findMember(memberId);
         MemberDto.Response memberResponse = mapper.memberToMemberResponseDTO(findMember);
@@ -68,8 +68,8 @@ public class MemberController {
                         (PageInfo) pageMembers),
                 HttpStatus.OK);
     }
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteMember(@PathVariable("member-id") long memberId) {
+    @DeleteMapping("/delete/{member-id}")
+    public ResponseEntity deleteMember(@PathVariable("member-id") @Positive long memberId) {
         memberService.deleteMember(memberId);
 
         return new ResponseEntity(HttpStatus.NO_CONTENT);

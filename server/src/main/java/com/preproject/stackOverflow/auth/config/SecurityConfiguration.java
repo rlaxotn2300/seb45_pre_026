@@ -8,6 +8,8 @@ import com.preproject.stackOverflow.auth.utils.CustomAuthorityUtils;
 import com.preproject.stackOverflow.member.repository.MemberRepository;
 
 import com.preproject.stackOverflow.member.service.MemberService;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.context.annotation.Bean;
@@ -28,6 +30,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Arrays;
@@ -35,25 +38,20 @@ import java.util.Arrays;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfiguration implements WebMvcConfigurer {
 
-    @Value("${spring.security.oauth2.client.registration.google.clientId}")
-    private String clientId;
+//    @Value("${spring.security.oauth2.client.registration.google.clientId}")
+//    private String clientId;
+//
+//    @Value("${spring.security.oauth2.client.registration.google.clientSecret}")
+//    private String clientSecret;
 
-    @Value("${spring.security.oauth2.client.registration.google.clientSecret}")
-    private String clientSecret;
-
-    private final MemberRepository memberRepository;
+//    private final MemberRepository memberRepository;
+//    private final MemberService memberService;
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
-    private final MemberService memberService;
 
-    public SecurityConfiguration(MemberRepository memberRepository, JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils, MemberService memberService) {
-        this.memberRepository = memberRepository;
-        this.jwtTokenizer = jwtTokenizer;
-        this.authorityUtils = authorityUtils;
-        this.memberService = memberService;
-    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -72,15 +70,13 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                 .and()
                 .apply(new CustomFilterConfigurer())
                 .and()
-                .authorizeHttpRequests(authorize -> authorize                        //수정
-                        .antMatchers(HttpMethod.POST, "/member/**").permitAll()
-                        //.antMatchers(HttpMethod.PATCH, "/member/**").hasRole("USER")
-                        .antMatchers(HttpMethod.GET, "/question/**").permitAll()
-                        //.antMatchers(HttpMethod.DELETE, "/member/**").hasRole("USER")
-                        .anyRequest().authenticated()
-                )
-                .oauth2Login(oauth2 -> oauth2
-                        .successHandler(new OAuth2MemberSuccessHandler(jwtTokenizer, authorityUtils, memberService))
+                .authorizeHttpRequests(authorize -> authorize
+                        .antMatchers("/member/login").permitAll()
+                        .antMatchers(HttpMethod.POST, "/question").authenticated()
+                        .antMatchers(HttpMethod.PATCH, "/question/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/question").permitAll()
+                        .antMatchers(HttpMethod.DELETE, "/member/**").hasRole("USER")
+                        .anyRequest().permitAll()
                 );
         return http.build();
     }
@@ -94,8 +90,10 @@ public class SecurityConfiguration implements WebMvcConfigurer {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE"));
+        configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowCredentials(true);
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
@@ -118,22 +116,6 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                     .addFilterAfter(jwtVerificationFilter, JwtAuthenticationFilter.class)
                     .addFilterAfter(jwtVerificationFilter, OAuth2LoginAuthenticationFilter.class);
         }
-    }
-
-    @Bean
-    public ClientRegistrationRepository clientRegistrationRepository() {
-        var clientRegistration = clientRegistration();
-
-        return new InMemoryClientRegistrationRepository(clientRegistration);
-    }
-
-    private ClientRegistration clientRegistration() {
-        return CommonOAuth2Provider
-                .GOOGLE
-                .getBuilder("google")
-                .clientId(clientId)
-                .clientSecret(clientSecret)
-                .build();
     }
 
 }

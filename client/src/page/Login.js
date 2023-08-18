@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/login.css';
 
 export default function Login() {
@@ -77,9 +78,9 @@ export default function Login() {
       </div>
       <div className="login__account">
         <span className="login__account-msg">Don&apos;t have an account?</span>
-        <a href="/" className="login__link">
+        <Link to="/sign_up" className="login__link">
           Sign up
-        </a>
+        </Link>
       </div>
     </div>
   );

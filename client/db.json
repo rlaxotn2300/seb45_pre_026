@@ -7,7 +7,9 @@
       "user": "nickname",
       "date": "2023/08/12",
       "vote": 8,
-      "tag": "[javascript]",
+      "tag": [
+        "javascript"
+      ],
       "answer": [
         {
           "answerId": 0,
@@ -32,7 +34,9 @@
       "user": "nickname",
       "date": "2023/08/12",
       "vote": 8,
-      "tag": "[html]",
+      "tag": [
+        "html"
+      ],
       "answer": [
         {
           "answerId": 0,
@@ -57,7 +61,10 @@
       "user": "happy dog",
       "date": "2023/08/12",
       "vote": 1,
-      "tag": "[javascript, react]",
+      "tag": [
+        "javascript",
+        "react"
+      ],
       "answer": []
     },
     {
@@ -67,7 +74,9 @@
       "user": "nickname",
       "date": "2023/08/12",
       "vote": 0,
-      "tag": "[javascript]",
+      "tag": [
+        "javascript"
+      ],
       "answer": [
         {
           "answerId": 0,
@@ -99,7 +108,9 @@
       "user": "nickname",
       "date": "2023/08/12",
       "vote": 4,
-      "tag": "[mysql]",
+      "tag": [
+        "mysql"
+      ],
       "answer": [
         {
           "answerId": 0,
@@ -117,7 +128,9 @@
       "user": "happy cat",
       "date": "2023/08/12",
       "vote": 0,
-      "tag": "[javascript]",
+      "tag": [
+        "javascript"
+      ],
       "answer": []
     },
     {
@@ -127,7 +140,9 @@
       "user": "nickname",
       "date": "2023/08/12",
       "vote": 0,
-      "tag": "[eslint]",
+      "tag": [
+        "eslint"
+      ],
       "answer": []
     },
     {
@@ -137,7 +152,10 @@
       "user": "nickname",
       "date": "2023/08/12",
       "vote": 11,
-      "tag": "[javascript, axios]",
+      "tag": [
+        "javascript",
+        "axios"
+      ],
       "answer": [
         {
           "answerId": 0,
@@ -155,7 +173,9 @@
       "user": "hello",
       "date": "2023/08/12",
       "vote": 2,
-      "tag": "[aws]",
+      "tag": [
+        "aws"
+      ],
       "answer": []
     },
     {
@@ -165,7 +185,9 @@
       "user": "hello",
       "date": "2023/08/12",
       "vote": 0,
-      "tag": "[springboot]",
+      "tag": [
+        "springboot"
+      ],
       "answer": [
         {
           "answerId": 0,
@@ -186,7 +208,7 @@
   ],
   "member": [
     {
-      "memberId": 0,
+      "id": 0,
       "email": "abc123@test.com",
       "password": "abc123",
       "name": "nickname",
