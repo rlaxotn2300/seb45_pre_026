@@ -20,5 +20,6 @@ public class MemberAccessDeniedHandler implements AccessDeniedHandler {
                        HttpServletResponse response,
                        AccessDeniedException accessDeniedException) throws IOException, ServletException {
         ErrorResponder.sendErrorResponse(response, HttpStatus.FORBIDDEN);
+        log.warn("Forbidden error happened: {}", accessDeniedException.getMessage());
     }
 }

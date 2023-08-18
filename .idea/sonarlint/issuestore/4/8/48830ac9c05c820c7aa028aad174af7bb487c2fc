@@ -1,0 +1,10 @@
+
+„
+java:S1488“"aImmediately return this expression instead of assigning it to the temporary variable "voteCount".(§·»ÿώÿÿÿÿ8ΛΪΕ” 1
+€
+java:S1488«"bImmediately return this expression instead of assigning it to the temporary variable "findAnswer".(‡‚χÒ8ΛΪΕ” 1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(έτ­8ΜΪΕ” 1
+e
+java:S1612;"CReplace this lambda with method reference 'findAnswer::setContent'.(—¨ρόÿÿÿÿ8΄μΖ• 1
+M
+java:S1068"0Remove this unused "answerMapper" private field.(Ό„Ί«8½μΖ• 1

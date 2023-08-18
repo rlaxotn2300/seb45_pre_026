@@ -1,0 +1,5 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(œôè¦8´Ş“Ÿ1
+]	java:S107Z"AConstructor has 8 parameters, which is greater than 7 authorized.(Ùâ×®8äìÆ• 1
+Z
+java:S1172\"=Remove these unused method parameters "answerStatus", "vote".(ÖáÇä8çìÆ• 1

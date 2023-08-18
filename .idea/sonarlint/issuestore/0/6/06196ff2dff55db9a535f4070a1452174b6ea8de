@@ -1,9 +1,0 @@
-
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(”¢¦
-W
-java:S1118":Add a private constructor to hide the implicit public one.(Ð’à‹8êçÅ• 1
-X	java:S1257"<This block of commented-out lines of code should be removed.(øò Ÿ8ïçÅ• 1
-q	java:S116Q"URename this field "created_at" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(† ¬Ì8ðçÅ• 1
-q	java:S116R"VRename this field "modified_at" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ¾À8ðçÅ• 1
-q	java:S116^"URename this field "created_at" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(† ¬Ì8ñçÅ• 1
-q	java:S116_"VRename this field "modified_at" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ¾À8ñçÅ• 1

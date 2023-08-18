@@ -9,13 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2023-08-17T19:43:16+0900",
+    date = "2023-08-18T23:53:05+0900",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.19 (Azul Systems, Inc.)"
-=======
-    date = "2023-08-17T17:51:27+0900",
-    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.20 (Azul Systems, Inc.)"
->>>>>>> fe3c497297c3c8404fe44297aba546c706977a66
 )
 @Component
 public class AnswerMapperImpl implements AnswerMapper {

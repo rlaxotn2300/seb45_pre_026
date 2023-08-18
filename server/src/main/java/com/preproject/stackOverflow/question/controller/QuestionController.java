@@ -53,7 +53,7 @@ public class QuestionController {
     @PostMapping("/questions")
     //@PostMapping
     public ResponseEntity<Void> postQuestion(@Valid @RequestBody QuestionDto.Post questionPost,
-                                             @Positive long memberId) {
+                                             @Positive Long memberId) {
 
         //member 의 username 받기(일단은 받앗음..)
         String memberName = SecurityContextHolder.getContext().getAuthentication().getName();

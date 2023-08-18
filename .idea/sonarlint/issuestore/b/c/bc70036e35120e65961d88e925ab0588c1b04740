@@ -1,15 +1,23 @@
 
+5
+java:S1700S"Rename field "vote"(¦ü¡“ıÿÿÿÿ8¡Á˜° 1
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(èôáşÿÿÿÿ8¨¦şñ1
 W
-java:S1118":Add a private constructor to hide the implicit public one.(°À¦ë8Î´èÁŸ1
-z	java:S116""YRename this field "QUESTION_ASKED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÊÃÂøÿÿÿÿ8Î´èÁŸ1
-X	java:S125"<This block of commented-out lines of code should be removed.(ú‘Ï•8±¦şñ1
-x	java:S1164"\Rename this field "QUESTION_MODIFIED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸àã¹8°¦şñ1
-X	java:S125,"<This block of commented-out lines of code should be removed.(ú‘Ï•8²¦şñ1
-X	java:S125="<This block of commented-out lines of code should be removed.(ú‘Ï•8×´èÁŸ1
+java:S1118":Add a private constructor to hide the implicit public one.(°À¦ë8Î´èÁŸ1
+]	java:S125!"<This block of commented-out lines of code should be removed.(şôİ†úÿÿÿÿ8åÁ˜° 1
+X	java:S125$"<This block of commented-out lines of code should be removed.(áœŞé8æÁ˜° 1
+x	java:S1166"\Rename this field "QUESTION_MODIFIED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸àã¹8°¦şñ1
+X	java:S125."<This block of commented-out lines of code should be removed.(ú‘Ï•8²¦şñ1
+]	java:S1254"<This block of commented-out lines of code should be removed.(şôİ†úÿÿÿÿ8ëÁ˜° 1
+X	java:S125?"<This block of commented-out lines of code should be removed.(ú‘Ï•8úÎçÅ 1
+]	java:S125D"<This block of commented-out lines of code should be removed.(şôİ†úÿÿÿÿ8ñÁ˜° 1
+]	java:S125H"<This block of commented-out lines of code should be removed.(È¹Ú°ÿÿÿÿÿ8ùÁ˜° 1
+]	java:S125["<This block of commented-out lines of code should be removed.(Óû¿ùÿÿÿÿ8ıÁ˜° 1
 j
 java:S1128"HRemove this unused import 'com.fasterxml.jackson.annotation.JsonFormat'.(ıÙè‹øÿÿÿÿ8³±€ñŸ1
+U
+java:S1128"9Remove this unused import 'javax.persistence.ManyToMany'.(Àğ½8şÁ˜° 1
 c
-java:S1128"ARemove this unused import 'javax.validation.constraints.NotNull'.(áç¥ãüÿÿÿÿ8´±€ñŸ1
+java:S1128"ARemove this unused import 'javax.validation.constraints.NotNull'.(áç¥ãüÿÿÿÿ8´±€ñŸ1
 [
-java:S1128">Remove this unused import 'javax.validation.constraints.Null'.(ã¥˜8¶±€ñŸ1
+java:S1128">Remove this unused import 'javax.validation.constraints.Null'.(ã¥˜8¶±€ñŸ1
