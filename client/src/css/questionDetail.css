@@ -73,10 +73,6 @@
     gap: 20px;
 }
 
-.detail__content {
-    margin-top: 0.625rem;
-}
-
 .detail__content-container > div {
     margin-left: 20px;
 }

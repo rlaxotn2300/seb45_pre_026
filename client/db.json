@@ -1,4 +1,5 @@
-{ "questionData" : [
+{
+  "questionData": [
     {
       "questionId": 0,
       "title": "How can I remove a specific item from an array in JavaScript?",
@@ -51,8 +52,7 @@
     },
     {
       "questionId": 2,
-      "title":
-        "splice spaces in array but space is still there / splice a split result javascript [duplicate]",
+      "title": "splice spaces in array but space is still there / splice a split result javascript [duplicate]",
       "content": "How do I remove a specific value from an array? Something like: array.remove(value); Constraints: I have to use core JavaScript. Frameworks are not allowed.",
       "user": "happy dog",
       "date": "2023/08/12",
@@ -82,7 +82,7 @@
           "user": "Answer Robot",
           "date": "2023/08/12",
           "vote": 0
-        },        
+        },
         {
           "answerId": 0,
           "content": "You could use myArray.push('MenuA'); so you don't specify direct numbers when adding elements.",
@@ -92,7 +92,7 @@
         }
       ]
     },
-        {
+    {
       "questionId": 4,
       "title": "How can I remove a specific item from an array in Mysql?",
       "content": "<p>How do I remove a specific value from an array? Something like: </p><p>array.remove(value);</p><p>Constraints: I have to use core JavaScript. Frameworks are not allowed.</p>",
@@ -182,6 +182,15 @@
           "vote": 0
         }
       ]
+    }
+  ],
+  "member": [
+    {
+      "memberId": 0,
+      "email": "abc123@test.com",
+      "password": "abc123",
+      "name": "nickname",
+      "verify": 0
     }
   ]
 }
