@@ -20,7 +20,7 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long memberId;
+    private Long memberId;
 
     @Column(length = 50, nullable = false, unique = true)
     private String email;
@@ -31,7 +31,7 @@ public class Member {
     @Column(length = 30, nullable = false)
     private String name;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false, name = "CREATED_AT")
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(nullable = false, name = "LAST_MODIFIED_AT")

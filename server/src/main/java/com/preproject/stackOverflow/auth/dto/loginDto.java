@@ -6,6 +6,6 @@ import lombok.Getter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 public class loginDto {
-    private String email;
+    private String username;
     private String password;
 }

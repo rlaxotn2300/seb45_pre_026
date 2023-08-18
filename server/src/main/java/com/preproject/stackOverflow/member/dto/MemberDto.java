@@ -32,9 +32,9 @@ public class MemberDto {
     public static class Patch {
         private long memberId;
 
-        @NotBlank(message = "공백이 아니여야 합니다.")
-        @Email(message = "이메일 형식으로 작성해주세요.")
-        private String email;
+//        @NotBlank(message = "공백이 아니여야 합니다.")
+//        @Email(message = "이메일 형식으로 작성해주세요.")
+//        private String email;
 
         @NotBlank(message = "공백이 아니여야 합니다.")
         @Size(min = 8, max = 20, message = "8자 이상 20자 이하로 작성해주세요.")
@@ -42,6 +42,7 @@ public class MemberDto {
 
         @NotBlank(message = "공백이 아니여야 합니다.")
         private String name;
+
     }
 
     @Getter
@@ -50,51 +51,12 @@ public class MemberDto {
         private long memberId;
         private String email;
         private String name;
-        private LocalDateTime createdTime;
-        private LocalDateTime modifiedTime;
+        private String password;
+        private LocalDateTime createdAt;
+        private LocalDateTime modifiedAt;
         //private List<QuestionDto.QuestionMemberResponseForList> questions;
         //private List<AnswerDto.AnswerMemberResponseForList> answers;
     }
 
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Getter
-    @Setter
-    public static class GetResponse {
-        private long memberId;
-        private String email;
-        private String name;
-        private List<MyPageQuestion> questions;
-        private List<MyPageAnswer> answers;
-    }
-
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Getter
-    @Setter
-    public static class MyPageQuestion {
-        private long questionId;
-        private String title;
-        private String content;
-        private long vote;
-        private List<String> tags;
-        private LocalDateTime created_at;
-        private LocalDateTime modified_at;
-    }
-
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Getter
-    @Setter
-    public static class MyPageAnswer {
-        private long answerId;
-        private long questionId;
-        private String content;
-        private long vote;
-        private LocalDateTime created_at;
-        private LocalDateTime modified_at;
-    }
-
-
-    }
+}
 
