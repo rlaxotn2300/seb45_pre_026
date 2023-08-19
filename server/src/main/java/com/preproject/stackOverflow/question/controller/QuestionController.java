@@ -120,27 +120,27 @@ public class QuestionController {
 
     //질문추천
     @PostMapping("/upvote/{question-id}/{member-id}")
-    public ResponseEntity upVote(@PathVariable("question-id")  @Positive long questionId,
-                                 @PathVariable("member-id") @Positive long memberId,
-                                 @RequestBody QuestionDto.Vote vote) {
+    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id")  @Positive long questionId, @PathVariable("member-id") @Positive long memberId,
+                                                    @RequestBody QuestionDto.Vote vote) {
 
         questionService.upVote(questionId, memberId);
-        return new ResponseEntity<>(vote, HttpStatus.OK);
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.questionVoteToQuestion(vote)), HttpStatus.OK
+        );
     }
 
 
     //질문비추천
-    @PostMapping("/downvote/{question-id}/{member-id}")
-    public ResponseEntity downVote(@PathVariable("question-id") @Positive long questionId,
-                                   @PathVariable("member-id") @Positive long memberId,
-                                   @Valid @RequestBody Map<String, Long> request
-    ) {
+    @PostMapping("/{question-id}/downvote")
+    public ResponseEntity<SingleResponseDto> downVote(@PathVariable("question-id")
+                                                      @Positive long questionId,
+                                                      @Positive long memberId,
+                                                      QuestionDto.Vote vote) {
 
-        memberId = request.get("memberId"); // memberId를 요청 본문에서 가져옴
         questionService.downVote(questionId, memberId);
-        long vote = questionService.getVote(questionId);
-
-        return new ResponseEntity<>(new QuestionDto.Vote(questionId, memberId, vote), HttpStatus.OK);
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.questionVoteToQuestion(vote)), HttpStatus.OK
+        );
     }
 
 

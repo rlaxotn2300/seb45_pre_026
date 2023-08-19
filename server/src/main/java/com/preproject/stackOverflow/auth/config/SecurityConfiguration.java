@@ -48,7 +48,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
 //    @Value("${spring.security.oauth2.client.registration.google.clientSecret}")
 //    private String clientSecret;
 
-//    private final MemberRepository memberRepository;
+    //    private final MemberRepository memberRepository;
 //    private final MemberService memberService;
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;

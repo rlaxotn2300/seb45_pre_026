@@ -34,7 +34,7 @@ public class QuestionDto {
         private String tag;
         private List<String> tagList;
         private LocalDateTime createdAt;
-       // private Question.QuestionStatus QUESTION_ASKED;
+        // private Question.QuestionStatus QUESTION_ASKED;
 
     }
 
@@ -44,7 +44,7 @@ public class QuestionDto {
     @NoArgsConstructor
     public static class Patch {
 
-       // private long memberId;
+        // private long memberId;
         private long questionId;
         @NotBlank(message = "제목은 공백이 아니어야 합니다.")
         private String title;

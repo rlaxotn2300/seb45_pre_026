@@ -26,9 +26,9 @@ public class AnswerService {
     private final MemberRepository memberRepository;
 
     public AnswerService (AnswerRepository answerRepository,
-                         AnswerMapper answerMapper,
-                         MemberService memberService,
-                         MemberRepository memberRepository) {
+                          AnswerMapper answerMapper,
+                          MemberService memberService,
+                          MemberRepository memberRepository) {
         this.answerRepository = answerRepository;
         this.answerMapper = answerMapper;
         this.memberService = memberService;

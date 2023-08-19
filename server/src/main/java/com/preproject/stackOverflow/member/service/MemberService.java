@@ -99,4 +99,3 @@ public class MemberService {
             throw new BusinessLogicException(ExceptionCode.MEMBER_EMAIL_EXISTS);
     }
 }
-

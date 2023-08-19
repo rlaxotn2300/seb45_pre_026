@@ -39,10 +39,10 @@ public class AnswerController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping("{question-id}")
+    @PostMapping("/{question-id}")
     public ResponseEntity postAnswer(@PathVariable("question-id") @Positive long questionId,
                                      @Valid @RequestBody AnswerDto answerDto,
-                                     @Positive long memberId) {
+                                     @RequestParam(required=false) @Positive Long memberId) {
 
         String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
 
@@ -51,20 +51,20 @@ public class AnswerController {
         }
 
         Answer answer = answerService.createAnswer(
-                    mapper.answerPostDtoToAnswer(questionId, answerDto), memberId);
+                mapper.answerPostDtoToAnswer(questionId, answerDto), memberId);
 
-            return new ResponseEntity<>(
-                    new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)),
-                    HttpStatus.CREATED);
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)),
+                HttpStatus.CREATED);
 
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PatchMapping("{question-id}/answer/{answer-id}")
+    @PatchMapping("/{question-id}/answer/{answer-id}")
     public ResponseEntity patchAnswer(@PathVariable("question-id") @Positive long questionId,
                                       @PathVariable("answer-id") @Positive long answerId,
                                       @Valid @RequestBody AnswerDto answerDto,
-                                      @Positive long memberId) {
+                                      @Positive Long memberId) {
 
         answerDto.setAnswerId(answerId);
         Answer answer = answerService.updateAnswer(
@@ -76,10 +76,10 @@ public class AnswerController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping("{question-id}/answer")
+    @GetMapping("/{question-id}/answer")
     public ResponseEntity getAnswers(@PathVariable("question-id") @Positive long questionId) {
 
-            List<Answer> answers = answerService.findAnswers(questionId);
+        List<Answer> answers = answerService.findAnswers(questionId);
 
         return new ResponseEntity<>(
                 new MultiAnsResponseDto<>(mapper.answersToAnswerResponseDtos(answers)),

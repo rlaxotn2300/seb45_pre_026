@@ -1,23 +1,0 @@
-
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ä“àˆ
-]	java:S125-"<This block of commented-out lines of code should be removed.(¹¼ö¦ùÿÿÿÿ8…›°Å 1
-]	java:S1252"<This block of commented-out lines of code should be removed.(ß„ÂŒþÿÿÿÿ8ˆ›°Å 1
-~
-java:S1128"\Remove this unused import 'com.preproject.stackOverflow.member.repository.MemberRepository'.(µàâûøÿÿÿÿ8£›°Å 1
-s
-java:S1128
-"VRemove this unused import 'com.preproject.stackOverflow.member.service.MemberService'.(…˜øÐ8¤›°Å 1
-R
-java:S1128"5Remove this unused import 'lombok.NoArgsConstructor'.(¸¨›8¥›°Å 1
-l
-java:S1128"ORemove this unused import 'org.springframework.beans.factory.annotation.Value'.(ìø›8¦›°Å 1
-…
-java:S1128"cRemove this unused import 'org.springframework.security.config.oauth2.client.CommonOAuth2Provider'.(£×¤úùÿÿÿÿ8¨›°Å 1
-„
-java:S1128"gRemove this unused import 'org.springframework.security.oauth2.client.registration.ClientRegistration'.(…¬ò8©›°Å 1
-Ž
-java:S1128"qRemove this unused import 'org.springframework.security.oauth2.client.registration.ClientRegistrationRepository'.(Âëã8«›°Å 1
-›
-java:S1128"yRemove this unused import 'org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository'.(µ„®Žøÿÿÿÿ8¬›°Å 1
-
-java:S1128!"bRemove this unused import 'org.springframework.web.servlet.config.annotation.InterceptorRegistry'.(¯¶ø±8­›°Å 1
