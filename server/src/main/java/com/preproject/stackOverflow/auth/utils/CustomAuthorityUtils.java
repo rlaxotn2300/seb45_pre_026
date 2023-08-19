@@ -28,7 +28,7 @@ public class CustomAuthorityUtils {
         return USER_ROLES;
     }
 
-    public List<GrantedAuthority> createAuthorities(List<?> roles) {
+    public List<GrantedAuthority> createAuthorities(List<String> roles) {
         List<String> roleStrings = roles.stream()
                 .map(Object::toString)
                 .collect(Collectors.toList());

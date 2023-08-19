@@ -1,10 +1,8 @@
 package com.preproject.stackOverflow.question.mapper;
 
-import com.preproject.stackOverflow.answer.entity.Answer;
 import com.preproject.stackOverflow.question.dto.QuestionDto.Response;
 import com.preproject.stackOverflow.question.dto.QuestionDto.Vote;
 import com.preproject.stackOverflow.question.entity.Question;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -12,8 +10,13 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+<<<<<<< HEAD
     date = "2023-08-18T23:53:05+0900",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.19 (Azul Systems, Inc.)"
+=======
+    date = "2023-08-19T13:51:26+0900",
+    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.1.jar, environment: Java 11.0.20 (Azul Systems, Inc.)"
+>>>>>>> 1aee9f415e204688095dcdeacb413df1de9e943d
 )
 @Component
 public class QuestionMapperImpl implements QuestionMapper {
@@ -24,26 +27,17 @@ public class QuestionMapperImpl implements QuestionMapper {
             return null;
         }
 
-        long questionId = 0L;
-        String title = null;
-        String content = null;
-        List<String> tags = null;
-        long vote = 0L;
-        LocalDateTime createdAt = null;
+        Response response1 = new Response();
 
-        questionId = response.getQuestionId();
-        title = response.getTitle();
-        content = response.getContent();
+        response1.setQuestionId( response.getQuestionId() );
+        response1.setTitle( response.getTitle() );
+        response1.setContent( response.getContent() );
         List<String> list = response.getTags();
         if ( list != null ) {
-            tags = new ArrayList<String>( list );
+            response1.setTags( new ArrayList<String>( list ) );
         }
-        vote = response.getVote();
-        createdAt = response.getCreatedAt();
-
-        Answer answer = null;
-
-        Response response1 = new Response( answer, questionId, title, content, tags, vote, createdAt );
+        response1.setVote( response.getVote() );
+        response1.setCreatedAt( response.getCreatedAt() );
 
         return response1;
     }

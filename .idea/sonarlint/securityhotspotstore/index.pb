@@ -23,8 +23,6 @@ Sserver/src/main/java/com/preproject/stackOverflow/member/service/MemberService.
 Qserver/src/main/java/com/preproject/stackOverflow/answer/mapper/AnswerMapper.java,0\1\0167a1390ea3c3da413eec9da4d5577b3ef4316d
 ‰
 Yserver/src/main/java/com/preproject/stackOverflow/answer/repository/AnswerRepository.java,6\8\6864ef06a6a964e41c37ef37a4c99cd6577e9dfc
-ƒ
-Sserver/src/main/java/com/preproject/stackOverflow/answer/service/AnswerService.java,4\8\48830ac9c05c820c7aa028aad174af7bb487c2fc
 {
 Kserver/src/main/java/com/preproject/stackOverflow/answer/entity/Answer.java,4\6\463c380a9e95652db0f946e7f982859efbf78c34
 
