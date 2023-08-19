@@ -1,17 +1,19 @@
 package com.preproject.stackOverflow.member.service;
 
+import com.preproject.stackOverflow.auth.utils.CustomAuthorityUtils;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
 import com.preproject.stackOverflow.exception.ExceptionCode;
 import com.preproject.stackOverflow.member.entity.Member;
-import com.preproject.stackOverflow.member.mapper.MemberMapper;
 import com.preproject.stackOverflow.member.repository.MemberRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Transactional
@@ -19,16 +21,23 @@ import java.util.Optional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    private final MemberMapper memberMapper;
+    private final PasswordEncoder passwordEncoder;
+    private final CustomAuthorityUtils authorityUtils;
 
-    public MemberService(MemberRepository memberRepository, MemberMapper memberMapper) {
+    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils) {
         this.memberRepository = memberRepository;
-        this.memberMapper = memberMapper;
+        this.passwordEncoder = passwordEncoder;
+        this.authorityUtils = authorityUtils;
     }
 
     public Member createMember(Member member) {
         verifyExistsEmail(member.getEmail());
 
+        String encryptedPassword = passwordEncoder.encode(member.getPassword());
+        member.setPassword(encryptedPassword);
+
+        List<String> roles = authorityUtils.createRoles(member.getEmail());
+        member.setRoles(roles);
 
         return memberRepository.save(member);
     }
@@ -36,12 +45,8 @@ public class MemberService {
     public Member updateMember(Member member) {
         Member findMember = findVerifiedMember(member.getMemberId());
 
-        Optional.ofNullable(member.getName())
-                .ifPresent(findMember::setName);
-
-        Optional.ofNullable((member.getPassword()))
-                .ifPresent(findMember::setPassword);
-
+        Optional.ofNullable(member.getName()).ifPresent(findMember::setName);
+        Optional.ofNullable(member.getPassword()).ifPresent(password -> findMember.setPassword(passwordEncoder.encode(password)));
         findMember.setModifiedAt(LocalDateTime.now());
 
         return memberRepository.save(findMember);

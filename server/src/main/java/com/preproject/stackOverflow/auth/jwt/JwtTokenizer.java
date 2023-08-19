@@ -21,7 +21,7 @@ import java.util.Map;
 public class JwtTokenizer {
 
     @Getter
-    @Value("${jwt.key.secret}")
+    @Value("${jwt.key}")
     private String secretKey;
 
     @Getter
@@ -62,6 +62,13 @@ public class JwtTokenizer {
                 .compact();
     }
 
+    private Key getKeyFromBase64EncodedKey(String base64EncodedSecretKey) {
+        byte[] keyBytes = Decoders.BASE64.decode(base64EncodedSecretKey);
+        Key key = Keys.hmacShaKeyFor(keyBytes);
+
+        return key;
+    }
+
     // 검증 후, Claims을 반환하는 용도
     public Jws<Claims> getClaims(String jws, String base64EncodedSecretKey) {
         Key key = getKeyFromBase64EncodedKey(base64EncodedSecretKey);
@@ -71,6 +78,13 @@ public class JwtTokenizer {
                 .build()
                 .parseClaimsJws(jws);
         return claims;
+    }
+
+    public Date getTokenExpiration(int expirationMinute) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE, expirationMinute);
+
+        return calendar.getTime();
     }
 
     // 단순히 검증만 하는 용도로 쓰일 경우
@@ -83,17 +97,5 @@ public class JwtTokenizer {
                 .parseClaimsJws(jws);
     }
 
-    public Date getTokenExpiration(int expirationMinute) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MINUTE, expirationMinute);
-
-        return calendar.getTime();
-    }
-    private Key getKeyFromBase64EncodedKey(String base64EncodedSecretKey) {
-        byte[] keyBytes = Decoders.BASE64.decode(base64EncodedSecretKey);
-        Key key = Keys.hmacShaKeyFor(keyBytes);
-
-        return key;
-    }
 
 }

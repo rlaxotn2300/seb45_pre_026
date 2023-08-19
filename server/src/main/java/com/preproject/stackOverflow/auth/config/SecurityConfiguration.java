@@ -34,6 +34,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -71,7 +72,10 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                 .apply(new CustomFilterConfigurer())
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
-                        .antMatchers("/member/login").permitAll()
+                        .antMatchers(HttpMethod.POST, "/member/join").permitAll()
+                        .antMatchers(HttpMethod.PATCH, "/member/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/member/**").hasRole("USER")
+                        .antMatchers(HttpMethod.DELETE, "/member/**").hasRole("USER")
                         .antMatchers(HttpMethod.POST, "/question").authenticated()
                         .antMatchers(HttpMethod.PATCH, "/question/**").hasRole("USER")
                         .antMatchers(HttpMethod.GET, "/question").permitAll()
@@ -89,9 +93,10 @@ public class SecurityConfiguration implements WebMvcConfigurer {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setExposedHeaders(List.of("Authorization"));
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
