@@ -127,7 +127,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;14fd41dca7475dd7be97913ca6447fc6&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -320,7 +320,8 @@
       <workItem from="1692406209617" duration="20172000" />
       <workItem from="1692430033813" duration="783000" />
       <workItem from="1692430879496" duration="3000" />
-      <workItem from="1692432540568" duration="49000" />
+      <workItem from="1692432540568" duration="461000" />
+      <workItem from="1692433029422" duration="1016000" />
     </task>
     <servers />
   </component>
@@ -389,47 +390,47 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>150</line>
+          <line>149</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>151</line>
+          <line>150</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>152</line>
+          <line>151</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>154</line>
+          <line>153</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>155</line>
+          <line>154</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>156</line>
+          <line>155</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>158</line>
+          <line>157</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>159</line>
+          <line>158</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>161</line>
+          <line>160</line>
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
