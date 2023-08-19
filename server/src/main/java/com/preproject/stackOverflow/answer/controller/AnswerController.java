@@ -7,6 +7,7 @@ import com.preproject.stackOverflow.answer.mapper.AnswerMapper;
 import com.preproject.stackOverflow.answer.service.AnswerService;
 import com.preproject.stackOverflow.dto.MultiAnsResponseDto;
 import com.preproject.stackOverflow.dto.SingleResponseDto;
+import com.preproject.stackOverflow.member.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -27,26 +28,37 @@ import java.util.Map;
 @RequestMapping("/question")
 public class AnswerController {
     private final AnswerService answerService;
+    private final MemberService memberService;
 
     private final AnswerMapper mapper;
 
-    public AnswerController(AnswerService answerService, AnswerMapper mapper) {
+    public AnswerController(AnswerService answerService, MemberService memberService, AnswerMapper mapper) {
         this.answerService = answerService;
+        this.memberService = memberService;
         this.mapper = mapper;
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping("{question-id}")
     public ResponseEntity postAnswer(@PathVariable("question-id") @Positive long questionId,
-                                     @Valid @RequestBody AnswerDto answerDto) {
-        // 사용자 인증 상태 확인
+                                     @Valid @RequestBody AnswerDto answerDto,
+                                     @RequestParam(required = false) Long memberId) {
+
+        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
+        answerDto.setEmail(memberName);
+        answerDto.setMemberId(memberId);
 
 
-            Answer answer = answerService.createAnswer(mapper.answerPostDtoToAnswer(questionId, answerDto));
+        if (!memberService.findMember(memberId).equals(memberName)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
 
-            return new ResponseEntity<>(
-                    new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)),
-                    HttpStatus.CREATED);
+        Answer answer = answerService.createAnswer(
+                mapper.answerPostDtoToAnswer(questionId, answerDto), memberId);
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)),
+                HttpStatus.CREATED);
 
     }
 
@@ -54,10 +66,12 @@ public class AnswerController {
     @PatchMapping("{question-id}/answer/{answer-id}")
     public ResponseEntity patchAnswer(@PathVariable("question-id") @Positive long questionId,
                                       @PathVariable("answer-id") @Positive long answerId,
-                                      @Valid @RequestBody AnswerDto answerDto) {
+                                      @Valid @RequestBody AnswerDto answerDto,
+                                      @Positive long memberId) {
 
         answerDto.setAnswerId(answerId);
-        Answer answer = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerDto));
+        Answer answer = answerService.updateAnswer(
+                mapper.answerPatchDtoToAnswer(answerDto), memberId);
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)), HttpStatus.OK);
@@ -68,7 +82,7 @@ public class AnswerController {
     @GetMapping("{question-id}/answer")
     public ResponseEntity getAnswers(@PathVariable("question-id") @Positive long questionId) {
 
-            List<Answer> answers = answerService.findAnswers(questionId);
+        List<Answer> answers = answerService.findAnswers(questionId);
 
         return new ResponseEntity<>(
                 new MultiAnsResponseDto<>(mapper.answersToAnswerResponseDtos(answers)),
@@ -80,7 +94,11 @@ public class AnswerController {
     @PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{question-id}/answer/{answer-id}")
     public ResponseEntity deleteAnswer(@PathVariable("answer-id") @Positive long answerId) {
-        answerService.deleteAnswer(answerId);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+
+        answerService.deleteAnswer(answerId, email);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -93,13 +111,11 @@ public class AnswerController {
                                        @Valid @RequestBody Map<String, Long> request) {
         long memberId = request.get("memberId");
 
-        answerService.upVoteAnswer(answerId, memberId);
+        answerService.upVoteAnswer(answerId, memberId); //여기서 request가 요청값으로 들어옴
 
         AnswerVoteDto answerVoteDto = new AnswerVoteDto(answerService.getVote(answerId));
 
         return new ResponseEntity<>(answerVoteDto, HttpStatus.OK);
-
-
 
     }
 
@@ -118,4 +134,3 @@ public class AnswerController {
     }
 
 }
-

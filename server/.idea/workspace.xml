@@ -7,7 +7,21 @@
     <option name="diagramMode" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5a15c94-eb9b-4a74-8a94-6c1d3ff42123" name="Changes" comment="" />
+    <list default="true" id="c5a15c94-eb9b-4a74-8a94-6c1d3ff42123" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/answer/controller/AnswerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/answer/controller/AnswerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/answer/mapper/AnswerMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/answer/mapper/AnswerMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/answer/mapper/AnswerMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/answer/mapper/AnswerMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/answer/service/AnswerService$VoteStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/answer/service/AnswerService$VoteStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/answer/service/AnswerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/answer/service/AnswerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/question/controller/QuestionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/preproject/stackOverflow/question/controller/QuestionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/com/preproject/stackOverflow/answer/mapper/AnswerMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/com/preproject/stackOverflow/answer/mapper/AnswerMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/dto/AnswerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/dto/AnswerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/mapper/AnswerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/mapper/AnswerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/service/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/service/AnswerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +118,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/beom/seb45_pre_026/server&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/JAVA/Spring_Project(개인연습용)&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -113,7 +127,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;14fd41dca7475dd7be97913ca6447fc6&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -301,7 +315,11 @@
       <workItem from="1692287189060" duration="1268000" />
       <workItem from="1692317104808" duration="3259000" />
       <workItem from="1692348563187" duration="847000" />
-      <workItem from="1692361849793" duration="17276000" />
+      <workItem from="1692361849793" duration="20240000" />
+      <workItem from="1692382353745" duration="4241000" />
+      <workItem from="1692406209617" duration="20172000" />
+      <workItem from="1692430033813" duration="783000" />
+      <workItem from="1692430879496" duration="3000" />
     </task>
     <servers />
   </component>
@@ -340,42 +358,88 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="27" />
+          <line>145</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
+          <line>117</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>143</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
+          <line>150</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
+          <line>152</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
+          <line>156</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
           <line>60</line>
-          <option name="timeStamp" value="28" />
+          <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
-          <line>55</line>
-          <properties class="com.preproject.stackOverflow.question.controller.QuestionController" method="postQuestion">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="26" />
+          <line>59</line>
+          <option name="timeStamp" value="106" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -389,7 +453,7 @@
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="question" language="JAVA" />
-        <watch expression="memberName" />
+        <watch expression="memberName" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

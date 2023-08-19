@@ -2,15 +2,17 @@ package com.preproject.stackOverflow.answer.service;
 
 
 import com.preproject.stackOverflow.answer.entity.Answer;
+import com.preproject.stackOverflow.answer.mapper.AnswerMapper;
 import com.preproject.stackOverflow.answer.repository.AnswerRepository;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
 import com.preproject.stackOverflow.exception.ExceptionCode;
-import com.preproject.stackOverflow.question.entity.Question;
+import com.preproject.stackOverflow.member.entity.Member;
+import com.preproject.stackOverflow.member.repository.MemberRepository;
+import com.preproject.stackOverflow.member.service.MemberService;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.lang.reflect.Member;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -19,27 +21,39 @@ import java.util.Optional;
 @Service
 public class AnswerService {
     private final AnswerRepository answerRepository;
+    private final AnswerMapper answerMapper;
+    private final MemberService memberService;
+    private final MemberRepository memberRepository;
 
-    //  private final MemberService memberService;
-
-    public AnswerService(AnswerRepository answerRepository)
-//                         MemberService memberService
-    {
+    public AnswerService (AnswerRepository answerRepository,
+                          AnswerMapper answerMapper,
+                          MemberService memberService,
+                          MemberRepository memberRepository) {
         this.answerRepository = answerRepository;
-//        this.memberService = memberService;
+        this.answerMapper = answerMapper;
+        this.memberService = memberService;
+        this.memberRepository = memberRepository;
     }
 
-    public Answer createAnswer(Answer answer) {
-        //     answer.setMember(memberService.getLoginMember()); // 로그인멤버
+    public Answer createAnswer(Answer answer, long memberId) {
+        Answer findAnswer = findVerifiedAnswer(answer.getAnswerId());
+        Member member = findAnswer.getMember();
+        Member loggedInMember = memberService.findVerifiedMember(memberId);
+
+        if (member.getMemberId() != loggedInMember.getMemberId()) {
+            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+        }
         return answerRepository.save(answer);
     }
 
-    public Answer updateAnswer(Answer answer) {
+    public Answer updateAnswer(Answer answer, long memberId) {
         Answer findAnswer = findVerifiedAnswer(answer.getAnswerId());
+        Member member = findAnswer.getMember();
+        Member loggedInMember = memberService.findVerifiedMember(memberId);
 
-//        Member postMember = memberService.findVerifiedAnswer(findMember.getMember().getMemberId()); // 작성자
-//        if(memberService.getLoginMember().getMemberId() != postMember.getMemberId()) // // 로그인 유저와 작성자가 같지 않으면
-//            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED); // 수정권한 없음
+        if (member.getMemberId() != loggedInMember.getMemberId()) {
+            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+        }
 
         Optional.ofNullable(answer.getContent())
                 .ifPresent(content -> findAnswer.setContent(content));
@@ -60,21 +74,26 @@ public class AnswerService {
         return answerRepository.findAll(questionId);
     }
 
-    public void deleteAnswer(long answerId) {
-        Answer findAnswer = findVerifiedAnswer(answerId);
+    public void deleteAnswer(long answerId, String email) {
+        Member member = memberRepository.findByEmail(email).orElseThrow(
+                () -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND)
+        );
+
+        Answer findAnswer = answerRepository.findById(answerId).orElseThrow(
+                () -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND)
+        );
+
+        if (findAnswer.getMember().getMemberId() != member.getMemberId()) {
+            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+        }
 
         findAnswer.setAnswerStatus(Answer.AnswerStatus.ANSWER_DELETE);
-
-//        Member postMember = memberService.findVerifiedMember(findMember.getMember().getMemberId); // 작성자
-//        if(memberService.getLoginMember().getMemberId() != postMember.getMemberId()) // 로그인 유저와 작성자가 같지 않으면
-//            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED); // 삭제 권한 없음
-
         answerRepository.save(findAnswer);
     }
 
     // 추천
     public void upVoteAnswer(long answerId, long memberId) {
-//        memberService.findMember(memberId);
+        memberService.findMember(memberId);
 
         Answer answer = findAnswer(answerId);
         VoteStatus voteStatus = getMemberVoteStatus(answer, memberId);
@@ -95,7 +114,7 @@ public class AnswerService {
 
     // 비추천
     public void downVoteAnswer(long answerId, long memberId) {
-//        memberService.findMember(memberId);
+        memberService.findMember(memberId);
 
         Answer answer = findAnswer(answerId);
         VoteStatus voteStatus = getMemberVoteStatus(answer, memberId);
@@ -104,9 +123,11 @@ public class AnswerService {
         if (voteStatus == VoteStatus.NONE) {
             answer.downVotedMemberId.add(memberId);
             voteCount--;
+
         } else if (voteStatus == VoteStatus.ALREADY_UP_VOTED) {
             answer.upVotedMemberId.remove(memberId);
             voteCount--;
+
         } else if (voteStatus == VoteStatus.ALREADY_DOWN_VOTED) {
             throw new BusinessLogicException(ExceptionCode.ALREADY_DOWN_VOTED);
         }

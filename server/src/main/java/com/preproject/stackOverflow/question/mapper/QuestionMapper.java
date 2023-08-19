@@ -77,7 +77,13 @@ public interface QuestionMapper {
     }
 
 
-    Question questionVoteToQuestion(QuestionDto.Vote questionVote);
+    default QuestionDto.Vote questionVoteToQuestion(QuestionDto.Vote questionVote){
+        QuestionDto.Vote vote = new QuestionDto.Vote();
+            questionVote.setVote(questionVote.getVote());
+
+            return vote;
+
+    }
 
 
 

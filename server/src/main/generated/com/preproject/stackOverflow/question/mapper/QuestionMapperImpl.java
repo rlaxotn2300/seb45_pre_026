@@ -1,7 +1,6 @@
 package com.preproject.stackOverflow.question.mapper;
 
 import com.preproject.stackOverflow.question.dto.QuestionDto.Response;
-import com.preproject.stackOverflow.question.dto.QuestionDto.Vote;
 import com.preproject.stackOverflow.question.entity.Question;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-19T00:56:02+0900",
+    date = "2023-08-19T12:19:02+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.19 (Azul Systems, Inc.)"
 )
 @Component
@@ -35,19 +34,5 @@ public class QuestionMapperImpl implements QuestionMapper {
         response1.setCreatedAt( response.getCreatedAt() );
 
         return response1;
-    }
-
-    @Override
-    public Question questionVoteToQuestion(Vote questionVote) {
-        if ( questionVote == null ) {
-            return null;
-        }
-
-        Question question = new Question();
-
-        question.setQuestionId( questionVote.getQuestionId() );
-        question.setVote( questionVote.getVote() );
-
-        return question;
     }
 }

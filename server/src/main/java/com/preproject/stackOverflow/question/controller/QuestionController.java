@@ -57,11 +57,12 @@ public class QuestionController {
                                              @RequestParam(required = false) Long memberId) {
 
         //member 의 username 받기(일단은 받앗음..)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String memberName = SecurityContextHolder.getContext().getAuthentication().getName(); //email
         questionPost.setMember(memberName);
         questionPost.setMemberId(memberId);
 
-        Long questionId = questionService.createQuestion((mapper.questionPostDtoToQuestion(questionPost)), memberId) ;
+        Long questionId = questionService.createQuestion((mapper.questionPostDtoToQuestion(questionPost)), memberId);
 
         URI uri = URI.create("/questions/" + questionId);
 
@@ -120,27 +121,29 @@ public class QuestionController {
 
     //질문추천
     @PostMapping("/upvote/{question-id}/{member-id}")
-    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id")  @Positive long questionId, @PathVariable("member-id") @Positive long memberId,
-                                           @RequestBody QuestionDto.Vote vote) {
+    public ResponseEntity upVote(@PathVariable("question-id")  @Positive long questionId,
+                                                    @PathVariable("member-id") @Positive long memberId,
+                                                    @Valid @RequestBody Map<String, Long> request) {
 
+        memberId = request.get("memberId");
         questionService.upVote(questionId, memberId);
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.questionVoteToQuestion(vote)), HttpStatus.OK
-        );
+        long vote = questionService.getVote(questionId);
+        return new ResponseEntity<>(new QuestionDto.Vote(questionId, memberId, vote), HttpStatus.OK);
     }
 
 
     //질문비추천
-    @PostMapping("/{question-id}/downvote")
-    public ResponseEntity<SingleResponseDto> downVote(@PathVariable("question-id")
-                                 @Positive long questionId,
-                                 @Positive long memberId,
-                                 QuestionDto.Vote vote) {
+    @PostMapping("/downvote/{question-id}/{member-id}")
+    public ResponseEntity downVote(@PathVariable("question-id") @Positive long questionId,
+                                   @PathVariable("member-id") @Positive long memberId,
+                                   @Valid @RequestBody Map<String, Long> request
+                                                        ) {
 
+        memberId = request.get("memberId"); // memberId를 요청 본문에서 가져옴
         questionService.downVote(questionId, memberId);
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.questionVoteToQuestion(vote)), HttpStatus.OK
-        );
+        long vote = questionService.getVote(questionId);
+
+        return new ResponseEntity<>(new QuestionDto.Vote(questionId, memberId, vote), HttpStatus.OK);
     }
 
 

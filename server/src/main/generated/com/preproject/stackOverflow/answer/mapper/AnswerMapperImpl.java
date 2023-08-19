@@ -2,8 +2,6 @@ package com.preproject.stackOverflow.answer.mapper;
 
 import com.preproject.stackOverflow.answer.dto.AnswerDto;
 import com.preproject.stackOverflow.answer.entity.Answer;
-import com.preproject.stackOverflow.member.dto.MemberDto.Response;
-import com.preproject.stackOverflow.member.entity.Member;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-18T21:38:56+0900",
+    date = "2023-08-19T13:33:34+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.19 (Azul Systems, Inc.)"
 )
 @Component
@@ -46,25 +44,5 @@ public class AnswerMapperImpl implements AnswerMapper {
         }
 
         return list;
-    }
-
-    @Override
-    public Response memberToMemberResponseDto(Member member) {
-        if ( member == null ) {
-            return null;
-        }
-
-        Response response = new Response();
-
-        if ( member.getMemberId() != null ) {
-            response.setMemberId( member.getMemberId() );
-        }
-        response.setEmail( member.getEmail() );
-        response.setName( member.getName() );
-        response.setPassword( member.getPassword() );
-        response.setCreatedAt( member.getCreatedAt() );
-        response.setModifiedAt( member.getModifiedAt() );
-
-        return response;
     }
 }

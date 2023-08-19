@@ -51,6 +51,10 @@ public class Question {
     @Column(nullable = true)
     private long vote;
 
+    public void setVote(long vote){
+        this.vote = vote;
+    }
+
     @Column(nullable = true)
     private String tag;
 
