@@ -73,6 +73,7 @@
     <setting file="jar://$PROJECT_DIR$/../../../../../../../Program Files/Zulu/zulu-11/lib/src.zip!/java.base/jdk/internal/reflect/NativeMethodAccessorImpl.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/8.0.27/5acea4f8fd2b80f4739133bc2088d23685d423cd/mysql-connector-java-8.0.27-sources.jar!/com/mysql/cj/jdbc/exceptions/SQLError.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.7.14/35ad468d28c4384d70413150085582db75373698/spring-data-commons-2.7.14-sources.jar!/org/springframework/data/mapping/PropertyReferenceException.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.7.14/35ad468d28c4384d70413150085582db75373698/spring-data-commons-2.7.14-sources.jar!/org/springframework/data/repository/CrudRepository.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.7.14/35ad468d28c4384d70413150085582db75373698/spring-data-commons-2.7.14-sources.jar!/org/springframework/data/repository/core/support/RepositoryMethodInvoker.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.3.29/da2fdd0cd8b2c812ff3241af92b2e9498b68c5d1/spring-web-5.3.29-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java" root0="SKIP_INSPECTION" />
   </component>
@@ -113,7 +114,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;4bcb3e17f34765c4e3e65a205609885d&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;14fd41dca7475dd7be97913ca6447fc6&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -235,7 +236,8 @@
       </method>
     </configuration>
     <configuration name="StackOverflowApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="stackOverflow.main" />
+      <option name="ACTIVE_PROFILES" value="server" />
+      <module name="com.preproject.stackOverflow.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.preproject.stackOverflow.StackOverflowApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -294,7 +296,12 @@
       <workItem from="1692206271565" duration="4308000" />
       <workItem from="1692231381427" duration="21022000" />
       <workItem from="1692261240488" duration="367000" />
-      <workItem from="1692262041334" duration="3541000" />
+      <workItem from="1692262041334" duration="5174000" />
+      <workItem from="1692287119070" duration="56000" />
+      <workItem from="1692287189060" duration="1268000" />
+      <workItem from="1692317104808" duration="3259000" />
+      <workItem from="1692348563187" duration="847000" />
+      <workItem from="1692361849793" duration="17276000" />
     </task>
     <servers />
   </component>
@@ -331,12 +338,59 @@
           <properties class="org.springframework.data.mapping.PropertyReferenceException" package="org.springframework.data.mapping" />
           <option name="timeStamp" value="6" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>55</line>
+          <properties class="com.preproject.stackOverflow.question.controller.QuestionController" method="postQuestion">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="com.preproject.stackOverflow.question.entity.Question" memberName="tag" />
         <PinnedItemInfo parentTag="com.preproject.stackOverflow.question.dto.QuestionDto$Post" memberName="title" />
+        <PinnedItemInfo parentTag="com.preproject.stackOverflow.question.entity.Question" memberName="tags" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="question" language="JAVA" />
+        <watch expression="memberName" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

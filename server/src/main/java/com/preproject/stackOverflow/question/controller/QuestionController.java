@@ -29,6 +29,7 @@ import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 @Validated
@@ -53,11 +54,12 @@ public class QuestionController {
     @PostMapping("/questions")
     //@PostMapping
     public ResponseEntity<Void> postQuestion(@Valid @RequestBody QuestionDto.Post questionPost,
-                                             @Positive Long memberId) {
+                                             @RequestParam(required = false) Long memberId) {
 
         //member 의 username 받기(일단은 받앗음..)
-        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
+        String memberName = SecurityContextHolder.getContext().getAuthentication().getName(); //email
         questionPost.setMember(memberName);
+        questionPost.setMemberId(memberId);
 
         Long questionId = questionService.createQuestion((mapper.questionPostDtoToQuestion(questionPost)), memberId) ;
 
@@ -71,8 +73,8 @@ public class QuestionController {
     @Secured("ROLE_USER")
     @PatchMapping("/{question-id}")
     public ResponseEntity<Question> patchQuestion(@RequestBody QuestionDto.Patch patchDto,
-                                        @PathVariable("question-id")
-                                        @Positive long questionId,
+                                                  @PathVariable("question-id")
+                                                  @Positive long questionId,
                                                   @Positive long memberId) {
 
         String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -92,7 +94,7 @@ public class QuestionController {
     //질문 1개 조회
     @GetMapping("/{question-id}")
     public ResponseEntity<Question> findQuestion(@PathVariable("question-id")
-                                       @Positive long questionId) {
+                                                 @Positive long questionId) {
 
         Question question = questionService.findQuestion(questionId);
         QuestionDto.Response response = mapper.questionToQuestionResponseDto(question);
@@ -117,28 +119,28 @@ public class QuestionController {
 
 
     //질문추천
-    @PostMapping("/{question-id}/upvote")
-    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id") @Positive long questionId, @Positive long memberId,
-                                           QuestionDto.Vote vote) {
+    @PostMapping("/upvote/{question-id}/{member-id}")
+    public ResponseEntity upVote(@PathVariable("question-id")  @Positive long questionId,
+                                 @PathVariable("member-id") @Positive long memberId,
+                                 @RequestBody QuestionDto.Vote vote) {
 
         questionService.upVote(questionId, memberId);
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.questionVoteToQuestion(vote)), HttpStatus.OK
-        );
+        return new ResponseEntity<>(vote, HttpStatus.OK);
     }
 
 
     //질문비추천
-    @PostMapping("/{question-id}/downvote")
-    public ResponseEntity<SingleResponseDto> downVote(@PathVariable("question-id")
-                                 @Positive long questionId,
-                                 @Positive long memberId,
-                                 QuestionDto.Vote vote) {
+    @PostMapping("/downvote/{question-id}/{member-id}")
+    public ResponseEntity downVote(@PathVariable("question-id") @Positive long questionId,
+                                   @PathVariable("member-id") @Positive long memberId,
+                                   @Valid @RequestBody Map<String, Long> request
+    ) {
 
+        memberId = request.get("memberId"); // memberId를 요청 본문에서 가져옴
         questionService.downVote(questionId, memberId);
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.questionVoteToQuestion(vote)), HttpStatus.OK
-        );
+        long vote = questionService.getVote(questionId);
+
+        return new ResponseEntity<>(new QuestionDto.Vote(questionId, memberId, vote), HttpStatus.OK);
     }
 
 
@@ -146,8 +148,8 @@ public class QuestionController {
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @DeleteMapping("{question-id}")
     public ResponseEntity deleteQuestion(@PathVariable("question-id")
-                                              @Positive long questionId
-                                              ) {
+                                         @Positive long questionId
+    ) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
 
@@ -162,8 +164,8 @@ public class QuestionController {
     // 페이지번호는 0부터 시작해야 함..
     @GetMapping("/search")
     public ResponseEntity getQuestionsByTag ( @RequestParam @Positive int page,
-                                                @RequestParam @Positive int size,
-                                                @RequestParam String tag){
+                                              @RequestParam @Positive int size,
+                                              @RequestParam String tag){
 
         //List<String> tags = Arrays.asList(tag.split(",")); // 태그 리스트로 변환
 

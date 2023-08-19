@@ -35,7 +35,6 @@ public class Question {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-
     @JoinColumn(name = "memberId")
     private Member member;
 
