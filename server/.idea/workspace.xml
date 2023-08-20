@@ -321,7 +321,7 @@
       <workItem from="1692430033813" duration="783000" />
       <workItem from="1692430879496" duration="3000" />
       <workItem from="1692432540568" duration="461000" />
-      <workItem from="1692433029422" duration="2314000" />
+      <workItem from="1692433029422" duration="4654000" />
     </task>
     <servers />
   </component>
@@ -442,6 +442,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
           <line>59</line>
           <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/member/service/MemberService.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="107" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
