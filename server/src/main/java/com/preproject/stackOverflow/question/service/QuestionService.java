@@ -53,14 +53,14 @@ public class QuestionService {
 //            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
 //        }
 
-            String tag = question.getTag();
-            List<String> tagList = new ArrayList<>(Arrays.asList(tag.split("\\s*,\\s*")));
-            question.setTags(tagList);
-            question.setQuestionStatus(Question.QuestionStatus.QUESTION_ASKED);
-            question.setCreatedAt(question.getCreatedAt());
+        String tag = question.getTag();
+        List<String> tagList = new ArrayList<>(Arrays.asList(tag.split("\\s*,\\s*")));
+        question.setTags(tagList);
+        question.setQuestionStatus(Question.QuestionStatus.QUESTION_ASKED);
+        question.setCreatedAt(question.getCreatedAt());
 
-            return questionRepository.save(question).getQuestionId();
-        }
+        return questionRepository.save(question).getQuestionId();
+    }
 
 
 

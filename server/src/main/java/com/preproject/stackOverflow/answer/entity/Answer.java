@@ -79,21 +79,21 @@ public class Answer {
     }
 
     public  Answer(AnswerStatus answerStatus,
-//                   Member member,
+                   Member member,
                    Question question, String content) {
-//        this.member = member;
+        this.member = member;
         this.answerStatus = answerStatus;
         this.question = question;
         this.content =  content;
     }
 
     public Answer(Long answerId,
-//                  Member member,
+                  Member member,
                   AnswerStatus answerStatus, Question question,
                   String content, long vote, LocalDateTime createdAt,
                   LocalDateTime modifiedAt) {
         this.answerId =  answerId;
-//        this.member =  member;
+        this.member =  member;
         this.question = question;
         this.content =content;
         this.createdAt = createdAt;
