@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.net.URI;
 import java.util.List;
 
@@ -66,14 +67,9 @@ public class QuestionController {
     @PatchMapping("/{question-id}")
     public ResponseEntity<Question> patchQuestion(@RequestBody QuestionDto.Patch patchDto,
                                                   @PathVariable("question-id")
-                                                  @Positive long questionId,
-                                                  @Positive Long memberId) {
+                                                  @Positive long questionId ) {
 
-        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        if (!memberService.findMember(memberId).equals(memberName)) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
 
         Question response = questionService.patchQuestion(mapper.questionPatchDtoToQuestion(patchDto), questionId);
         QuestionDto.Response question = mapper.questionToQuestionResponseDto(response);
@@ -126,7 +122,7 @@ public class QuestionController {
     //질문비추천
     @PostMapping("/{question-id}/downvote")
     public ResponseEntity<SingleResponseDto> downVote(@PathVariable("question-id") @Positive long questionId,
-                                                      @Positive long memberId,
+                                                      @Positive Long memberId,
                                                       QuestionDto.Vote vote) {
 
         questionService.downVote(questionId, memberId);
@@ -158,7 +154,6 @@ public class QuestionController {
                                               @RequestParam @Positive int size,
                                               @RequestParam String tag){
 
-        //List<String> tags = Arrays.asList(tag.split(",")); // 태그 리스트로 변환
 
         Page<Question> tagPage = questionService.findAllByTags(tag, page - 1, size);
 

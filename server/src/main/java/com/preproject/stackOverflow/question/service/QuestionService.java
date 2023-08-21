@@ -39,14 +39,8 @@ public class QuestionService {
 
     //질문등록
     public Long createQuestion(Question question, Long memberId) {
-        //Question findQuestion = findVerifiedQuestion(question.getQuestionId());
-        //Member questionAuthor = findQuestion.getMember();
         Member loggedInMember = memberService.findVerifiedMember(memberId);
         question.setMember(loggedInMember);
-
-//        if (questionAuthor.getMemberId() != loggedInMember.getMemberId()) {
-//            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
-//        }
 
         String tag = question.getTag();
         List<String> tagList = new ArrayList<>(Arrays.asList(tag.split("\\s*,\\s*")));
@@ -63,15 +57,10 @@ public class QuestionService {
 
     //질문수정
 
-    public Question patchQuestion(Question question, long memberId) {           //8.21 ok
+    public Question patchQuestion(Question question, long memberId) {
         Question findQuestion = findVerifiedQuestion(question.getQuestionId());
-//        Member questionAuthor = findQuestion.getMember();
-//        Member loggedInMember = memberService.findVerifiedMember(memberId);
-//
-//        if (questionAuthor.getMemberId() != loggedInMember.getMemberId()) {
-//            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
-//        }
-//
+
+
         Optional.ofNullable(question.getTitle())
                 .ifPresent(title -> findQuestion.setTitle(title));
         Optional.ofNullable(question.getContent())
@@ -82,12 +71,12 @@ public class QuestionService {
 
         String tag = question.getTag();
         List<String> tags = new ArrayList<>(Arrays.asList(tag.split(", ")));
-//
-//        List<String> tagsToRemove = new ArrayList<>(findQuestion.getTags());
-//        tagsToRemove.removeAll(tags);
-//
-//        findQuestion.getTags().removeAll(tagsToRemove);
-//        findQuestion.setTags(tags);
+
+        List<String> tagsToRemove = new ArrayList<>(findQuestion.getTags());
+        tagsToRemove.removeAll(tags);
+
+        findQuestion.getTags().removeAll(tagsToRemove);
+        findQuestion.setTags(tags);
 
         question.setTags(tags);
         findQuestion.setQuestionStatus(Question.QuestionStatus.QUESTION_MODIFIED);
@@ -211,13 +200,6 @@ public class QuestionService {
         }
     }
 
-
-
-//    public long getVote(long questionId) {
-//
-//        long voteCount = findQuestion(questionId).getVote();
-//        return voteCount;
-//    }
 
 
     public enum VoteStatus {

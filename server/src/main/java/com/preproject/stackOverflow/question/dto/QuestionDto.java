@@ -39,7 +39,7 @@ public class QuestionDto {
     @NoArgsConstructor
     public static class Patch {
 
-        // private long memberId;
+        private Long memberId;
         private long questionId;
         @NotBlank(message = "제목은 공백이 아니어야 합니다.")
         private String title;

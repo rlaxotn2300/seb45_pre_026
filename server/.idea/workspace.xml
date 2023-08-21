@@ -43,8 +43,8 @@
       <list>
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -315,7 +315,8 @@
       <workItem from="1692433029422" duration="4654000" />
       <workItem from="1692495980958" duration="16226000" />
       <workItem from="1692518273821" duration="15585000" />
-      <workItem from="1692576296941" duration="21982000" />
+      <workItem from="1692576296941" duration="23054000" />
+      <workItem from="1692628934263" duration="2700000" />
     </task>
     <servers />
   </component>
@@ -356,36 +357,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/member/service/MemberService.java</url>
           <line>41</line>
           <option name="timeStamp" value="107" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="147" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="148" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="149" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="156" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="157" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="158" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
