@@ -3,7 +3,6 @@ package com.preproject.stackOverflow.answer.mapper;
 
 import com.preproject.stackOverflow.answer.dto.AnswerDto;
 import com.preproject.stackOverflow.answer.entity.Answer;
-import com.preproject.stackOverflow.question.entity.Question;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -11,30 +10,50 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface AnswerMapper {
 
-    Answer answerPatchDtoToAnswer(AnswerDto answerPatchDto);
+    default Answer answerPatchDtoToAnswer(AnswerDto answerPatchDto) {
+        Answer answer;
+        if (answerPatchDto == null) {
+            return null;
+        } else {
+            answer = new Answer();
+            answer.setAnswerId(answerPatchDto.getAnswerId());
+            answer.setContent(answerPatchDto.getContent());
+            answer.setVote(answerPatchDto.getVoteCount());
 
-    List<AnswerDto> answersToAnswerResponseDtos(List<Answer> answers);
-
-    default Answer answerPostDtoToAnswer(long questionId, AnswerDto answerPostDto) {
-        Answer answer = new Answer();
-        answer.setContent(answerPostDto.getContent());
-
-        Question question = new Question();
-        question.setQuestionId(questionId);
-        answer.setQuestion(question);
+        }
 
         return answer;
     }
 
+    List<AnswerDto> answersToAnswerResponseDtos(List<Answer> answers);
+
+    default Answer answerPostDtoToAnswer(Long questionId, AnswerDto answerDto) {
+        if (answerDto == null) {
+            return null;
+        }
+
+        Answer answer = new Answer();
+        //answer.setAnswerStatus(answerDto.getAnswerStatus());
+        //answer.setMember(answerDto.getMember());
+        answer.setContent(answerDto.getContent());
+        answer.setCreatedAt(answerDto.getCreatedAt());
+        answer.setModifiedAt(answerDto.getModifiedAt());
+
+        return answer;
+    }
+
+
+
     default AnswerDto answerToAnswerResponseDto(Answer answer) {
-        return new AnswerDto(
-                answer.getAnswerId(),
-                answer.getAnswerStatus(),
-                answer.getQuestion().getQuestionId(),
-                answer.getContent(),
-                answer.getVote(),
-                answer.getCreatedAt(),
-                answer.getModifiedAt());
+        AnswerDto answerDto = new AnswerDto();
+        answerDto.setAnswerId(answer.getAnswerId());
+       // answerDto.setAnswerStatus(answer.getAnswerStatus());
+        answerDto.setQuestionId(answer.getQuestion().getQuestionId());
+        answerDto.setContent(answer.getContent());
+        answerDto.setCreatedAt(answer.getCreatedAt());
+        answerDto.setModifiedAt(answer.getModifiedAt());
+
+        return answerDto;
     }
 
 }

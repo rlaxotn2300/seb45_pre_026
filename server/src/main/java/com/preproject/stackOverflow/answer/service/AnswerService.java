@@ -36,13 +36,14 @@ public class AnswerService {
     }
 
     public Answer createAnswer(Answer answer, long memberId) {
-        Answer findAnswer = findVerifiedAnswer(answer.getAnswerId());
-        Member member = findAnswer.getMember();
+        //Answer findAnswer = findVerifiedAnswer(answer.getAnswerId());
+        //Member member = findAnswer.getMember();
         Member loggedInMember = memberService.findVerifiedMember(memberId);
+        answer.setMember(loggedInMember);
 
-        if (member.getMemberId() != loggedInMember.getMemberId()) {
-            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
-        }
+//        if (member.getMemberId() != loggedInMember.getMemberId()) {
+//            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+//        }
         return answerRepository.save(answer);
     }
 
@@ -109,8 +110,8 @@ public class AnswerService {
             voteCount++;
         }
         answer.setVote(voteCount);
-
     }
+
 
     // 비추천
     public void downVoteAnswer(long answerId, long memberId) {

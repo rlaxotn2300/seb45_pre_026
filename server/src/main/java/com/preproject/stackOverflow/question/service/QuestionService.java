@@ -3,6 +3,7 @@ package com.preproject.stackOverflow.question.service;
 
 import com.preproject.stackOverflow.answer.entity.Answer;
 import com.preproject.stackOverflow.answer.service.AnswerService;
+import com.preproject.stackOverflow.auth.userdetails.CustomersDetailsService;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
 import com.preproject.stackOverflow.exception.ExceptionCode;
 import com.preproject.stackOverflow.member.entity.Member;
@@ -43,7 +44,7 @@ public class QuestionService {
 
 
     //질문등록
-    public Long createQuestion(Question question, Long memberId) {
+    public Long createQuestion(Question question, Long memberId) {                      //8.21 ok
         //Question findQuestion = findVerifiedQuestion(question.getQuestionId());
         //Member questionAuthor = findQuestion.getMember();
         Member loggedInMember = memberService.findVerifiedMember(memberId);
@@ -60,6 +61,7 @@ public class QuestionService {
         question.setCreatedAt(question.getCreatedAt());
 
         return questionRepository.save(question).getQuestionId();
+
     }
 
 
@@ -69,13 +71,13 @@ public class QuestionService {
 
     public Question patchQuestion(Question question, long memberId) {
         Question findQuestion = findVerifiedQuestion(question.getQuestionId());
-        Member questionAuthor = findQuestion.getMember();
-        Member loggedInMember = memberService.findVerifiedMember(memberId);
-
-        if (questionAuthor.getMemberId() != loggedInMember.getMemberId()) {
-            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
-        }
-
+//        Member questionAuthor = findQuestion.getMember();
+//        Member loggedInMember = memberService.findVerifiedMember(memberId);
+//
+//        if (questionAuthor.getMemberId() != loggedInMember.getMemberId()) {
+//            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+//        }
+//
         Optional.ofNullable(question.getTitle())
                 .ifPresent(title -> findQuestion.setTitle(title));
         Optional.ofNullable(question.getContent())
@@ -85,15 +87,15 @@ public class QuestionService {
 
 
         String tag = question.getTag();
-        List<String> tagList = new ArrayList<>(Arrays.asList(tag.split(", ")));
+        List<String> tags = new ArrayList<>(Arrays.asList(tag.split(", ")));
+//
+//        List<String> tagsToRemove = new ArrayList<>(findQuestion.getTags());
+//        tagsToRemove.removeAll(tags);
+//
+//        findQuestion.getTags().removeAll(tagsToRemove);
+//        findQuestion.setTags(tags);
 
-        List<String> tagsToRemove = new ArrayList<>(findQuestion.getTags());
-        tagsToRemove.removeAll(tagList);
-
-        findQuestion.getTags().removeAll(tagsToRemove);
-        findQuestion.setTags(tagList);
-
-        //question.setTags(tagList);
+        question.setTags(tags);
         findQuestion.setQuestionStatus(Question.QuestionStatus.QUESTION_MODIFIED);
         findQuestion.setModifiedAt(question.getModifiedAt());
 

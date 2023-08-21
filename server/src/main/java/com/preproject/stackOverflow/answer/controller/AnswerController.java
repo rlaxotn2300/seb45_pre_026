@@ -12,6 +12,7 @@ import com.preproject.stackOverflow.dto.SingleResponseDto;
 import com.preproject.stackOverflow.member.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

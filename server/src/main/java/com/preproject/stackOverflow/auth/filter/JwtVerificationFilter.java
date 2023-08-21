@@ -1,6 +1,7 @@
 package com.preproject.stackOverflow.auth.filter;
 
 import com.preproject.stackOverflow.auth.jwt.JwtTokenizer;
+import com.preproject.stackOverflow.auth.userdetails.MemberDetailsService;
 import com.preproject.stackOverflow.auth.utils.CustomAuthorityUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.security.SignatureException;
@@ -9,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;

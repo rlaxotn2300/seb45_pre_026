@@ -4,6 +4,7 @@ package com.preproject.stackOverflow.question.mapper;
 import com.preproject.stackOverflow.answer.entity.Answer;
 import com.preproject.stackOverflow.question.dto.QuestionDto;
 import com.preproject.stackOverflow.question.entity.Question;
+import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 
 import org.mapstruct.Mapping;
@@ -23,10 +24,11 @@ public interface QuestionMapper {
             return null;
         } else {
             Question question = new Question();
+
             question.setTitle(questionPost.getTitle());
             question.setContent(questionPost.getContent());
             question.setTag(questionPost.getTag());
-            List<String> list = questionPost.getTagList();
+            List<String> list = questionPost.getTags();
             if (list != null) {
 
                 question.setTags(new ArrayList(list));
@@ -51,8 +53,8 @@ public interface QuestionMapper {
             question.setQuestionId(questionPatch.getQuestionId());
             question.setTitle(questionPatch.getTitle());
             question.setContent(questionPatch.getContent());
-            //question.setTag(questionPatch.getTag());
-            List<String> list = questionPatch.getTagList();
+            question.setTag(questionPatch.getTag());
+            List<String> list = questionPatch.getTags();
             if (list != null) {
                 question.setTags(new ArrayList<>(list));;
             }

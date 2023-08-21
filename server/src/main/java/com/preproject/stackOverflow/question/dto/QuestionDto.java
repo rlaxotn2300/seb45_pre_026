@@ -27,7 +27,7 @@ public class QuestionDto {
         @NotBlank(message = "내용을 입력하세요.")
         private String content;
         private String tag;
-        private List<String> tagList;
+        private List<String> tags;
         private LocalDateTime createdAt;
         // private Question.QuestionStatus QUESTION_ASKED;
 
@@ -45,8 +45,8 @@ public class QuestionDto {
         private String title;
         @NotBlank(message = "내용을 입력하세요.")
         private String content;
-        //private String tag;
-        private List<String> tagList;
+        private String tag;
+        private List<String> tags;
         private Question.QuestionStatus QUESTION_MODIFIED;
 
     }

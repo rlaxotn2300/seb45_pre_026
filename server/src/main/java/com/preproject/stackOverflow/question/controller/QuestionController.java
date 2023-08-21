@@ -1,6 +1,7 @@
 package com.preproject.stackOverflow.question.controller;
 
 
+import com.preproject.stackOverflow.auth.userdetails.CustomersDetailsService;
 import com.preproject.stackOverflow.dto.MultiResponseDto;
 import com.preproject.stackOverflow.dto.PageInfo;
 import com.preproject.stackOverflow.dto.SingleResponseDto;
@@ -15,10 +16,12 @@ import com.preproject.stackOverflow.question.service.QuestionService;
 import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -30,6 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
 
 
 @Validated
@@ -54,7 +58,7 @@ public class QuestionController {
     @PostMapping("/questions")
     //@PostMapping
     public ResponseEntity<Void> postQuestion(@Valid @RequestBody QuestionDto.Post questionPost,
-                                             @RequestParam(required = false) Long memberId) {
+                                             @RequestParam @Positive Long memberId) {
 
         //member 의 username 받기(일단은 받앗음..)
         String memberName = SecurityContextHolder.getContext().getAuthentication().getName(); //email
@@ -75,13 +79,13 @@ public class QuestionController {
     public ResponseEntity<Question> patchQuestion(@RequestBody QuestionDto.Patch patchDto,
                                                   @PathVariable("question-id")
                                                   @Positive long questionId,
-                                                  @Positive long memberId) {
+                                                  @Positive Long memberId) {
 
-        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
+//        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        if (!memberService.findMember(memberId).equals(memberName)) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
+//        if (!memberService.findMember(memberId).equals(memberName)) {
+//            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+//        }
 
         Question response = questionService.patchQuestion(mapper.questionPatchDtoToQuestion(patchDto), questionId);
         QuestionDto.Response question = mapper.questionToQuestionResponseDto(response);
@@ -119,9 +123,10 @@ public class QuestionController {
 
 
     //질문추천
-    @PostMapping("/upvote/{question-id}/{member-id}")
-    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id")  @Positive long questionId, @PathVariable("member-id") @Positive long memberId,
-                                                    @RequestBody QuestionDto.Vote vote) {
+    @PostMapping("/{question-id}/upvote")
+    public ResponseEntity<SingleResponseDto> upVote(@PathVariable("question-id")  @Positive Long questionId,
+                                                    @Positive Long memberId,
+                                                    QuestionDto.Vote vote) {
 
         questionService.upVote(questionId, memberId);
         return new ResponseEntity<>(
@@ -132,8 +137,7 @@ public class QuestionController {
 
     //질문비추천
     @PostMapping("/{question-id}/downvote")
-    public ResponseEntity<SingleResponseDto> downVote(@PathVariable("question-id")
-                                                      @Positive long questionId,
+    public ResponseEntity<SingleResponseDto> downVote(@PathVariable("question-id") @Positive long questionId,
                                                       @Positive long memberId,
                                                       QuestionDto.Vote vote) {
 
@@ -148,8 +152,7 @@ public class QuestionController {
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @DeleteMapping("{question-id}")
     public ResponseEntity deleteQuestion(@PathVariable("question-id")
-                                         @Positive long questionId
-    ) {
+                                         @Positive long questionId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
 

@@ -16,10 +16,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class AnswerDto {
     private long answerId;
-    private Answer.AnswerStatus answerStatus;
+    private Answer.AnswerStatus ANSWER_NORMAL;
     private long questionId;
     private String email;
     private Long memberId;
+    private String member;
 
     @NotEmpty(message = "내용을 입력해야 합니다.")
     @Size(min = 10, message = "10자 이상 입력해야 합니다.")
@@ -28,28 +29,5 @@ public class AnswerDto {
     private long voteCount;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-
-    public AnswerDto(Long answerId,
-                     Answer.AnswerStatus answerStatus,
-                     long questionId,
-                     String content,
-                     long vote,
-                     LocalDateTime createdAt,
-                     LocalDateTime modifiedAt) {
-    }
-
-    public static AnswerDto createFromAnswer(Answer answer) {
-        return new AnswerDto(
-                answer.getAnswerId(),
-                answer.getAnswerStatus(),
-                answer.getQuestion().getQuestionId(),
-                answer.getMember().getEmail(),
-                answer.getMember().getMemberId(),
-                answer.getContent(),
-                answer.getVote(),
-                answer.getCreatedAt(),
-                answer.getModifiedAt()
-        );
-    }
 
 }

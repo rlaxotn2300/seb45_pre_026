@@ -44,6 +44,7 @@
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -72,9 +73,12 @@
     <setting file="jar://$PROJECT_DIR$/../../../../../../../Program Files/Zulu/zulu-11/lib/src.zip!/java.base/jdk/internal/reflect/DelegatingMethodAccessorImpl.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/../../../../../../../Program Files/Zulu/zulu-11/lib/src.zip!/java.base/jdk/internal/reflect/NativeMethodAccessorImpl.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/8.0.27/5acea4f8fd2b80f4739133bc2088d23685d423cd/mysql-connector-java-8.0.27-sources.jar!/com/mysql/cj/jdbc/exceptions/SQLError.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/8.0.28/de25e9f0fc9ae5e9273e59eecde038096197809/mysql-connector-java-8.0.28-sources.jar!/com/mysql/cj/jdbc/exceptions/MysqlDataTruncation.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.7.14/35ad468d28c4384d70413150085582db75373698/spring-data-commons-2.7.14-sources.jar!/org/springframework/data/mapping/PropertyReferenceException.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.7.14/35ad468d28c4384d70413150085582db75373698/spring-data-commons-2.7.14-sources.jar!/org/springframework/data/repository/CrudRepository.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.7.14/35ad468d28c4384d70413150085582db75373698/spring-data-commons-2.7.14-sources.jar!/org/springframework/data/repository/core/support/RepositoryMethodInvoker.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/5.7.10/df2b166c75493bbfc2d9f7c7f50768e491efd3d4/spring-security-core-5.7.10-sources.jar!/org/springframework/security/core/context/SecurityContextHolder.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/5.7.10/df2b166c75493bbfc2d9f7c7f50768e491efd3d4/spring-security-core-5.7.10-sources.jar!/org/springframework/security/core/userdetails/UserDetails.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.3.29/da2fdd0cd8b2c812ff3241af92b2e9498b68c5d1/spring-web-5.3.29-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -93,6 +97,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -102,7 +107,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/JAVA/Spring_Project(개인연습용)&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -308,7 +313,9 @@
       <workItem from="1692430879496" duration="3000" />
       <workItem from="1692432540568" duration="461000" />
       <workItem from="1692433029422" duration="4654000" />
-      <workItem from="1692495980958" duration="716000" />
+      <workItem from="1692495980958" duration="16226000" />
+      <workItem from="1692518273821" duration="15585000" />
+      <workItem from="1692576296941" duration="7143000" />
     </task>
     <servers />
   </component>
@@ -346,54 +353,49 @@
           <option name="timeStamp" value="6" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>149</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>150</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>151</line>
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>153</line>
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>154</line>
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>155</line>
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>157</line>
-          <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>158</line>
-          <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/service/QuestionService.java</url>
-          <line>160</line>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/member/service/MemberService.java</url>
           <line>41</line>
           <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="114" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="115" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>156</line>
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="122" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="123" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -408,6 +410,10 @@
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="question" language="JAVA" />
         <watch expression="memberName" language="JAVA" />
+        <watch expression="answerDto" />
+        <watch expression="questionPost.memberId" language="JAVA" />
+        <watch expression="((AnonymousAuthenticationToken)authentication).authenticated" language="JAVA" custom="org.springframework.security.authentication.AnonymousAuthenticationToken" />
+        <watch expression="memberId" />
       </configuration>
     </watches-manager>
   </component>

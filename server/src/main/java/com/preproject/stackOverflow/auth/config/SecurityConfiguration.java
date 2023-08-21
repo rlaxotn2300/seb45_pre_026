@@ -4,6 +4,7 @@ import com.preproject.stackOverflow.auth.filter.JwtAuthenticationFilter;
 import com.preproject.stackOverflow.auth.filter.JwtVerificationFilter;
 import com.preproject.stackOverflow.auth.handler.*;
 import com.preproject.stackOverflow.auth.jwt.JwtTokenizer;
+import com.preproject.stackOverflow.auth.userdetails.MemberDetailsService;
 import com.preproject.stackOverflow.auth.utils.CustomAuthorityUtils;
 import com.preproject.stackOverflow.member.repository.MemberRepository;
 
@@ -73,13 +74,13 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
                         .antMatchers(HttpMethod.POST, "/member/join").permitAll()
-                        .antMatchers(HttpMethod.PATCH, "/member/**").hasRole("USER")
-                        .antMatchers(HttpMethod.GET, "/member/**").hasRole("USER")
-                        .antMatchers(HttpMethod.DELETE, "/member/**").hasRole("USER")
+                        .antMatchers(HttpMethod.PATCH, "/member/").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/member/").hasRole("USER")
+                        .antMatchers(HttpMethod.DELETE, "/member/").hasRole("USER")
                         .antMatchers(HttpMethod.POST, "/question").authenticated()
-                        .antMatchers(HttpMethod.PATCH, "/question/**").hasRole("USER")
-                        .antMatchers(HttpMethod.GET, "/question").permitAll()
-                        .antMatchers(HttpMethod.DELETE, "/member/**").hasRole("USER")
+                        .antMatchers(HttpMethod.PATCH, "/question/").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/question/").permitAll()
+                        .antMatchers(HttpMethod.DELETE, "/question/").hasRole("USER")
                         .anyRequest().permitAll()
                 );
         return http.build();
