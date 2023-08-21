@@ -13,33 +13,15 @@ import QuestionRegister from './page/QuestionRegister';
 import QuestionDetail from './page/QuestionDetail';
 import SearchList from './page/Search_list';
 import QuestionEdit from './page/QuestionEdit';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 
 function App() {
-  const [isData, setIsData] = useState([]);
-
-  const getData = () => {
-    return axios
-      .get('http://localhost:5000/questionData')
-      .then((res) => {
-        console.log(res.data);
-        setIsData(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
   return (
     <div className="app__body">
       <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/questions" element={<Questions isdata={isData} />} />
+          <Route path="/questions" element={<Questions />} />
           <Route path="/tags" element={<Tags />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/companies" element={<Companies />} />

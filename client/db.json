@@ -213,6 +213,21 @@
       "password": "abc123",
       "name": "nickname",
       "verify": 0
+    },
+    {
+      "email": "asdasd@naver.com",
+      "password": "asfasdfasdf",
+      "name": "김태수",
+      "verify": 0,
+      "id": 1
+    },
+    {
+      "email": "asdasd@naver.com",
+      "password": "ghenznzl5",
+      "name": "김태수",
+      "verify": 0,
+      "id": 2
     }
+    // json-server --watch db.json --port 5000
   ]
 }

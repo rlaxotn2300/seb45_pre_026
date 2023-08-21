@@ -109,5 +109,4 @@ function Header({ setCurPage }) {
     </div>
   );
 }
-
 export default connect(null, mapDispatchToProps)(Header);
