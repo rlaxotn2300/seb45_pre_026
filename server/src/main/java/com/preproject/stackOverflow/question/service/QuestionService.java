@@ -1,9 +1,5 @@
 package com.preproject.stackOverflow.question.service;
 
-
-import com.preproject.stackOverflow.answer.entity.Answer;
-import com.preproject.stackOverflow.answer.service.AnswerService;
-import com.preproject.stackOverflow.auth.userdetails.CustomersDetailsService;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
 import com.preproject.stackOverflow.exception.ExceptionCode;
 import com.preproject.stackOverflow.member.entity.Member;
@@ -16,11 +12,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +38,7 @@ public class QuestionService {
 
 
     //질문등록
-    public Long createQuestion(Question question, Long memberId) {                      //8.21 ok
+    public Long createQuestion(Question question, Long memberId) {
         //Question findQuestion = findVerifiedQuestion(question.getQuestionId());
         //Member questionAuthor = findQuestion.getMember();
         Member loggedInMember = memberService.findVerifiedMember(memberId);
@@ -219,11 +213,11 @@ public class QuestionService {
 
 
 
-    public long getVote(long questionId) {
-
-        long voteCount = findQuestion(questionId).getVote();
-        return voteCount;
-    }
+//    public long getVote(long questionId) {
+//
+//        long voteCount = findQuestion(questionId).getVote();
+//        return voteCount;
+//    }
 
 
     public enum VoteStatus {

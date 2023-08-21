@@ -86,17 +86,6 @@ public class QuestionDto {
 
 
 
-//    @Getter
-//    @Setter
-//    @AllArgsConstructor
-//    public static  class QuestionMemberResponseForList{
-//        private long questionId;
-//        private String title;
-//        private String content;
-//        private List<String> tags;
-//        private long vote;
-//        private Question.QuestionStatus questionStatus;
-//    }
 
 
 

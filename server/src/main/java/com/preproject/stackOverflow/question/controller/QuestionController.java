@@ -153,8 +153,6 @@ public class QuestionController {
 
 
 
-    //태그검색 :http://localhost:8080/question/search/?page=1&size=10&tag=tag
-    // 페이지번호는 0부터 시작해야 함..
     @GetMapping("/search")
     public ResponseEntity getQuestionsByTag ( @RequestParam @Positive int page,
                                               @RequestParam @Positive int size,
@@ -165,7 +163,7 @@ public class QuestionController {
         Page<Question> tagPage = questionService.findAllByTags(tag, page - 1, size);
 
         if (tagPage.isEmpty()) {
-            throw new BusinessLogicException(ExceptionCode.TAG_NOT_FOUND); // 예외 발생
+            throw new BusinessLogicException(ExceptionCode.TAG_NOT_FOUND);
         }
 
         PageInfo pageInfo = new PageInfo(page, size, tagPage.getTotalElements(), tagPage.getTotalPages());
