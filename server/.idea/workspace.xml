@@ -315,7 +315,7 @@
       <workItem from="1692433029422" duration="4654000" />
       <workItem from="1692495980958" duration="16226000" />
       <workItem from="1692518273821" duration="15585000" />
-      <workItem from="1692576296941" duration="20186000" />
+      <workItem from="1692576296941" duration="21982000" />
     </task>
     <servers />
   </component>
@@ -371,21 +371,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>
           <line>48</line>
           <option name="timeStamp" value="149" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="154" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="155" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/preproject/stackOverflow/answer/controller/AnswerController.java</url>

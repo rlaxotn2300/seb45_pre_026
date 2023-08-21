@@ -9,11 +9,29 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-21T20:22:21+0900",
+    date = "2023-08-21T23:24:17+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.19 (Azul Systems, Inc.)"
 )
 @Component
 public class AnswerMapperImpl implements AnswerMapper {
+
+    @Override
+    public Answer answerPatchDtoToAnswer(AnswerDto answerPatchDto) {
+        if ( answerPatchDto == null ) {
+            return null;
+        }
+
+        Answer answer = new Answer();
+
+        answer.setVote( answerPatchDto.getVote() );
+        answer.setAnswerId( answerPatchDto.getAnswerId() );
+        answer.setAnswerStatus( answerPatchDto.getAnswerStatus() );
+        answer.setContent( answerPatchDto.getContent() );
+        answer.setCreatedAt( answerPatchDto.getCreatedAt() );
+        answer.setModifiedAt( answerPatchDto.getModifiedAt() );
+
+        return answer;
+    }
 
     @Override
     public List<AnswerDto> answersToAnswerResponseDtos(List<Answer> answers) {

@@ -163,9 +163,11 @@ public class QuestionService {
         question.setVote(voteCount);
 
 
+
         questionRepository.save(question);
 
     }
+
 
 
 

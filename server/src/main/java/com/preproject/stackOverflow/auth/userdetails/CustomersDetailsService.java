@@ -5,9 +5,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 
+@Service
 public class CustomersDetailsService    {
     public static Long getAccountId() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -16,3 +17,4 @@ public class CustomersDetailsService    {
     }
 
 }
+

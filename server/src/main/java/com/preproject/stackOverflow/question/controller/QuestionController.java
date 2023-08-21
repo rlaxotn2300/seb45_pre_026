@@ -1,13 +1,11 @@
 package com.preproject.stackOverflow.question.controller;
 
 
-import com.preproject.stackOverflow.auth.userdetails.CustomersDetailsService;
 import com.preproject.stackOverflow.dto.MultiResponseDto;
 import com.preproject.stackOverflow.dto.PageInfo;
 import com.preproject.stackOverflow.dto.SingleResponseDto;
 import com.preproject.stackOverflow.exception.BusinessLogicException;
 import com.preproject.stackOverflow.exception.ExceptionCode;
-import com.preproject.stackOverflow.member.entity.Member;
 import com.preproject.stackOverflow.member.service.MemberService;
 import com.preproject.stackOverflow.question.dto.QuestionDto;
 import com.preproject.stackOverflow.question.entity.Question;
@@ -17,29 +15,21 @@ import org.springframework.data.domain.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 
 
 @Validated
 @RestController
 @RequestMapping("/question")
-//@RequestMapping("/questions")
 public class QuestionController {
     private final QuestionService questionService;
     private final QuestionMapper mapper;
@@ -56,12 +46,10 @@ public class QuestionController {
     //질문 등록
     @Secured("ROLE_USER")
     @PostMapping("/questions")
-    //@PostMapping
     public ResponseEntity<Void> postQuestion(@Valid @RequestBody QuestionDto.Post questionPost,
                                              @RequestParam @Positive Long memberId) {
 
-        //member 의 username 받기(일단은 받앗음..)
-        String memberName = SecurityContextHolder.getContext().getAuthentication().getName(); //email
+        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
         questionPost.setMember(memberName);
         questionPost.setMemberId(memberId);
 
@@ -81,11 +69,11 @@ public class QuestionController {
                                                   @Positive long questionId,
                                                   @Positive Long memberId) {
 
-//        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
+        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
 
-//        if (!memberService.findMember(memberId).equals(memberName)) {
-//            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-//        }
+        if (!memberService.findMember(memberId).equals(memberName)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
 
         Question response = questionService.patchQuestion(mapper.questionPatchDtoToQuestion(patchDto), questionId);
         QuestionDto.Response question = mapper.questionToQuestionResponseDto(response);
@@ -152,7 +140,9 @@ public class QuestionController {
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @DeleteMapping("{question-id}")
     public ResponseEntity deleteQuestion(@PathVariable("question-id")
+
                                          @Positive long questionId) {
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
 
