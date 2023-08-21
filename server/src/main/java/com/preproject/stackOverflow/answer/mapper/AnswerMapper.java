@@ -27,17 +27,15 @@ public interface AnswerMapper {
     }
 
     default AnswerDto answerToAnswerResponseDto(Answer answer) {
+
         return new AnswerDto(
                 answer.getAnswerId(),
                 answer.getAnswerStatus(),
                 answer.getQuestion().getQuestionId(),
+                answer.getMember().getMemberId(),
                 answer.getContent(),
                 answer.getVote(),
                 answer.getCreatedAt(),
                 answer.getModifiedAt());
     }
-
 }
-
-//    MemberDto.Response memberToMemberResponseDto(Member member);
-

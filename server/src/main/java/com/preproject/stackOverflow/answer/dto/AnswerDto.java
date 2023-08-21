@@ -18,12 +18,12 @@ public class AnswerDto {
     private long answerId;
     private Answer.AnswerStatus answerStatus;
     private long questionId;
+    private long memberId;
 
     @NotEmpty(message = "내용을 입력해야 합니다.")
     @Size(min = 10, message = "10자 이상 입력해야 합니다.")
     private String content;
-
-    private long voteCount;
+    private long vote;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
@@ -32,11 +32,26 @@ public class AnswerDto {
                 answer.getAnswerId(),
                 answer.getAnswerStatus(),
                 answer.getQuestion().getQuestionId(),
+                answer.getMember().getMemberId(),
                 answer.getContent(),
                 answer.getVote(),
                 answer.getCreatedAt(),
                 answer.getModifiedAt()
         );
+    }
+
+    public static AnswerDto responseAnswer(Answer answer) {
+        return new AnswerDto(
+                answer.getAnswerId(),
+                answer.getAnswerStatus(),
+                answer.getQuestion().getQuestionId(),
+                answer.getMember().getMemberId(),
+                answer.getContent(),
+                answer.getVote(),
+                answer.getCreatedAt(),
+                answer.getModifiedAt()
+        );
+
     }
 
 }

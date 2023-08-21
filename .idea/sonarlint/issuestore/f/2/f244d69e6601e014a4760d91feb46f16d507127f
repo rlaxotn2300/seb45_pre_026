@@ -1,0 +1,12 @@
+
+j
+java:S1192I"MDefine a constant instead of duplicating this literal "/question/**" 4 times.(ıÅ§ª8¡å°¡1
+h
+java:S1192F"KDefine a constant instead of duplicating this literal "/member/**" 3 times.(ˆ·å‹8¢å°¡1
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ä“àˆ
+]	java:S125&"<This block of commented-out lines of code should be removed.(¹¼ö¦ùÿÿÿÿ8³å°¡1
+]	java:S125+"<This block of commented-out lines of code should be removed.(ß„ÂŒşÿÿÿÿ8³å°¡1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8é›ë´¡1
+u
+java:S1128"XRemove this unused import 'org.springframework.security.config.Customizer.withDefaults'.(ÃÒş†8é›ë´¡1

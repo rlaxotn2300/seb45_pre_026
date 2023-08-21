@@ -10,6 +10,8 @@ import com.preproject.stackOverflow.member.entity.Member;
 import com.preproject.stackOverflow.member.repository.MemberRepository;
 import com.preproject.stackOverflow.member.service.MemberService;
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -36,13 +38,14 @@ public class AnswerService {
     }
 
     public Answer createAnswer(Answer answer, long memberId) {
-        Answer findAnswer = findVerifiedAnswer(answer.getAnswerId());
-        Member member = findAnswer.getMember();
-        Member loggedInMember = memberService.findVerifiedMember(memberId);
+        Member member = memberService.findMember(memberId);
 
-        if (member.getMemberId() != loggedInMember.getMemberId()) {
-            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
+        if (!member.getMemberId().equals(memberId)) {
+            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED);
         }
+
+        answer.setMember(member);
+
         return answerRepository.save(answer);
     }
 
@@ -88,7 +91,7 @@ public class AnswerService {
         }
 
         findAnswer.setAnswerStatus(Answer.AnswerStatus.ANSWER_DELETE);
-        answerRepository.save(findAnswer);
+        answerRepository.delete(findAnswer);
     }
 
     // 추천

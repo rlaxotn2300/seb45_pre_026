@@ -149,7 +149,7 @@ public class QuestionController {
     @DeleteMapping("{question-id}")
     public ResponseEntity deleteQuestion(@PathVariable("question-id")
                                          @Positive long questionId
-    ) {
+     ) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
 

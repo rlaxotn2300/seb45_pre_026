@@ -127,14 +127,15 @@ public class QuestionService {
         if (voteStatus == QuestionService.VoteStatus.NONE) { //투표가 처음이면 +1카운트
             question.upVotedMemberId.add(memberId);
             voteCount++;
-        } else if (voteStatus.equals(QuestionService.VoteStatus.ALREADY_UP_VOTED)){
+        } else if (voteStatus == (QuestionService.VoteStatus.ALREADY_UP_VOTED)){
             throw new BusinessLogicException(ExceptionCode.ALREADY_UP_VOTED);
-        } else if (voteStatus.equals(QuestionService.VoteStatus.ALREADY_DOWN_VOTED)){
+        } else if (voteStatus == (QuestionService.VoteStatus.ALREADY_DOWN_VOTED)){
             question.downVotedMemberId.remove(memberId);
             voteCount++;
         }
         question.setVote(voteCount);
 
+        questionRepository.save(question);
     }
 
 
@@ -142,6 +143,7 @@ public class QuestionService {
     public void downVote(long questionId, long memberId) {
 
         memberService.findMember(memberId);
+
         Question question = findVerifiedQuestion(questionId);
         QuestionService.VoteStatus voteStatus = getMemberVoteStatus(question, memberId);
         long voteCount = question.getVote();
@@ -149,17 +151,20 @@ public class QuestionService {
         if (voteStatus == QuestionService.VoteStatus.NONE) { //투표가 처음이면 +1카운트
             question.downVotedMemberId.add(memberId);
             voteCount--;
-        } else if (voteStatus.equals(QuestionService.VoteStatus.ALREADY_UP_VOTED)){
-            throw new BusinessLogicException(ExceptionCode.ALREADY_UP_VOTED);
 
-        } else if (voteStatus.equals(QuestionService.VoteStatus.ALREADY_DOWN_VOTED)){
-            question.downVotedMemberId.remove(memberId);
+        } else if (voteStatus.equals(QuestionService.VoteStatus.ALREADY_UP_VOTED)){
+            question.upVotedMemberId.remove(memberId);
             voteCount--;
+
+        } else if (voteStatus == VoteStatus.ALREADY_DOWN_VOTED){
+            throw new BusinessLogicException(ExceptionCode.ALREADY_DOWN_VOTED);
         }
         question.setVote(voteCount);
 
-    }
 
+        questionRepository.save(question);
+
+    }
 
 
     //질문 삭제(태그도 함께 삭제됨)

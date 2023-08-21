@@ -42,8 +42,6 @@ public class Question {
         this.member = member;
     }
 
-
-
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<Answer> answerList = new ArrayList<>();
 
@@ -84,9 +82,6 @@ public class Question {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private QuestionStatus questionStatus = QuestionStatus.QUESTION_ASKED;
-
-
-
 
 
     public enum QuestionStatus {

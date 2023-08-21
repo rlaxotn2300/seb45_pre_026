@@ -1,0 +1,8 @@
+
+y
+java:S1488$"cImmediately return this expression instead of assigning it to the temporary variable "authorities".(˜Ñ‘
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬ø§—ıÿÿÿÿ
+p	java:S116"VRename this field "ADMIN_ROLES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾˜šúÿÿÿÿ
+j	java:S116"URename this field "USER_ROLES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Š¹à
+w	java:S116"]Rename this field "ADMIN_ROLES_STRING" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Í¬Úúÿÿÿÿ
+q	java:S116"\Rename this field "USER_ROLES_STRING" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙÉŒ
