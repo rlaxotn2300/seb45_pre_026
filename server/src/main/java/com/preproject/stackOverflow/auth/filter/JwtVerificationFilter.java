@@ -1,6 +1,7 @@
 package com.preproject.stackOverflow.auth.filter;
 
 import com.preproject.stackOverflow.auth.jwt.JwtTokenizer;
+import com.preproject.stackOverflow.auth.userdetails.MemberDetailsService;
 import com.preproject.stackOverflow.auth.utils.CustomAuthorityUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.security.SignatureException;
@@ -22,10 +23,12 @@ import java.util.Map;
 public class JwtVerificationFilter extends OncePerRequestFilter {
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
+    private final MemberDetailsService memberDetailsService;
 
-    public JwtVerificationFilter(JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils) {
+    public JwtVerificationFilter(JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils, MemberDetailsService memberDetailsService) {
         this.jwtTokenizer = jwtTokenizer;
         this.authorityUtils = authorityUtils;
+        this.memberDetailsService = memberDetailsService;
     }
 
     @Override
@@ -63,7 +66,7 @@ public class JwtVerificationFilter extends OncePerRequestFilter {
     private void setAuthenticationToContext(Map<String, Object> claims) {
         String username = (String) claims.get("username");
         List<GrantedAuthority> authorities = authorityUtils.createAuthorities((List) claims.get("roles"));
-        Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, authorities);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(memberDetailsService.loadUserByUsername(username), null, authorities);
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 }
