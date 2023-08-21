@@ -23,6 +23,10 @@ public class Answer {
     private Long answerId;
 
 
+
+
+
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "status")
     private AnswerStatus answerStatus = AnswerStatus.ANSWER_NORMAL;
@@ -42,8 +46,8 @@ public class Answer {
 
     private long vote;
 
-    @CreatedDate
-    @Column(nullable = false, updatable = false, name = "CREATED_AT")
+
+    @Column(nullable = false, updatable = false,  name = "CREATED_AT")
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(nullable = false, name = "LAST_MODIFIED_AT")

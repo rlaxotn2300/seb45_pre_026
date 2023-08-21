@@ -9,6 +9,9 @@ import com.preproject.stackOverflow.exception.ExceptionCode;
 import com.preproject.stackOverflow.member.entity.Member;
 import com.preproject.stackOverflow.member.repository.MemberRepository;
 import com.preproject.stackOverflow.member.service.MemberService;
+import com.preproject.stackOverflow.question.entity.Question;
+import com.preproject.stackOverflow.question.repository.QuestionRepository;
+import com.preproject.stackOverflow.question.service.QuestionService;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 
@@ -24,27 +27,33 @@ public class AnswerService {
     private final AnswerMapper answerMapper;
     private final MemberService memberService;
     private final MemberRepository memberRepository;
+    private final QuestionService questionService;
+    private final QuestionRepository qeustionRespository;
 
     public AnswerService (AnswerRepository answerRepository,
                           AnswerMapper answerMapper,
                           MemberService memberService,
-                          MemberRepository memberRepository) {
+                          MemberRepository memberRepository,
+                          QuestionService questionService,
+                          QuestionRepository questionRepository) {
         this.answerRepository = answerRepository;
         this.answerMapper = answerMapper;
         this.memberService = memberService;
         this.memberRepository = memberRepository;
+        this.questionService = questionService;
+        this.qeustionRespository = questionRepository;
     }
 
-    public Answer createAnswer(Answer answer, long memberId) {
-        //Answer findAnswer = findVerifiedAnswer(answer.getAnswerId());
-        //Member member = findAnswer.getMember();
-        Member loggedInMember = memberService.findVerifiedMember(memberId);
-        answer.setMember(loggedInMember);
+    public Long createAnswer(Answer answer, Long memberId, long questionId) {
+        Question findQuestion = questionService.findQuestion(questionId);
+        //Member member = memberService.findMember(memberId);
+        //Member loggedInMember = memberService.findVerifiedMember(memberId);
+        //answer.setMember(loggedInMember);
 
 //        if (member.getMemberId() != loggedInMember.getMemberId()) {
 //            throw new BusinessLogicException(ExceptionCode.ONLY_AUTHOR);
 //        }
-        return answerRepository.save(answer);
+        return answerRepository.save(answer).getAnswerId();
     }
 
     public Answer updateAnswer(Answer answer, long memberId) {
@@ -172,7 +181,7 @@ public class AnswerService {
         Optional<Answer> optionalAnswer = answerRepository.findById(answerId);
 
         Answer findAnswer = optionalAnswer.orElseThrow(() ->
-                new BusinessLogicException(ExceptionCode.ANSWER_NOT_FOUND));
+                new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
 
         return findAnswer;
     }

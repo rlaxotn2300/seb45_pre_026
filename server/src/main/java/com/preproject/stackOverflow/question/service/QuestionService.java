@@ -69,7 +69,7 @@ public class QuestionService {
 
     //질문수정
 
-    public Question patchQuestion(Question question, long memberId) {
+    public Question patchQuestion(Question question, long memberId) {           //8.21 ok
         Question findQuestion = findVerifiedQuestion(question.getQuestionId());
 //        Member questionAuthor = findQuestion.getMember();
 //        Member loggedInMember = memberService.findVerifiedMember(memberId);

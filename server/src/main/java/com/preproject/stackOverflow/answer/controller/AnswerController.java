@@ -12,12 +12,14 @@ import com.preproject.stackOverflow.dto.SingleResponseDto;
 import com.preproject.stackOverflow.member.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
@@ -27,23 +29,42 @@ import java.util.Map;
 public class AnswerController {
     private final AnswerService answerService;
     private final AnswerMapper mapper;
+    private final MemberService memberService;
 
     public AnswerController(AnswerService answerService, MemberService memberService, AnswerMapper mapper) {
         this.answerService = answerService;
         this.mapper = mapper;
+        this.memberService = memberService;
     }
 
-    @PostMapping("/{question-id}")
-    public ResponseEntity postAnswer(@PathVariable("question-id") @Positive long questionId,
-                                     @Valid @RequestBody AnswerDto answerDto) {
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/answer")
+    public ResponseEntity postAnswer(@Positive Long questionId,
+                                     @Valid @RequestBody AnswerDto answerDto,
+                                    @Positive Long memberId) {
 
-        Long memberId = CustomersDetailsService.getAccountId();
-        Answer answer = answerService.createAnswer(
-                mapper.answerPostDtoToAnswer(questionId, answerDto), memberId);
+        String memberName = SecurityContextHolder.getContext().getAuthentication().getName();
+        answerDto.setMemberId(memberId);
+        answerDto.setMember(memberName);
+        answerDto.setQuestionId(answerDto.getQuestionId());
 
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)),
-                HttpStatus.CREATED);
+        Long answerId = answerService.createAnswer(
+                mapper.answerPostDtoToAnswer(answerDto), memberId, questionId );
+
+        URI uri = URI.create("/answer/" + answerId);
+
+        return ResponseEntity.created(uri).build();
+
+//        if (!memberService.findMember(memberId).equals(memberName)) {
+//            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+//        }
+//
+//        Answer answer = answerService.createAnswer(
+//                mapper.answerPostDtoToAnswer(answerDto), memberId, questionId);
+//
+//        return new ResponseEntity<>(
+//                new SingleResponseDto<>(mapper.answerToAnswerResponseDto(answer)),
+//                HttpStatus.CREATED);
 
     }
 

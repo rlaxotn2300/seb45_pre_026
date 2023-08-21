@@ -6,12 +6,8 @@ import com.preproject.stackOverflow.auth.handler.*;
 import com.preproject.stackOverflow.auth.jwt.JwtTokenizer;
 import com.preproject.stackOverflow.auth.userdetails.MemberDetailsService;
 import com.preproject.stackOverflow.auth.utils.CustomAuthorityUtils;
-import com.preproject.stackOverflow.member.repository.MemberRepository;
 
-import com.preproject.stackOverflow.member.service.MemberService;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,18 +16,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.client.registration.ClientRegistration;
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
-import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Arrays;
@@ -53,6 +44,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
 //    private final MemberService memberService;
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
+    private final MemberDetailsService memberDetailsService;
 
 
     @Bean
@@ -61,7 +53,8 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                 .headers().frameOptions().sameOrigin()
                 .and()
                 .csrf().disable()
-                .cors(withDefaults())
+                .cors().configurationSource(corsConfigurationSource())
+                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .formLogin().disable()
@@ -74,6 +67,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
                         .antMatchers(HttpMethod.POST, "/member/join").permitAll()
+
                         .antMatchers(HttpMethod.PATCH, "/member/").hasRole("USER")
                         .antMatchers(HttpMethod.GET, "/member/").hasRole("USER")
                         .antMatchers(HttpMethod.DELETE, "/member/").hasRole("USER")
@@ -81,6 +75,15 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                         .antMatchers(HttpMethod.PATCH, "/question/").hasRole("USER")
                         .antMatchers(HttpMethod.GET, "/question/").permitAll()
                         .antMatchers(HttpMethod.DELETE, "/question/").hasRole("USER")
+
+                        .antMatchers(HttpMethod.PATCH, "/member/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/member/**").hasRole("USER")
+                        .antMatchers(HttpMethod.DELETE, "/member/**").hasRole("USER")
+                        .antMatchers(HttpMethod.POST, "/question/**").hasRole("USER")
+                        .antMatchers(HttpMethod.PATCH, "/question/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/question/**").permitAll()
+                        .antMatchers(HttpMethod.DELETE, "/question/**").hasRole("USER")
+
                         .anyRequest().permitAll()
                 );
         return http.build();
@@ -97,7 +100,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setExposedHeaders(List.of("Authorization"));
+        configuration.setExposedHeaders(Arrays.asList("*","Authorization","Refresh"));
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -115,7 +118,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
             jwtAuthenticationFilter.setAuthenticationSuccessHandler(new MemberAuthenticationSuccessHandler());
             jwtAuthenticationFilter.setAuthenticationFailureHandler(new MemberAuthenticationFailureHandler());
 
-            JwtVerificationFilter jwtVerificationFilter = new JwtVerificationFilter(jwtTokenizer, authorityUtils);
+            JwtVerificationFilter jwtVerificationFilter = new JwtVerificationFilter(jwtTokenizer, authorityUtils, memberDetailsService);
 
             builder
                     .addFilter(jwtAuthenticationFilter)
