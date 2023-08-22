@@ -3,9 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import '../css/questions.css';
 import Aside from '../component/Aside';
 import Question from '../component/Question';
-import data from '../dummydata';
 
-export default function Search({ curPage, setCurPage }) {
+export default function Search({ curPage, setCurPage, data }) {
   const location = useLocation();
 
   const keyWord = location.state.searchWord;
@@ -13,7 +12,7 @@ export default function Search({ curPage, setCurPage }) {
   const search_data = data.filter((el) => {
     if (keyWord.includes('[')) {
       const tagWord = keyWord.replace(/\[/g, '').replace(/\]/g, '');
-      return el.tag.includes(tagWord.toLowerCase());
+      return el.tags.includes(tagWord.toLowerCase());
     }
     return (
       el.title.toLowerCase().includes(keyWord.toLowerCase()) ||
@@ -33,10 +32,10 @@ export default function Search({ curPage, setCurPage }) {
             </Link>
           </div>
           {search_data.length >= 1 ? (
-            search_data.map((data) => (
+            search_data?.map((data) => (
               <li key={data.questionId} className="list">
                 <Link to={`/question/${data.questionId}`} className="link">
-                  <Question data={data} />
+                  <Question data={data} questionId={data.questionId} />
                 </Link>
               </li>
             ))

@@ -52,7 +52,7 @@ function Question({ data, questionId }) {
         </div>
         <div className="question__bottom">
           <div className="tag_box">
-            {data.tags.map((el) => (
+            {data.tags?.map((el) => (
               <span key={el}>{el}</span>
             ))}
           </div>

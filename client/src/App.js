@@ -54,7 +54,7 @@ function App() {
           <Route path="/questions" element={<Questions data={isData} />} />
           <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/question_register" element={<QuestionRegister />} />
-          <Route path="/search" element={<SearchList />} />
+          <Route path="/search" element={<SearchList data={isData} />} />
           <Route path="/question_register/:id" element={<QuestionEdit />} />
         </Routes>
         <Footer />
