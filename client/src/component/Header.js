@@ -1,23 +1,44 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Cookies } from 'react-cookie';
 import '../css/header.css';
 import '../css/component.css';
 import Logo from '../images/Logo.png';
 import QuestionsLogo from '../images/questions-logo.png';
 import Mypage from '../images/mypage.png';
 import { connect } from 'react-redux';
-import { setCurPage } from '../redux/action';
+import {
+  setCurPage,
+  setIsLogin,
+  setStateEmail,
+  setNickname,
+} from '../redux/action';
+
+const mapStateToProps = (state) => {
+  return {
+    isLogin: state.isLogin,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setCurPage: (curPage) => dispatch(setCurPage(curPage)),
+    setIsLogin: (isLogin) => dispatch(setIsLogin(isLogin)),
+    setStateEmail: (stateEmail) => dispatch(setStateEmail(stateEmail)),
+    setNickname: (nickname) => dispatch(setNickname(nickname)),
   };
 };
 
-function Header({ setCurPage }) {
-  const [loggedin, setIsLoggedin] = useState(false);
+function Header({
+  isLogin,
+  setCurPage,
+  setIsLogin,
+  setStateEmail,
+  setNickname,
+}) {
   const [searchKeyword, setSearchKeyword] = useState(''); // 검색창
   const navigate = useNavigate();
+  const cookies = new Cookies();
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && searchKeyword !== '') {
@@ -31,9 +52,14 @@ function Header({ setCurPage }) {
     }
   };
 
-  function handleLoginClick() {
-    setIsLoggedin(!loggedin);
-  }
+  const handleLogoutClick = () => {
+    cookies.remove('is_login');
+    alert('You have successfully signed out.');
+    setIsLogin(false);
+    setStateEmail('');
+    setNickname('');
+    navigate('/');
+  };
 
   return (
     <div className="header__container">
@@ -75,7 +101,7 @@ function Header({ setCurPage }) {
         </span>
         {/* 검색창 */}
         <div className="header__right">
-          {loggedin ? (
+          {isLogin ? (
             <Link to="/mypage" className="link">
               <img
                 className="header__mypage"
@@ -87,16 +113,11 @@ function Header({ setCurPage }) {
             </Link>
           ) : (
             <Link to="/login" className="link">
-              <button
-                className="button-light header__login-btn"
-                onClick={handleLoginClick}
-              >
-                Log in
-              </button>
+              <button className="button-light header__login-btn">Log in</button>
             </Link>
           )}
-          {loggedin ? (
-            <button className="button-dark" onClick={handleLoginClick}>
+          {isLogin ? (
+            <button className="button-dark" onClick={handleLogoutClick}>
               Log out
             </button>
           ) : (
@@ -109,4 +130,4 @@ function Header({ setCurPage }) {
     </div>
   );
 }
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

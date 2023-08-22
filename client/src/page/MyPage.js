@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { setEmail, setNickname, setPassword } from '../redux/action';
+import { setNickname, setPassword } from '../redux/action';
 import '../css/mypage.css';
 import Nav from '../component/Nav';
 import Question from '../component/Question';
@@ -20,13 +20,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setEmail: (email) => dispatch(setEmail(email)),
     setNickname: (nickname) => dispatch(setNickname(nickname)),
     setPassword: (password) => dispatch(setPassword(password)),
   };
 };
 
-function MyPage({ email, nickname, setNickname }) {
+function MyPage({ stateEmail, nickname, setNickname }) {
   const [curMenu, setCurMenu] = useState('profile');
   const [nicknameEdit, setNicknameEdit] = useState(false);
   const [newNickname, setNewNickname] = useState(nickname);
@@ -134,7 +133,7 @@ function MyPage({ email, nickname, setNickname }) {
           <div className="mypage__profile">
             <div className="mypage__profile-section">
               <div className="mypage__profile-title">Email</div>
-              <div className="mypage__profile-content">{email}</div>
+              <div className="mypage__profile-content">{stateEmail}</div>
             </div>
             <div className="mypage__profile-section">
               <div className="mypage__profile-title">Nickname</div>

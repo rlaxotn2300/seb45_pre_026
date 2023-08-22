@@ -4,43 +4,32 @@ import '../css/questions.css';
 import '../css/component.css';
 import Aside from '../component/Aside';
 import Question from '../component/Question';
-// import axios from 'axios';
-// import { useEffect, useState } from 'react';
-// import { useInView } from 'react-intersection-observer';
-import data from '../dummydata';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-export default function Questions({ curPage, setCurPage }) {
-  // const [isData, setIsData] = useState([]);
-  // const [ref, inView] = useInView();
+export default function Questions({ curPage, setCurPage, data }) {
+  const [answer, setAnswer] = useState('');
+  const TestApiCall = async () => {
+    try {
+      const res = await axios.get(
+        'https://18d6-59-8-197-35.ngrok-free.app/question/1/answer',
+        {
+          headers: {
+            'Content-Type': `application/json`,
+            'ngrok-skip-browser-warning': true,
+          },
+        },
+      );
+      setAnswer(res.data);
+      console.log(answer);
+    } catch (err) {
+      console.log('Error >>', err);
+    }
+  };
+  useEffect(() => {
+    TestApiCall();
+  }, []);
 
-  // const getData = () => {
-  //   return axios
-  //     .get('http://localhost:5000/questionData', {
-  //       // json-server --watch db.json --port 5000
-  //       headers: {
-  //         'Content-Type': `application/json`,
-  //         'ngrok-skip-browser-warning': true,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setIsData(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-
-  // useEffect(() => {
-  //   // inView가 true 일때만 실행한다.
-  //   if (inView) {
-  //     // console.log(inView, '무한 스크롤 요청 🎃');
-
-  //     getData();
-  //   }
-  // }, [inView]);
   return (
     <div className="questions_bg">
       <Nav curPage={curPage} setCurPage={setCurPage} />
@@ -55,7 +44,7 @@ export default function Questions({ curPage, setCurPage }) {
           {data.map((data) => (
             <li key={data.questionId} className="list">
               <Link to={`/question/${data.questionId}`} className="link">
-                <Question data={data} />
+                <Question data={data} answer={answer} />
               </Link>
             </li>
           ))}

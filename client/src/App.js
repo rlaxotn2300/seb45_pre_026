@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
 import './App.css';
 import Header from './component/Header';
 import Footer from './component/Footer';
@@ -15,16 +13,26 @@ import QuestionRegister from './page/QuestionRegister';
 import QuestionDetail from './page/QuestionDetail';
 import SearchList from './page/Search_list';
 import QuestionEdit from './page/QuestionEdit';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [isData, setIsData] = useState([]);
 
+  // json-server --watch db.json --port 5000
   const getData = () => {
     return axios
-      .get('http://localhost:5000/questionData')
+      .get(
+        'https://18d6-59-8-197-35.ngrok-free.app/question/?page=1&size=10&tag',
+        {
+          headers: {
+            'Content-Type': `application/json`,
+            'ngrok-skip-browser-warning': true,
+          },
+        },
+      )
       .then((res) => {
         setIsData(res.data);
-        console.log(isData);
       })
       .catch((err) => console.log(err));
   };
@@ -32,24 +40,19 @@ function App() {
   useEffect(() => {
     getData();
   }, []);
-
   return (
     <div className="app__body">
       <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/questions" element={<Questions isData={isData} />} />
           <Route path="/tags" element={<Tags />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/companies" element={<Companies />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign_up" element={<Signup />} />
-          <Route path="/questions" element={<Questions />} />
-          <Route
-            path="/question/:id"
-            element={<QuestionDetail isData={isData} />}
-          />
+          <Route path="/questions" element={<Questions data={isData} />} />
+          <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/question_register" element={<QuestionRegister />} />
           <Route path="/search" element={<SearchList />} />
           <Route path="/question_register/:id" element={<QuestionEdit />} />

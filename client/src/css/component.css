@@ -47,7 +47,7 @@
     margin-top: 7px;
     padding: 5px 12px;
     font-size: 16px;
-}
+}list
 
 .input:focus {
     outline: none;
@@ -68,4 +68,7 @@
 
 .list {
     list-style: none;
+    display: block;
+    width:770px;
+
 }
