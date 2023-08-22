@@ -3,9 +3,9 @@ export const setCurPage = (curPage) => ({
   payload: curPage,
 });
 
-export const setEmail = (email) => ({
-  type: 'SET_EMAIL',
-  payload: email,
+export const setStateEmail = (stateEmail) => ({
+  type: 'SET_STATEEMAIL',
+  payload: stateEmail,
 });
 
 export const setNickname = (nickname) => ({

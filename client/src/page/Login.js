@@ -4,17 +4,17 @@ import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import '../css/login.css';
 import { connect } from 'react-redux';
-import { setEmail, setNickname, setIsLogin } from '../redux/action';
+import { setStateEmail, setNickname, setIsLogin } from '../redux/action';
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setIsLogin: (isLogin) => dispatch(setIsLogin(isLogin)),
-    setEmail: (email) => dispatch(setEmail(email)),
-    setNicknam: (nickname) => dispatch(setNickname(nickname)),
+    setStateEmail: (stateEmail) => dispatch(setStateEmail(stateEmail)),
+    setNickname: (nickname) => dispatch(setNickname(nickname)),
   };
 };
 
-function Login({ setIsLogin }) {
+function Login({ setIsLogin, setStateEmail, setNickname }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailEmpty, setEmailEmpty] = useState(false);
@@ -60,7 +60,7 @@ function Login({ setIsLogin }) {
       .then((res) => {
         console.log(res);
         setIsLogin(true);
-        setEmail(res.data.email);
+        setStateEmail(res.data.email);
         setNickname(res.data.nickname);
 
         const accessToken = res.data.token;
