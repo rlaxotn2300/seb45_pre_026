@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 import './App.css';
 import Header from './component/Header';
 import Footer from './component/Footer';
