@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import questions from '../images/quesion.png';
 import commenting from '../images/commention.png';
@@ -13,7 +13,7 @@ export default function Sign_up() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handledisplaynameChange = (event) => {
     setDisplayname(event.target.value);
@@ -44,7 +44,9 @@ export default function Sign_up() {
     return password.length >= 6;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (
       isdisplaynameValid(displayname) &&
       isEmailValid(email) &&
@@ -52,17 +54,18 @@ export default function Sign_up() {
       checked
     ) {
       axios
-        .post(
-          `https://18d6-59-8-197-35.ngrok-free.app/member/join`,
-          {
-            email: email,
-            password: password,
-            name: displayname,
-          },
-          { headers: { 'Content-Type': 'application/json' } },
-        )
-        .then(() => alert('Your signup process has been successfully done!'))
-        .catch(() => alert('Failed to signup. Please try again.'));
+        .post(`https://18d6-59-8-197-35.ngrok-free.app/member/join`, {
+          email: email,
+          name: displayname,
+          password: password,
+        })
+        .then(() => {
+          navigate('/login');
+          window.alert('Your signup process has been successfully done!');
+        })
+        .catch(() => {
+          window.alert('Failed to signup. Please try again.');
+        });
     } else if (
       isdisplaynameValid(displayname) &&
       isEmailValid(email) &&
@@ -154,7 +157,7 @@ export default function Sign_up() {
             <button
               type="submit"
               value="Submit"
-              onClick={handleSubmit}
+              onClick={(e) => handleSubmit(e)}
               className="submit_button"
             >
               Sign up

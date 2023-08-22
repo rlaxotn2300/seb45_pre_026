@@ -19,7 +19,6 @@ import { useState, useEffect } from 'react';
 function App() {
   const [isData, setIsData] = useState([]);
 
-  // json-server --watch db.json --port 5000
   const getData = () => {
     return axios
       .get(

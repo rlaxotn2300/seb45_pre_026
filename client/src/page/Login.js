@@ -4,17 +4,16 @@ import { Cookies } from 'react-cookie';
 import axios from 'axios';
 import '../css/login.css';
 import { connect } from 'react-redux';
-import { setStateEmail, setNickname, setIsLogin } from '../redux/action';
+import { setIsLogin } from '../redux/action';
+import base64 from 'base-64';
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setIsLogin: (isLogin) => dispatch(setIsLogin(isLogin)),
-    setStateEmail: (stateEmail) => dispatch(setStateEmail(stateEmail)),
-    setNickname: (nickname) => dispatch(setNickname(nickname)),
   };
 };
 
-function Login({ setIsLogin, setStateEmail, setNickname }) {
+function Login({ setIsLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailEmpty, setEmailEmpty] = useState(false);
@@ -60,11 +59,15 @@ function Login({ setIsLogin, setStateEmail, setNickname }) {
       .then((res) => {
         console.log(res);
         setIsLogin(true);
-        setStateEmail(res.data.email);
-        setNickname(res.data.nickname);
 
-        const accessToken = res.data.token;
+        const accessToken = res.headers.authorization;
         cookies.set('is_login', `${accessToken}`);
+        let payload = accessToken.substring(
+          accessToken.indexOf('.') + 1,
+          accessToken.lastIndexOf('.'),
+        );
+        let dec = JSON.parse(base64.decode(payload));
+        window.localStorage.setItem('memberId', dec.memberId);
 
         navigate('/');
       })

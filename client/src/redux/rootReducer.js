@@ -2,7 +2,7 @@ const initialState = {
   curPage: '',
   stateEmail: '',
   nickname: '',
-  password: '',
+  statePassword: '',
   isLogin: false,
 };
 
@@ -14,8 +14,8 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, stateEmail: action.payload };
     case 'SET_NICKNAME':
       return { ...state, nickname: action.payload };
-    case 'SET_PASSWORD':
-      return { ...state, password: action.payload };
+    case 'SET_STATEPASSWORD':
+      return { ...state, statePassword: action.payload };
     case 'SET_ISLOGIN':
       return { ...state, isLogin: action.payload };
     default:

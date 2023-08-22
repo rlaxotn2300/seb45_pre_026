@@ -10,6 +10,7 @@ import QuestionsLogoBlack from '../images/questions-logo-black.png';
 const mapStateToProps = (state) => {
   return {
     curPage: state.curPage,
+    isLogin: state.isLogin,
   };
 };
 
@@ -19,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-function Nav({ curPage, setCurPage }) {
+function Nav({ curPage, setCurPage, isLogin }) {
   const [isHovering, setIsHovering] = useState(false);
 
   function handleMenuChange(e) {
@@ -72,17 +73,19 @@ function Nav({ curPage, setCurPage }) {
             Tags
           </div>
         </Link>
-        <Link to="/mypage" className="link">
-          <div
-            className={
-              curPage === 'user' ? 'nav__menu nav__focused' : 'nav__menu'
-            }
-            role="presentation"
-            onClick={(e) => handleMenuChange(e)}
-          >
-            User
-          </div>
-        </Link>
+        {isLogin ? (
+          <Link to="/mypage" className="link">
+            <div
+              className={
+                curPage === 'user' ? 'nav__menu nav__focused' : 'nav__menu'
+              }
+              role="presentation"
+              onClick={(e) => handleMenuChange(e)}
+            >
+              User
+            </div>
+          </Link>
+        ) : null}
       </div>
       <div>
         <div className="nav__tab-name">TEAM</div>

@@ -13,9 +13,9 @@ export const setNickname = (nickname) => ({
   payload: nickname,
 });
 
-export const setPassword = (password) => ({
-  type: 'SET_PASSWORD',
-  payload: password,
+export const setStatePassword = (statePassword) => ({
+  type: 'SET_STATEPASSWORD',
+  payload: statePassword,
 });
 
 export const setIsLogin = (isLogin) => ({

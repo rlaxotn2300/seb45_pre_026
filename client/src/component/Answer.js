@@ -38,8 +38,6 @@ export default function Answer({ questionData }) {
       )
       .then((res) => {
         setAnswerList(res.data);
-        console.log(res.data);
-        console.log(answerList.vote.length);
       })
       .catch(() => {
         console.log('데이터 로딩에 실패하였습니다.');

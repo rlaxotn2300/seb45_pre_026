@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setNickname, setPassword } from '../redux/action';
+import { setNickname, setStateEmail, setStatePassword } from '../redux/action';
+import axios from 'axios';
+import { Cookies } from 'react-cookie';
 import '../css/mypage.css';
 import Nav from '../component/Nav';
 import Question from '../component/Question';
@@ -12,24 +14,30 @@ import data from '../dummydata';
 
 const mapStateToProps = (state) => {
   return {
-    email: state.email,
+    stateEmail: state.stateEmail,
     nickname: state.nickname,
-    password: state.password,
+    statePassword: state.statePassword,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    setStateEmail: (stateEmail) => dispatch(setStateEmail(stateEmail)),
     setNickname: (nickname) => dispatch(setNickname(nickname)),
-    setPassword: (password) => dispatch(setPassword(password)),
+    setStatePassword: (statePassword) =>
+      dispatch(setStatePassword(statePassword)),
   };
 };
 
-function MyPage({ stateEmail, nickname, setNickname }) {
+function MyPage({ stateEmail, setStateEmail, nickname, setNickname }) {
   const [curMenu, setCurMenu] = useState('profile');
   const [nicknameEdit, setNicknameEdit] = useState(false);
   const [newNickname, setNewNickname] = useState(nickname);
-  // const [passwordEdit, setPasswordEdit] = useState(false);
+  const [passwordEdit, setPasswordEdit] = useState(false);
+  const [newPassword, setNewPassword] = useState('');
+  const cookies = new Cookies();
+  const getCookie = cookies.get('is_login');
+  const memberId = window.localStorage.getItem('memberId');
 
   let filteredData = data.filter((el) => el.user === 'nickname');
 
@@ -40,9 +48,75 @@ function MyPage({ stateEmail, nickname, setNickname }) {
   }
 
   function handleNicknameChange() {
-    setNickname(newNickname);
-    setNicknameEdit(false);
+    axios
+      .patch(
+        `https://18d6-59-8-197-35.ngrok-free.app/member/update/${memberId}`,
+        {
+          name: newNickname,
+        },
+        {
+          headers: {
+            'Content-Type': `application/json`,
+            'ngrok-skip-browser-warning': true,
+            Authorization: getCookie,
+          },
+        },
+      )
+      .then(() => {
+        setNickname(newNickname);
+        setNicknameEdit(false);
+      })
+      .catch(() => {
+        console.log('데이터 수정에 실패하였습니다.');
+      });
   }
+
+  function handlePasswordChange() {
+    axios
+      .patch(
+        `https://18d6-59-8-197-35.ngrok-free.app/member/update/${memberId}`,
+        {
+          password: newPassword,
+        },
+        {
+          headers: {
+            'Content-Type': `application/json`,
+            'ngrok-skip-browser-warning': true,
+            Authorization: getCookie,
+          },
+        },
+      )
+      .then(() => {
+        setPasswordEdit(false);
+      })
+      .catch(() => {
+        console.log('데이터 수정에 실패하였습니다.');
+      });
+  }
+
+  const getUserDetail = () => {
+    return axios
+      .get(
+        `https://18d6-59-8-197-35.ngrok-free.app/member/detail/${memberId}`,
+        {
+          headers: {
+            'Content-Type': `application/json`,
+            'ngrok-skip-browser-warning': true,
+          },
+        },
+      )
+      .then((res) => {
+        setStateEmail(res.data.email);
+        setNickname(res.data.name);
+      })
+      .catch(() => {
+        console.log('데이터 로딩에 실패하였습니다.');
+      });
+  };
+
+  useEffect(() => {
+    getUserDetail();
+  }, []);
 
   return (
     <div className="mypage__bg">
@@ -74,7 +148,10 @@ function MyPage({ stateEmail, nickname, setNickname }) {
               </button>
               <button
                 className="mypage__edit"
-                onClick={() => setNicknameEdit(false)}
+                onClick={() => {
+                  setNewNickname(nickname);
+                  setNicknameEdit(false);
+                }}
               >
                 {' '}
                 <img
@@ -88,7 +165,7 @@ function MyPage({ stateEmail, nickname, setNickname }) {
           ) : (
             <button
               className="mypage__edit-btn"
-              onClick={() => setNicknameEdit(!nicknameEdit)}
+              onClick={() => setNicknameEdit(true)}
             >
               <img src={editLogo} alt="닉네임 수정"></img>Change Nickname
             </button>
@@ -141,10 +218,53 @@ function MyPage({ stateEmail, nickname, setNickname }) {
             </div>
             <div className="mypage__profile-section">
               <div className="mypage__profile-title">Password</div>
-              <button className="mypage__edit-btn">
-                <img src={editPassword} alt="비밀번호 수정"></img>Change
-                Password
-              </button>
+              <div className="mypage__password-container">
+                {passwordEdit ? (
+                  <input
+                    type="password"
+                    className="mypage__nickname-edit"
+                    onChange={(e) => setNewPassword(e.target.value)}
+                  />
+                ) : (
+                  <button
+                    className="mypage__edit-btn"
+                    onClick={() => setPasswordEdit(true)}
+                  >
+                    <img src={editPassword} alt="비밀번호 수정"></img>Change
+                    Password
+                  </button>
+                )}
+                {passwordEdit ? (
+                  <div className="mypage__btn-container">
+                    <button
+                      className="mypage__edit"
+                      onClick={handlePasswordChange}
+                    >
+                      <img
+                        src={check}
+                        alt="비밀번호 수정"
+                        className="mypage__edit-img"
+                      />
+                      <span>Edit</span>
+                    </button>
+                    <button
+                      className="mypage__edit"
+                      onClick={() => {
+                        setNewPassword('');
+                        setPasswordEdit(false);
+                      }}
+                    >
+                      {' '}
+                      <img
+                        src={cross}
+                        alt="비밀번호 수정 취소"
+                        className="mypage__edit-img"
+                      />
+                      <span>Cancel</span>
+                    </button>
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
         ) : curMenu === 'questions' ? (
