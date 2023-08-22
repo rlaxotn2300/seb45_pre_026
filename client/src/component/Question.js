@@ -1,13 +1,37 @@
 import '../css/question.css';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-function Question({ data, answer }) {
+function Question({ data, questionId }) {
   let contentWithNoSpace = data.content
     .replace(/<p>/g, '')
     .replace(/<\/p>/g, '');
-  const answer_filter = answer.vote?.filter((el) => {
-    return el.questionId === data.questionId;
-  });
-  // console.log(answer_filter);
+
+  const [answer, setAnswer] = useState([]);
+  const TestApiCall = async () => {
+    try {
+      const res = await axios.get(
+        `https://18d6-59-8-197-35.ngrok-free.app/question/${questionId}/answer`,
+        {
+          headers: {
+            'Content-Type': `application/json`,
+            'ngrok-skip-browser-warning': true,
+          },
+        },
+      );
+      setAnswer(res.data);
+    } catch (err) {
+      console.log('Error >>', err);
+    }
+  };
+  useEffect(() => {
+    TestApiCall();
+    console.log(answer);
+  }, []);
+
+  // const answer_filter = answer.vote?.filter((el) => {
+  //   return el.questionId === data.questionId;
+  // });
 
   return (
     <div className="question__container" key={data.questionId}>
@@ -15,12 +39,10 @@ function Question({ data, answer }) {
         <div>{data.vote} votes</div>
         <div
           className={
-            answer_filter?.length === 0
-              ? 'quesiton__no-answer'
-              : 'question__answer'
+            answer?.length === 0 ? 'quesiton__no-answer' : 'question__answer'
           }
         >
-          {answer_filter?.length} answers
+          {answer.vote?.length} answers
         </div>
       </div>
       <div className="question__main">
@@ -36,7 +58,7 @@ function Question({ data, answer }) {
           </div>
           <div className="question__author">
             <div className="question__author-photo"></div>
-            {/* <div>{data.user}</div> */}
+            <div>{data.memberId}</div>
           </div>
         </div>
       </div>
