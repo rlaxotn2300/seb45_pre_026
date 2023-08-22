@@ -51,14 +51,8 @@ export default function Sign_up() {
       isPasswordValid(password) &&
       checked
     ) {
-      let newID;
-      axios
-        .get(`http://localhost:5000/member`)
-        .then((res) => (newID = res.data.length - 1));
-
       axios
         .post(`http://localhost:5000/member`, {
-          id: newID,
           email: email,
           password: password,
           name: displayname,

@@ -15,13 +15,28 @@ import SearchList from './page/Search_list';
 import QuestionEdit from './page/QuestionEdit';
 
 function App() {
+  const [isData, setIsData] = useState([]);
+
+  const getData = () => {
+    return axios
+      .get('http://localhost:5000/questionData')
+      .then((res) => {
+        setIsData(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className="app__body">
       <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/questions" element={<Questions />} />
+          <Route path="/questions" element={<Questions isData={isData} />} />
           <Route path="/tags" element={<Tags />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/companies" element={<Companies />} />
