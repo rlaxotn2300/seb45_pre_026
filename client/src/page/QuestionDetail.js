@@ -1,4 +1,4 @@
-import { useNavigate, Link, useParams } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Answer from '../component/Answer';
@@ -17,8 +17,8 @@ export default function QuestionDetail() {
     axios
       .get(`http://localhost:5000/questionData?questionId=${id}`)
       .then((res) => {
-        setData(res.data);
-        console.log(res.data);
+        console.log(res.data[0].answer);
+        setData(res.data[0]);
       })
       .catch(() => {
         console.log('데이터 로딩에 실패하였습니다.');
