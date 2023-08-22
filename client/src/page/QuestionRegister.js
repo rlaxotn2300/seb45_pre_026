@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { Cookies } from 'react-cookie';
 import '../css/questionRegister.css';
 import pencil from '../images/pencil.png';
 
@@ -10,6 +12,9 @@ export default function QuestionRegister() {
   const [isBodyEmpty, setIsBodyEmpty] = useState(false);
   const navigate = useNavigate();
   const [tagsList, setTagsList] = useState([]);
+  const memberId = window.localStorage.getItem('memberId');
+  const cookies = new Cookies();
+  const getCookie = cookies.get('is_login');
 
   const handleAddTag = (tag) => {
     if (!tagsList.includes(tag)) {
@@ -64,6 +69,11 @@ export default function QuestionRegister() {
 
     if (title === '') setIsTitleEmpty(true);
     if (body === '') setIsBodyEmpty(true);
+
+    if (!isTitleEmpty && !isBodyEmpty) {
+      console.log(tagsList);
+      QuestionRegister();
+    }
   }
 
   function handleDiscardClick() {
@@ -75,6 +85,30 @@ export default function QuestionRegister() {
       navigate('/questions');
     }
   }
+
+  const QuestionRegister = () => {
+    return axios
+      .post(
+        `http://13.124.11.238:8080/question/questions?memberId=${memberId}`,
+        {
+          title: title,
+          content: body,
+          tag: tagsList.join(','),
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: getCookie,
+          },
+        },
+      )
+      .then(() => {
+        alert('Your questions has been successfully posted.');
+        navigate('/questions');
+      })
+      .catch(() => alert('Something went wrong. Please try again.'));
+  };
+
   return (
     <div className="register__bg">
       <div className="register__wrap">

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
 import '../css/header.css';
@@ -39,6 +39,8 @@ function Header({
   const [searchKeyword, setSearchKeyword] = useState(''); // 검색창
   const navigate = useNavigate();
   const cookies = new Cookies();
+  const getCookie = cookies.get('is_login');
+  const token = localStorage.getItem('token');
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && searchKeyword !== '') {
@@ -54,12 +56,22 @@ function Header({
 
   const handleLogoutClick = () => {
     cookies.remove('is_login');
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('memberId');
     alert('You have successfully signed out.');
     setIsLogin(false);
     setStateEmail('');
     setNickname('');
     navigate('/');
   };
+
+  useEffect(() => {
+    if (getCookie && token) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, []);
 
   return (
     <div className="header__container">

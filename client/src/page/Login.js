@@ -68,6 +68,9 @@ function Login({ setIsLogin }) {
           accessToken.indexOf('.') + 1,
           accessToken.lastIndexOf('.'),
         );
+
+        localStorage.setItem('token', accessToken);
+
         let dec = JSON.parse(base64.decode(payload));
         window.localStorage.setItem('memberId', dec.memberId);
 
