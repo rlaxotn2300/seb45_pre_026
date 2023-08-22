@@ -1,21 +1,21 @@
-import '../css/question.css';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import '../css/question.css';
 
-function Question({ data, questionId }) {
+function Question({ data }) {
   let contentWithNoSpace = data.content
     .replace(/<p>/g, '')
     .replace(/<\/p>/g, '');
 
-  const [answer, setAnswer] = useState([]);
-  const TestApiCall = async () => {
+  const [answer, setAnswer] = useState('');
+
+  const getAnswerList = async () => {
     try {
       const res = await axios.get(
-        `https://18d6-59-8-197-35.ngrok-free.app/question/${questionId}/answer`,
+        'http://13.124.11.238:8080/question/1/answer',
         {
           headers: {
             'Content-Type': `application/json`,
-            'ngrok-skip-browser-warning': true,
           },
         },
       );
@@ -24,14 +24,14 @@ function Question({ data, questionId }) {
       console.log('Error >>', err);
     }
   };
+
   useEffect(() => {
-    TestApiCall();
-    console.log(answer);
+    getAnswerList();
   }, []);
 
-  // const answer_filter = answer.vote?.filter((el) => {
-  //   return el.questionId === data.questionId;
-  // });
+  const answer_filter = answer.vote?.filter(
+    (el) => el.questionId === data.questionId,
+  );
 
   return (
     <div className="question__container" key={data.questionId}>
@@ -39,10 +39,12 @@ function Question({ data, questionId }) {
         <div>{data.vote} votes</div>
         <div
           className={
-            answer?.length === 0 ? 'quesiton__no-answer' : 'question__answer'
+            answer_filter?.length === 0
+              ? 'quesiton__no-answer'
+              : 'question__answer'
           }
         >
-          {answer.vote?.length} answers
+          {answer_filter?.length} answers
         </div>
       </div>
       <div className="question__main">

@@ -21,15 +21,11 @@ function App() {
 
   const getData = () => {
     return axios
-      .get(
-        'https://18d6-59-8-197-35.ngrok-free.app/question/?page=1&size=10&tag',
-        {
-          headers: {
-            'Content-Type': `application/json`,
-            'ngrok-skip-browser-warning': true,
-          },
+      .get('http://13.124.11.238:8080/question/?page=1&size=10', {
+        headers: {
+          'Content-Type': `application/json`,
         },
-      )
+      })
       .then((res) => {
         setIsData(res.data);
       })

@@ -16,7 +16,7 @@ export default function QuestionDetail() {
 
   const getDetail = () => {
     return axios
-      .get(`http://13.124.11.238:8080/question/${Number(id) + 1}`, {
+      .get(`http://13.124.11.238:8080/question/${id}`, {
         headers: {
           'Content-Type': `application/json`,
         },
