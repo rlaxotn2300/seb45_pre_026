@@ -1,6 +1,4 @@
 
-ë
-aserver/src/test/java/com/preproject/stackOverflow/question/controller/QuestionControllerTest.java,4\8\48f6cd0068a71fe41e2f3771873730442f5528cb
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 é
@@ -61,7 +59,5 @@ _server/src/main/java/com/preproject/stackOverflow/auth/userdetails/CustomersDet
 Oserver/src/main/java/com/preproject/stackOverflow/question/entity/Question.java,f\d\fde53b7b4e1646cfd9161aa76a3764a2b1a49573
 {
 Kserver/src/main/java/com/preproject/stackOverflow/member/entity/Member.java,5\6\56433d6a4f863b94b687316955689d98490e2306
-ç
-]server/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java,7\2\72c5aae6a410c17a99038525259b48839318733c
 à
 Xserver/src/main/java/com/preproject/stackOverflow/auth/config/SecurityConfiguration.java,f\2\f244d69e6601e014a4760d91feb46f16d507127f

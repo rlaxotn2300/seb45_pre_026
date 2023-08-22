@@ -1,15 +1,15 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://database-seb26.cf1yjajysgdl.ap-northeast-2.rds.amazonaws.com:13306/seb26?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&serverTimezone=Asia/Seoul&useSSL=true
-    username: seb26
-    password: "!!CodeStates45!!"
+    url: jdbc:mysql://codeknitters.cadsf62atqb8.ap-northeast-2.rds.amazonaws.com:13306/admin?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8&serverTimezone=Asia/Seoul&useSSL=true
+    username: admin
+    password: admin1234
 
   jpa:
     database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         show_sql: true
