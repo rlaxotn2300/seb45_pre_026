@@ -24,7 +24,6 @@ function App() {
       .get('http://localhost:5000/questionData')
       .then((res) => {
         setIsData(res.data);
-        console.log(isData);
       })
       .catch((err) => console.log(err));
   };

@@ -7,22 +7,35 @@ import Aside from '../component/Aside';
 import '../css/questionDetail.css';
 import edit from '../images/edit.png';
 import Vote from '../component/Vote';
+import testData from '../dummydata';
 
 export default function QuestionDetail() {
   let { id } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/questionData?questionId=${id}`)
+  const getDetail = () => {
+    return axios
+      .get(
+        `https://18d6-59-8-197-35.ngrok-free.app/question/${Number(id) + 1}`,
+        {
+          headers: {
+            'Content-Type': `application/json`,
+            'ngrok-skip-browser-warning': true,
+          },
+        },
+      )
       .then((res) => {
-        console.log(res.data[0]);
-        setData(res.data[0]);
+        setData(res.data);
+        console.log(data.data.content);
       })
       .catch(() => {
         console.log('데이터 로딩에 실패하였습니다.');
       });
+  };
+
+  useEffect(() => {
+    getDetail();
   }, []);
 
   function handleDeleteClick() {
@@ -41,13 +54,13 @@ export default function QuestionDetail() {
       <div className="detail__main">
         <div className="detail__top">
           <div className="detail__title-container">
-            <div className="detail__title">{data.title}</div>
+            <div className="detail__title">{data.data?.title}</div>
             <div className="detail__btn-container">
               <button className="detail__btn" onClick={handleDeleteClick}>
                 Delete
               </button>
               <Link
-                to={`/question_register/${data.questionId}`}
+                to={`/question_register/${data.data?.questionId}`}
                 className="link"
               >
                 <button className="detail__btn">
@@ -57,15 +70,21 @@ export default function QuestionDetail() {
               </Link>
             </div>
           </div>
-          <div className="detail__date">Asked {data.date}</div>
+          <div className="detail__date">
+            Asked{' '}
+            {data.data?.createdAt
+              .slice(0, 19)
+              .replace(/-/g, '/')
+              .replace('T', ' ')}
+          </div>
         </div>
         <div className="detail__content-wrap">
           <div className="detail__content-container">
             <div className="detail__content-main">
-              <Vote voteNumber={data.vote} />
+              <Vote voteNumber={data.data?.vote} />
               <div
                 className="detail__content"
-                dangerouslySetInnerHTML={{ __html: data.content }}
+                dangerouslySetInnerHTML={{ __html: data.data?.content }}
               ></div>
             </div>
             <div className="detail__profile-wrap">
@@ -73,11 +92,13 @@ export default function QuestionDetail() {
                 <div className="detail__profile-photo"></div>
                 <div className="detail__profile-name">
                   <span className="detail__profile-name-gray">asked</span>
-                  <span className="detail__profile-name-blue">{data.user}</span>
+                  <span className="detail__profile-name-blue">
+                    {data.data?.memberId}
+                  </span>
                 </div>
               </div>
             </div>
-            <Answer questionData={data} />
+            <Answer questionData={testData[id]} />
           </div>
           <Aside />
         </div>
