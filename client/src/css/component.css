@@ -3,6 +3,7 @@
     color: inherit;
     display: flex;
     align-items: center;
+    width:100%;
 }
 
 .button-dark {
@@ -68,4 +69,5 @@
 
 .list {
     list-style: none;
+    width: 100%;
 }
