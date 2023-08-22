@@ -54,7 +54,7 @@ export default function Sign_up() {
       checked
     ) {
       axios
-        .post(`https://18d6-59-8-197-35.ngrok-free.app/member/join`, {
+        .post(`http://13.124.11.238:8080/member/join`, {
           email: email,
           name: displayname,
           password: password,

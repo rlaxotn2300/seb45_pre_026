@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setNickname, setStateEmail, setStatePassword } from '../redux/action';
+import { setNickname, setStateEmail, setIsLogin } from '../redux/action';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
 import '../css/mypage.css';
@@ -16,7 +17,6 @@ const mapStateToProps = (state) => {
   return {
     stateEmail: state.stateEmail,
     nickname: state.nickname,
-    statePassword: state.statePassword,
   };
 };
 
@@ -24,12 +24,17 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setStateEmail: (stateEmail) => dispatch(setStateEmail(stateEmail)),
     setNickname: (nickname) => dispatch(setNickname(nickname)),
-    setStatePassword: (statePassword) =>
-      dispatch(setStatePassword(statePassword)),
+    setIsLogin: (isLogin) => dispatch(setIsLogin(isLogin)),
   };
 };
 
-function MyPage({ stateEmail, setStateEmail, nickname, setNickname }) {
+function MyPage({
+  stateEmail,
+  setStateEmail,
+  nickname,
+  setNickname,
+  setIsLogin,
+}) {
   const [curMenu, setCurMenu] = useState('profile');
   const [nicknameEdit, setNicknameEdit] = useState(false);
   const [newNickname, setNewNickname] = useState(nickname);
@@ -38,6 +43,7 @@ function MyPage({ stateEmail, setStateEmail, nickname, setNickname }) {
   const cookies = new Cookies();
   const getCookie = cookies.get('is_login');
   const memberId = window.localStorage.getItem('memberId');
+  const navigate = useNavigate();
 
   let filteredData = data.filter((el) => el.user === 'nickname');
 
@@ -50,7 +56,7 @@ function MyPage({ stateEmail, setStateEmail, nickname, setNickname }) {
   function handleNicknameChange() {
     axios
       .patch(
-        `https://18d6-59-8-197-35.ngrok-free.app/member/update/${memberId}`,
+        `http://13.124.11.238:8080/member/update/${memberId}`,
         {
           name: newNickname,
         },
@@ -74,7 +80,7 @@ function MyPage({ stateEmail, setStateEmail, nickname, setNickname }) {
   function handlePasswordChange() {
     axios
       .patch(
-        `https://18d6-59-8-197-35.ngrok-free.app/member/update/${memberId}`,
+        `http://13.124.11.238:8080/member/update/${memberId}`,
         {
           password: newPassword,
         },
@@ -94,17 +100,29 @@ function MyPage({ stateEmail, setStateEmail, nickname, setNickname }) {
       });
   }
 
+  function handleDeleteClick() {
+    axios
+      .delete(`http://13.124.11.238:8080/member/delete/${memberId}`, {
+        headers: {
+          'Content-Type': `application/json`,
+          Authorization: getCookie,
+        },
+      })
+      .then(() => {
+        alert('Your account has been successfully deleted.');
+        navigate('/');
+        setIsLogin(false);
+      })
+      .catch(() => alert('Error occurred. Please try again later.'));
+  }
+
   const getUserDetail = () => {
     return axios
-      .get(
-        `https://18d6-59-8-197-35.ngrok-free.app/member/detail/${memberId}`,
-        {
-          headers: {
-            'Content-Type': `application/json`,
-            'ngrok-skip-browser-warning': true,
-          },
+      .get(`http://13.124.11.238:8080/member/detail/${memberId}`, {
+        headers: {
+          'Content-Type': `application/json`,
         },
-      )
+      })
       .then((res) => {
         setStateEmail(res.data.email);
         setNickname(res.data.name);
@@ -280,7 +298,9 @@ function MyPage({ stateEmail, setStateEmail, nickname, setNickname }) {
             <div className="mypage__delete-warning">
               Do you really want to delete your account?
             </div>
-            <button className="mypage__delete-btn">Delete Account</button>
+            <button className="mypage__delete-btn" onClick={handleDeleteClick}>
+              Delete Account
+            </button>
           </div>
         )}
       </div>

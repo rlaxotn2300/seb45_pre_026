@@ -49,7 +49,7 @@ function Login({ setIsLogin }) {
   const loginDb = () => {
     return axios
       .post(
-        `https://18d6-59-8-197-35.ngrok-free.app/member/login`,
+        `http://13.124.11.238:8080/member/login`,
         {
           username: email,
           password: password,
@@ -61,7 +61,9 @@ function Login({ setIsLogin }) {
         setIsLogin(true);
 
         const accessToken = res.headers.authorization;
+        console.log(accessToken);
         cookies.set('is_login', `${accessToken}`);
+        console.log(cookies.get('is_login'));
         let payload = accessToken.substring(
           accessToken.indexOf('.') + 1,
           accessToken.lastIndexOf('.'),

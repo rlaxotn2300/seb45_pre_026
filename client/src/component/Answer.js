@@ -25,17 +25,12 @@ export default function Answer({ questionData }) {
 
   const getDetail = () => {
     return axios
-      .get(
-        `https://18d6-59-8-197-35.ngrok-free.app/question/${
-          Number(id) + 1
-        }/answer`,
-        {
-          headers: {
-            'Content-Type': `application/json`,
-            'ngrok-skip-browser-warning': true,
-          },
+      .get(`http://13.124.11.238:8080/question/${Number(id) + 1}/answer`, {
+        headers: {
+          'Content-Type': `application/json`,
+          'ngrok-skip-browser-warning': true,
         },
-      )
+      })
       .then((res) => {
         setAnswerList(res.data);
       })
