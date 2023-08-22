@@ -13,8 +13,6 @@ Xserver/src/main/java/com/preproject/stackOverflow/p6spy/P6spySqlFormatConfigura
 Oserver/src/main/java/com/preproject/stackOverflow/question/dto/QuestionDto.java,b\c\bc70036e35120e65961d88e925ab0588c1b04740
 Ö
 Userver/src/main/java/com/preproject/stackOverflow/question/mapper/QuestionMapper.java,9\5\955298d02deb00f9d2a04b457d051761a219a475
-
-Oserver/src/main/java/com/preproject/stackOverflow/answer/dto/AnswerVoteDto.java,e\a\ea7af6503c0afd0b0c785d520c22552536285215
 x
 Hserver/src/main/java/com/preproject/stackOverflow/auth/dto/loginDto.java,c\d\cde93a2285363938294efcc766a00262ccd5b5f2
 ä
@@ -57,9 +55,13 @@ Yserver/src/main/java/com/preproject/stackOverflow/member/controller/MemberContr
 Xserver/src/main/java/com/preproject/stackOverflow/auth/filter/JwtVerificationFilter.java,5\4\54d17b0b185b32a6d0299a96ba7e1e9300086c00
 ç
 ]server/src/main/java/com/preproject/stackOverflow/question/repository/QuestionRepository.java,d\e\decace1b858a111f414316e13b17bf5fabd0d870
-â
-Yserver/src/main/java/com/preproject/stackOverflow/answer/repository/AnswerRepository.java,6\8\6864ef06a6a964e41c37ef37a4c99cd6577e9dfc
 è
 _server/src/main/java/com/preproject/stackOverflow/auth/userdetails/CustomersDetailsService.java,2\3\23c43200c6dbb7a67cab34de4a7728f653951250
+
+Oserver/src/main/java/com/preproject/stackOverflow/question/entity/Question.java,f\d\fde53b7b4e1646cfd9161aa76a3764a2b1a49573
+{
+Kserver/src/main/java/com/preproject/stackOverflow/member/entity/Member.java,5\6\56433d6a4f863b94b687316955689d98490e2306
+ç
+]server/src/main/java/com/preproject/stackOverflow/question/controller/QuestionController.java,7\2\72c5aae6a410c17a99038525259b48839318733c
 à
 Xserver/src/main/java/com/preproject/stackOverflow/auth/config/SecurityConfiguration.java,f\2\f244d69e6601e014a4760d91feb46f16d507127f
