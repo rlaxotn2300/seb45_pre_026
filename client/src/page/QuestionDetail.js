@@ -1,6 +1,6 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
-// import axios from 'axios';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Answer from '../component/Answer';
 import Nav from '../component/Nav';
 import Aside from '../component/Aside';
@@ -8,22 +8,22 @@ import '../css/questionDetail.css';
 import edit from '../images/edit.png';
 import Vote from '../component/Vote';
 
-export default function QuestionDetail({ data }) {
+export default function QuestionDetail() {
   let { id } = useParams();
   const navigate = useNavigate();
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:5000/questionData?questionId=${id}`)
-  //     .then((res) => {
-  //       console.log(res.data[0].answer);
-  //       setData(res.data[0]);
-  //     })
-  //     .catch(() => {
-  //       console.log('데이터 로딩에 실패하였습니다.');
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/questionData?questionId=${id}`)
+      .then((res) => {
+        console.log(res.data[0]);
+        setData(res.data[0]);
+      })
+      .catch(() => {
+        console.log('데이터 로딩에 실패하였습니다.');
+      });
+  }, []);
 
   function handleDeleteClick() {
     if (
@@ -41,13 +41,13 @@ export default function QuestionDetail({ data }) {
       <div className="detail__main">
         <div className="detail__top">
           <div className="detail__title-container">
-            <div className="detail__title">{data[id]?.title}</div>
+            <div className="detail__title">{data.title}</div>
             <div className="detail__btn-container">
               <button className="detail__btn" onClick={handleDeleteClick}>
                 Delete
               </button>
               <Link
-                to={`/question_register/${data[id].questionId}`}
+                to={`/question_register/${data.questionId}`}
                 className="link"
               >
                 <button className="detail__btn">
@@ -57,15 +57,15 @@ export default function QuestionDetail({ data }) {
               </Link>
             </div>
           </div>
-          <div className="detail__date">Asked {data[id].date}</div>
+          <div className="detail__date">Asked {data.date}</div>
         </div>
         <div className="detail__content-wrap">
           <div className="detail__content-container">
             <div className="detail__content-main">
-              <Vote voteNumber={data[id].vote} />
+              <Vote voteNumber={data.vote} />
               <div
                 className="detail__content"
-                dangerouslySetInnerHTML={{ __html: data[id].content }}
+                dangerouslySetInnerHTML={{ __html: data.content }}
               ></div>
             </div>
             <div className="detail__profile-wrap">
@@ -73,13 +73,11 @@ export default function QuestionDetail({ data }) {
                 <div className="detail__profile-photo"></div>
                 <div className="detail__profile-name">
                   <span className="detail__profile-name-gray">asked</span>
-                  <span className="detail__profile-name-blue">
-                    {data[id].user}
-                  </span>
+                  <span className="detail__profile-name-blue">{data.user}</span>
                 </div>
               </div>
             </div>
-            <Answer questionData={data[id]} />
+            <Answer questionData={data} />
           </div>
           <Aside />
         </div>
