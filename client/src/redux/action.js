@@ -18,7 +18,7 @@ export const setPassword = (password) => ({
   payload: password,
 });
 
-export const setQuestionData = (questionData) => ({
-  type: 'SET_QUESTIONDATA',
-  payload: questionData,
+export const setIsLogin = (isLogin) => ({
+  type: 'SET_ISLOGIN',
+  payload: isLogin,
 });

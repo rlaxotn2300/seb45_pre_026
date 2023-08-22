@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import questions from '../images/quesion.png';
 import commenting from '../images/commention.png';
@@ -13,7 +13,7 @@ export default function Sign_up() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handledisplaynameChange = (event) => {
     setDisplayname(event.target.value);
@@ -52,16 +52,17 @@ export default function Sign_up() {
       checked
     ) {
       axios
-        .post(`http://localhost:5000/member`, {
-          email: email,
-          password: password,
-          name: displayname,
-          verify: 0,
-        })
-        .then((res) => console.log(res))
-        .catch((e) => console.log(e));
-
-      navigate('/login');
+        .post(
+          `https://18d6-59-8-197-35.ngrok-free.app/member/join`,
+          {
+            email: email,
+            password: password,
+            name: displayname,
+          },
+          { headers: { 'Content-Type': 'application/json' } },
+        )
+        .then(() => alert('Your signup process has been successfully done!'))
+        .catch(() => alert('Failed to signup. Please try again.'));
     } else if (
       isdisplaynameValid(displayname) &&
       isEmailValid(email) &&

@@ -1,11 +1,9 @@
-import { questionData } from '../dummydata';
-
 const initialState = {
   curPage: '',
-  email: 'qwe123@gmail.com',
-  nickname: 'nickname',
-  password: '123qwe',
-  questionData: questionData,
+  email: '',
+  nickname: '',
+  password: '',
+  isLogin: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -18,8 +16,8 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, nickname: action.payload };
     case 'SET_PASSWORD':
       return { ...state, password: action.payload };
-    case 'SET_QUESTIONDATA':
-      return { ...state, questionData: action.payload };
+    case 'SET_ISLOGIN':
+      return { ...state, isLogin: action.payload };
     default:
       return state;
   }

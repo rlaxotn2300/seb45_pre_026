@@ -1,13 +1,27 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Cookies } from 'react-cookie';
+import axios from 'axios';
 import '../css/login.css';
+import { connect } from 'react-redux';
+import { setEmail, setNickname, setIsLogin } from '../redux/action';
 
-export default function Login() {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setIsLogin: (isLogin) => dispatch(setIsLogin(isLogin)),
+    setEmail: (email) => dispatch(setEmail(email)),
+    setNicknam: (nickname) => dispatch(setNickname(nickname)),
+  };
+};
+
+function Login({ setIsLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailEmpty, setEmailEmpty] = useState(false);
   const [passwordEmpty, setPasswordEmpty] = useState(false);
   const [emailValidity, setEmailValidity] = useState(true);
+  const cookies = new Cookies();
+  const navigate = useNavigate();
 
   function handleEmailInputChange(e) {
     setEmail(e.target.value);
@@ -27,7 +41,37 @@ export default function Login() {
     else if (!validEmail.test(email)) setEmailValidity(false);
 
     if (password === '') setPasswordEmpty(true);
+
+    if (!emailEmpty && !passwordEmpty && emailValidity) {
+      loginDb();
+    }
   }
+
+  const loginDb = () => {
+    return axios
+      .post(
+        `https://18d6-59-8-197-35.ngrok-free.app/member/login`,
+        {
+          username: email,
+          password: password,
+        },
+        { headers: { 'Content-Type': 'application/json' } },
+      )
+      .then((res) => {
+        console.log(res);
+        setIsLogin(true);
+        setEmail(res.data.email);
+        setNickname(res.data.nickname);
+
+        const accessToken = res.data.token;
+        cookies.set('is_login', `${accessToken}`);
+
+        navigate('/');
+      })
+      .catch(() =>
+        alert('There are no matching user information. Please try again.'),
+      );
+  };
 
   return (
     <div className="login__bg">
@@ -85,3 +129,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default connect(null, mapDispatchToProps)(Login);

@@ -8,14 +8,19 @@ import Mypage from '../images/mypage.png';
 import { connect } from 'react-redux';
 import { setCurPage } from '../redux/action';
 
+const mapStateToProps = (state) => {
+  return {
+    isLogin: state.isLogin,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     setCurPage: (curPage) => dispatch(setCurPage(curPage)),
   };
 };
 
-function Header({ setCurPage }) {
-  const [loggedin, setIsLoggedin] = useState(false);
+function Header({ isLogin, setCurPage }) {
   const [searchKeyword, setSearchKeyword] = useState(''); // 검색창
   const navigate = useNavigate();
 
@@ -30,10 +35,6 @@ function Header({ setCurPage }) {
       navigate(`/search`, { state: { searchWord: searchKeyword } });
     }
   };
-
-  function handleLoginClick() {
-    setIsLoggedin(!loggedin);
-  }
 
   return (
     <div className="header__container">
@@ -75,7 +76,7 @@ function Header({ setCurPage }) {
         </span>
         {/* 검색창 */}
         <div className="header__right">
-          {loggedin ? (
+          {isLogin ? (
             <Link to="/mypage" className="link">
               <img
                 className="header__mypage"
@@ -87,18 +88,11 @@ function Header({ setCurPage }) {
             </Link>
           ) : (
             <Link to="/login" className="link">
-              <button
-                className="button-light header__login-btn"
-                onClick={handleLoginClick}
-              >
-                Log in
-              </button>
+              <button className="button-light header__login-btn">Log in</button>
             </Link>
           )}
-          {loggedin ? (
-            <button className="button-dark" onClick={handleLoginClick}>
-              Log out
-            </button>
+          {isLogin ? (
+            <button className="button-dark">Log out</button>
           ) : (
             <Link to="/sign_up">
               <button className="button-dark">Sign up</button>
@@ -109,4 +103,4 @@ function Header({ setCurPage }) {
     </div>
   );
 }
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
