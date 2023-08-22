@@ -41,7 +41,11 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
+<<<<<<< HEAD
 <div class="counter">0.004s</div>
+=======
+<div class="counter">0.039s</div>
+>>>>>>> 250ff0e (fix:final[be03])
 <p>duration</p>
 </div>
 </td>
@@ -247,15 +251,22 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 </tr>
 </thead>
 <tr>
+<<<<<<< HEAD
 <td class="failures">contextLoads()</td>
 <td class="failures">0.004s</td>
 <td class="failures">failed</td>
+=======
+<td class="success">contextLoads()</td>
+<td class="success">0.039s</td>
+<td class="success">passed</td>
+>>>>>>> 250ff0e (fix:final[be03])
 </tr>
 </table>
 </div>
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
+<<<<<<< HEAD
 <pre>11:49:16.110 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
 11:49:16.130 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
 11:49:16.169 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.preproject.stackOverflow.StackOverflowApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
@@ -271,6 +282,23 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 11:49:16.465 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
 11:49:16.481 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3ef41c66, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6b739528, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@622ef26a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@41de5768, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5f577419, org.springframework.test.context.support.DirtiesContextTestExecutionListener@28fa700e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3d526ad9, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@e041f0c, org.springframework.test.context.event.EventPublishingTestExecutionListener@6a175569, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@11963225, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3f3c966c, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@11ee02f8, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4102b1b1, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@61a5b4ae, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3a71c100]
 11:49:16.484 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@308a6984 testClass = StackOverflowApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@66b72664 testClass = StackOverflowApplicationTests, locations = '{}', classes = '{class com.preproject.stackOverflow.StackOverflowApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@354fc8f0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@55b5f5d2, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@16ecee1, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@160ac7fb, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@37bd68c3, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+=======
+<pre>11:31:51.713 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+11:31:51.721 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+11:31:51.735 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.preproject.stackOverflow.StackOverflowApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+11:31:51.739 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.preproject.stackOverflow.StackOverflowApplicationTests], using SpringBootContextLoader
+11:31:51.740 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.preproject.stackOverflow.StackOverflowApplicationTests]: class path resource [com/preproject/stackOverflow/StackOverflowApplicationTests-context.xml] does not exist
+11:31:51.740 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.preproject.stackOverflow.StackOverflowApplicationTests]: class path resource [com/preproject/stackOverflow/StackOverflowApplicationTestsContext.groovy] does not exist
+11:31:51.741 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.preproject.stackOverflow.StackOverflowApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+11:31:51.741 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.preproject.stackOverflow.StackOverflowApplicationTests]: StackOverflowApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:31:51.757 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.preproject.stackOverflow.StackOverflowApplicationTests]
+11:31:51.778 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/beom/seb45_pre_026/server/build/classes/java/main/com/preproject/stackOverflow/StackOverflowApplication.class]
+11:31:51.779 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.preproject.stackOverflow.StackOverflowApplication for test class com.preproject.stackOverflow.StackOverflowApplicationTests
+11:31:51.817 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.preproject.stackOverflow.StackOverflowApplicationTests]: using defaults.
+11:31:51.817 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+11:31:51.825 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@610db97e, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6f0628de, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3fabf088, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1e392345, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@12f3afb5, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4ced35ed, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2c22a348, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7bd69e82, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@74d7184a, org.springframework.test.context.event.EventPublishingTestExecutionListener@51b01960, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@6831d8fd, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@27dc79f7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6b85300e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3aaf4f07, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5cbf9e9f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@18e8473e, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5a2f016d]
+11:31:51.826 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@6e9c413e testClass = StackOverflowApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@57a4d5ee testClass = StackOverflowApplicationTests, locations = '{}', classes = '{class com.preproject.stackOverflow.StackOverflowApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@62f4ff3b, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@a776e, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@6821ea29, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@5af3a0f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@7c2b6087, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4b2c5e02], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+>>>>>>> 250ff0e (fix:final[be03])
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -280,6 +308,7 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.14)
 
+<<<<<<< HEAD
 2023-08-22 11:49:16.989  INFO 15388 --- [    Test worker] c.p.s.StackOverflowApplicationTests      : Starting StackOverflowApplicationTests using Java 11.0.19 on Alice with PID 15388 (started by Jiwon in C:\Users\Jiwon\2_Project\seb45_pre_026\server)
 2023-08-22 11:49:16.991  INFO 15388 --- [    Test worker] c.p.s.StackOverflowApplicationTests      : No active profile set, falling back to 1 default profile: &quot;default&quot;
 2023-08-22 11:49:17.796  INFO 15388 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
@@ -1043,6 +1072,172 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:44) ~[hibernate-core-5.6.15.Final.jar:5.6.15.Final]
 	... 122 common frames omitted
 
+=======
+2023-08-22 11:31:51.976  INFO 88942 --- [    Test worker] c.p.s.StackOverflowApplicationTests      : Starting StackOverflowApplicationTests using Java 11.0.20 on sonseungbeom-ui-MacBookAir-2.local with PID 88942 (started by beom in /Users/beom/seb45_pre_026/server)
+2023-08-22 11:31:51.977  INFO 88942 --- [    Test worker] c.p.s.StackOverflowApplicationTests      : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-08-22 11:31:52.185  INFO 88942 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-22 11:31:52.209  INFO 88942 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 3 JPA repository interfaces.
+2023-08-22 11:31:52.553  INFO 88942 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-22 11:31:52.570  INFO 88942 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-22 11:31:52.639  INFO 88942 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-22 11:31:52.678  INFO 88942 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-22 11:31:52.871  INFO 88942 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-22 11:31:52.878  INFO 88942 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+Hibernate: alter table answer drop foreign key FKn2sp5pa6h0u2kixjl2r4vfluf
+2023-08-22 11:31:53.199  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513199 | took 34ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table answer drop foreign key FKn2sp5pa6h0u2kixjl2r4vfluf
+alter table answer drop foreign key FKn2sp5pa6h0u2kixjl2r4vfluf;
+Hibernate: alter table answer drop foreign key FK8frr4bcabmmeyyu60qt7iiblo
+2023-08-22 11:31:53.204  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513204 | took 5ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table answer drop foreign key FK8frr4bcabmmeyyu60qt7iiblo
+alter table answer drop foreign key FK8frr4bcabmmeyyu60qt7iiblo;
+Hibernate: alter table answer_down_voted_member_id drop foreign key FKjtbxn2o5ehmww08nui9sqdans
+2023-08-22 11:31:53.208  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513208 | took 3ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table answer_down_voted_member_id drop foreign key FKjtbxn2o5ehmww08nui9sqdans
+alter table answer_down_voted_member_id drop foreign key FKjtbxn2o5ehmww08nui9sqdans;
+Hibernate: alter table answer_up_voted_member_id drop foreign key FK59sm2lhwp9pxqx590pkfhlp19
+2023-08-22 11:31:53.211  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513211 | took 3ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table answer_up_voted_member_id drop foreign key FK59sm2lhwp9pxqx590pkfhlp19
+alter table answer_up_voted_member_id drop foreign key FK59sm2lhwp9pxqx590pkfhlp19;
+Hibernate: alter table member_roles drop foreign key FKruptm2dtwl95mfks4bnhv828k
+2023-08-22 11:31:53.214  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513214 | took 2ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table member_roles drop foreign key FKruptm2dtwl95mfks4bnhv828k
+alter table member_roles drop foreign key FKruptm2dtwl95mfks4bnhv828k;
+Hibernate: alter table question drop foreign key FK1nuuke7olg7b9fkyp2ba9d5bx
+2023-08-22 11:31:53.220  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513220 | took 5ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table question drop foreign key FK1nuuke7olg7b9fkyp2ba9d5bx
+alter table question drop foreign key FK1nuuke7olg7b9fkyp2ba9d5bx;
+Hibernate: alter table question_down_voted_member_id drop foreign key FKquabkbdg7jr27l02vsqs7gsq1
+2023-08-22 11:31:53.222  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513222 | took 2ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table question_down_voted_member_id drop foreign key FKquabkbdg7jr27l02vsqs7gsq1
+alter table question_down_voted_member_id drop foreign key FKquabkbdg7jr27l02vsqs7gsq1;
+Hibernate: alter table question_tag_list drop foreign key FK3fmrx1iomg0v884g97baidwnk
+2023-08-22 11:31:53.226  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513226 | took 4ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table question_tag_list drop foreign key FK3fmrx1iomg0v884g97baidwnk
+alter table question_tag_list drop foreign key FK3fmrx1iomg0v884g97baidwnk;
+Hibernate: alter table question_up_voted_member_id drop foreign key FKj0gnchnv6c61hixjjwfsw229b
+2023-08-22 11:31:53.229  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513229 | took 2ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table question_up_voted_member_id drop foreign key FKj0gnchnv6c61hixjjwfsw229b
+alter table question_up_voted_member_id drop foreign key FKj0gnchnv6c61hixjjwfsw229b;
+Hibernate: drop table if exists answer
+2023-08-22 11:31:53.233  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513233 | took 3ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+drop table if exists answer
+drop table if exists answer;
+Hibernate: drop table if exists answer_down_voted_member_id
+2023-08-22 11:31:53.235  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513235 | took 2ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+drop table if exists answer_down_voted_member_id
+drop table if exists answer_down_voted_member_id;
+Hibernate: drop table if exists answer_up_voted_member_id
+2023-08-22 11:31:53.237  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513237 | took 1ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+drop table if exists answer_up_voted_member_id
+drop table if exists answer_up_voted_member_id;
+Hibernate: drop table if exists member
+2023-08-22 11:31:53.239  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513239 | took 1ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+drop table if exists member
+drop table if exists member;
+Hibernate: drop table if exists member_roles
+2023-08-22 11:31:53.240  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513240 | took 1ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+drop table if exists member_roles
+drop table if exists member_roles;
+Hibernate: drop table if exists question
+2023-08-22 11:31:53.242  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513242 | took 2ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+drop table if exists question
+drop table if exists question;
+Hibernate: drop table if exists question_down_voted_member_id
+2023-08-22 11:31:53.244  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513244 | took 1ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+drop table if exists question_down_voted_member_id
+drop table if exists question_down_voted_member_id;
+Hibernate: drop table if exists question_tag_list
+2023-08-22 11:31:53.246  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513246 | took 1ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+drop table if exists question_tag_list
+drop table if exists question_tag_list;
+Hibernate: drop table if exists question_up_voted_member_id
+2023-08-22 11:31:53.247  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513247 | took 1ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+drop table if exists question_up_voted_member_id
+drop table if exists question_up_voted_member_id;
+Hibernate: create table answer (answer_id bigint not null auto_increment, status integer not null, content varchar(255) not null, created_at datetime(6) not null, last_modified_at datetime(6) not null, vote integer default 0 not null, member_id bigint, question_id bigint, primary key (answer_id)) engine=InnoDB
+2023-08-22 11:31:53.253  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513253 | took 3ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+create table answer (answer_id bigint not null auto_increment, status integer not null, content varchar(255) not null, created_at datetime(6) not null, last_modified_at datetime(6) not null, vote integer default 0 not null, member_id bigint, question_id bigint, primary key (answer_id)) engine=InnoDB
+create table answer (answer_id bigint not null auto_increment, status integer not null, content varchar(255) not null, created_at datetime(6) not null, last_modified_at datetime(6) not null, vote integer default 0 not null, member_id bigint, question_id bigint, primary key (answer_id)) engine=InnoDB;
+Hibernate: create table answer_down_voted_member_id (answer_answer_id bigint not null, down_voted_member_id bigint) engine=InnoDB
+2023-08-22 11:31:53.256  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513256 | took 2ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+create table answer_down_voted_member_id (answer_answer_id bigint not null, down_voted_member_id bigint) engine=InnoDB
+create table answer_down_voted_member_id (answer_answer_id bigint not null, down_voted_member_id bigint) engine=InnoDB;
+Hibernate: create table answer_up_voted_member_id (answer_answer_id bigint not null, up_voted_member_id bigint) engine=InnoDB
+2023-08-22 11:31:53.259  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513259 | took 2ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+create table answer_up_voted_member_id (answer_answer_id bigint not null, up_voted_member_id bigint) engine=InnoDB
+create table answer_up_voted_member_id (answer_answer_id bigint not null, up_voted_member_id bigint) engine=InnoDB;
+Hibernate: create table member (member_id bigint not null auto_increment, created_at datetime(6) not null, email varchar(50) not null, last_modified_at datetime(6) not null, name varchar(30) not null, password varchar(255) not null, primary key (member_id)) engine=InnoDB
+2023-08-22 11:31:53.261  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513261 | took 2ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+create table member (member_id bigint not null auto_increment, created_at datetime(6) not null, email varchar(50) not null, last_modified_at datetime(6) not null, name varchar(30) not null, password varchar(255) not null, primary key (member_id)) engine=InnoDB
+create table member (member_id bigint not null auto_increment, created_at datetime(6) not null, email varchar(50) not null, last_modified_at datetime(6) not null, name varchar(30) not null, password varchar(255) not null, primary key (member_id)) engine=InnoDB;
+Hibernate: create table member_roles (member_member_id bigint not null, roles varchar(255)) engine=InnoDB
+2023-08-22 11:31:53.264  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513264 | took 2ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+create table member_roles (member_member_id bigint not null, roles varchar(255)) engine=InnoDB
+create table member_roles (member_member_id bigint not null, roles varchar(255)) engine=InnoDB;
+Hibernate: create table question (question_id bigint not null auto_increment, content varchar(255) not null, created_at datetime(6) not null, last_modified_at datetime(6) not null, question_status varchar(255) not null, tag varchar(255), title varchar(255) not null, vote bigint, member_id bigint, primary key (question_id)) engine=InnoDB
+2023-08-22 11:31:53.266  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513266 | took 2ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+create table question (question_id bigint not null auto_increment, content varchar(255) not null, created_at datetime(6) not null, last_modified_at datetime(6) not null, question_status varchar(255) not null, tag varchar(255), title varchar(255) not null, vote bigint, member_id bigint, primary key (question_id)) engine=InnoDB
+create table question (question_id bigint not null auto_increment, content varchar(255) not null, created_at datetime(6) not null, last_modified_at datetime(6) not null, question_status varchar(255) not null, tag varchar(255), title varchar(255) not null, vote bigint, member_id bigint, primary key (question_id)) engine=InnoDB;
+Hibernate: create table question_down_voted_member_id (question_question_id bigint not null, down_voted_member_id bigint) engine=InnoDB
+2023-08-22 11:31:53.268  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513268 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+create table question_down_voted_member_id (question_question_id bigint not null, down_voted_member_id bigint) engine=InnoDB
+create table question_down_voted_member_id (question_question_id bigint not null, down_voted_member_id bigint) engine=InnoDB;
+Hibernate: create table question_tag_list (question_id bigint not null, tag_list varchar(255)) engine=InnoDB
+2023-08-22 11:31:53.270  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513270 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+create table question_tag_list (question_id bigint not null, tag_list varchar(255)) engine=InnoDB
+create table question_tag_list (question_id bigint not null, tag_list varchar(255)) engine=InnoDB;
+Hibernate: create table question_up_voted_member_id (question_question_id bigint not null, up_voted_member_id bigint) engine=InnoDB
+2023-08-22 11:31:53.272  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513272 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+create table question_up_voted_member_id (question_question_id bigint not null, up_voted_member_id bigint) engine=InnoDB
+create table question_up_voted_member_id (question_question_id bigint not null, up_voted_member_id bigint) engine=InnoDB;
+Hibernate: alter table member add constraint UK_mbmcqelty0fbrvxp1q58dn57t unique (email)
+2023-08-22 11:31:53.277  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513277 | took 3ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table member add constraint UK_mbmcqelty0fbrvxp1q58dn57t unique (email)
+alter table member add constraint UK_mbmcqelty0fbrvxp1q58dn57t unique (email);
+Hibernate: alter table answer add constraint FKn2sp5pa6h0u2kixjl2r4vfluf foreign key (member_id) references member (member_id)
+2023-08-22 11:31:53.283  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513283 | took 6ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table answer add constraint FKn2sp5pa6h0u2kixjl2r4vfluf foreign key (member_id) references member (member_id)
+alter table answer add constraint FKn2sp5pa6h0u2kixjl2r4vfluf foreign key (member_id) references member (member_id);
+Hibernate: alter table answer add constraint FK8frr4bcabmmeyyu60qt7iiblo foreign key (question_id) references question (question_id)
+2023-08-22 11:31:53.292  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513292 | took 8ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table answer add constraint FK8frr4bcabmmeyyu60qt7iiblo foreign key (question_id) references question (question_id)
+alter table answer add constraint FK8frr4bcabmmeyyu60qt7iiblo foreign key (question_id) references question (question_id);
+Hibernate: alter table answer_down_voted_member_id add constraint FKjtbxn2o5ehmww08nui9sqdans foreign key (answer_answer_id) references answer (answer_id)
+2023-08-22 11:31:53.299  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513299 | took 6ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table answer_down_voted_member_id add constraint FKjtbxn2o5ehmww08nui9sqdans foreign key (answer_answer_id) references answer (answer_id)
+alter table answer_down_voted_member_id add constraint FKjtbxn2o5ehmww08nui9sqdans foreign key (answer_answer_id) references answer (answer_id);
+Hibernate: alter table answer_up_voted_member_id add constraint FK59sm2lhwp9pxqx590pkfhlp19 foreign key (answer_answer_id) references answer (answer_id)
+2023-08-22 11:31:53.306  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513306 | took 7ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table answer_up_voted_member_id add constraint FK59sm2lhwp9pxqx590pkfhlp19 foreign key (answer_answer_id) references answer (answer_id)
+alter table answer_up_voted_member_id add constraint FK59sm2lhwp9pxqx590pkfhlp19 foreign key (answer_answer_id) references answer (answer_id);
+Hibernate: alter table member_roles add constraint FKruptm2dtwl95mfks4bnhv828k foreign key (member_member_id) references member (member_id)
+2023-08-22 11:31:53.313  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513313 | took 6ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table member_roles add constraint FKruptm2dtwl95mfks4bnhv828k foreign key (member_member_id) references member (member_id)
+alter table member_roles add constraint FKruptm2dtwl95mfks4bnhv828k foreign key (member_member_id) references member (member_id);
+Hibernate: alter table question add constraint FK1nuuke7olg7b9fkyp2ba9d5bx foreign key (member_id) references member (member_id)
+2023-08-22 11:31:53.320  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513320 | took 6ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table question add constraint FK1nuuke7olg7b9fkyp2ba9d5bx foreign key (member_id) references member (member_id)
+alter table question add constraint FK1nuuke7olg7b9fkyp2ba9d5bx foreign key (member_id) references member (member_id);
+Hibernate: alter table question_down_voted_member_id add constraint FKquabkbdg7jr27l02vsqs7gsq1 foreign key (question_question_id) references question (question_id)
+2023-08-22 11:31:53.326  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513326 | took 5ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table question_down_voted_member_id add constraint FKquabkbdg7jr27l02vsqs7gsq1 foreign key (question_question_id) references question (question_id)
+alter table question_down_voted_member_id add constraint FKquabkbdg7jr27l02vsqs7gsq1 foreign key (question_question_id) references question (question_id);
+Hibernate: alter table question_tag_list add constraint FK3fmrx1iomg0v884g97baidwnk foreign key (question_id) references question (question_id)
+2023-08-22 11:31:53.331  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513331 | took 5ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table question_tag_list add constraint FK3fmrx1iomg0v884g97baidwnk foreign key (question_id) references question (question_id)
+alter table question_tag_list add constraint FK3fmrx1iomg0v884g97baidwnk foreign key (question_id) references question (question_id);
+Hibernate: alter table question_up_voted_member_id add constraint FKj0gnchnv6c61hixjjwfsw229b foreign key (question_question_id) references question (question_id)
+2023-08-22 11:31:53.336  INFO 88942 --- [    Test worker] p6spy                                    : #1692671513336 | took 5ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/stackoverflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;serverTimezone=Asia/Seoul&amp;useSSL=true
+alter table question_up_voted_member_id add constraint FKj0gnchnv6c61hixjjwfsw229b foreign key (question_question_id) references question (question_id)
+alter table question_up_voted_member_id add constraint FKj0gnchnv6c61hixjjwfsw229b foreign key (question_question_id) references question (question_id);
+2023-08-22 11:31:53.337  INFO 88942 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-22 11:31:53.342  INFO 88942 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-22 11:31:53.626  INFO 88942 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1be3e952, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@818a514, org.springframework.security.web.context.SecurityContextPersistenceFilter@e30a8ef, org.springframework.security.web.header.HeaderWriterFilter@2f3565c0, org.springframework.web.filter.CorsFilter@7004cd44, org.springframework.security.web.authentication.logout.LogoutFilter@25093079, com.preproject.stackOverflow.auth.filter.JwtVerificationFilter@495e1ad1, com.preproject.stackOverflow.auth.filter.JwtAuthenticationFilter@4d73d3d1, com.preproject.stackOverflow.auth.filter.JwtVerificationFilter@495e1ad1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34074149, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1500edf3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@eef6e, org.springframework.security.web.session.SessionManagementFilter@687d31a9, org.springframework.security.web.access.ExceptionTranslationFilter@6d5fea64, org.springframework.security.web.access.intercept.AuthorizationFilter@ab3b54]
+2023-08-22 11:31:53.694  WARN 88942 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-22 11:31:53.866  WARN 88942 --- [    Test worker] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-08-22 11:31:53.962  INFO 88942 --- [    Test worker] c.p.s.StackOverflowApplicationTests      : Started StackOverflowApplicationTests in 2.119 seconds (JVM running for 2.587)
+>>>>>>> 250ff0e (fix:final[be03])
 </pre>
 </span>
 </div>
@@ -1054,7 +1249,11 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
+<<<<<<< HEAD
 <a href="http://www.gradle.org">Gradle 8.2.1</a> at 2023. 8. 22. 오전 11:49:23</p>
+=======
+<a href="http://www.gradle.org">Gradle 8.2.1</a> at 2023. 8. 22. 오전 11:31:54</p>
+>>>>>>> 250ff0e (fix:final[be03])
 </div>
 </div>
 </body>

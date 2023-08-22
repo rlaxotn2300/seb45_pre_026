@@ -77,7 +77,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                         .antMatchers(HttpMethod.DELETE, "/question/").hasRole("USER")
 
                         .antMatchers(HttpMethod.PATCH, "/member/**").hasRole("USER")
-                        .antMatchers(HttpMethod.GET, "/member/**").hasRole("USER")
+                        .antMatchers(HttpMethod.GET, "/member/**").permitAll()
                         .antMatchers(HttpMethod.DELETE, "/member/**").hasRole("USER")
                         .antMatchers(HttpMethod.POST, "/question/**").hasRole("USER")
                         .antMatchers(HttpMethod.PATCH, "/question/**").hasRole("USER")
@@ -97,7 +97,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://seb2.s3-website.ap-northeast-2.amazonaws.com"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://seb2.s3-website.ap-northeast-2.amazonaws.com", "http://localhost:5000"));
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setExposedHeaders(Arrays.asList("*","Authorization","Refresh"));
