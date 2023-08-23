@@ -1,6 +1,7 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Cookies } from 'react-cookie';
 import Answer from '../component/Answer';
 import Nav from '../component/Nav';
 import Aside from '../component/Aside';
@@ -13,6 +14,8 @@ export default function QuestionDetail() {
   let { id } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const cookies = new Cookies();
+  const getCookie = cookies.get('is_login');
 
   const getDetail = () => {
     return axios
@@ -40,9 +43,27 @@ export default function QuestionDetail() {
         'Do you really want to delete this question? This cannot be undone.',
       )
     ) {
+      deleteQuestion();
       navigate('/questions');
+      window.location.reload(true);
     }
   }
+
+  const deleteQuestion = () => {
+    return axios
+      .delete(`http://13.124.11.238:8080/question/${id}`, {
+        headers: {
+          'Content-Type': `application/json`,
+          Authorization: getCookie,
+        },
+      })
+      .then(() => {
+        alert('Your question has been deleted.');
+      })
+      .catch(() => {
+        console.log('Something went wrong. Please try again.');
+      });
+  };
 
   return (
     <div className="detail__bg">

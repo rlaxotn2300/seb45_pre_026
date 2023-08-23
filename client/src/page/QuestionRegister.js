@@ -71,7 +71,6 @@ export default function QuestionRegister() {
     if (body === '') setIsBodyEmpty(true);
 
     if (!isTitleEmpty && !isBodyEmpty) {
-      console.log(tagsList);
       QuestionRegister();
     }
   }
@@ -105,6 +104,7 @@ export default function QuestionRegister() {
       .then(() => {
         alert('Your questions has been successfully posted.');
         navigate('/questions');
+        window.location.reload(true);
       })
       .catch(() => alert('Something went wrong. Please try again.'));
   };
