@@ -1,39 +1,66 @@
-import { connect } from 'react-redux';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../css/question.css';
 
-const mapStateToProps = (state) => {
-  return {
-    questionData: state.questionData,
-  };
-};
+function Question({ data }) {
+  let contentWithNoSpace = data.content
+    .replace(/<p>/g, '')
+    .replace(/<\/p>/g, '');
 
-function Question({ questionData }) {
-  let dummyData = questionData[0];
+  const [answer, setAnswer] = useState('');
+
+  const getAnswerList = async () => {
+    try {
+      const res = await axios.get(
+        'http://13.124.11.238:8080/question/1/answer',
+        {
+          headers: {
+            'Content-Type': `application/json`,
+          },
+        },
+      );
+      setAnswer(res.data);
+    } catch (err) {
+      console.log('Error >>', err);
+    }
+  };
+
+  useEffect(() => {
+    getAnswerList();
+  }, []);
+
+  const answer_filter = answer.vote?.filter(
+    (el) => el.questionId === data.questionId,
+  );
 
   return (
-    <div className="question__container">
+    <div className="question__container" key={data.questionId}>
       <div className="question__side">
-        <div>{dummyData.vote} votes</div>
+        <div>{data.vote} votes</div>
         <div
           className={
-            dummyData.answer.length === 0
+            answer_filter?.length === 0
               ? 'quesiton__no-answer'
               : 'question__answer'
           }
         >
-          {dummyData.answer.length} answers
+          {answer_filter?.length} answers
         </div>
       </div>
       <div className="question__main">
         <div className="question__content-container">
-          <div className="question__title">{dummyData.title}</div>
-          <div className="question__content">{dummyData.content}</div>
+          <div className="question__title">{data.title}</div>
+          <div className="question__content">{contentWithNoSpace}</div>
         </div>
         <div className="question__bottom">
-          <div>{dummyData.date}</div>
+          <div className="tag_box">
+            {data.tags?.map((el) => (
+              <span key={el}>{el}</span>
+            ))}
+          </div>
           <div className="question__author">
             <div className="question__author-photo"></div>
-            <div>{dummyData.user}</div>
+            <div>{data.memberId}</div>
           </div>
         </div>
       </div>
@@ -41,4 +68,4 @@ function Question({ questionData }) {
   );
 }
 
-export default connect(mapStateToProps)(Question);
+export default Question;

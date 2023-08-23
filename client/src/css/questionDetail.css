@@ -1,0 +1,123 @@
+.detail__bg {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width:1250px;
+    margin:auto;
+}
+
+.detail__main {
+    border-left: 1px solid #d6d9db;
+    margin-top: 3.5625rem;
+    width:1075px;
+}
+
+.detail__top {
+    border-bottom: 1px solid #d6d9db;
+    padding-bottom: 0.8125rem;
+    margin-bottom: 0.9375rem;
+}
+
+.detail__title-container {
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail__title {
+    font-size: 25px;
+}
+
+.detail__btn-container {
+    display: flex;
+    align-items: center;
+    gap: 0.4375rem;
+}
+
+.detail__btn {
+    width: 57px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    border: 0.5px solid #53595F;
+    font-size: 12px;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.detail__btn:hover {
+    background-color: #F1F2F3;
+    cursor: pointer;
+}
+
+.detail__date {
+    color: #53595f;
+    font-size: 13px;
+    margin: 0.8125rem 0 0 30px;
+}
+
+.detail__content-wrap {
+    display: flex;
+}
+
+.detail__content-container {
+    width: 48.125rem;
+}
+
+.detail__content-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.detail__content-container > div {
+    margin-left: 20px;
+}
+
+.detail__profile-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.875rem;
+    padding-bottom: 1.875rem;
+    border-bottom: 1px solid #d6d9db;
+}
+
+.detail__profile-container {
+    width: 12.5rem;
+    height: 4.375rem;
+    border-radius: 5px;
+    background-color: #e3ecf4;
+    display: flex;
+    align-items: center;
+    margin-right: 0.625rem;
+    padding: 0 15px;
+    box-sizing: border-box;
+    gap: 10px;
+}
+
+.detail__profile-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #d6d9db;
+}
+
+.detail__profile-name {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.detail__profile-name-gray {
+    font-size: 12px;
+    color: #53595f;
+}
+
+.detail__profile-name-blue {
+    font-size: 14px;
+    color: #0074cc;
+}

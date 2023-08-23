@@ -1,0 +1,178 @@
+/* 배경 */
+.register__bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3.5625rem;
+    padding: 55px 0;
+    box-sizing: border-box;
+    gap: 20px;
+}
+
+/* flex 설정을 주어서 중간으로 보내기 위해 wrap으로 감쌈 */
+.register__main-wrap {
+    display: flex;
+    gap: 30px;
+}
+
+/* 페이지 제목 */
+.register__title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+/* 제목 아래 입력창, 가이드 파트 */
+.register__main {
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+    gap: 1.875rem;
+}
+
+.register__title-container {
+    padding: 1.875rem;
+    border: 1px solid #d6d9db;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.register__input-title {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.register__input-desc {
+    font-size: 14px;
+    color: #53595f;
+}
+
+.register__title-input {
+    width: 100%;
+    padding: 0.5rem 0.625rem;
+    font-size: 12px;
+    border-radius: 7px;
+}
+
+.input-gray {
+    border-color: #bdc0c2;
+}
+
+.register__warning {
+    color: #dd4f54;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.register__body-input {
+    height: 15.9375rem;
+    resize: vertical;
+}
+
+/* 가이드 파트 */
+.register__side {
+    width: 305px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.875rem;
+}
+
+.register__side-wrap {
+    border: 1px solid #d6d9db;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px 1px #d6d9db;
+}
+
+.register__side-title {
+    font-size: 15px;
+    font-weight: 500;
+    background-color: #F1F2F3;
+    border-bottom: 1px solid #d6d9db;
+    padding: 1rem 0.75rem;
+    box-sizing: border-box;
+}
+
+.register__side-content-wrap {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+}
+
+.register__side-img {
+    width: 45px;
+    height: 45px;
+}
+
+.register__side-content {
+    font-size: 12px;
+}
+
+/* post, discard 버튼 */
+.register__btn-container {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 0.9375rem;
+}
+
+.register__post-btn {
+    padding: 0.625rem 0.75rem;
+}
+
+.register__cancel-btn {
+    color: #dd4f54;
+    font-size: 13px;
+    border: none;
+    border-radius: 0.3125rem;
+    background-color: #FFFFFF;
+    padding: 0.625rem 0.75rem;
+    box-sizing: border-box;
+}
+
+.register__cancel-btn:hover {
+    background-color: #f7e1e0;
+}
+
+
+/* 태그 추가 */
+
+.tag_form{
+    border:1px solid #d6d9db;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.register__tag-title{
+    font-size: 17px;
+    font-weight: 500;
+    border:1px solid #d6d9db;
+    border-radius:10px;
+    margin: auto;
+    width:93%;
+    padding: 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.tag{
+    background: #b3d3ea;
+    border:none;
+    border-radius:5px;
+    padding:7px 15px;
+    margin:5px
+}
+
+.tag-title{
+    border:none;
+    margin:0 0 5px 30px;
+    font-weight: 500;
+}
+
+.second{
+    margin-top:30px;
+}

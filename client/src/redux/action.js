@@ -3,9 +3,9 @@ export const setCurPage = (curPage) => ({
   payload: curPage,
 });
 
-export const setEmail = (email) => ({
-  type: 'SET_EMAIL',
-  payload: email,
+export const setStateEmail = (stateEmail) => ({
+  type: 'SET_STATEEMAIL',
+  payload: stateEmail,
 });
 
 export const setNickname = (nickname) => ({
@@ -13,7 +13,12 @@ export const setNickname = (nickname) => ({
   payload: nickname,
 });
 
-export const setPassword = (password) => ({
-  type: 'SET_PASSWORD',
-  payload: password,
+export const setStatePassword = (statePassword) => ({
+  type: 'SET_STATEPASSWORD',
+  payload: statePassword,
+});
+
+export const setIsLogin = (isLogin) => ({
+  type: 'SET_ISLOGIN',
+  payload: isLogin,
 });

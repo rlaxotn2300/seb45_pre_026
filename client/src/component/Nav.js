@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setCurPage } from '../redux/action';
 import '../css/nav.css';
+import '../css/component.css';
 import QuestionsLogoGray from '../images/questions-logo.png';
 import QuestionsLogoBlack from '../images/questions-logo-black.png';
 
 const mapStateToProps = (state) => {
   return {
     curPage: state.curPage,
+    isLogin: state.isLogin,
   };
 };
 
@@ -18,13 +20,12 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-function Nav({ curPage, setCurPage }) {
+function Nav({ curPage, setCurPage, isLogin }) {
   const [isHovering, setIsHovering] = useState(false);
 
   function handleMenuChange(e) {
     if (e.target.innerText === 'Tags') setCurPage('tags');
     else if (e.target.innerText === 'User') setCurPage('user');
-    else if (e.target.innerText === 'Companies') setCurPage('companies');
     else setCurPage('questions');
   }
 
@@ -72,51 +73,56 @@ function Nav({ curPage, setCurPage }) {
             Tags
           </div>
         </Link>
-        <Link to="/mypage" className="link">
-          <div
-            className={
-              curPage === 'user' ? 'nav__menu nav__focused' : 'nav__menu'
-            }
-            role="presentation"
-            onClick={(e) => handleMenuChange(e)}
-          >
-            User
-          </div>
-        </Link>
-        <Link to="/companies" className="link">
-          <div
-            className={
-              curPage === 'companies' ? 'nav__menu nav__focused' : 'nav__menu'
-            }
-            role="presentation"
-            onClick={(e) => handleMenuChange(e)}
-          >
-            Companies
-          </div>
-        </Link>
+        {isLogin ? (
+          <Link to="/mypage" className="link">
+            <div
+              className={
+                curPage === 'user' ? 'nav__menu nav__focused' : 'nav__menu'
+              }
+              role="presentation"
+              onClick={(e) => handleMenuChange(e)}
+            >
+              User
+            </div>
+          </Link>
+        ) : null}
       </div>
       <div>
         <div className="nav__tab-name">TEAM</div>
-        <div className="nav__team">
-          <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">Beomda</div>
-        </div>
-        <div className="nav__team">
-          <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">Jess-Apr</div>
-        </div>
-        <div className="nav__team">
-          <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">oksu01</div>
-        </div>
-        <div className="nav__team">
-          <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">rlaxotn2300</div>
-        </div>
-        <div className="nav__team">
-          <div className="nav__profile-photo"></div>
-          <div className="nave__github-ID">sahel4</div>
-        </div>
+        <a href="https://github.com/Beomda" target="blank" className="link">
+          <div className="nav__team">
+            <div className="nav__profile-photo"></div>
+            <div className="nav__github-ID">Beomda</div>
+          </div>
+        </a>
+        <a href="https://github.com/Jess-Apr" target="blank" className="link">
+          <div className="nav__team">
+            <div className="nav__profile-photo"></div>
+            <div className="nav__github-ID">Jess-Apr</div>
+          </div>
+        </a>
+        <a href="https://github.com/oksu01" target="blank" className="link">
+          <div className="nav__team">
+            <div className="nav__profile-photo"></div>
+            <div className="nav__github-ID">oksu01</div>
+          </div>
+        </a>
+        <a
+          href="https://github.com/rlaxotn2300"
+          target="blank"
+          className="link"
+        >
+          <div className="nav__team">
+            <div className="nav__profile-photo"></div>
+            <div className="nav__github-ID">rlaxotn2300</div>
+          </div>
+        </a>
+        <a href="https://github.com/sahel4" target="blank" className="link">
+          <div className="nav__team">
+            <div className="nav__profile-photo"></div>
+            <div className="nav__github-ID">sahel4</div>
+          </div>
+        </a>
       </div>
     </div>
   );

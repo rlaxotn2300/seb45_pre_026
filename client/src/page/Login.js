@@ -1,12 +1,26 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Cookies } from 'react-cookie';
+import axios from 'axios';
 import '../css/login.css';
+import { connect } from 'react-redux';
+import { setIsLogin } from '../redux/action';
+import base64 from 'base-64';
 
-export default function Login() {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setIsLogin: (isLogin) => dispatch(setIsLogin(isLogin)),
+  };
+};
+
+function Login({ setIsLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailEmpty, setEmailEmpty] = useState(false);
   const [passwordEmpty, setPasswordEmpty] = useState(false);
   const [emailValidity, setEmailValidity] = useState(true);
+  const cookies = new Cookies();
+  const navigate = useNavigate();
 
   function handleEmailInputChange(e) {
     setEmail(e.target.value);
@@ -26,7 +40,46 @@ export default function Login() {
     else if (!validEmail.test(email)) setEmailValidity(false);
 
     if (password === '') setPasswordEmpty(true);
+
+    if (!emailEmpty && !passwordEmpty && emailValidity) {
+      loginDb();
+    }
   }
+
+  const loginDb = () => {
+    return axios
+      .post(
+        `http://13.124.11.238:8080/member/login`,
+        {
+          username: email,
+          password: password,
+        },
+        { headers: { 'Content-Type': 'application/json' } },
+      )
+      .then((res) => {
+        console.log(res);
+        setIsLogin(true);
+
+        const accessToken = res.headers.authorization;
+        console.log(accessToken);
+        cookies.set('is_login', `${accessToken}`);
+        console.log(cookies.get('is_login'));
+        let payload = accessToken.substring(
+          accessToken.indexOf('.') + 1,
+          accessToken.lastIndexOf('.'),
+        );
+
+        localStorage.setItem('token', accessToken);
+
+        let dec = JSON.parse(base64.decode(payload));
+        window.localStorage.setItem('memberId', dec.memberId);
+
+        navigate('/');
+      })
+      .catch(() =>
+        alert('There are no matching user information. Please try again.'),
+      );
+  };
 
   return (
     <div className="login__bg">
@@ -77,10 +130,12 @@ export default function Login() {
       </div>
       <div className="login__account">
         <span className="login__account-msg">Don&apos;t have an account?</span>
-        <a href="/" className="login__link">
+        <Link to="/sign_up" className="login__link">
           Sign up
-        </a>
+        </Link>
       </div>
     </div>
   );
 }
+
+export default connect(null, mapDispatchToProps)(Login);

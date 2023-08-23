@@ -1,16 +1,19 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import questions from '../images/quesion.png';
 import commenting from '../images/commention.png';
 import tags from '../images/tags.png';
 import earn from '../images/earn.png';
 import robot from '../images/robot_check.png';
 import '../css/sign_up.css';
-import { useState } from 'react';
 
 export default function Sign_up() {
   const [displayname, setDisplayname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(false);
+  const navigate = useNavigate();
 
   const handledisplaynameChange = (event) => {
     setDisplayname(event.target.value);
@@ -41,14 +44,28 @@ export default function Sign_up() {
     return password.length >= 6;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (
       isdisplaynameValid(displayname) &&
       isEmailValid(email) &&
       isPasswordValid(password) &&
       checked
     ) {
-      alert('모든 입력이 유효합니다.');
+      axios
+        .post(`http://13.124.11.238:8080/member/join`, {
+          email: email,
+          name: displayname,
+          password: password,
+        })
+        .then(() => {
+          navigate('/login');
+          window.alert('Your signup process has been successfully done!');
+        })
+        .catch(() => {
+          window.alert('Failed to signup. Please try again.');
+        });
     } else if (
       isdisplaynameValid(displayname) &&
       isEmailValid(email) &&
@@ -56,7 +73,11 @@ export default function Sign_up() {
       !checked
     ) {
       alert('당신은 로봇입니까?');
-    } else {
+    } else if (
+      !isdisplaynameValid(displayname) ||
+      !isEmailValid(email) ||
+      !isPasswordValid(password)
+    ) {
       alert('입력이 유효하지 않습니다.');
     }
   };
@@ -136,7 +157,7 @@ export default function Sign_up() {
             <button
               type="submit"
               value="Submit"
-              onClick={handleSubmit}
+              onClick={(e) => handleSubmit(e)}
               className="submit_button"
             >
               Sign up

@@ -39,9 +39,7 @@
     cursor: pointer;
 }
 
-.login__input {
-    width: 266px;
-    height: 43px;
+.input {
     border-radius: 10px;
     border: 1px solid #53595F;
     box-sizing: border-box;
@@ -49,11 +47,28 @@
     margin-top: 7px;
     padding: 5px 12px;
     font-size: 16px;
-}
+}list
 
-.login__input:focus {
+.input:focus {
     outline: none;
     border-color: #3d96f7;
     box-sizing: border-box;
     box-shadow: 0 0 0 5px #e3ecf4;
+}
+
+.input-red {
+    border: 1px solid #dd4f54;
+}
+
+.input-red:focus {
+    outline: none;
+    border-color: #dd4f54;
+    box-shadow: 0 0 0 5px #f7e1e0;
+}
+
+.list {
+    list-style: none;
+    display: block;
+    width:770px;
+
 }
