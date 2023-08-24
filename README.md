@@ -3,6 +3,7 @@
 - 프로젝트 명 : SEB45 Pre-project
 - 프로젝트 설명 : 우리 팀만의 Stack overflow 만들기
 - 프로젝트 기간 : 2023/08/04 ~ 2023/08/23
+- 배포 : http://seb2.s3-website.ap-northeast-2.amazonaws.com/
 
 ## 👩🏻‍💻 Team Members
 - FE: 한재연(팀장), 김태수
