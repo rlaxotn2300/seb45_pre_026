@@ -103,20 +103,4 @@ public class Answer {
         this.vote = vote;
     }
 
-
-//    public void setQuestion(Question question) {
-//        this.question = question;
-//
-//        if (!this.question.getAnswerList().contains(this)) {
-//            this.question.setAnswers(this);
-//        }
-//    }
-//
-//    public void setMember(Member member) {
-//        this.member = member;
-//
-//        if (!this.member.getAnswers().contains(this)) {
-//            this.member.setAnswers(this);
-//        }
-//    }
 }
