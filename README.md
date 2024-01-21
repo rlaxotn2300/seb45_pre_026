@@ -2,12 +2,11 @@
 - 팀 이름 : 🧶 코드니터
 - 프로젝트 명 : SEB45 Pre-project
 - 프로젝트 설명 : 우리 팀만의 Stack overflow 만들기
-- 프로젝트 기간 : 2023/08/04 ~ 2023/08/23
-- 배포 : http://seb2.s3-website.ap-northeast-2.amazonaws.com/
+- 프로젝트 기간 : 2023/08/04 ~ 2023/08/15
+- 배포 : [http://seb2.s3-website.ap-northeast-2.amazonaws.com/](http://taesu-preproject.s3-website.ap-northeast-2.amazonaws.com)
 
 ## 👩🏻‍💻 Team Members
 - FE: 한재연(팀장), 김태수
-- BE: 김진아(부팀장), 김지원, 손승범
 
 ## ⚙️ 사용 툴
 ### Communication
@@ -21,14 +20,6 @@
 - Framework: React
 - Library: react-router-dom, redux, axios
 - Extention: ESLint, Prettier
-
-### Back-end
-- Java
-- Spring
-- Spring Boot
-- Spring Security
-- MySQL
-- AWS
 
 ## Commit Convention
 - `feat` : 새로운 기능 추가
