@@ -7,12 +7,6 @@ import javascript from '../images/javascript.png';
 import react from '../images/react.png';
 import redux from '../images/redux.png';
 import axios from '../images/axios.png';
-import java from '../images/java.png';
-import spring from '../images/spring.png';
-import s_boot from '../images/springboot.png';
-import s_security from '../images/springsecurity.png';
-import mysql from '../images/mysql.png';
-import aws from '../images/aws.png';
 import '../css/main.css';
 
 function Main() {
@@ -24,56 +18,6 @@ function Main() {
         <h1>Code Knitters</h1>
       </div>
       <section>
-        <div className="members">
-          <h2>Members</h2>
-          <ul>
-            <li>
-              <a href="https://github.com/sahel4" target="blank">
-                <div className="img_ex"></div>
-              </a>
-              <p>
-                <strong>김지원</strong>
-              </p>
-              <p>BE</p>
-            </li>
-            <li>
-              <a href="https://github.com/oksu01" target="blank">
-                <div className="img_ex"></div>
-              </a>
-              <p>
-                <strong>김진아</strong>
-              </p>
-              <p>BE</p>
-            </li>
-            <li>
-              <a href="https://github.com/Beomda" target="blank">
-                <div className="img_ex"></div>
-              </a>
-              <p>
-                <strong>손승범</strong>
-              </p>
-              <p>BE</p>
-            </li>
-            <li>
-              <a href="https://github.com/Jess-Apr" target="blank">
-                <div className="img_ex"></div>
-              </a>
-              <p>
-                <strong>한재연</strong>
-              </p>
-              <p>FE</p>
-            </li>
-            <li>
-              <a href="https://github.com/rlaxotn2300" target="blank">
-                <div className="img_ex"></div>
-              </a>
-              <p>
-                <strong>김태수</strong>
-              </p>
-              <p>FE</p>
-            </li>
-          </ul>
-        </div>
         <div className="Tools">
           <h2>Tools</h2>
           <ul>
@@ -111,35 +55,6 @@ function Main() {
                 <li>
                   <h4>Prettier</h4>
                   <img src={Prettier} alt="Prettier" />
-                </li>
-              </ul>
-            </li>
-            <li className="Back_end-Tools">
-              <h3>Back_end</h3>
-              <ul>
-                <li>
-                  <h4>Java</h4>
-                  <img src={java} alt="java" />
-                </li>
-                <li>
-                  <h4>Spring</h4>
-                  <img src={spring} alt="spring" />
-                </li>
-                <li>
-                  <h4>Spring Boot</h4>
-                  <img src={s_boot} alt="springboot" />
-                </li>
-                <li>
-                  <h4>Spring Security</h4>
-                  <img src={s_security} alt="spring security" />
-                </li>
-                <li>
-                  <h4>MySQL</h4>
-                  <img src={mysql} alt="My SQL" />
-                </li>
-                <li>
-                  <h4>AWS</h4>
-                  <img src={aws} alt="AWS" />
                 </li>
               </ul>
             </li>

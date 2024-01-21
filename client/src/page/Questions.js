@@ -4,8 +4,9 @@ import '../css/questions.css';
 import '../css/component.css';
 import Aside from '../component/Aside';
 import Question from '../component/Question';
+import { questionData } from '../dummydata';
 
-export default function Questions({ curPage, setCurPage, data }) {
+export default function Questions({ curPage, setCurPage }) {
   return (
     <div className="questions_bg">
       <Nav curPage={curPage} setCurPage={setCurPage} />
@@ -17,14 +18,13 @@ export default function Questions({ curPage, setCurPage, data }) {
               <button>Ask Question</button>
             </Link>
           </div>
-          {data.map((data) => (
+          {questionData.map((data) => (
             <li key={data.questionId} className="list">
               <Link to={`/question/${data.questionId}`} className="link">
                 <Question data={data} />
               </Link>
             </li>
           ))}
-          {/* <div ref={ref}>안녕</div> */}
         </div>
         <Aside />
       </div>

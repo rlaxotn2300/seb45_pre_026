@@ -89,22 +89,9 @@ function Nav({ curPage, setCurPage, isLogin }) {
       </div>
       <div>
         <div className="nav__tab-name">TEAM</div>
-        <a href="https://github.com/Beomda" target="blank" className="link">
-          <div className="nav__team">
-            <div className="nav__profile-photo"></div>
-            <div className="nav__github-ID">Beomda</div>
-          </div>
-        </a>
         <a href="https://github.com/Jess-Apr" target="blank" className="link">
           <div className="nav__team">
-            <div className="nav__profile-photo"></div>
             <div className="nav__github-ID">Jess-Apr</div>
-          </div>
-        </a>
-        <a href="https://github.com/oksu01" target="blank" className="link">
-          <div className="nav__team">
-            <div className="nav__profile-photo"></div>
-            <div className="nav__github-ID">oksu01</div>
           </div>
         </a>
         <a
@@ -113,14 +100,7 @@ function Nav({ curPage, setCurPage, isLogin }) {
           className="link"
         >
           <div className="nav__team">
-            <div className="nav__profile-photo"></div>
             <div className="nav__github-ID">rlaxotn2300</div>
-          </div>
-        </a>
-        <a href="https://github.com/sahel4" target="blank" className="link">
-          <div className="nav__team">
-            <div className="nav__profile-photo"></div>
-            <div className="nav__github-ID">sahel4</div>
           </div>
         </a>
       </div>

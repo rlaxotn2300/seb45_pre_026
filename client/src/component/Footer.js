@@ -19,37 +19,21 @@ export default function Footer() {
         </span>
       </div>
       <div className="footer__position">
-        <span className="footer__position-title">Frontend</span>
         <div className="footer__profile-container">
-          <div className="footer__profile-photo"></div>
-          <span className="footer__profile-name">
-            한재연
-            <br />
-            (팀장)
-          </span>
+          <img
+            className="footer__profile-photo"
+            src="https://avatars.githubusercontent.com/u/122342805?v=4"
+            alt="githubProfile"
+          />
+          <span className="footer__profile-name">한재연</span>
         </div>
         <div className="footer__profile-container">
-          <div className="footer__profile-photo"></div>
+          <img
+            className="footer__profile-photo"
+            src="https://avatars.githubusercontent.com/u/130063033?v=4"
+            alt="githubProfile"
+          />
           <span className="footer__profile-name">김태수</span>
-        </div>
-      </div>
-      <div className="footer__position">
-        <span className="footer__position-title">Backend</span>
-        <div className="footer__profile-container">
-          <div className="footer__profile-photo"></div>
-          <span className="footer__profile-name">
-            김진아
-            <br />
-            (부팀장)
-          </span>
-        </div>
-        <div className="footer__profile-container">
-          <div className="footer__profile-photo"></div>
-          <span className="footer__profile-name">김지원</span>
-        </div>
-        <div className="footer__profile-container">
-          <div className="footer__profile-photo"></div>
-          <span className="footer__profile-name">손승범</span>
         </div>
       </div>
     </div>

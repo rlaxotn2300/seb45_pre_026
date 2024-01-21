@@ -33,7 +33,6 @@
     display: flex;
     flex-direction: column;
     margin-top:150px;
-    padding-bottom:150px;
 }
 
 .members h2{
@@ -87,7 +86,6 @@
 .Tools{
     display: flex;
     flex-direction: column;
-    margin-top:150px;
     padding-bottom:150px;
 }
 

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+// import axios from 'axios';
 import '../css/question.css';
 
 function Question({ data }) {
@@ -7,44 +7,43 @@ function Question({ data }) {
     .replace(/<p>/g, '')
     .replace(/<\/p>/g, '');
 
-  const [answer, setAnswer] = useState('');
+  // const [answer, setAnswer] = useState('');
 
-  const getAnswerList = async () => {
-    try {
-      const res = await axios.get(
-        'http://13.124.11.238:8080/question/1/answer',
-        {
-          headers: {
-            'Content-Type': `application/json`,
-          },
-        },
-      );
-      setAnswer(res.data);
-    } catch (err) {
-      console.log('Error >>', err);
-    }
-  };
+  // const getAnswerList = async () => {
+  //   try {
+  //     const res = await axios.get(
+  //       'http://13.124.11.238:8080/question/1/answer',
+  //       {
+  //         headers: {
+  //           'Content-Type': `application/json`,
+  //         },
+  //       },
+  //     );
+  //     setAnswer(res.data);
+  //   } catch (err) {
+  //     console.log('Error >>', err);
+  //   }
+  // };
+
+  // const answer_filter = answer.vote?.filter(
+  //   (el) => el.questionId === data.questionId,
+  // );
 
   useEffect(() => {
-    getAnswerList();
+    console.log(data);
   }, []);
-
-  const answer_filter = answer.vote?.filter(
-    (el) => el.questionId === data.questionId,
-  );
-
   return (
     <div className="question__container" key={data.questionId}>
       <div className="question__side">
         <div>{data.vote} votes</div>
         <div
           className={
-            answer_filter?.length === 0
+            data.answer.length === 0
               ? 'quesiton__no-answer'
               : 'question__answer'
           }
         >
-          {answer_filter?.length} answers
+          {data.answer.length} answers
         </div>
       </div>
       <div className="question__main">

@@ -46,7 +46,7 @@ function App() {
           <Route path="/companies" element={<Companies />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign_up" element={<Signup />} />
-          <Route path="/questions" element={<Questions data={isData} />} />
+          <Route path="/questions" element={<Questions />} />
           <Route path="/question/:id" element={<QuestionDetail />} />
           <Route path="/question_register" element={<QuestionRegister />} />
           <Route path="/search" element={<SearchList data={isData} />} />
